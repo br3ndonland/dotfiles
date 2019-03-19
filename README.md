@@ -26,7 +26,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [General productivity](#general-productivity)
   - [Media](#media)
   - [Science](#science)
-  - [Sharing setup and settings](#sharing-setup-and-settings)
 
 ## Description
 
@@ -686,25 +685,5 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
 ### Science
 
 - Zotero
-
-[(Back to top)](#top)
-
-### Sharing setup and settings
-
-Computer setup and settings can be automated with shell scripts and maintained with dotfiles. **Laptop is setup, dotfiles are settings for software installed by laptop.**
-
-#### laptop
-
-- Laptop is a shell script from [thoughtbot](https://thoughtbot.com) for installing computer software.
-- The shell script installs Homebrew, Git, RCM to manage dotfiles, and other configurations.
-- Fork, download, and run the [laptop setup script](https://github.com/thoughtbot/laptop).
-- Add customizations in *~/.laptop.local*
-
-#### dotfiles
-
-- dotfiles are software settings files that begin with a dot.
-- Homebrew should already have been installed by the laptop setup script.
-- Fork and clone [thoughtbot/dotfiles](https://github.com/thoughtbot/dotfiles)
-- Add customization files in *~/dotfiles-local/*
 
 [(Back to top)](#top)

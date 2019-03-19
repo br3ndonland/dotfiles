@@ -99,7 +99,7 @@ This document describes my computer setup.
 
   ```sh
   # Homebrew packages
-  brew install git git-lfs gpg hub jupyter node python3 pipenv r yarn zsh zsh-completions
+  brew install git git-lfs gpg hub jupyter node pinentry pipenv python r yarn zsh zsh-completions
 
   # Homebrew casks
   brew cask install 1password alfred backblaze docker figma firefox-developer-edition google-chrome iterm2 keybase protonvpn rstudio slack visual-studio-code

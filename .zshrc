@@ -1,20 +1,13 @@
 # Exports
-# gpg
+export EDITOR="code"
 export GPG_TTY=$(tty)
-# ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id_protonmail"
-# Path to your oh-my-zsh installation.
+
+# oh-my-zsh
 export ZSH="/Users/br3ndonland/.oh-my-zsh"
-
-# Theme
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Plugins
 plugins=(git node npm zsh-syntax-highlighting)
+# ENABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
 

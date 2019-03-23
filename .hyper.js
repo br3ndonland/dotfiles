@@ -1,13 +1,14 @@
 // Hyper configuration
 module.exports = {
   config: {
-    updateChannel: 'stable',
+    updateChannel: "stable",
+    showHamburgerMenu: false,
     fontSize: 18,
-    fontFamily: 'Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo',
+    fontFamily: "Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo",
     summon: {
-      hotkey: 'Cmd+Esc'
-    },
+      hotkey: "Cmd+Esc"
+    }
   },
   keymaps: {},
-  plugins: ["hyperterm-summon", "hyper-snazzy"],
-};
+  plugins: ["hyper-snazzy", "hyperterm-summon"]
+}

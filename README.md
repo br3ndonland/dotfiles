@@ -46,8 +46,7 @@ This document describes my computer setup.
 - Keyboards
   - [Microsoft Sculpt ergonomic keyboard](https://www.amazon.com/dp/B00CYX26BC)
 - Mice
-  - Anker vertical mouse
-  - Evoluent vertical mouse
+  - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
 - Hard disks
   - Seagate backup plus slim external
   - Western Digital My Passport external

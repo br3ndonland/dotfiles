@@ -240,11 +240,6 @@ This document describes my computer setup.
 
 - [Connect to GitHub with SSH](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
-#### GitHub desktop
-
-- [GitHub desktop](https://desktop.github.com/) provides a nice GUI for Git. I have used it in the past, but no longer need it after using the Git and GitLens features in VSCode.
-- `hub` (installed via Homebrew) provides a command-line interface (CLI) for GitHub.
-
 [(Back to top)](#top)
 
 ### Language-specific setup

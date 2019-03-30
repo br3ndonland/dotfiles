@@ -23,7 +23,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [Terminal programs](#terminal-programs)
   - [Text editors](#text-editors)
   - [Data science IDEs](#data-science-ides)
-  - [General productivity](#general-productivity)
+  - [General productivity and social](#general-productivity-and-social)
   - [Media](#media)
   - [Science](#science)
 
@@ -155,36 +155,36 @@ This document describes my computer setup.
 
 #### [Keybase info](https://keybase.io/docs)
 
-  - Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
-  - Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
-  - View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
-  - [Keybase solves the key identity problem](https://keybase.io/docs/server_security/following): even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
-  - PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this farther by end-to-end encrypting everything with PGP.
-  - Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
-  - The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
-  - Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
-  - The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
-  - Useful features:
-    - Chat: like Slack, but end-to-end encrypted and without a free message limit.
-    - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
-    - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
-    - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the origin (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
+- Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
+- Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
+- View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
+- [Keybase solves the key identity problem](https://keybase.io/docs/server_security/following): even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
+- PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this farther by end-to-end encrypting everything with PGP.
+- Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
+- The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
+- Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
+- The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
+- Useful features:
+  - Chat: like Slack, but end-to-end encrypted and without a free message limit.
+  - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
+  - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
+  - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the origin (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
 
 #### GPG
 
-  - Install `gpg` with a package manager: `brew install gpg`.
-  - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
-  - Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
-  - Export your GPG public key with `gpg --armor --export <keynumber>` or to a file with `gpg --armor --export > public-key.gpg`.
-  - View keys with `gpg --list-secret-keys`.
-  - Locate another user's key in the global database with `gpg --search-keys <email>`.
-  - Encrypting communications
-    - Encrypt a message with `echo "Hi Jane" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.
-    - Send the message over email, Slack, or any other medium.
-    - Decrypt the message with `gpg --decrypt`.
-      - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
-      - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
-      - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
+- Install `gpg` with a package manager: `brew install gpg`.
+- Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
+- Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
+- Export your GPG public key with `gpg --armor --export <keynumber>` or to a file with `gpg --armor --export > public-key.gpg`.
+- View keys with `gpg --list-secret-keys`.
+- Locate another user's key in the global database with `gpg --search-keys <email>`.
+- Encrypting communications
+  - Encrypt a message with `echo "Hi Jane" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.
+  - Send the message over email, Slack, or any other medium.
+  - Decrypt the message with `gpg --decrypt`.
+    - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
+    - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
+    - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
 - GPG and Git
   - Verify key used to sign local Git commits with `git config --global user.signingkey`.
   - Configure Git to use your key for local commits with `git config --global user.signingkey <keynumber>` (the keynumber is the partial number listed on the `sec` line).
@@ -657,32 +657,31 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
 
 [(Back to top)](#top)
 
-### General productivity
+### General productivity and social
 
-- 1Password
+- [1Password](https://1password.com/) (Homebrew Cask)
 - Adobe Acrobat
-- [Backblaze](https://www.backblaze.com/)
-- Chrome
-  - GitHub Dark Theme from Stylish
-- Evernote
-- Firefox Developer Edition
+- [Backblaze](https://www.backblaze.com/) (Homebrew Cask)
+- [Bear](https://bear.app) (Mac App Store)
+- [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
   - Use Firefox account to sync preferences and add-ons.
-- Microsoft Office: Word, Excel, PowerPoint
+- Microsoft Office: Word, Excel, PowerPoint (direct download)
 - [ProtonVPN](https://protonvpn.com/)
+- [Sblack](https://www.sblack.online/) (lightweight Slack client, direct download)
 
 [(Back to top)](#top)
 
 ### Media
 
-- Audacity
-- HandBrake
-- Plex media server
-- VLC media player
+- [Audacity](https://www.audacityteam.org/)
+- [HandBrake](https://handbrake.fr/)
+- [Plex](https://www.plex.tv/) media server
+- [VLC](https://www.videolan.org/vlc/) media player
 
 [(Back to top)](#top)
 
 ### Science
 
-- Zotero
+- [Zotero](https://www.zotero.org/)
 
 [(Back to top)](#top)

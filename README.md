@@ -60,6 +60,7 @@ This document describes my computer setup.
     - I ran an ethernet cable from my router into the cabinet.
     - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
   - I now have a [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html).
+    ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)
   - I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), [compression socks](https://www.goldtoe.com/shop/mens/socks/gold-toe-mens-wellness-firm-compression-over-the-calf-socks-1-pair-3089), zero-drop shoes from [Altra](https://www.altrarunning.com/), and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ), to improve my posture and endurance.
 
 [(Back to top)](#top)

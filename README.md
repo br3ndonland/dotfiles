@@ -95,14 +95,15 @@ This document describes my computer setup.
 #### Homebrew
 
 - Install [Homebrew](https://brew.sh/). Homebrew includes [Homebrew-Cask](https://caskroom.github.io/) to manage other macOS applications.
-- Install packages with `brew install`
+- My list of Homebrew packages and casks is available in my [homebrew-brewfile repo](https://github.com/br3ndonland/homebrew-brewfile), and engineered for use with [strap](https://github.com/MikeMcQuaid/strap).
+- Install packages with `brew install`:
 
   ```sh
   # Homebrew packages
-  brew install git git-lfs gpg hub jupyter node pinentry pipenv python r yarn zsh zsh-completions
+  brew install git
 
   # Homebrew casks
-  brew cask install 1password alfred backblaze docker figma firefox-developer-edition google-chrome iterm2 keybase protonvpn rstudio slack visual-studio-code
+  brew cask install visual-studio-code
   ```
 
 - Update with `brew update` and `brew upgrade`.

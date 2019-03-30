@@ -13,7 +13,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 - [Setup](#setup)
   - [Strap](#strap)
   - [Package managers](#package-managers)
-  - [GPG](#gpg)
+  - [PGP](#pgp)
   - [SSH](#ssh)
   - [Version control](#version-control)
   - [Language-specific setup](#language-specific-setup)
@@ -149,12 +149,12 @@ This document describes my computer setup.
 
 [(Back to top)](#top)
 
-### GPG
+### PGP
 
 - I use [Gnu Privacy Guard](https://www.gnupg.org/) (GPG, the free implementation of Pretty Good Privacy (PGP)), [Keybase](https://keybase.io), and [ProtonMail](https://protonmail.com/) to encrypt and share messages, passwords, and other sensitive info.
-- [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
-- [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
-- [Keybase info](https://keybase.io/docs)
+
+#### [Keybase info](https://keybase.io/docs)
+
   - Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
   - Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
   - View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
@@ -169,12 +169,9 @@ This document describes my computer setup.
     - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
     - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
     - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the origin (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
-- PGP/GPG and Git
-  - Verify key used to sign local Git commits with `git config --global user.signingkey`.
-  - Configure Git to use your key for local commits with `git config --global user.signingkey <keynumber>` (the keynumber is the partial number listed on the `sec` line).
-  - Set Git to sign commits with your key with `git config --global commit.gpgsign true`.
-  - If PGP key was generated with [Keybase](https://keybase.io/), may need to run this in order to sign with the key: `export GPG_TTY=$(tty)`. See the [Keybase GitHub issue #2798](https://github.com/keybase/keybase-issues/issues/2798). You will be asked for a password, which is the password you set when creating the key.
-- Command line GPG info
+
+#### GPG
+
   - Install `gpg` with a package manager: `brew install gpg`.
   - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
   - Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
@@ -188,6 +185,13 @@ This document describes my computer setup.
       - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
       - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
       - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
+- GPG and Git
+  - Verify key used to sign local Git commits with `git config --global user.signingkey`.
+  - Configure Git to use your key for local commits with `git config --global user.signingkey <keynumber>` (the keynumber is the partial number listed on the `sec` line).
+  - Set Git to sign commits with your key with `git config --global commit.gpgsign true`.
+  - If PGP key was generated with [Keybase](https://keybase.io/), may need to export this in order to sign with the key: `export GPG_TTY=$(tty)`. See the [Keybase GitHub issue #2798](https://github.com/keybase/keybase-issues/issues/2798). You will be asked for a password, which is the password you set when creating the key.
+- [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
+- [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
 
 ### SSH
 

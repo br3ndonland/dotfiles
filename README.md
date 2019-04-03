@@ -660,14 +660,14 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
 
 ### General productivity and social
 
-- [1Password](https://1password.com/) (Homebrew Cask)
+- [1Password](https://1password.com/) (Homebrew Cask or Mac App Store)
 - Adobe Acrobat
 - [Backblaze](https://www.backblaze.com/) (Homebrew Cask)
 - [Bear](https://bear.app) (Mac App Store)
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
   - Use Firefox account to sync preferences and add-ons.
 - Microsoft Office: Word, Excel, PowerPoint (direct download)
-- [ProtonVPN](https://protonvpn.com/)
+- [ProtonVPN](https://protonvpn.com/) (Homebrew Cask)
 - [Sblack](https://www.sblack.online/) (lightweight Slack client, direct download)
 
 [(Back to top)](#top)

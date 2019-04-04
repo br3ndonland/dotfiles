@@ -1,6 +1,6 @@
 # Exports
 export EDITOR="code"
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
 export SSH_KEY_PATH="~/.ssh/rsa_id_invicro"
 
 # oh-my-zsh

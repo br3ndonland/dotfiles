@@ -69,8 +69,9 @@ This document describes my computer setup.
 ### macOS
 
 - System Preferences: Dark mode, automatically hide and show the dock
-- macOS now has the option to remap caps lock in *System Preferences -> Keyboard -> Modifier Keys*.
+- macOS now has the option to remap caps lock in _System Preferences -> Keyboard -> Modifier Keys_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) can also be used for keymapping.
+
   - Simple modifications:
 
     | From key  | To key |
@@ -87,7 +88,17 @@ This document describes my computer setup.
 ### Strap
 
 - [Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new machine for developers.
-- In addition to the sensible essential defaults provided by Strap, the script can refer to two repositories on github, *USERNAME/dotfiles* and *USERNAME/homebrew-brewfile* for customizations. This repository is meant to be used in conjunction with Strap.
+- In addition to the sensible essential defaults provided by Strap, the script can refer to two repositories on github, _USERNAME/dotfiles_ and _USERNAME/homebrew-brewfile_ for customizations. This repository is meant to be used in conjunction with Strap.
+- After installation, symlink the dotfiles into the home directory:
+
+  ```sh
+  ln -s .dotfiles/.gitconfig .gitconfig
+  ln -s .dotfiles/.zshrc .zshrc
+  ln -s ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
+  ln -s ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+  ```
+
+- This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories.
 
 ### Package managers
 
@@ -127,6 +138,7 @@ This document describes my computer setup.
 ##### Additions to the standard Anaconda install <!-- omit in toc -->
 
 - R and RStudio
+
   - When I was working with R, I preferred to install R and RStudio via Anaconda for easier version and package management. Otherwise, [R](https://cran.rstudio.com/) and [RStudio](https://www.rstudio.com) must be downloaded and installed separately. R cannot be updated from within RStudio, and installing a new R version can require reinstallation of packages. It's just too difficult to manage.
 
     ```sh
@@ -154,45 +166,111 @@ This document describes my computer setup.
 
 - I use [Gnu Privacy Guard](https://www.gnupg.org/) (GPG, the free implementation of Pretty Good Privacy (PGP)), [Keybase](https://keybase.io), and [ProtonMail](https://protonmail.com/) to encrypt and share messages, passwords, and other sensitive info.
 
-#### [Keybase info](https://keybase.io/docs)
+#### GPG
 
-- Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
-- Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
-- View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
+- GPG is an implementation of OpenPGP.
+
+##### Installation and key generation
+
+- Install `gpg` with a package manager:
+  - Ubuntu: `sudo apt-get install gpg`
+  - macOS: `brew install gpg`.
+- Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
+- View keys with `gpg --list-secret-keys`.
+- Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
+- Export your GPG public key:
+  - Copy to clipboard (for pasting into GitHub/GitLab): `gpg --armor --export | pbcopy`
+  - Export to a file: `gpg --armor --export > public.gpg`
+
+##### Sending messages
+
+- _TODO:_ Do a demo where I send something over PGP to someone else in the room.
+- Locate another user's key in the global database with `gpg --search-keys <email>`.
+- Encrypting communications
+  - Encrypt a message with `echo "Hello, World!" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.
+  - If the message was saved in a file, send the file over email, Slack, or any other medium.
+  - Decrypt the message with `gpg --decrypt`.
+    - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
+    - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
+    - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
+
+##### Signing Git commits with GPG
+
+- Configure Git to use GPG and your key for commits:
+  - Set `signingkey`: `git config --global user.signingkey 16digit_PGPkeyid` the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
+  - Turn on `gpgsign`: the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
+- Configure GPG to allow Git commit signing with one of these options, depending on desired config:
+
+  - Use `tty` (for command-line commits):
+    - `tty` is a back-end service used by GPG to pass information through the program. See GPG's [Agent Options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
+    - Export the `GPG_TTY` environment variable: `export GPG_TTY=$(tty)`
+    - Can add to shell profile to automatically export
+  - Disable `tty` and use `pinentry` (for commits in VSCode or other IDE):
+
+    - Install `pinentry` with package manager:
+      - macOS: `brew install pinentry-mac`
+      - Ubuntu Linux: `apt install pinentry`
+    - Update GPG config files:
+      - _~/.gnupg/gpg.conf:_ `no-tty`
+      - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /usr/local/bin/pinentry-mac`
+
+- [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
+- [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
+
+#### Keybase
+
+#### [Keybase background](https://keybase.io/docs)
+
 - [Keybase solves the key identity problem](https://keybase.io/docs/server_security/following): even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
-- PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this farther by end-to-end encrypting everything with PGP.
+- PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this further by end-to-end encrypting everything with PGP. Keybase staff can never read anything in your account.
 - Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
 - The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
 - Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
 - The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
 - Useful features:
+  - PGP key management (see below)
   - Chat: like Slack, but end-to-end encrypted and without a free message limit.
   - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
   - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
-  - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the origin (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
+  - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the remote (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
 
-#### GPG
+##### Keybase PGP
 
-- Install `gpg` with a package manager: `brew install gpg`.
-- Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
-- Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
-- Export your GPG public key with `gpg --armor --export <keynumber>` or to a file with `gpg --armor --export > public-key.gpg`.
-- View keys with `gpg --list-secret-keys`.
-- Locate another user's key in the global database with `gpg --search-keys <email>`.
-- Encrypting communications
-  - Encrypt a message with `echo "Hi Jane" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.
-  - Send the message over email, Slack, or any other medium.
-  - Decrypt the message with `gpg --decrypt`.
-    - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
-    - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
-    - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
-- GPG and Git
-  - Verify key used to sign local Git commits with `git config --global user.signingkey`.
-  - Configure Git to use your key for local commits with `git config --global user.signingkey <keynumber>` (the keynumber is the partial number listed on the `sec` line).
-  - Set Git to sign commits with your key with `git config --global commit.gpgsign true`.
-  - If PGP key was generated with [Keybase](https://keybase.io/), may need to export this in order to sign with the key: `export GPG_TTY=$(tty)`. See the [Keybase GitHub issue #2798](https://github.com/keybase/keybase-issues/issues/2798). You will be asked for a password, which is the password you set when creating the key.
-- [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
-- [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
+- Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
+- Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
+- View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
+- Export Keybase PGP key for use with GPG:
+
+  ```sh
+  # Public key
+  keybase pgp export -q 16digit_PGPkeyid | gpg --import
+  # Private key
+  keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
+  ```
+
+- I currently have GPG listed as the GPG program in my .gitconfig. May be able to set Keybase as the program instead and skip the export to GPG.
+
+  - _.gitconfig_ for GPG
+
+    ```text
+    ...
+    [gpg]
+    	program = gpg
+    ...
+    ```
+
+  - _.gitconfig_ for Keybase?
+
+    ```text
+    ...
+    [gpg]
+    	program = keybase
+    ...
+    ```
+
+#### ProtonMail
+
+I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
 ### SSH
 
@@ -220,6 +298,7 @@ This document describes my computer setup.
   ```
 
   - Go to GitHub and paste the key.
+
 - [Check SSH connection](https://help.github.com/articles/testing-your-ssh-connection/)
 
   ```sh
@@ -271,6 +350,7 @@ This document describes my computer setup.
 ### Shell
 
 - Zsh
+
   - Like Bash with more features. See the Wes Bos [Command Line Power User course](https://commandlinepoweruser.com/) for a tutorial. There is a version included with macOS, but it may be out of date.
   - Install via Homebrew:
 
@@ -279,21 +359,24 @@ This document describes my computer setup.
     ```
 
 - [oh-my-zsh](https://ohmyz.sh/)
+
   - Install via `curl`:
 
     ```sh
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     ```
 
-  - Configure in *~/.zshrc*.
+  - Configure in _~/.zshrc_.
+
 - [Pure prompt](https://github.com/sindresorhus/pure)
+
   - Install from npm:
 
     ```sh
     npm install --global pure-prompt
     ```
 
-  - Add the prompt to *~/.zshrc*:
+  - Add the prompt to _~/.zshrc_:
 
     ```zsh
     # .zshrc continues above
@@ -311,15 +394,17 @@ This document describes my computer setup.
     ```
 
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-  - Clone the repo into *~/.oh-my-zsh/plugins*:
+
+  - Clone the repo into _~/.oh-my-zsh/plugins_:
 
     ```sh
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     ```
 
-  - Activate the plugin in *~/.zshrc*:
-    - Open *~/.zshrc* from the command line with `code ~/.zshrc`.
+  - Activate the plugin in _~/.zshrc_:
+    - Open _~/.zshrc_ from the command line with `code ~/.zshrc`.
     - Add the plugin: `plugins=( [plugins...] zsh-syntax-highlighting)`
+
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
   - [iTerm2](https://iterm2.com) and the [iterm2-snazzy](https://github.com/sindresorhus/iterm2-snazzy) theme
@@ -333,7 +418,7 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
 1. Download and unzip [udacity-terminal-config.zip](http://video.udacity-data.com.s3.amazonaws.com/topher/2017/March/58d31ce3_ud123-udacity-terminal-config/ud123-udacity-terminal-config.zip)
 2. Move the directory `udacity-terminal-config` to your home directory and rename to `.udacity-terminal-config` (add a leading dot).
 3. Move the `bash_profile` file to your home directory and name it `.bash_profile` (add a leading dot).
-    - If you already have a `.bash_profile` file in your home directory, copy the text from the downloaded `bash_profile` and paste in your existing `.bash_profile`.
+   - If you already have a `.bash_profile` file in your home directory, copy the text from the downloaded `bash_profile` and paste in your existing `.bash_profile`.
 4. See the [free Git course](https://www.udacity.com/course/version-control-with-git--ud123) for more info.
 
 </details>
@@ -346,22 +431,22 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
 - [Theme](https://hyper.is/themes): [hyper-snazzy](https://hyper.is/plugins/hyper-snazzy). Install with `hyper i hyper-snazzy`.
 - Plugins wanted
   - [hyper-settings-sync](https://www.npmjs.com/package/hyper-sync-settings): Available but needs more development. Not currently syncing with my Gist.
-- Dotfile configuration in *~/.hyper.js*:
+- Dotfile configuration in _~/.hyper.js_:
 
   ```js
   // Hyper configuration
   module.exports = {
     config: {
-      updateChannel: 'stable',
+      updateChannel: "stable",
       fontSize: 18,
-      fontFamily: 'Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo',
+      fontFamily: "Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo",
       summon: {
-        hotkey: 'Cmd+Esc'
-      },
+        hotkey: "Cmd+Esc"
+      }
     },
     keymaps: {},
-    plugins: ["hyperterm-summon", "hyper-snazzy"],
-  };
+    plugins: ["hyperterm-summon", "hyper-snazzy"]
+  }
   ```
 
 #### iTerm2
@@ -443,6 +528,7 @@ Install [Sublime Text](https://www.sublimetext.com/), install Package Control, t
 `Adaptive` (included with Sublime Text 3).
 
 The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is great if you want something different, but has been deprecated after the developer switched to Atom (note this is happening with other popular packages like [JavaScript Beautify](https://packagecontrol.io/packages/Javascript%20Beautify)).
+
 </details>
 
 - Anaconda.sublime-settings
@@ -450,12 +536,9 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
   ```json
   {
     "swallow_startup_errors": true,
-    "pep8_ignore":
-    [
-      "E128"
-    ],
+    "pep8_ignore": ["E128"],
     // Maximum line length for pep8
-    "pep8_max_line_length": 100,
+    "pep8_max_line_length": 100
   }
   ```
 
@@ -464,7 +547,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
   ```json
   {
     "tab_size": 2,
-    "translate_tabs_to_spaces": true,
+    "translate_tabs_to_spaces": true
   }
   ```
 
@@ -479,13 +562,14 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
   ```
 
 - MarkdownPreview.sublime-settings
+
   - Italic markers set to stars instead of underscores, to avoid conflicts with underscores in file names, in Preferences -> Package Settings -> Markdown Editing -> Copy from Bold and Italic Settings - Default to Bold and Italic Settings - User, change `__` and `_` to `**` and `*`.
 
   ```json
   {
     "browser": "firefox",
     "github_inject_header_ids": true,
-    "enable_autoreload": true,
+    "enable_autoreload": true
   }
   ```
 
@@ -497,11 +581,8 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
     "color_scheme": "Packages/Color Scheme - Default/Mariana.tmTheme",
     "font_face": "Ubuntu Mono",
     "font_size": 18,
-    "ignored_packages":
-    [
-      "Vintage"
-    ],
-    "trim_trailing_white_space_on_save": true,
+    "ignored_packages": ["Vintage"],
+    "trim_trailing_white_space_on_save": true
   }
   ```
 
@@ -512,7 +593,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
     "highlight_line": true,
     "rulers": [72, 79, 100],
     "tab_size": 4,
-    "translate_tabs_to_spaces": true,
+    "translate_tabs_to_spaces": true
   }
   ```
 
@@ -523,17 +604,15 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
   {
     "linters": {
       "standard": {
-        "disable": false,
+        "disable": false
       },
       "eslint": {
-        "disable": true,
+        "disable": true
       }
     },
     "paths": {
-      "osx": [
-        "~/usr/local/bin/standard"
-      ],
-    },
+      "osx": ["~/usr/local/bin/standard"]
+    }
   }
   ```
 
@@ -546,7 +625,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
   { "keys": ["ctrl+pagedown"], "command": "next_view_in_stack" },
   { "keys": ["ctrl+pageup"], "command": "prev_view_in_stack" },
   { "keys": ["ctrl+tab"], "command": "next_view" },
-  { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+  { "keys": ["ctrl+shift+tab"], "command": "prev_view" }
 ]
 ```
 
@@ -614,6 +693,7 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
   ```
 
 - [jupyter-themes](https://github.com/dunovank/jupyter-themes)
+
   - Install with
 
     ```sh
@@ -627,8 +707,10 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
     ```
 
   - To update settings, shutdown jupyter notebook kernel, clear browser cache, restart browser, restart jupyter notebook
+
 - [Jupyter Notebook Table of Contents extension for Markdown headers](https://github.com/minrk/ipython_extensions)
 - [jupyter version control with nbdime](http://nbdime.readthedocs.io/en/latest/)
+
   - May already be installed through anaconda. to check, enter `conda list` at the command line.
   - Install with
 
@@ -643,8 +725,9 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
     ```
 
   - (can also enable for individual repositories).
-- Add [jupyter .gitignore](https://github.com/jupyter/notebook/blob/master/.gitignore) to directory (or to $HOME/.config/git/ignore for global configuration), to avoid recognizing notebook checkpoint files.
-- **Comments:*- Jupyter Notebook is great, but lacks many of the features of Sublime Text, like the PEP 8 linting in the Anaconda package (ironically, considering JupyterLab is made by Anaconda), and the Markdown autocompletion of the MarkdownEditing package. Sublime doesn't run code chunks like Jupyter or RStudio do though.
+
+- Add [jupyter .gitignore](https://github.com/jupyter/notebook/blob/master/.gitignore) to directory (or to \$HOME/.config/git/ignore for global configuration), to avoid recognizing notebook checkpoint files.
+- \*_Comments:_- Jupyter Notebook is great, but lacks many of the features of Sublime Text, like the PEP 8 linting in the Anaconda package (ironically, considering JupyterLab is made by Anaconda), and the Markdown autocompletion of the MarkdownEditing package. Sublime doesn't run code chunks like Jupyter or RStudio do though.
 
 </details>
 

@@ -184,7 +184,6 @@ This document describes my computer setup.
 
 ##### Sending messages
 
-- _TODO:_ Do a demo where I send something over PGP to someone else in the room.
 - Locate another user's key in the global database with `gpg --search-keys <email>`.
 - Encrypting communications
   - Encrypt a message with `echo "Hello, World!" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.

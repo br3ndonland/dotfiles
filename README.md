@@ -89,16 +89,17 @@ This document describes my computer setup.
 
 - [Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new machine for developers.
 - In addition to the sensible essential defaults provided by Strap, the script can refer to two repositories on github, _USERNAME/dotfiles_ and _USERNAME/homebrew-brewfile_ for customizations. This repository is meant to be used in conjunction with Strap.
-- After installation, symlink the dotfiles into the home directory:
+- After installation, symlink dotfiles into home directory:
 
   ```sh
   ln -s .dotfiles/.gitconfig .gitconfig
   ln -s .dotfiles/.zshrc .zshrc
   ln -s ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
   ln -s ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+  ln -s ~/.dotfiles/config ~/.ssh/config
   ```
 
-- This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories.
+- This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
 
 ### Package managers
 

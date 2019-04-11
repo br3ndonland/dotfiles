@@ -92,8 +92,10 @@ This document describes my computer setup.
 - After installation, symlink dotfiles into home directory:
 
   ```sh
-  ln -s .dotfiles/.gitconfig .gitconfig
-  ln -s .dotfiles/.zshrc .zshrc
+  ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+  ln -s ~/.dotfiles/.gitmessage ~/.gitmessage
+  ln -s ~/.dotfiles/.hyper.js ~/.hyper.js
+  ln -s ~/.dotfiles/.zshrc ~/.zshrc
   ln -s ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
   ln -s ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
   ln -s ~/.dotfiles/config ~/.ssh/config

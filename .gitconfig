@@ -11,6 +11,7 @@
   supdate = submodule update --remote --merge
 [commit]
 	gpgsign = true
+  template = ~/.gitmessage
 [core]
 	editor = code --wait
 [gpg]

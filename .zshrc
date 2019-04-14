@@ -16,6 +16,8 @@ source $ZSH/oh-my-zsh.sh
 # Pure prompt: https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
+# Aliases
+alias ssh-add=/usr/bin/ssh-add
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

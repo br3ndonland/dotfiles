@@ -98,7 +98,7 @@ This document describes my computer setup.
   ln -s ~/.dotfiles/.zshrc ~/.zshrc
   ln -s ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
   ln -s ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-  ln -s ~/.dotfiles/config ~/.ssh/config
+  ln -s ~/.dotfiles/.ssh/config ~/.ssh/config
   ```
 
 - This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.

@@ -12,7 +12,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [macOS](#macos)
 - [Setup](#setup)
   - [Strap](#strap)
-  - [Package managers](#package-managers)
+  - [Package management](#package-management)
   - [PGP](#pgp)
   - [SSH](#ssh)
   - [Version control](#version-control)
@@ -103,27 +103,27 @@ This document describes my computer setup.
 
 - This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
 
-### Package managers
+### Package management
 
 #### Homebrew
 
 - Install [Homebrew](https://brew.sh/). Homebrew includes [Homebrew-Cask](https://caskroom.github.io/) to manage other macOS applications.
+- See the Homebrew [docs](https://docs.brew.sh) for further info.
 - My list of Homebrew packages and casks is available in my [homebrew-brewfile repo](https://github.com/br3ndonland/homebrew-brewfile), and engineered for use with [strap](https://github.com/MikeMcQuaid/strap).
-- Install packages with `brew install`:
+- The Brewfile works with [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) to manage all Homebrew packages and casks together.
+- Key Brew Bundle commands:
 
   ```sh
-  # Homebrew packages
-  brew install git
-
-  # Homebrew casks
-  brew cask install visual-studio-code
+  # Install everything in the Brewfile
+  ~
+  ❯ brew bundle install --global
+  # Check for programs listed in Brewfile
+  ~
+  ❯ brew bundle check --global
+  # Remove any Homebrew packages and casks not in Brewfile
+  ~
+  ❯ brew bundle cleanup --force --global
   ```
-
-- Update with `brew update` and `brew upgrade`.
-- Check health of installation with `brew doctor`.
-- Searching with `brew search <name>` now also searches casks.
-- View info with `brew info <name>`.
-- See the Homebrew [docs](https://docs.brew.sh) for further info.
 
 <details><summary>Legacy Anaconda info</summary>
 

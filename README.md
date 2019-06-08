@@ -332,9 +332,7 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 - **I format Python code with [Black](https://black.readthedocs.io/en/stable/).**
   - VSCode provides built-in support for Black. I set VSCode to autoformat on save.
   - If you use Black to format your Python code, just make a note of it in your README and project submission.
-  - Black is still considered a pre-release, and Pipenv may throw some errors. There are two key steps to using Black within a Pipenv:
-    1. Installing Black with a `--dev` flag: `pipenv install black --dev`
-    2. Allowing pre-releases into the lock file: `pipenv lock --pre`
+  - Black is still considered a pre-release, and Pipenv may throw some errors. Allow pre-releases in the _Pipfile_ with `pipenv install --pre`, and install Black with a `--dev` flag with `pipenv install black --dev`
   - If you prefer the less-decisive PEP 8 format, I recommend [autopep8](https://pypi.org/project/autopep8/) for autoformatting. VSCode also has built-in [Python formatting](https://code.visualstudio.com/docs/python/editing#_formatting) support for autopep8.
 
 [(Back to top)](#top)

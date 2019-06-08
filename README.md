@@ -392,17 +392,10 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
     ```
 
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-  - Clone the repo into _~/.oh-my-zsh/plugins_:
-
-    ```sh
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    ```
-
+  - Install with Homebrew.
   - Activate the plugin in _~/.zshrc_:
     - Open _~/.zshrc_ from the command line with `code ~/.zshrc`.
     - Add the plugin: `plugins=( [plugins...] zsh-syntax-highlighting)`
-
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
   - [iTerm2](https://iterm2.com) and the [iterm2-snazzy](https://github.com/sindresorhus/iterm2-snazzy) theme

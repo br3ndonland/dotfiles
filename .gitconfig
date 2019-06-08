@@ -20,3 +20,8 @@
 	name = Brendon Smith
 	email = br3ndonland@protonmail.com
 	signingkey = AC66384CFA8C69B0
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

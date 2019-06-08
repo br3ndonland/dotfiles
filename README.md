@@ -342,10 +342,8 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 ### Fonts
 
 - [Dank Mono](https://dank.sh/) font
-- [SkyFonts](https://skyfonts.com/)
-  - Top 50 Google Fonts
-  - [IBM Plex Mono](https://github.com/IBM/plex)
-  - [Ubuntu Mono](https://design.ubuntu.com/font/)
+- [IBM Plex Mono](https://github.com/IBM/plex)
+- [Ubuntu Mono](https://design.ubuntu.com/font/)
 
 ### Shell
 

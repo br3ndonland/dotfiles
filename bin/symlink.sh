@@ -19,7 +19,8 @@ symlink_dotfiles() {
       ln -s -f -i ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
       ln -s -f -i ~/.dotfiles/.ssh/config ~/.ssh/config
     )
-  else echo "Dotfiles directory not found."
+  else
+    echo "Dotfiles directory not found."
   fi
 }
 symlink_dotfiles

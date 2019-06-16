@@ -1,0 +1,4 @@
+@vue/cli
+prettier
+pure-prompt
+trash-cli

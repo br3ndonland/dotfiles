@@ -23,9 +23,8 @@ symlink_dotfiles() {
     echo "Dotfiles directory not found. Symlinking not successful."
   fi
 }
-symlink_dotfiles
 if symlink_dotfiles; then
-  echo "Symlinking successful."
+  echo "symlink_dotfiles() ran successfully."
 else
-  echo "Symlinking not successful."
+  echo "symlink_dotfiles() did not run successfully."
 fi

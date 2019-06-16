@@ -1,12 +1,12 @@
 #!/bin/bash
-#/ Symlink dotfiles into home directory
-#/ Designed for use with Strap:
-#/ https://github.com/MikeMcQuaid/strap
-#/ Run by run_dotfile_scripts() in strap.sh
+### Symlink dotfiles into home directory ###
+# Designed for use with Strap:
+# https://github.com/MikeMcQuaid/strap
+# Run by run_dotfile_scripts() in strap.sh
 symlink_dotfiles() {
   if [ -d ~/.dotfiles ]; then
     (
-      echo "Dotfiles directory found."
+      echo "Dotfiles directory found. Symlinking dotfiles into home directory."
       # Make directories for symlinks, if they don't already exist
       mkdir -p ~/{.gnupg,.ssh}
       # Create symlinks (ln -s), and prompt (-i) before overwrite (-f)
@@ -20,7 +20,12 @@ symlink_dotfiles() {
       ln -s -f -i ~/.dotfiles/.ssh/config ~/.ssh/config
     )
   else
-    echo "Dotfiles directory not found."
+    echo "Dotfiles directory not found. Symlinking not successful."
   fi
 }
 symlink_dotfiles
+if symlink_dotfiles; then
+  echo "Symlinking successful."
+else
+  echo "Symlinking not successful."
+fi

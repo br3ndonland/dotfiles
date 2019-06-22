@@ -5,5 +5,6 @@ parcel-bundler
 prettier
 pure-prompt
 trash-cli
+typescript
 webpack
 webpack-cli

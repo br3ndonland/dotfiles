@@ -125,6 +125,16 @@ This document describes my computer setup.
   ❯ brew bundle cleanup --force --global
   ```
 
+#### npm
+
+- [node](https://nodejs.org/en/) is a JavaScript runtime. Install via Homebrew with `brew install node`.
+- [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
+- It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012,
+  > Yeah, we're never going to do this.
+- Instead, package names can be specified in a text file, and installed with a shell script. I based _./bin/_`npm_globals.sh` on a [similar install script](https://github.com/ianwalter/dotnpm/blob/master/install.sh), modified based on [SC2181](https://github.com/koalaman/shellcheck/wiki/SC2181).
+- The npm-globals.txt package list must not contain comments. Lines starting with `#` will throw npm errors.
+- Global npm packages can be checked manually after installation with `npm list -g --depth=0`.
+
 <details><summary>Legacy Anaconda info</summary>
 
 #### Anaconda <!-- omit in toc -->
@@ -153,15 +163,6 @@ This document describes my computer setup.
     - `calibrate`
 
 </details>
-
-#### npm
-
-- [node](https://nodejs.org/en/) is a JavaScript runtime. Install via Homebrew with `brew install node`.
-- [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
-
-#### Yarn
-
-- Yarn is a JavaScript package manager.
 
 [(Back to top)](#top)
 

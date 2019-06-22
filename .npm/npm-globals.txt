@@ -1,4 +1,9 @@
 @vue/cli
+eslint
+json-server
+parcel-bundler
 prettier
 pure-prompt
 trash-cli
+webpack
+webpack-cli

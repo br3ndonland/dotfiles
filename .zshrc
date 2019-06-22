@@ -1,15 +1,12 @@
 #!/bin/zsh
 ### ------------------------------- Exports ------------------------------- ###
 export EDITOR="code"
-# export GPG_TTY=$(tty)
-# Add Homebrew's sbin to $PATH
 export PATH="/usr/local/sbin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------ oh-my-zsh ------------------------------ ###
 export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME=""
 plugins=(git node npm zsh-syntax-highlighting)
-ENABLE_CORRECTION="true"
 source $ZSH/oh-my-zsh.sh
 ### -------------------------- User configuration ------------------------- ###
 # Pure prompt: https://github.com/sindresorhus/pure

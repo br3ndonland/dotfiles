@@ -8,9 +8,7 @@ export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 # oh-my-zsh
 export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git node npm ssh-agent zsh-syntax-highlighting)
-# ENABLE_CORRECTION="true"
-
+plugins=(git node npm zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

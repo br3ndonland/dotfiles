@@ -1,6 +1,7 @@
 [alias]
 aa = add --all
 br = branch
+bra = branch --all
 ci = commit
 co = checkout
 cob = checkout -b
@@ -11,6 +12,7 @@ l = pull
 last = log -1 HEAD
 p = push
 pure = pull --rebase
+rv = remote -v
 sdiff = !git diff && git submodule foreach 'git diff'
 spush = push --recurse-submodules=on-demand
 st = status

@@ -1,6 +1,6 @@
 #!/bin/zsh
 ### ------------------------------- Exports ------------------------------- ###
-export EDITOR="code"
+export EDITOR="codium"
 export PATH="/usr/local/sbin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###

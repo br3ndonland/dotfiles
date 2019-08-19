@@ -28,14 +28,20 @@ gpgsign = true
 template = ~/.gitmessage
 [core]
 editor = codium --wait
-[gpg]
-program = gpg
-[user]
-name = Brendon Smith
-email = br3ndonland@protonmail.com
-signingkey = AC66384CFA8C69B0
+[credential]
+helper = osxkeychain
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
+[github]
+user = br3ndonland
+[gpg]
+program = gpg
+[push]
+default = simple
+[user]
+name = Brendon Smith
+email = br3ndonland@protonmail.com
+signingkey = F09A320454D3711156BD308FAC66384CFA8C69B0

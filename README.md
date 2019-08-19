@@ -216,6 +216,11 @@ This document describes my computer setup.
     - Update GPG config files:
       - _~/.gnupg/gpg.conf:_ `no-tty`
       - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /usr/local/bin/pinentry-mac`
+    - Ensure proper permissions are set on GPG config files:
+      ```sh
+      chmod 700 ~/.gnupg
+      chmod 600 ~/.gnupg/gpg.conf
+      ```
 
 - [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
 - [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)

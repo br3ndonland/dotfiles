@@ -1,0 +1,19 @@
+#!/bin/bash
+### ------------------- Strap post-installation scripts ------------------- ###
+# Based on https://github.com/MikeMcQuaid/dotfiles
+# Designed for use with Strap:
+# https://github.com/MikeMcQuaid/strap
+# Run by run_dotfile_scripts() in strap.sh
+
+# Run scripts: scripts must be executable (chmod +x)
+~/.dotfiles/script/symlink.sh
+~/.dotfiles/script/npm_globals.sh
+
+# Set permissions for GPG
+chmod 700 ~/.gnupg
+chmod 600 ~/.gnupg/gpg.conf
+
+# Set shell
+if [ "$SHELL" != "/bin/zsh" ]; then
+  chsh -s /bin/zsh
+fi

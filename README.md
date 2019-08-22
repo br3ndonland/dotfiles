@@ -88,21 +88,35 @@ This document describes my computer setup.
 
 ### Strap
 
+#### Intro
+
 - [Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new machine for developers.
-- In addition to the sensible essential defaults provided by Strap, the script can refer to two repositories on github, _USERNAME/dotfiles_ and _USERNAME/homebrew-brewfile_ for customizations. This repository is meant to be used in conjunction with Strap.
-- After installation, symlink dotfiles into home directory:
+- In addition to the sensible essential defaults provided by Strap, the script can refer to two additional GitHub repositories, _USERNAME/dotfiles_ and _USERNAME/homebrew-brewfile_ for customizations. This dotfiles repository is meant to be used in conjunction with Strap.
 
-  ```sh
-  ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-  ln -s ~/.dotfiles/.gitmessage ~/.gitmessage
-  ln -s ~/.dotfiles/.hyper.js ~/.hyper.js
-  ln -s ~/.dotfiles/.zshrc ~/.zshrc
-  ln -s ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
-  ln -s ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-  ln -s ~/.dotfiles/.ssh/config ~/.ssh/config
-  ```
+#### Set up dotfiles
 
-- This will allow the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
+Dotfiles are configuration and settings files for applications.
+
+In addition to settings, scripts can be stored in the dotfiles repo. There are three script options that Strap will check for. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly for Strap to recognize them.
+
+- _dotfiles/script/setup_
+- _dotfiles/script/bootstrap_
+- _dotfiles/script/strap-after-setup_
+  - Runs _symlink.sh_ - symlinks the dotfiles into the home directory, allowing the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
+  - Runs _npm_globals.sh_ - installs global npm packages stored in _.npm/npm-globals.txt_
+  - Sets proper permissions on the GPG directories
+  - Sets my shell to Zsh
+
+#### Set up Homebrew Brewfile
+
+- A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle).
+- The Brewfile can be used to install taps, packages, casks (applications), and even Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+
+#### Generate and run strap.sh
+
+- There are several options for generating _strap.sh_.
+- The web app is easiest, but Strap can also be set up locally.
+- Strap is _idempotent_, meaning it can be run repeatedly on the same system.
 
 ### Package management
 

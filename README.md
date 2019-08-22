@@ -748,7 +748,6 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
   - Use Firefox account to sync preferences and add-ons.
 - Microsoft Office: Word, Excel, PowerPoint (direct download)
 - [ProtonVPN](https://protonvpn.com/) (Homebrew Cask)
-- [Sblack](https://www.sblack.online/) (lightweight Slack client, direct download)
 
 [(Back to top)](#top)
 

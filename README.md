@@ -288,7 +288,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
     ```ini
     ...
     [gpg]
-    	program = gpg
+    program = gpg
     ...
     ```
 
@@ -297,7 +297,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
     ```ini
     ...
     [gpg]
-    	program = keybase
+    program = keybase
     ...
     ```
 
@@ -388,16 +388,6 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
     brew install zsh zsh-completions
     ```
 
-- [oh-my-zsh](https://ohmyz.sh/)
-
-  - Install via `curl`:
-
-    ```sh
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    ```
-
-  - Configure in _~/.zshrc_.
-
 - [Pure prompt](https://github.com/sindresorhus/pure)
 
   - Install from npm:
@@ -427,11 +417,11 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
   - Install with Homebrew.
   - Activate the plugin in _~/.zshrc_:
     - Open _~/.zshrc_ from the command line with `code ~/.zshrc`.
-    - Add the plugin: `plugins=( [plugins...] zsh-syntax-highlighting)`
+    - Source the script at the end: `source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
-  - [iTerm2](https://iterm2.com) and the [iterm2-snazzy](https://github.com/sindresorhus/iterm2-snazzy) theme
-  - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) theme
+  - [iTerm2](https://iterm2.com) and the [snazzy](https://github.com/sindresorhus/iterm2-snazzy), [dracula](https://draculatheme.com/), or [palenight](https://github.com/JonathanSpeek/palenight-iterm2) themes
+  - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) or [dracula](https://draculatheme.com/) themes
   - [VSCode integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
 
 <details><summary>Previous bash prompt</summary>
@@ -451,26 +441,9 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
 #### Hyper
 
 - [Hyper](https://hyper.is/) is a cross-platform open-source command line interface, configurable with HTML/CSS/JS.
-- [Theme](https://hyper.is/themes): [hyper-snazzy](https://hyper.is/plugins/hyper-snazzy). Install with `hyper i hyper-snazzy`.
 - Plugins wanted
   - [hyper-settings-sync](https://www.npmjs.com/package/hyper-sync-settings): Available but needs more development. Not currently syncing with my Gist.
-- Dotfile configuration in _~/.hyper.js_:
-
-  ```js
-  // Hyper configuration
-  module.exports = {
-    config: {
-      updateChannel: "stable",
-      fontSize: 18,
-      fontFamily: "Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo",
-      summon: {
-        hotkey: "Cmd+Esc"
-      }
-    },
-    keymaps: {},
-    plugins: ["hyperterm-summon", "hyper-snazzy"]
-  }
-  ```
+- Dotfile configuration is in _~/.hyper.js_.
 
 #### iTerm2
 

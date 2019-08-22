@@ -746,7 +746,7 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
 - [Bear](https://bear.app) (Mac App Store)
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
   - Use Firefox account to sync preferences and add-ons.
-- Microsoft Office: Word, Excel, PowerPoint (direct download)
+- macOS Keynote, Numbers, and Pages
 - [ProtonVPN](https://protonvpn.com/) (Homebrew Cask)
 
 [(Back to top)](#top)

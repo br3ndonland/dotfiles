@@ -51,11 +51,12 @@ This document describes my computer setup.
   - Seagate backup plus slim external
   - Western Digital My Passport external
 - AmazonBasics USB 3.0 hubs
+- Plugable USB3-E1000 Gigabit Ethernet Adapter (drivers available [here](https://plugable.com/drivers/usb3ethernet/))
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
 - Accessories for standing work
   - When I first began standing work, I created a DIY standing desk in my kitchen:
     ![DIY standing desk](img/diy-standing-desk.jpg)
-    - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and I wrap the cable lock around a pipe near the ceiling.
+    - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
     - I ran an ethernet cable from my router into the cabinet.
     - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
   - I now have a [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html).

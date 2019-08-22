@@ -214,9 +214,19 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 ##### Signing Git commits with GPG
 
-- Configure Git to use GPG and your key for commits:
+- Configure Git to use GPG and your key for commits, using _.gitconfig_:
   - Set `signingkey`: `git config --global user.signingkey 16digit_PGPkeyid` the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
-  - Turn on `gpgsign`: the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
+    ```ini
+    [user]
+    name = your name
+    email = you@email.com
+    signingkey = 16digit_PGPkeyid
+    ```
+  - Turn on `gpgsign`:
+    ```ini
+    [commit]
+    gpgsign = true
+    ```
 - Configure GPG to allow Git commit signing with one of these options, depending on desired config:
 
   - Use `tty` (for command-line commits):
@@ -275,7 +285,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
   - _.gitconfig_ for GPG
 
-    ```text
+    ```ini
     ...
     [gpg]
     	program = gpg
@@ -284,7 +294,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
   - _.gitconfig_ for Keybase?
 
-    ```text
+    ```ini
     ...
     [gpg]
     	program = keybase

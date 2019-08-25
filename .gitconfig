@@ -13,8 +13,8 @@ com = checkout master
 f = fetch
 l = pull
 last = log --graph --max-count=5 --show-signature
+lure = pull --rebase
 p = push
-pure = pull --rebase
 ra = remote add
 rv = remote -v
 sdiff = !git diff && git submodule foreach 'git diff'

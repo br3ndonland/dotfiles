@@ -12,7 +12,7 @@ cod = checkout develop
 com = checkout master
 f = fetch
 l = pull
-last = log --graph --max-count=5 --show-signature
+last = log --graph --show-signature --pretty=short --max-count=5
 lure = pull --rebase
 p = push
 ra = remote add

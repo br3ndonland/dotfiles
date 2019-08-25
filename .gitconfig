@@ -23,6 +23,7 @@ st = status
 stal = stash pop
 stap = stash push
 supdate = submodule update --remote --merge
+tag = tag -s
 [commit]
 gpgsign = true
 template = ~/.gitmessage
@@ -41,6 +42,8 @@ user = br3ndonland
 program = gpg
 [push]
 default = simple
+[tag]
+forceSignAnnotated = true
 [user]
 name = Brendon Smith
 email = br3ndonland@protonmail.com

@@ -184,6 +184,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 ### PGP
 
 - I use [Gnu Privacy Guard](https://www.gnupg.org/) (GPG, the free implementation of Pretty Good Privacy (PGP)), [Keybase](https://keybase.io), and [ProtonMail](https://protonmail.com/) to encrypt and share messages, passwords, and other sensitive info.
+- PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Communications which are end-to-end PGP encrypted can only be read by the sender or recipient, never the provider.
 
 #### GPG
 
@@ -261,9 +262,11 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 #### [Keybase background](https://keybase.io/docs)
 
-- [Keybase solves the key identity problem: even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
+- Keybase solves the key identity problem:
+  - Even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person.
+  - Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity.
+  - It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
 - [Following](https://keybase.io/docs/server_security/following) someone is a way of verifying their cryptographic identity, not a way of subscribing to updates from the person like social media.
-- PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this further by end-to-end encrypting everything with PGP. Keybase staff can never read anything in your account.
 - Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
 - The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
 - Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.

@@ -27,3 +27,14 @@ if symlink_dotfiles; then
 else
   echo "-> symlink_dotfiles() did not run successfully."
 fi
+
+set_perms() {
+  # Set permissions for GPG
+  chmod 700 ~/.gnupg
+  chmod 600 ~/.gnupg/gpg.conf
+}
+if set_perms; then
+  echo "-> set_perms() ran successfully."
+else
+  echo "-> set_perms() did not run successfully."
+fi

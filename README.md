@@ -214,6 +214,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 ##### Signing Git commits with GPG
 
+- See [Pro Git | 7.4 Git tools - signing your work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work).
 - Configure Git to use GPG and your key for commits, using _.gitconfig_:
   - Set `signingkey`: `git config --global user.signingkey 16digit_PGPkeyid` the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
     ```ini
@@ -254,7 +255,8 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 #### [Keybase background](https://keybase.io/docs)
 
-- [Keybase solves the key identity problem](https://keybase.io/docs/server_security/following): even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
+- [Keybase solves the key identity problem: even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person. Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity. It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
+- [Following](https://keybase.io/docs/server_security/following) someone is a way of verifying their cryptographic identity, not a way of subscribing to updates from the person like social media.
 - PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Keybase takes this further by end-to-end encrypting everything with PGP. Keybase staff can never read anything in your account.
 - Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
 - The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
@@ -281,12 +283,14 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
   keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
   ```
 
-- I currently have GPG listed as the GPG program in my .gitconfig. May be able to set Keybase as the program instead and skip the export to GPG.
+- **Keybase and Git:** Keybase can't yet be used to directly sign Git commits. The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
 
   - _.gitconfig_ for GPG
 
     ```ini
     ...
+    [commit]
+    gpgsign = true
     [gpg]
     program = gpg
     ...
@@ -296,10 +300,14 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
     ```ini
     ...
-    [gpg]
+    [commit]
+    pgpsign = true
+    [pgp]
     program = keybase
     ...
     ```
+
+  - There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code either.
 
 #### ProtonMail
 

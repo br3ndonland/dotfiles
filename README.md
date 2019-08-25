@@ -231,7 +231,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 - Configure GPG to allow Git commit signing with one of these options, depending on desired config:
 
   - Use `tty` (for command-line commits):
-    - `tty` is a back-end service used by GPG to pass information through the program. See GPG's [Agent Options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
+    - `tty` is a back-end service used by GPG to pass information through the program. See the [GPG Agent Options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
     - Export the `GPG_TTY` environment variable: `export GPG_TTY=$(tty)`
     - Can add to shell profile to automatically export
   - Disable `tty` and use `pinentry` (for commits in VSCode or other IDE):
@@ -248,6 +248,12 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
       chmod 600 ~/.gnupg/gpg.conf
       ```
 
+- Trust GPG keys using the GPG TTY interface:
+  - If you see `gpg: WARNING: This key is not certified with a trusted signature!` when examining signed Git commits with `git log --show-signature`, you may want to trust the keys.
+  - Enable `tty` if you previously disabled it (comment out `no-tty` in _~/.gnupg/gpg.conf_).
+  - Enter the GPG key editor from the command line with `gpg --edit-key <PGPkeyid>`.
+  - Set trust level for the key by typing `trust`, and entering a trust level.
+  - See the [GPG docs](https://www.gnupg.org/gph/en/manual/x334.html) for more info.
 - [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
 - [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
 

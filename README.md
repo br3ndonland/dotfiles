@@ -102,9 +102,11 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 - _dotfiles/script/setup_
 - _dotfiles/script/bootstrap_
 - _dotfiles/script/strap-after-setup_
-  - Runs _symlink.sh_ - symlinks the dotfiles into the home directory, allowing the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
-  - Runs _npm_globals.sh_ - installs global npm packages stored in _.npm/npm-globals.txt_
-  - Sets proper permissions on the GPG directories
+  - Runs _symlink.sh_.
+    - Symlinks the dotfiles into the home directory, allowing the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
+    - Sets proper permissions on the GPG directories.
+  - Runs _npm_globals.sh_
+    - Installs global npm packages stored in _.npm/npm-globals.txt_
   - Sets my shell to Zsh
 
 #### Set up Homebrew Brewfile

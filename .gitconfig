@@ -2,8 +2,8 @@
 aa = add --all
 br = branch
 bra = branch --all
-brd = branch --delete
-brD = branch --Delete
+brd = branch -d
+brD = branch -D
 ci = commit
 cia = commit --amend
 co = checkout

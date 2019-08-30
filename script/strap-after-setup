@@ -5,10 +5,12 @@
 # Run by run_dotfile_scripts() in strap.sh
 
 # Run scripts: scripts must be executable (chmod +x)
+echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/symlink.sh
 ~/.dotfiles/script/npm_globals.sh
 
 # Set shell
+echo "-> Changing shell to Zsh. Password entry required, enabled with --debug."
 if [ "$SHELL" != "/bin/zsh" ]; then
   chsh -s /bin/zsh
 fi

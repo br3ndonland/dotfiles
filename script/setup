@@ -1,0 +1,10 @@
+#!/bin/bash
+### -------------------- Strap pre-installation script -------------------- ###
+# Based on https://github.com/MikeMcQuaid/dotfiles
+# Designed for use with Strap: https://github.com/MikeMcQuaid/strap
+# Run by run_dotfile_scripts() in strap.sh
+
+echo "### ------------------------ Important notes ------------------------ ###"
+echo "-> Log in to Mac App Store to enable the mas cli."
+echo "-> --debug is required for password prompt from script/strap-after-setup."
+echo "### ----------------------------------------------------------------- ###"

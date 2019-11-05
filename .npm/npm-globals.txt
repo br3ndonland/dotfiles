@@ -1,5 +1,6 @@
 @vue/cli
 eslint
+eslint-plugin-html
 json-server
 npm-check
 parcel-bundler

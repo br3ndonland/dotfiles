@@ -1,6 +1,7 @@
 @vue/cli
 eslint
 json-server
+npm-check
 parcel-bundler
 prettier
 pure-prompt

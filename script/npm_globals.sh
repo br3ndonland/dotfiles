@@ -3,6 +3,7 @@
 # Based on https://github.com/ianwalter/dotnpm/blob/master/install.sh
 # Designed for use with Strap: https://github.com/MikeMcQuaid/strap
 # Run by strap-after-setup
+# Manage global packages after install: https://www.npmjs.com/package/npm-check
 npm_install_globals() {
   if [ -d ~/.dotfiles ]; then
     (

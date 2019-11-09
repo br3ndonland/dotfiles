@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "es2017": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["html", "vue"],
+  "rules": {
+    "indent": ["warn", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["warn", "double", { "allowTemplateLiterals": true }],
+    "semi": ["warn", "never"]
+  }
+}

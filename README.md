@@ -420,10 +420,6 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
     ```zsh
     # .zshrc continues above
-    plugins=(
-      git node npm
-    )
-
     source $ZSH/oh-my-zsh.sh
 
     # User configuration
@@ -441,7 +437,7 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
   - [iTerm2](https://iterm2.com) and the [snazzy](https://github.com/sindresorhus/iterm2-snazzy), [dracula](https://draculatheme.com/), or [palenight](https://github.com/JonathanSpeek/palenight-iterm2) themes
-  - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) or [dracula](https://draculatheme.com/) themes
+  - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) or [dracula](https://draculatheme.com/) themes.
   - [VSCode integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
 
 <details><summary>Previous bash prompt</summary>
@@ -478,6 +474,7 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
   - Profiles:
     - Colors
       - Color Presets
+        - [Dracula](https://draculatheme.com/iterm/)
         - [Palenight](https://github.com/JonathanSpeek/palenight-iterm2)
         - [Snazzy](https://github.com/sindresorhus/iterm2-snazzy)
         - Solarized dark

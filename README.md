@@ -649,7 +649,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
 
 #### vscode
 
-I configure [Visual Studio Code (vscode)](https://code.visualstudio.com/) using [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) with [this gist](https://gist.github.com/br3ndonland/01b625629ef98ec7a919a7b927d0ddaf).
+I configure [Visual Studio Code (vscode)](https://code.visualstudio.com/) using [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) with [this gist](https://gist.github.com/br3ndonland/23b59819e3db207dde7af9c19fb33eaf).
 
 [(Back to top)](#top)
 

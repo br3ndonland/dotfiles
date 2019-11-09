@@ -150,8 +150,8 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
   > Yeah, we're never going to do this.
 - Instead, package names can be specified in a text file, and installed with a shell script. I based _./bin/_`npm_globals.sh` on a [similar install script](https://github.com/ianwalter/dotnpm/blob/master/install.sh), modified based on [SC2181](https://github.com/koalaman/shellcheck/wiki/SC2181).
 - The _npm-globals.txt_ package list must not contain comments. Lines starting with `#` will throw npm errors.
-- A list of global npm packages can be seen after installation with `npm list -g --depth=0`.
-- [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -u -g`.
+- Global npm packages are then added to _/usr/local/lib/node_modules_.
+- [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -u -g`. If not using npm-check, a list of global npm packages can be seen after installation with `npm list -g --depth=0`.
 
 <details><summary>Legacy Anaconda info</summary>
 

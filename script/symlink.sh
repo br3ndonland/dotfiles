@@ -14,6 +14,7 @@ symlink_dotfiles() {
       ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
       ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
       ln -s -f ~/.dotfiles/.hyper.js ~/.hyper.js
+      ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc
       ln -s -f ~/.dotfiles/.zshrc ~/.zshrc
       ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
       ln -s -f ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf

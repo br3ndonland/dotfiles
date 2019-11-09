@@ -10,6 +10,7 @@ symlink_dotfiles() {
       mkdir -p ~/{.gnupg,.ssh}
       # Create symlinks (ln -s), and don't prompt (-i) before overwrite (-f)
       # TODO: read ~/.dotfiles and iterate over, instead of hardcoding paths
+      ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
       ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
       ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
       ln -s -f ~/.dotfiles/.hyper.js ~/.hyper.js

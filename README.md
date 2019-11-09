@@ -377,12 +377,48 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
 ### Language-specific setup
 
+#### JavaScript
+
+##### Global npm packages
+
+See [npm](#npm) section above.
+
+##### Formatting
+
+- I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
+- ESLint notes:
+
+  - Compared with Prettier, ESLint formats less code languages, requires complicated setup, and doesn't work well when installed globally. I previously attempted to use a global ESLint installation with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), but was getting errors about plugins. As the ESLint docs explain:
+    > It is also possible to install ESLint globally rather than locally (using `npm install eslint --global`). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
+  - The errors persist even after specifying the path to global npm packages:
+
+    ```jsonc
+    // VSCode settings.json
+    {
+      "eslint.nodePath": "/usr/local/lib/node_modules"
+    }
+    ```
+
+  - If ESLint and plugins are installed in the project directory, the following settings can be added to the VSCode _settings.json_, for use with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)and [eslint-plugin-vue](https://eslint.vuejs.org/user-guide/). I typically don't use ESLint to auto-fix files, because Pretter is preferred.
+
+    ```jsonc
+    // VSCode settings.json
+    {
+      "eslint.autoFixOnSave": false,
+      "eslint.enable": true,
+      "eslint.validate": ["javascript", "javascriptreact", "vue"]
+    }
+    ```
+
+  - I do still retain a global _.eslintrc_ in my dotfiles repo, because it is a useful template for sensible defaults.
+
+- In the past, I also used [JavaScript Standard Style](https://standardjs.com/) (aka StandardJS). Standard Style has also [reportedly](https://changelog.com/podcast/359) been favored by Brendan Eich (creator of JavaScript) and Sir Tim Berners-Lee (creator of the World Wide Web). Prettier provides a similar code style, but with more features, so I use Pretter instead.
+
 #### Python
 
 - I recommend installing `python3` and `pipenv` with Homebrew. After installing `python3`, `pip` can be updated with `pip3 install --upgrade pip setuptools wheel`.
 - **I format Python code with [Black](https://black.readthedocs.io/en/stable/).**
   - VSCode provides built-in support for Black. I set VSCode to autoformat on save.
-  - If you use Black to format your Python code, just make a note of it in your README and project submission.
   - Black is still considered a pre-release, and Pipenv may throw some errors. Allow pre-releases in the _Pipfile_ with `pipenv install --pre`, and install Black with a `--dev` flag with `pipenv install black --dev`
   - If you prefer the less-decisive PEP 8 format, I recommend [autopep8](https://pypi.org/project/autopep8/) for autoformatting. VSCode also has built-in [Python formatting](https://code.visualstudio.com/docs/python/editing#_formatting) support for autopep8.
 - See my [template-python](https://github.com/br3ndonland/template-python) repo for useful tooling and additional sensible defaults.

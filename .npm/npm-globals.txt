@@ -1,9 +1,4 @@
 @vue/cli
-eslint
-eslint-config-prettier
-eslint-plugin-html
-eslint-plugin-prettier
-eslint-plugin-vue
 json-server
 npm-check
 parcel-bundler

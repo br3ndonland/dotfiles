@@ -1,3 +1,4 @@
+@gridsome/cli
 @vue/cli
 json-server
 npm-check

@@ -15,6 +15,7 @@ l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
 lure = pull --rebase
 p = push
+pso = push --set-upstream origin
 ra = remote add
 rv = remote -v
 sdiff = !git diff && git submodule foreach 'git diff'
@@ -28,7 +29,7 @@ tag = tag -a -s
 gpgsign = true
 template = ~/.gitmessage
 [core]
-editor = codium --wait
+editor = code --wait
 [credential]
 helper = osxkeychain
 [filter "lfs"]

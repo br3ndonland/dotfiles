@@ -295,7 +295,10 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
   keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
   ```
 
-- **Keybase and Git:** Keybase can't yet be used to directly sign Git commits. The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
+##### Keybase Git
+
+- Keybase allows users and teams to create and store end-to-end encrypted Git repositories. As of Keybase 5.1.0, [Git LFS](https://git-lfs.github.com/) is also enabled. See the [Keybase Git docs](https://keybase.io/docs/git/index).
+- Keybase can't yet be used to directly sign Git commits. The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
 
   - _.gitconfig_ for GPG
 

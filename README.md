@@ -275,16 +275,17 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 - Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
 - The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
 - Useful features:
-  - PGP key management (see below)
+  - PGP key management (see [below](#keybase-pgp))
   - Chat: like Slack, but end-to-end encrypted and without a free message limit.
   - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
   - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
-  - [Keybase Git](https://keybase.io/blog/encrypted-git-for-everyone): full Git capabilities, but backed up in Keybase. Treat the Keybase repo as the remote (like a GitHub repo). It can be cloned, pushed, and pulled, as you would do for GitHub repos.
+  - Git (see [below](#keybase-git))
 
 ##### Keybase PGP
 
 - Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
 - Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
+- List keys with `keybase pgp list`.
 - View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
 - Export Keybase PGP key for use with GPG:
 
@@ -297,7 +298,9 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 ##### Keybase Git
 
-- Keybase allows users and teams to create and store end-to-end encrypted Git repositories. As of Keybase 5.1.0, [Git LFS](https://git-lfs.github.com/) is also enabled. See the [Keybase Git docs](https://keybase.io/docs/git/index).
+- Keybase allows users and teams to create and store end-to-end encrypted Git repositories. See the [Keybase Git docs](https://keybase.io/docs/git/index) and [Keybase Git blog post](https://keybase.io/blog/encrypted-git-for-everyone).
+- Treat Keybase Git repos as remotes (like GitHub repos). They can be cloned, pushed, and pulled, as you would do for GitHub repos.
+- As of Keybase 5.1.0, [Git LFS](https://git-lfs.github.com/) is also enabled.
 - Keybase can't yet be used to directly sign Git commits. The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
 
   - _.gitconfig_ for GPG

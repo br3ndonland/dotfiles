@@ -263,26 +263,21 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 #### Keybase
 
-#### [Keybase background](https://keybase.io/docs)
+##### Useful features
 
-- Keybase solves the key identity problem:
-  - Even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person.
-  - Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity.
-  - It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
-- [Following](https://keybase.io/docs/server_security/following) someone is a way of verifying their cryptographic identity, not a way of subscribing to updates from the person like social media.
-- Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
-- The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
-- Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
-- The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
-- Useful features:
-  - PGP key management (see [below](#keybase-pgp))
-  - Chat: like Slack, but end-to-end encrypted and without a free message limit.
-  - Teams: see [introduction](https://keybase.io/blog/introducing-keybase-teams) and [updates](https://keybase.io/blog/new-team-features).
-  - KBFS: Keybase file system. Like an encrypted Dropbox or Google Drive cloud storage system.
-  - Git (see [below](#keybase-git))
+- **PGP key and identity management** (see [below](#keybase-pgp))
+- **Chat** (see [below](#keybase-chat)):
+- **Teams**: see blog posts on [teams](https://keybase.io/blog/introducing-keybase-teams) and [updates to teams](https://keybase.io/blog/new-team-features).
+- **Encrypted files**: Keybase file system (KBFS). Like an encrypted Dropbox or Google Drive cloud storage system. Integrates with the macOS finder through use of the [FUSE for macOS](https://osxfuse.github.io/) package.
+- Git (see [below](#keybase-git))
+- See [Keybase docs](https://keybase.io/docs) for more.
 
 ##### Keybase PGP
 
+- **Keybase solves the key identity problem.**
+  - Even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person.
+  - Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity.
+  - It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
 - Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
 - Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
 - List keys with `keybase pgp list`.
@@ -296,12 +291,33 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
   keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
   ```
 
+- [Following](https://keybase.io/docs/server_security/following) someone is a way of verifying their cryptographic identity, not a way of subscribing to updates from the person like social media. I think calling this "following" is confusing. It's really more like verifying.
+- Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
+- The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
+- Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
+- The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
+
+##### Keybase chat
+
+**Keybase chat looks and feels like Slack, but is much better for several reasons.**
+
+- [Keybase is open-source](https://github.com/keybase/client). Slack is not.
+- [Keybase chat is end-to-end encrypted](https://keybase.io/docs/chat/index). Slack is not.
+- Keybase chat does not have a free message limit. Slack does. I frequently hit this free message limit when participating in large workspaces for my courses on Udacity, and it negatively impacted my ability to build projects with classmates. We switched to a Keybase team instead.
+- Keybase has not leaked passwords. [Slack has been vulnerable to password leaks and other attacks](https://slackhq.com/march-2015-security-incident-and-the-launch-of-two-factor-authentication), and it took Slack four years before they notified users. [The Keybase CEO's Slack credentials were compromised](https://keybase.io/blog/slack-incident).
+
 ##### Keybase Git
 
 - Keybase allows users and teams to create and store end-to-end encrypted Git repositories. See the [Keybase Git docs](https://keybase.io/docs/git/index) and [Keybase Git blog post](https://keybase.io/blog/encrypted-git-for-everyone).
-- Treat Keybase Git repos as remotes (like GitHub repos). They can be cloned, pushed, and pulled, as you would do for GitHub repos.
+- Treat Keybase Git repos as [remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) (like GitHub repos). They can be cloned, pushed, and pulled, as you would do for GitHub repos.
+
+  ```sh
+  git remote add keybase keybase://$PUBLIC_OR_PRIVATE/$USERNAME/$REPONAME
+  git push keybase
+  ```
+
 - As of Keybase 5.1.0, [Git LFS](https://git-lfs.github.com/) is also enabled.
-- Keybase can't yet be used to directly sign Git commits. The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
+- Keybase can't yet be used to directly sign Git commits, as described [above](#signing-git-commits-with-gpg). The best method, as described [here](https://github.com/pstadler/keybase-gpg-github), is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG. Eventually, I would like to set Keybase as the signing program in my _~/.gitconfig_ and skip the export to GPG.
 
   - _.gitconfig_ for GPG
 
@@ -325,7 +341,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
     ...
     ```
 
-  - There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code either.
+- There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [sign releases with tags, but don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code. However, in order to sign tags, you still need to export the PGP key. Whether you sign all commits or just tags, Keybase should improve this feature.
 
 #### ProtonMail
 

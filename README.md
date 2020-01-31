@@ -266,7 +266,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 ##### Useful features
 
 - **PGP key and identity management** (see [below](#keybase-pgp))
-- **Chat** (see [below](#keybase-chat)):
+- **Chat** (see [below](#keybase-chat))
 - **Teams**: see blog posts on [teams](https://keybase.io/blog/introducing-keybase-teams) and [updates to teams](https://keybase.io/blog/new-team-features).
 - **Encrypted files**: Keybase file system (KBFS). Like an encrypted Dropbox or Google Drive cloud storage system. Integrates with the macOS finder through use of the [FUSE for macOS](https://osxfuse.github.io/) package.
 - Git (see [below](#keybase-git))

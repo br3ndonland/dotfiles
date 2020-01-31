@@ -702,9 +702,11 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
 
 </details>
 
-#### vscode
+#### VSCodium
 
-I configure [Visual Studio Code (vscode)](https://code.visualstudio.com/) using [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) with [this gist](https://gist.github.com/br3ndonland/23b59819e3db207dde7af9c19fb33eaf).
+- I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is fully FLOSS (free, libre open-source software) and free of telemetry.
+- I sometimes still use VSCode for the [remote development features](https://code.visualstudio.com/docs/remote/remote-overview), to work on servers via SSH. I'm considering [Pony SSH](https://github.com/thingalon/pony-ssh) for use with VSCodium.
+- I configure VSCode and VSCodium using [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) with [this gist](https://gist.github.com/br3ndonland/23b59819e3db207dde7af9c19fb33eaf). You're welcome to fork the gist and adapt it to your preferences!
 
 [(Back to top)](#top)
 

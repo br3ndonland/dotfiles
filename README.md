@@ -478,10 +478,6 @@ See [npm](#npm) section above.
 
     ```zsh
     # .zshrc continues above
-    source $ZSH/oh-my-zsh.sh
-
-    # User configuration
-    # Pure prompt: https://github.com/sindresorhus/pure
     autoload -U promptinit; promptinit
     prompt pure
     # .zshrc continues below

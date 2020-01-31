@@ -299,12 +299,14 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
 
 ##### Keybase chat
 
-**Keybase chat looks and feels like Slack, but is much better for several reasons.**
+**Keybase chat looks and feels like Slack, but has several advantages.**
 
 - [Keybase is open-source](https://github.com/keybase/client). Slack is not.
 - [Keybase chat is end-to-end encrypted](https://keybase.io/docs/chat/index). Slack is not.
 - Keybase chat does not have a free message limit. Slack does. I frequently hit this free message limit when participating in large workspaces for my courses on Udacity, and it negatively impacted my ability to build projects with classmates. We switched to a Keybase team instead.
 - Keybase has not leaked passwords. [Slack has been vulnerable to password leaks and other attacks](https://slackhq.com/march-2015-security-incident-and-the-launch-of-two-factor-authentication), and it took Slack four years before they notified users. [The Keybase CEO's Slack credentials were compromised](https://keybase.io/blog/slack-incident).
+- Keybase does not use third-party trackers. Slack is polluted with trackers. Here's a screenshot of the [Brave browser](https://brave.com/) blocking Slack trackers during a typical session in the Slack workspace used in my previous developer job:
+  ![Brave browser blocking Slack trackers](img/brave-slack-trackers.png)
 
 ##### Keybase Git
 

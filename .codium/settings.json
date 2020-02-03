@@ -107,14 +107,5 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Settings Sync ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-  "sync.autoDownload": true,
-  "sync.autoUpload": false,
-  "sync.forceDownload": false,
-  "sync.forceUpload": true,
-  "sync.gist": "23b59819e3db207dde7af9c19fb33eaf",
-  "sync.quietSync": false,
-  "sync.removeExtensions": false,
-  "sync.syncExtensions": true
+  }
 }

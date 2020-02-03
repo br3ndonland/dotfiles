@@ -1,0 +1,13 @@
+eamodio.gitlens
+yzhang.markdown-all-in-one
+esbenp.prettier-vscode
+ms-python.python
+foxundermoon.shell-format
+timonwong.shellcheck
+octref.vetur
+Equinusocio.vsc-community-material-theme
+equinusocio.vsc-material-theme
+equinusocio.vsc-material-theme-icons
+dbaeumer.vscode-eslint
+ms-vscode.vscode-typescript-tslint-plugin
+sdras.vue-vscode-snippets

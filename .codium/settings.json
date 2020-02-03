@@ -1,0 +1,123 @@
+{
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  "breadcrumbs.enabled": true,
+  "editor.autoClosingQuotes": "beforeWhitespace",
+  "editor.insertSpaces": true,
+  "editor.fontFamily": "'Dank Mono', 'Ubuntu Mono', Inconsolata, Menlo, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 18,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.renderWhitespace": "none",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "emmet.triggerExpansionOnTab": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.decorations.badges": false,
+  "extensions.autoUpdate": false,
+  "extensions.ignoreRecommendations": true,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "files.autoSave": "onWindowChange",
+  "files.exclude": {
+    "**/._*": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true,
+  "git.enableSmartCommit": true,
+  "gitlens.advanced.abbreviatedShaLength": 8,
+  "gitlens.advanced.telemetry.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "terminal.external.osxExec": "iterm.app",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+  "update.mode": "manual",
+  "update.showReleaseNotes": false,
+  "window.restoreWindows": "all",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.enableExperiments": false,
+  "workbench.panel.defaultLocation": "right",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.startupEditor": "none",
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "eslint.enable": false,
+  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "markdown.extension.italic.indicator": "_",
+  "markdown.extension.list.indentationSize": "inherit",
+  "markdown.extension.print.absoluteImgPath": false,
+  "markdown.extension.toc.githubCompatibility": true,
+  "markdown.extension.toc.levels": "2..3",
+  "markdown.extension.toc.updateOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true,
+    "editor.rulers": [88, 100],
+    "editor.tabSize": 4
+  },
+  "python.formatting.blackPath": "/usr/local/bin/black",
+  "python.formatting.provider": "black",
+  "python.linting.flake8Args": ["--max-line-length", "88"],
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "/usr/local/bin/flake8",
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyPath": "/usr/local/bin/mypy",
+  "python.linting.pylintEnabled": false,
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.venvPath": "${workspaceFolder}/venv/bin/python",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.options.tabSize": 2,
+  "vetur.format.options.useTabs": false,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Settings Sync ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  "sync.autoDownload": true,
+  "sync.autoUpload": false,
+  "sync.forceDownload": false,
+  "sync.forceUpload": true,
+  "sync.gist": "23b59819e3db207dde7af9c19fb33eaf",
+  "sync.quietSync": false,
+  "sync.removeExtensions": false,
+  "sync.syncExtensions": true
+}

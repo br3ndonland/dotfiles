@@ -1,0 +1,44 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  // Toggle list using the Markdown All in One extension
+  {
+    "key": "ctrl+alt+l",
+    "command": "markdown.extension.editing.toggleList",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  // Markdown images
+  {
+    "key": "ctrl+alt+i",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "![$TM_SELECTED_TEXT](img/$0)"
+    },
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  // Fix outdent issue with Markdown files
+  {
+    "key": "shift+tab",
+    "command": "outdent",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  // Open links
+  {
+    "key": "ctrl+alt+cmd+enter",
+    "command": "editor.action.openLink"
+  },
+  // Alternative command palette keybinding
+  {
+    "key": "alt+cmd+p",
+    "command": "workbench.action.showCommands"
+  },
+  // Toggle side bar
+  {
+    "key": "alt+cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  {
+    "key": "alt+cmd+m",
+    "command": "editor.emmet.action.matchTag"
+  }
+]

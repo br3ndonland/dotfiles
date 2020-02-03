@@ -54,9 +54,6 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~~~~~ //
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
   "eslint.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "[html]": {

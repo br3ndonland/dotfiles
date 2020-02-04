@@ -43,6 +43,11 @@ user = br3ndonland
 program = gpg
 [push]
 default = simple
+[sendemail]
+confirm = auto
+smtpServer = 127.0.0.1
+smtpServerPort = 1025
+smtpUser = br3ndonland@protonmail.com
 [tag]
 gpgsign = true
 [user]

@@ -515,9 +515,7 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
 #### Hyper
 
 - [Hyper](https://hyper.is/) is a cross-platform open-source command line interface, configurable with HTML/CSS/JS.
-- Plugins wanted
-  - [hyper-settings-sync](https://www.npmjs.com/package/hyper-sync-settings): Available but needs more development. Not currently syncing with my Gist.
-- Dotfile configuration is in _~/.hyper.js_.
+- Settings are in _~/.hyper.js_.
 
 #### iTerm2
 
@@ -706,7 +704,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
 
 - I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is fully FLOSS (free, libre open-source software) and free of telemetry.
 - I sometimes still use VSCode for the [remote development features](https://code.visualstudio.com/docs/remote/remote-overview), to work on servers via SSH. I'm considering [Pony SSH](https://github.com/thingalon/pony-ssh) for use with VSCodium.
-- I configure VSCode and VSCodium using [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) with [this gist](https://gist.github.com/br3ndonland/23b59819e3db207dde7af9c19fb33eaf). You're welcome to fork the gist and adapt it to your preferences!
+- I used to configure VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo.
 
 [(Back to top)](#top)
 

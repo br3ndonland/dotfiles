@@ -6,7 +6,7 @@ foxundermoon.shell-format
 timonwong.shellcheck
 octref.vetur
 Equinusocio.vsc-community-material-theme
-equinusocio.vsc-material-theme
+Equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
 dbaeumer.vscode-eslint
 ms-vscode.vscode-typescript-tslint-plugin

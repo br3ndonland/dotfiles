@@ -12,9 +12,13 @@ cod = checkout develop
 com = checkout master
 f = fetch
 l = pull
+lg = pull github
+lk = pull keybase
 last = log --graph --show-signature --pretty=short --max-count=10
 lure = pull --rebase
 p = push
+pg = push github
+pk = push keybase
 pso = push --set-upstream origin
 ra = remote add
 rv = remote -v

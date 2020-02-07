@@ -95,6 +95,10 @@
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "/usr/local/bin/python3",
   "python.venvPath": "${workspaceFolder}/venv/bin/python",
+  "[shellscript]": {
+    "editor.rulers": [80],
+    "files.eol": "\n"
+  },
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",

@@ -704,7 +704,7 @@ The [Material theme](https://packagecontrol.io/packages/Material%20Theme) is gre
 
 - I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is fully FLOSS (free, libre open-source software) and free of telemetry.
 - I sometimes still use VSCode for the [remote development features](https://code.visualstudio.com/docs/remote/remote-overview), to work on servers via SSH. I'm considering [Pony SSH](https://github.com/thingalon/pony-ssh) for use with VSCodium.
-- I used to configure VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo.
+- I used to configure VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _codium_extensions.sh_ along with the name of the editor, like `codium_extensions.sh codium`. The shell script was quite easy to write. I based it on _npm_globals.sh_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
 
 [(Back to top)](#top)
 

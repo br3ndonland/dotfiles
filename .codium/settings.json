@@ -20,7 +20,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.decorations.badges": false,
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.autoSave": "onWindowChange",

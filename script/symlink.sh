@@ -8,6 +8,8 @@ symlink_dotfiles() {
       echo "-> Dotfiles found. Symlinking dotfiles into home directory."
       # Make directories for symlinks, if they don't already exist
       mkdir -p ~/{.gnupg,.ssh}
+      mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User
+      mkdir -p ~/Library/Application\ Support/VSCodium/User
       # Create symlinks (ln -s), and don't prompt (-i) before overwrite (-f)
       # TODO: read ~/.dotfiles and iterate over, instead of hardcoding paths
       ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
@@ -19,6 +21,14 @@ symlink_dotfiles() {
       ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
       ln -s -f ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
       ln -s -f ~/.dotfiles/.ssh/config ~/.ssh/config
+      ln -s -f ~/.dotfiles/.codium/settings.json \
+        ~/Library/Application\ Support/VSCodium/User/settings.json
+      ln -s -f ~/.dotfiles/.codium/settings.json \
+        ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
+      ln -s -f ~/.dotfiles/.codium/keybindings.json \
+        ~/Library/Application\ Support/VSCodium/User/keybindings.json
+      ln -s -f ~/.dotfiles/.codium/keybindings.json \
+        ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

@@ -107,6 +107,8 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
     - Sets proper permissions on the GPG directories.
   - Runs _npm_globals.sh_
     - Installs global npm packages stored in _.npm/npm-globals.txt_
+  - Runs _codium_extensions.sh_
+    - Installs VSCode and VSCodium extensions.
   - Sets my shell to Zsh
 
 #### Set up Homebrew Brewfile

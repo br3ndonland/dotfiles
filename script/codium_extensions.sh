@@ -5,8 +5,7 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
   while read -r EXTENSION; do
-    EXTENSIONS=$($EDITOR --list-extensions)
-    INSTALLED=$(echo "$EXTENSIONS" | grep -ce "^$EXTENSION\$")
+    INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")
     if [ "$INSTALLED" == "0" ]; then
       echo "Installing $EXTENSION."
       $EDITOR --install-extension "$EXTENSION"

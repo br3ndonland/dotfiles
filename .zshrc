@@ -6,6 +6,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###
+alias dc="docker-compose"
 alias gpa="git p; git pg; git pk"
 alias ssh-add=/usr/bin/ssh-add
 ### ------------------------------- Prompt -------------------------------- ###

@@ -4,14 +4,14 @@
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
-  while read -r p; do
+  while read -r EXTENSION; do
     EXTENSIONS=$($EDITOR --list-extensions)
-    INSTALLED=$(echo "$EXTENSIONS" | grep -ce "^$p\$")
+    INSTALLED=$(echo "$EXTENSIONS" | grep -ce "^$EXTENSION\$")
     if [ "$INSTALLED" == "0" ]; then
-      echo "Installing $p."
-      $EDITOR --install-extension "$p"
+      echo "Installing $EXTENSION."
+      $EDITOR --install-extension "$EXTENSION"
     else
-      echo "$p already installed."
+      echo "$EXTENSION already installed."
     fi
   done <~/.dotfiles/.codium/codium-extensions.txt
 }

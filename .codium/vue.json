@@ -1,7 +1,6 @@
 {
   "Vue component anatomy": {
-    "prefix": "",
-    "body": [],
+    "prefix": "van",
     "description": "Vue component layout based on eslint-plugin-vue"
   }
 }

@@ -33,10 +33,13 @@ symlink_dotfiles() {
         ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
       ln -s -f ~/.dotfiles/.codium/vue.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
-      # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
       ln -s -f ~/.dotfiles/.config/karabiner ~/.config
-      launchctl kickstart -k \
-        gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
+      # Restart Karabiner after symlinking config
+      # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
+      KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
+      if (launchctl kickstart -p "$KARABINER"); then
+        launchctl kickstart -k "$KARABINER"
+      fi
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

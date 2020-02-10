@@ -26,7 +26,5 @@ setopt hist_verify            # show command with history before running
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 ### ---------------------------- Integrations ----------------------------- ###
-test -e "${HOME}/.iterm2_shell_integration.zsh" &&
-  source "${HOME}/.iterm2_shell_integration.zsh"
 fpath=(/usr/local/share/zsh-completions $fpath)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

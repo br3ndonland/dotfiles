@@ -20,7 +20,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 - [Settings](#settings)
   - [Fonts](#fonts)
   - [Shell](#shell)
-  - [Terminal programs](#terminal-programs)
   - [Text editors](#text-editors)
   - [Data science IDEs](#data-science-ides)
   - [General productivity and social](#general-productivity-and-social)
@@ -471,7 +470,7 @@ See [npm](#npm) section above.
   - Install via Homebrew:
 
     ```sh
-    brew install zsh zsh-completions
+    brew install zsh zsh-completions zsh-syntax-highlighting
     ```
 
 - [Pure prompt](https://github.com/sindresorhus/pure)
@@ -498,7 +497,7 @@ See [npm](#npm) section above.
     - Source the script at the end: `source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
-  - [iTerm2](https://iterm2.com) and the [snazzy](https://github.com/sindresorhus/iterm2-snazzy), [dracula](https://draculatheme.com/), or [palenight](https://github.com/JonathanSpeek/palenight-iterm2) themes
+  - macOS Terminal with the [dracula](https://draculatheme.com/) theme
   - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) or [dracula](https://draculatheme.com/) themes.
   - [VSCode integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
 
@@ -513,33 +512,6 @@ I used the Udacity Git prompt configuration. Command prompt installation instruc
 4. See the [free Git course](https://www.udacity.com/course/version-control-with-git--ud123) for more info.
 
 </details>
-
-### Terminal programs
-
-#### Hyper
-
-- [Hyper](https://hyper.is/) is a cross-platform open-source command line interface, configurable with HTML/CSS/JS.
-- Settings are in _~/.hyper.js_.
-
-#### iTerm2
-
-- [iTerm2](https://www.iterm2.com/) is a powerful command line interface for macOS only.
-- Preferences
-  - General
-    - Disable confirm quit
-  - Appearance
-    - Theme: Dark
-  - Keys
-    - Hotkey: Cmd+Esc
-  - Profiles:
-    - Colors
-      - Color Presets
-        - [Dracula](https://draculatheme.com/iterm/)
-        - [Palenight](https://github.com/JonathanSpeek/palenight-iterm2)
-        - [Snazzy](https://github.com/sindresorhus/iterm2-snazzy)
-        - Solarized dark
-    - Dank Mono font, size 18
-    - Settings for new windows: 80x24, normal
 
 ### Text editors
 

@@ -29,6 +29,10 @@ symlink_dotfiles() {
         ~/Library/Application\ Support/VSCodium/User/keybindings.json
       ln -s -f ~/.dotfiles/.codium/keybindings.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
+      ln -s -f ~/.dotfiles/.codium/vue.json \
+        ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
+      ln -s -f ~/.dotfiles/.codium/vue.json \
+        ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

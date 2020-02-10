@@ -19,7 +19,6 @@
                         "description": "Application hotkeys",
                         "manipulators": [
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "escape",
                                     "modifiers": {
@@ -32,13 +31,41 @@
                                     {
                                         "shell_command": "open -a terminal"
                                     }
-                                ]
+                                ],
+                                "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 1957,
+                        "vendor_id": 1118
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 1957,
+                        "vendor_id": 1118
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {

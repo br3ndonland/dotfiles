@@ -76,12 +76,17 @@ This document describes my computer setup.
 - macOS now has the option to remap caps lock in _System Preferences -> Keyboard -> Modifier Keys_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) can also be used for keymapping.
 
+  - Settings are stored in _karabiner/karabiner.json_. Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, I added _karabiner/karabiner.json_ to _prettierignore_.
   - Simple modifications:
 
-    | From key  | To key |
-    | --------- | ------ |
-    | caps_lock | escape |
+    | From key  | To key    |
+    | --------- | --------- |
+    | caps_lock | escape    |
+    | escape    | caps_lock |
 
+  - Complex modifications:
+    - Launch Terminal with Cmd+Escape
+    - See _karabiner/karabiner.json_ for more
   - Devices
     - Disable built-in keyboard when external keyboard is connected
 

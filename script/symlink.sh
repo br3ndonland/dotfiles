@@ -12,14 +12,6 @@ symlink_dotfiles() {
       mkdir -p ~/Library/Application\ Support/VSCodium/User
       # Create symlinks (ln -s), and don't prompt (-i) before overwrite (-f)
       # TODO: read ~/.dotfiles and iterate over, instead of hardcoding paths
-      ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
-      ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
-      ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
-      ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc
-      ln -s -f ~/.dotfiles/.zshrc ~/.zshrc
-      ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
-      ln -s -f ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-      ln -s -f ~/.dotfiles/.ssh/config ~/.ssh/config
       ln -s -f ~/.dotfiles/.codium/settings.json \
         ~/Library/Application\ Support/VSCodium/User/settings.json
       ln -s -f ~/.dotfiles/.codium/settings.json \
@@ -40,6 +32,14 @@ symlink_dotfiles() {
         launchctl kickstart -k "$KARABINER"
       fi
       ln -s -f ~/.dotfiles/.config/kitty ~/.config
+      ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
+      ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
+      ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
+      ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc
+      ln -s -f ~/.dotfiles/.zshrc ~/.zshrc
+      ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
+      ln -s -f ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+      ln -s -f ~/.dotfiles/.ssh/config ~/.ssh/config
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

@@ -3,12 +3,12 @@ module.exports = {
   config: {
     updateChannel: "stable",
     showHamburgerMenu: false,
-    fontSize: 18,
-    fontFamily: "Dank Mono, IBM Plex Mono, Ubuntu Mono, Inconsolata, Menlo",
+    fontFamily: "Dank Mono, Menlo",
+    fontSize: 14,
     summon: {
       hotkey: "Cmd+Esc"
     }
   },
   keymaps: {},
-  plugins: ["hyper-snazzy", "hyperterm-summon"]
+  plugins: ["hyper-dracula", "hyperterm-summon"]
 }

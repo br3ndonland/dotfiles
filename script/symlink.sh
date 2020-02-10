@@ -15,7 +15,6 @@ symlink_dotfiles() {
       ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
       ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
       ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
-      ln -s -f ~/.dotfiles/.terminal/.hyper.js ~/.hyper.js
       ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc
       ln -s -f ~/.dotfiles/.zshrc ~/.zshrc
       ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
@@ -40,6 +39,7 @@ symlink_dotfiles() {
       if (launchctl kickstart -p "$KARABINER"); then
         launchctl kickstart -k "$KARABINER"
       fi
+      ln -s -f ~/.dotfiles/.config/kitty ~/.config
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

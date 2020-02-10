@@ -1,6 +1,43 @@
 {
   "Vue component anatomy": {
     "prefix": "van",
+    "body": [
+      "<template>",
+      "\t<div>",
+      "\t\t<!-- <other-component></other-component> -->",
+      "\t</div>",
+      "</template>",
+      "<script>",
+      "// import OtherComponent from \"OtherComponent.vue\"",
+      "// import { Mixin } from \"mixins/Mixin.js\"",
+      "export default {",
+      "\tname: \"$0ThisComponent\",",
+      "\tcomponents: {",
+      "\t\t// \"other-component\": OtherComponent",
+      "\t},",
+      "\tmixins: [],",
+      "\tprops: {",
+      "\t\tprop1: Number,",
+      "\t\tprop2: {",
+      "\t\t\ttype: String,",
+      "\t\t\trequired: true,",
+      "\t\t\tdefault: `Hello, World!`",
+      "\t\t}",
+      "\t},",
+      "\tdata() {",
+      "\t\treturn {",
+      "\t\t\tkey1: value1,",
+      "\t\t\tkey2: value2",
+      "\t\t}",
+      "\t},",
+      "\tcomputed: {},",
+      "\twatch: {},",
+      "\tcreated() {},",
+      "\tmethods: {}",
+      "}",
+      "</script>",
+      "<style scoped></style>"
+    ],
     "description": "Vue component layout based on eslint-plugin-vue"
   }
 }

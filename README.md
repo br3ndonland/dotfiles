@@ -502,21 +502,9 @@ See [npm](#npm) section above.
     - Source the script at the end: `source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 - [trash-cli](https://github.com/sindresorhus/trash-cli): Moves files to the trash instead of permanently deleting with `rm`.
 - For my terminal applications, I use:
-  - macOS Terminal with the [dracula](https://draculatheme.com/) theme
-  - [Hyper](https://hyper.is/) and the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) or [dracula](https://draculatheme.com/) themes.
+  - [Kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator
+  - Terminal in macOS
   - [VSCode integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
-
-<details><summary>Previous bash prompt</summary>
-
-I used the Udacity Git prompt configuration. Command prompt installation instructions:
-
-1. Download and unzip [udacity-terminal-config.zip](http://video.udacity-data.com.s3.amazonaws.com/topher/2017/March/58d31ce3_ud123-udacity-terminal-config/ud123-udacity-terminal-config.zip)
-2. Move the directory `udacity-terminal-config` to your home directory and rename to `.udacity-terminal-config` (add a leading dot).
-3. Move the `bash_profile` file to your home directory and name it `.bash_profile` (add a leading dot).
-   - If you already have a `.bash_profile` file in your home directory, copy the text from the downloaded `bash_profile` and paste in your existing `.bash_profile`.
-4. See the [free Git course](https://www.udacity.com/course/version-control-with-git--ud123) for more info.
-
-</details>
 
 ### Text editors
 

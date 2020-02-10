@@ -34,7 +34,7 @@ symlink_dotfiles() {
       ln -s -f ~/.dotfiles/.codium/vue.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
       # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
-      ln -s -f ~/.dotfiles/karabiner ~/.config
+      ln -s -f ~/.dotfiles/.config/karabiner ~/.config
       launchctl kickstart -k \
         gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
     )

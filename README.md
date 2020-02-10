@@ -53,15 +53,19 @@ This document describes my computer setup.
 - AmazonBasics USB 3.0 hubs
 - Plugable USB3-E1000 Gigabit Ethernet Adapter (drivers available [here](https://plugable.com/drivers/usb3ethernet/))
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
-- Accessories for standing work
-  - When I first began standing work, I created a DIY standing desk in my kitchen:
-    ![DIY standing desk](img/diy-standing-desk.jpg)
-    - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
-    - I ran an ethernet cable from my router into the cabinet.
-    - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
-  - I now have a [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html).
-    ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)
-  - I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), [compression socks](https://www.goldtoe.com/shop/mens/socks/gold-toe-mens-wellness-firm-compression-over-the-calf-socks-1-pair-3089), zero-drop shoes from [Altra](https://www.altrarunning.com/), and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ), to improve my posture and endurance.
+- I work at a [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html).
+  ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)
+- <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen.</summary>
+
+  ![DIY standing desk](img/diy-standing-desk.jpg)
+
+  - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
+  - I ran an ethernet cable from my router into the cabinet.
+  - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
+
+  </details>
+
+- I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), [compression socks](https://www.goldtoe.com/shop/mens/socks/gold-toe-mens-wellness-firm-compression-over-the-calf-socks-1-pair-3089), zero-drop shoes from [Altra](https://www.altrarunning.com/), and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ), to improve my posture and endurance.
 
 [(Back to top)](#top)
 

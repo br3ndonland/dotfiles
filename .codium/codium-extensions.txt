@@ -5,7 +5,6 @@ ms-python.python
 foxundermoon.shell-format
 timonwong.shellcheck
 octref.vetur
-Equinusocio.vsc-community-material-theme
 Equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
 dbaeumer.vscode-eslint

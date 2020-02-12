@@ -4,6 +4,13 @@
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
+  if [ "$EDITOR" == "code" ] || [ "$EDITOR" == "code-insiders" ]; then
+    cat ~/.dotfiles/.codium/codium-extensions.txt \
+      ~/.dotfiles/.codium/code-extensions.txt >~/.dotfiles/.codium/all.txt
+    EXTENSIONS=~/.dotfiles/.codium/all.txt
+  else
+    EXTENSIONS=~/.dotfiles/.codium/codium-extensions.txt
+  fi
   while read -r EXTENSION; do
     INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")
     if [ "$INSTALLED" == "0" ]; then
@@ -12,9 +19,8 @@ install_codium_extensions() {
     else
       echo "$EXTENSION already installed."
     fi
-  done <~/.dotfiles/.codium/codium-extensions.txt
+  done <$EXTENSIONS
 }
-# Editor command must be specified
 if [ -z "$1" ]; then
   echo "No editor name was given for the codium_extensions.sh script. "
   echo "Please try again, specifying editor (code, code-insiders, or codium)."

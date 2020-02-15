@@ -9,3 +9,4 @@ Equinusocio.vsc-material-theme
 dbaeumer.vscode-eslint
 ms-vscode.vscode-typescript-tslint-plugin
 sdras.vue-vscode-snippets
+WallabyJs.quokka-vscode

@@ -21,6 +21,10 @@ install_codium_extensions() {
     fi
   done <$EXTENSIONS
 }
+if ! command -v "$EDITOR" >/dev/null; then
+  echo "Please install the VSCodium command in PATH." >&2
+  exit 1
+fi
 if [ -z "$1" ]; then
   echo "No editor name was given for the codium_extensions.sh script. "
   echo "Please try again, specifying editor (code, code-insiders, or codium)."

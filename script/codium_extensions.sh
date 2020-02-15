@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 ### ------------------ Install VSCode/VSCodium extensions ------------------ ###
 # Designed for use with Strap: https://github.com/MikeMcQuaid/strap
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
-  if [ "$EDITOR" == "code" ] || [ "$EDITOR" == "code-insiders" ]; then
+  if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
     cat ~/.dotfiles/.codium/codium-extensions.txt \
       ~/.dotfiles/.codium/code-extensions.txt >~/.dotfiles/.codium/all.txt
     EXTENSIONS=~/.dotfiles/.codium/all.txt
@@ -13,7 +13,7 @@ install_codium_extensions() {
   fi
   while read -r EXTENSION; do
     INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")
-    if [ "$INSTALLED" == "0" ]; then
+    if [ "$INSTALLED" = "0" ]; then
       echo "Installing $EXTENSION."
       $EDITOR --install-extension "$EXTENSION"
     else

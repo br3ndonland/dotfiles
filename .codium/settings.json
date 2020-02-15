@@ -27,6 +27,7 @@
   "files.exclude": {
     "**/._*": true
   },
+  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.confirmSync": false,

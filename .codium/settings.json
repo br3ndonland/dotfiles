@@ -49,7 +49,7 @@
   "update.showReleaseNotes": false,
   "window.restoreWindows": "all",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.colorTheme": "Dracula Pro",
   "workbench.enableExperiments": false,
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,

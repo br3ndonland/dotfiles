@@ -2,8 +2,7 @@
 ### ------------------------------- Exports ------------------------------- ###
 export EDITOR="codium"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###
 alias dc="docker-compose"

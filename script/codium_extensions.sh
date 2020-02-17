@@ -27,7 +27,7 @@ if ! command -v "$EDITOR" >/dev/null; then
 fi
 if [ -z "$1" ]; then
   echo "No editor name was given for the codium_extensions.sh script. "
-  echo "Please try again, specifying editor (code, code-insiders, or codium)."
+  echo "Please specify ≥1 editor [code, code-insiders, codium]."
   exit 1
 fi
 for i in "$@"; do

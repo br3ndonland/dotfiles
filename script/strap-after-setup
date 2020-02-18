@@ -10,6 +10,12 @@ echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/npm_globals.sh
 ~/.dotfiles/script/codium_extensions.sh codium code-insiders
 
+# Install Poetry: https://python-poetry.org/docs/
+echo "-> Installing Poetry for Python packaging and dependency management"
+curl -sSL \
+  https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |
+  python
+
 # Set shell
 echo "-> Changing shell to Zsh. Password entry required, enabled with --debug."
 if [ "$SHELL" != "/bin/zsh" ]; then

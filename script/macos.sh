@@ -232,3 +232,11 @@ defaults write com.apple.mail SendFormat Plain
 
 # Disable remote content
 defaults write com.apple.mail-shared DisableURLLoading -bool true
+
+###############################################################################
+# Siri                                                                        #
+###############################################################################
+
+# Disable siri
+sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.agent.plist
+

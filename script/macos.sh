@@ -128,8 +128,11 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 chflags nohidden ~/Library
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Menu bar, Dock, Dashboard, and hot corners                                  #
 ###############################################################################
+
+# Auto-hide menu bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true

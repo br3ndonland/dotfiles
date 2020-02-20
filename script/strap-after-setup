@@ -9,6 +9,7 @@ echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/symlink.sh
 ~/.dotfiles/script/npm_globals.sh
 ~/.dotfiles/script/codium_extensions.sh codium code-insiders
+~/.dotfiles/script/macos.sh
 
 # Install Poetry: https://python-poetry.org/docs/
 echo "-> Installing Poetry for Python packaging and dependency management"

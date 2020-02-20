@@ -231,7 +231,7 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 defaults write com.apple.mail SendFormat Plain
 
 # Disable remote content
-defaults write com.apple.mail-shared DisableURLLoading -bool true
+defaults write com.apple.mail DisableURLLoading -bool true
 
 ###############################################################################
 # Siri                                                                        #

@@ -209,3 +209,26 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Lock screen
 defaults write com.apple.dock wvous-bl-corner -int 13
 defaults write com.apple.dock wvous-bl-modifier -int 0
+
+###############################################################################
+# Mail                                                                        #
+###############################################################################
+
+# Copy addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>`
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+# Disable send and reply animations in Mail.app
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
+
+# Most recent first
+defaults write com.apple.mail ConversationViewSortDescending -bool true
+
+# Disable inline attachments (just show the icons)
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
+
+# Compose mail in plain-text
+defaults write com.apple.mail SendFormat Plain
+
+# Disable remote content
+defaults write com.apple.mail-shared DisableURLLoading -bool true

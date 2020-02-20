@@ -9,6 +9,9 @@
 # Enable dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
+# Set temperature units to Celsius
+defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
+
 # Reveal IP, hostname, OS version, etc. when clicking clock in login window
 sudo defaults write \
   /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName

@@ -71,8 +71,8 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 ###############################################################################
 
 # Set default location for new Finder windows
-# For desktop: `PfDe`, `file://${HOME}/Desktop/`. For other paths: `PfLo`
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
+# Desktop: `PfDe`, `file://${HOME}/Desktop/`. For other paths: `PfLo`
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show icons for hard drives, servers, and removable media on the desktop

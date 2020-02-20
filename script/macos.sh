@@ -12,6 +12,9 @@ defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 # Set temperature units to Celsius
 defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
+# Save to disk by default, instead of iCloud
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
 # Reveal IP, hostname, OS version, etc. when clicking clock in login window
 sudo defaults write \
   /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName

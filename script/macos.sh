@@ -2,6 +2,9 @@
 ### -------------------------- Set macOS defaults -------------------------- ###
 # Based on: https://github.com/mathiasbynens/dotfiles
 
+# Back up macOS default settings before changing
+defaults read >~/Desktop/macos-defaults.txt
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################

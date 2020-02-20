@@ -8,6 +8,9 @@
 
 # Enable dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+defaults write NSGlobalDomain AppleAccentColor -string "-1"
+defaults write NSGlobalDomain AppleHighlightColor -string \
+  "0.847059 0.847059 0.862745 Graphite"
 
 # Set temperature units to Celsius
 defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"

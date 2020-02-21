@@ -21,14 +21,6 @@ defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 # Save to disk by default, instead of iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Reveal IP, hostname, OS version, etc. when clicking clock in login window
-sudo defaults write \
-  /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w \
-  /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
-
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
@@ -238,13 +230,6 @@ defaults write com.apple.mail SendFormat Plain
 
 # Disable remote content
 defaults write com.apple.mail DisableURLLoading -bool true
-
-###############################################################################
-# Siri                                                                        #
-###############################################################################
-
-# Disable siri
-sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.agent.plist
 
 ###############################################################################
 # TextEdit                                                                    #

@@ -433,7 +433,7 @@ See [npm](#npm) section above.
     }
     ```
 
-  - If ESLint and plugins are installed in the project directory, the following settings can be added to the VSCode _settings.json_, for use with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)and [eslint-plugin-vue](https://eslint.vuejs.org/user-guide/). I typically don't use ESLint to auto-fix files, because Pretter is preferred.
+  - If ESLint and plugins are installed in the project directory, the following settings can be added to the VSCode _settings.json_, for use with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [eslint-plugin-vue](https://eslint.vuejs.org/user-guide/). I typically don't use ESLint to auto-fix files, because Pretter is preferred.
 
     ```jsonc
     // VSCode settings.json
@@ -787,7 +787,16 @@ I previously used [Anaconda](https://www.anaconda.com/) to manage my Python and 
 - [Backblaze](https://www.backblaze.com/) (Homebrew Cask)
 - [Bear](https://bear.app) (Mac App Store)
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
-  - Use Firefox account to sync preferences and add-ons.
+  - Firefox account: sync preferences and add-ons
+  - 1Password extension for desktop app
+  - Bear web clipper
+  - [DuckDuckGo Privacy Essentials](https://github.com/duckduckgo/duckduckgo-privacy-extension)
+  - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
+  - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
+  - [Stylus](https://github.com/openstyles/stylus) (alternative to Dark Reader, also a [Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
+    - [GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)
+    - [GitLab Dark](https://gitlab.com/maxigaz/gitlab-dark)
+    - [Wikipedia Dark](https://github.com/n0x-styles/wikipedia-dark)
 - macOS Keynote, Numbers, and Pages
 - [ProtonVPN](https://protonvpn.com/) (Homebrew Cask)
 

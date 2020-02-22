@@ -2,6 +2,7 @@
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
   "editor.autoClosingQuotes": "beforeWhitespace",
+  "editor.cursorBlinking": "solid",
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', 'Ubuntu Mono', Inconsolata, Menlo, monospace",
   "editor.fontLigatures": true,

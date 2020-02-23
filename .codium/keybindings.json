@@ -1,4 +1,3 @@
-// Place your key bindings in this file to overwrite the defaults
 [
   // Toggle list using the Markdown All in One extension
   {
@@ -40,5 +39,29 @@
   {
     "key": "alt+cmd+m",
     "command": "editor.emmet.action.matchTag"
+  },
+  // Switch to next editor
+  {
+    "key": "alt+cmd+right",
+    "command": "workbench.action.nextEditor",
+    "when": "editorFocus"
+  },
+  // Switch to previous editor
+  {
+    "key": "alt+cmd+left",
+    "command": "workbench.action.previousEditor",
+    "when": "editorFocus"
+  },
+  // Switch to next terminal
+  {
+    "key": "alt+cmd+right",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  // Switch to previous terminal
+  {
+    "key": "alt+cmd+left",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
   }
 ]

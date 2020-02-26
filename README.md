@@ -4,7 +4,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 
 ## Table of Contents <!-- omit in toc -->
 
-- [Description](#description)
 - [Hardware](#hardware)
   - [Computer](#computer)
   - [Peripherals](#peripherals)
@@ -25,10 +24,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [General productivity and social](#general-productivity-and-social)
   - [Media](#media)
   - [Science](#science)
-
-## Description
-
-This document describes my computer setup.
 
 ## Hardware
 
@@ -72,8 +67,7 @@ This document describes my computer setup.
 
 ### macOS
 
-- System Preferences: Dark mode, automatically hide and show the dock
-- macOS now has the option to remap caps lock in _System Preferences -> Keyboard -> Modifier Keys_.
+- macOS setup is automated with _[script/macos.sh](script/macos.sh)_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) can also be used for keymapping.
 
   - Settings are stored in _karabiner/karabiner.json_. Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, I added _karabiner/karabiner.json_ to _prettierignore_.

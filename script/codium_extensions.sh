@@ -4,6 +4,7 @@
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
+  echo "Installing extensions for $EDITOR"
   if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
     cat ~/.dotfiles/.codium/codium-extensions.txt \
       ~/.dotfiles/.codium/code-extensions.txt >~/.dotfiles/.codium/all.txt
@@ -32,6 +33,5 @@ if [ -z "$1" ]; then
 fi
 for i in "$@"; do
   EDITOR=$i
-  echo "-> Installing extensions for $EDITOR"
   install_codium_extensions
 done

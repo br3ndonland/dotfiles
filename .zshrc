@@ -6,7 +6,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###
 alias dc="docker-compose"
-alias gpa="git push; if git remote | grep "keybase"; then git push keybase; fi;
+alias gpa="git push; if git remote | grep "keybase"; then git push keybase; fi;\
 if git remote | grep "srht"; then git push srht; fi;"
 alias ssh-add=/usr/bin/ssh-add
 ### ---------- Pure Prompt: https://github.com/sindresorhus/pure ---------- ###

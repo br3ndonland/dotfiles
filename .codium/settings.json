@@ -95,7 +95,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "/usr/local/bin/mypy",
   "python.linting.pylintEnabled": false,
-  "python.testing.pytestEnabled": true,
   "python.pythonPath": "/usr/local/bin/python3",
   "python.venvPath": "${workspaceFolder}/venv/bin/python",
   "[shellscript]": {

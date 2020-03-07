@@ -98,7 +98,7 @@
   "python.pythonPath": "/usr/local/bin/python3",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
-  "python.venvPath": "${workspaceFolder}/venv/bin/python",
+  "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
   "[shellscript]": {
     "editor.rulers": [80],
     "files.eol": "\n"

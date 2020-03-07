@@ -45,9 +45,11 @@ program = gpg
 default = simple
 [sendemail]
 confirm = auto
+from = "Brendon Smith <gitsmith@protonmail.com>"
 smtpServer = 127.0.0.1
 smtpServerPort = 1025
-smtpUser = br3ndonland@protonmail.com
+smtpUser = gitsmith@protonmail.com
+suppresscc = author
 [tag]
 gpgsign = true
 [user]

@@ -96,6 +96,8 @@
   "python.linting.mypyPath": "/usr/local/bin/mypy",
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "/usr/local/bin/python3",
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "python.testing.promptToConfigure": false,
   "python.venvPath": "${workspaceFolder}/venv/bin/python",
   "[shellscript]": {
     "editor.rulers": [80],

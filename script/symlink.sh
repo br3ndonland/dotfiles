@@ -12,33 +12,33 @@ symlink_dotfiles() {
       mkdir -p ~/Library/Application\ Support/VSCodium/User/snippets
       # Create symlinks (ln -s), and don't prompt (-i) before overwrite (-f)
       # TODO: read ~/.dotfiles and iterate over, instead of hardcoding paths
-      ln -s -f ~/.dotfiles/codium/User/settings.json \
+      ln -fs ~/.dotfiles/codium/User/settings.json \
         ~/Library/Application\ Support/VSCodium/User/settings.json
-      ln -s -f ~/.dotfiles/codium/User/settings.json \
+      ln -fs ~/.dotfiles/codium/User/settings.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
-      ln -s -f ~/.dotfiles/codium/User/keybindings.json \
+      ln -fs ~/.dotfiles/codium/User/keybindings.json \
         ~/Library/Application\ Support/VSCodium/User/keybindings.json
-      ln -s -f ~/.dotfiles/codium/User/keybindings.json \
+      ln -fs ~/.dotfiles/codium/User/keybindings.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
-      ln -s -f ~/.dotfiles/codium/User/snippets/vue.json \
+      ln -fs ~/.dotfiles/codium/User/snippets/vue.json \
         ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
-      ln -s -f ~/.dotfiles/codium/User/snippets/vue.json \
+      ln -fs ~/.dotfiles/codium/User/snippets/vue.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
-      ln -s -f ~/.dotfiles/.config/karabiner ~/.config
+      ln -fs ~/.dotfiles/.config/karabiner ~/.config
       # Restart Karabiner after symlinking config
       # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
       KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
       if (launchctl kickstart "$KARABINER"); then
         launchctl kickstart -k "$KARABINER"
       fi
-      ln -s -f ~/.dotfiles/.config/kitty ~/.config
-      ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
-      ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
-      ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc
-      ln -s -f ~/.dotfiles/.zshrc ~/.zshrc
-      ln -s -f ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
-      ln -s -f ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-      ln -s -f ~/.dotfiles/.ssh/config ~/.ssh/config
+      ln -fs ~/.dotfiles/.config/kitty ~/.config
+      ln -fs ~/.dotfiles/.gitconfig ~/.gitconfig
+      ln -fs ~/.dotfiles/.gitmessage ~/.gitmessage
+      ln -fs ~/.dotfiles/.prettierrc ~/.prettierrc
+      ln -fs ~/.dotfiles/.zshrc ~/.zshrc
+      ln -fs ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
+      ln -fs ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+      ln -fs ~/.dotfiles/.ssh/config ~/.ssh/config
     )
   else
     echo "-> Error: Dotfiles directory not found. Symlinking not successful."

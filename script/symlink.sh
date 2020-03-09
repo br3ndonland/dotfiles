@@ -32,7 +32,6 @@ symlink_dotfiles() {
         launchctl kickstart -k "$KARABINER"
       fi
       ln -s -f ~/.dotfiles/.config/kitty ~/.config
-      ln -s -f ~/.dotfiles/.eslintrc ~/.eslintrc
       ln -s -f ~/.dotfiles/.gitconfig ~/.gitconfig
       ln -s -f ~/.dotfiles/.gitmessage ~/.gitmessage
       ln -s -f ~/.dotfiles/.prettierrc ~/.prettierrc

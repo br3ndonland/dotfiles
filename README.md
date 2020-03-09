@@ -1,16 +1,16 @@
-# Computer setup
+# Dotfiles
 
 Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 
 ## Table of Contents <!-- omit in toc -->
 
+- [Installation](#installation)
 - [Hardware](#hardware)
   - [Computer](#computer)
   - [Peripherals](#peripherals)
 - [Operating system](#operating-system)
   - [macOS](#macos)
 - [Setup](#setup)
-  - [Strap](#strap)
   - [Package management](#package-management)
   - [PGP](#pgp)
   - [SSH](#ssh)
@@ -24,6 +24,24 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [General productivity and social](#general-productivity-and-social)
   - [Media](#media)
   - [Science](#science)
+
+## Installation
+
+Dotfiles are application configuration and settings files. They frequently begin with a dot, hence the name dotfiles. This dotfiles repository is meant to be installed in conjunction with my [Homebrew Brewfile](https://github.com/br3ndonland/homebrew-brewfile) and [Strap](https://github.com/MikeMcQuaid/strap).
+
+A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+
+[Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new macOS development machine. Strap is _idempotent_, meaning it can be run repeatedly on the same system. There are several options for generating `strap.sh`. The web app is easiest, but Strap can also be set up locally.
+
+All the user needs to do when setting up their macOS development machine is download the strap script customized for their GitHub account, then run it with `bash ~/Downloads/strap.sh`.
+
+During execution of `strap.sh`, Strap can run three scripts from the dotfiles repo. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly (without extensions) for Strap to recognize them.
+
+1. _dotfiles/script/setup_
+2. _dotfiles/script/bootstrap_
+3. _dotfiles/script/strap-after-setup_
+
+See the _script/_ directory for the scripts in this repo.
 
 ## Hardware
 
@@ -87,42 +105,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 [(Back to top)](#top)
 
 ## Setup
-
-### Strap
-
-#### Intro
-
-- [Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new machine for developers.
-- In addition to the sensible essential defaults provided by Strap, the script can refer to two additional GitHub repositories, _USERNAME/dotfiles_ and _USERNAME/homebrew-brewfile_ for customizations. This dotfiles repository is meant to be used in conjunction with Strap.
-
-#### Set up dotfiles
-
-Dotfiles are configuration and settings files for applications.
-
-In addition to settings, scripts can be stored in the dotfiles repo. There are three script options that Strap will check for. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly for Strap to recognize them.
-
-- _dotfiles/script/setup_
-- _dotfiles/script/bootstrap_
-- _dotfiles/script/strap-after-setup_
-  - Runs _symlink.sh_.
-    - Symlinks the dotfiles into the home directory, allowing the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
-    - Sets proper permissions on the GPG directories.
-  - Runs _npm_globals.sh_
-    - Installs global npm packages stored in _js/npm-globals.txt_
-  - Runs _codium_extensions.sh_
-    - Installs VSCode and VSCodium extensions.
-  - Sets my shell to Zsh
-
-#### Set up Homebrew Brewfile
-
-- A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle).
-- The Brewfile can be used to install taps, packages, casks (applications), and even Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
-
-#### Generate and run strap.sh
-
-- There are several options for generating _strap.sh_.
-- The web app is easiest, but Strap can also be set up locally.
-- Strap is _idempotent_, meaning it can be run repeatedly on the same system.
 
 ### Package management
 

@@ -28,7 +28,7 @@ symlink_dotfiles() {
       # Restart Karabiner after symlinking config
       # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
       KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
-      if (launchctl kickstart -p "$KARABINER"); then
+      if (launchctl kickstart "$KARABINER"); then
         launchctl kickstart -k "$KARABINER"
       fi
       ln -s -f ~/.dotfiles/.config/kitty ~/.config

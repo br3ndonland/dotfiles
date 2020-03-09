@@ -8,21 +8,21 @@ symlink_dotfiles() {
       echo "-> Dotfiles found. Symlinking dotfiles into home directory."
       # Make directories for symlinks, if they don't already exist
       mkdir -p ~/{.gnupg,.ssh}
-      mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User
-      mkdir -p ~/Library/Application\ Support/VSCodium/User
+      mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets
+      mkdir -p ~/Library/Application\ Support/VSCodium/User/snippets
       # Create symlinks (ln -s), and don't prompt (-i) before overwrite (-f)
       # TODO: read ~/.dotfiles and iterate over, instead of hardcoding paths
-      ln -s -f ~/.dotfiles/.codium/settings.json \
+      ln -s -f ~/.dotfiles/codium/User/settings.json \
         ~/Library/Application\ Support/VSCodium/User/settings.json
-      ln -s -f ~/.dotfiles/.codium/settings.json \
+      ln -s -f ~/.dotfiles/codium/User/settings.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
-      ln -s -f ~/.dotfiles/.codium/keybindings.json \
+      ln -s -f ~/.dotfiles/codium/User/keybindings.json \
         ~/Library/Application\ Support/VSCodium/User/keybindings.json
-      ln -s -f ~/.dotfiles/.codium/keybindings.json \
+      ln -s -f ~/.dotfiles/codium/User/keybindings.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
-      ln -s -f ~/.dotfiles/.codium/vue.json \
+      ln -s -f ~/.dotfiles/codium/User/snippets/vue.json \
         ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
-      ln -s -f ~/.dotfiles/.codium/vue.json \
+      ln -s -f ~/.dotfiles/codium/User/snippets/vue.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
       ln -s -f ~/.dotfiles/.config/karabiner ~/.config
       # Restart Karabiner after symlinking config

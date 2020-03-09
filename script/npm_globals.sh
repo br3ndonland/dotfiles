@@ -1,6 +1,5 @@
 #!/bin/bash
 ### --------------------- Install global npm packages --------------------- ###
-# Based on https://github.com/ianwalter/dotnpm/blob/master/install.sh
 # Designed for use with Strap: https://github.com/MikeMcQuaid/strap
 # Run by strap-after-setup
 # Manage global packages after install: https://www.npmjs.com/package/npm-check
@@ -8,12 +7,6 @@ npm_install_globals() {
   if [ -d ~/.dotfiles ]; then
     (
       echo "-> Dotfiles directory found. Installing global npm packages..."
-      # Make directory for symlink, if it doesn't already exist (-p)
-      mkdir -p ~/.npm
-      # Create symlink (ln -s), and don't prompt (-i) before overwrite (-f)
-      if [ ! -f ~/.npm/npm-globals.txt ]; then
-        ln -s -f ~/.dotfiles/.npm/npm-globals.txt ~/.npm/npm-globals.txt
-      fi
       # Install npm packages listed in npm-globals.txt
       package_dir="$(npm config get prefix)/lib"
       packages=$(npm ls -g --parseable --depth=0)
@@ -27,7 +20,7 @@ npm_install_globals() {
         else
           echo "$p already installed."
         fi
-      done <~/.dotfiles/.npm/npm-globals.txt
+      done <~/.dotfiles/js/npm-globals.txt
       echo "-> Done installing npm packages."
     )
   else

@@ -6,11 +6,11 @@
 install_codium_extensions() {
   echo "Installing extensions for $EDITOR"
   if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
-    cat ~/.dotfiles/.codium/codium-extensions.txt \
-      ~/.dotfiles/.codium/code-extensions.txt >~/.dotfiles/.codium/all.txt
-    EXTENSIONS=~/.dotfiles/.codium/all.txt
+    cat ~/.dotfiles/codium/codium-extensions.txt \
+      ~/.dotfiles/codium/code-extensions.txt >~/.dotfiles/codium/all.txt
+    EXTENSIONS=~/.dotfiles/codium/all.txt
   else
-    EXTENSIONS=~/.dotfiles/.codium/codium-extensions.txt
+    EXTENSIONS=~/.dotfiles/codium/codium-extensions.txt
   fi
   while read -r EXTENSION; do
     INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")

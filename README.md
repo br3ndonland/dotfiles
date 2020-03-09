@@ -108,7 +108,7 @@ In addition to settings, scripts can be stored in the dotfiles repo. There are t
     - Symlinks the dotfiles into the home directory, allowing the operating system to access the dotfiles in the default home directory, while also keeping the files in the Git repositories for version control.
     - Sets proper permissions on the GPG directories.
   - Runs _npm_globals.sh_
-    - Installs global npm packages stored in _.npm/npm-globals.txt_
+    - Installs global npm packages stored in _js/npm-globals.txt_
   - Runs _codium_extensions.sh_
     - Installs VSCode and VSCodium extensions.
   - Sets my shell to Zsh

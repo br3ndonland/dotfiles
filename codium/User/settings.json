@@ -1,6 +1,7 @@
 {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.cursorBlinking": "solid",
   "editor.insertSpaces": true,

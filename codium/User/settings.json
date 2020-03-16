@@ -1,10 +1,10 @@
 {
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.cursorBlinking": "solid",
   "editor.insertSpaces": true,
-  "editor.fontFamily": "'Dank Mono', 'Ubuntu Mono', Inconsolata, Menlo, monospace",
+  "editor.fontFamily": "'Dank Mono', Inconsolata, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
   "editor.formatOnSave": true,
@@ -55,7 +55,7 @@
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
   "eslint.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "grunt.autoDetect": "off",
@@ -69,10 +69,12 @@
     "editor.rulers": [80]
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

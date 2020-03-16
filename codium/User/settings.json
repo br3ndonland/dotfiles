@@ -58,6 +58,8 @@
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "eslint.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "grunt.autoDetect": "off",
+  "gulp.autoDetect": "off",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [80]

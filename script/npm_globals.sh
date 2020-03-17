@@ -10,8 +10,7 @@ npm_install_globals() {
       # Install npm packages listed in npm-globals.txt
       package_dir="$(npm config get prefix)/lib"
       packages=$(npm ls -g --parseable --depth=0)
-      packages=${packages//$package_dir/}
-      packages=${packages//\/node_modules\//}
+      packages=${packages//$package_dir\/node_modules\//}
       while read -r p; do
         installed=$(echo "$packages" | grep -ce "^$p\$")
         if [ "$installed" == "0" ]; then

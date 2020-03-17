@@ -1,3 +1,4 @@
+@11ty/eleventy
 @gridsome/cli
 @vue/cli
 json-server

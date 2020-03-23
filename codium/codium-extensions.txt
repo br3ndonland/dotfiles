@@ -7,5 +7,5 @@ ms-vscode.vscode-typescript-tslint-plugin
 octref.vetur
 sdras.vue-vscode-snippets
 timonwong.shellcheck
-WallabyJs.quokka-vscode
+wallabyjs.quokka-vscode
 yzhang.markdown-all-in-one

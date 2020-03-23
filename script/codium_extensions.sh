@@ -4,6 +4,10 @@
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
+  if ! command -v "$EDITOR" >/dev/null; then
+    echo "-> Error: $EDITOR command not in PATH." >&2
+    return 1
+  fi
   echo "Installing extensions for $EDITOR"
   if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
     cat ~/.dotfiles/codium/codium-extensions.txt \
@@ -22,10 +26,6 @@ install_codium_extensions() {
     fi
   done <$EXTENSIONS
 }
-if ! command -v "$EDITOR" >/dev/null; then
-  echo "Please install the $EDITOR command in PATH." >&2
-  exit 1
-fi
 if [ -z "$1" ]; then
   echo "No editor name was given for the codium_extensions.sh script. "
   echo "Please specify ≥1 editor [code, code-insiders, codium]."
@@ -33,5 +33,9 @@ if [ -z "$1" ]; then
 fi
 for i in "$@"; do
   EDITOR=$i
-  install_codium_extensions
+  if install_codium_extensions; then
+    echo "-> install_codium_extensions() ran successfully for $i."
+  else
+    echo "-> Error: install_codium_extensions() didn't run successfully for $i."
+  fi
 done

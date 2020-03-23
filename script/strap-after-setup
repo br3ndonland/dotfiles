@@ -8,8 +8,11 @@
 echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/symlink.sh
 ~/.dotfiles/script/npm_globals.sh
-~/.dotfiles/script/codium_extensions.sh codium code-insiders
 ~/.dotfiles/script/macos.sh
+
+echo "-> Must install VSCodium CLI before running codium_extensions.sh."
+echo "Open the app, then in the command palette, type 'shell command'."
+# ~/.dotfiles/script/codium_extensions.sh codium code-insiders
 
 # Install Poetry: https://python-poetry.org/docs/
 echo "-> Installing Poetry for Python packaging and dependency management"

@@ -33,6 +33,24 @@ if [ -z "$1" ]; then
 fi
 for i in "$@"; do
   EDITOR=$i
+  # Add editor command to PATH
+  case $i in
+  code)
+    APP="Visual\ Studio\ Code"
+    ;;
+  code-insiders)
+    APP="Visual\ Studio\ Code\ -\ Insiders"
+    ;;
+  codium)
+    APP="VSCodium"
+    ;;
+  esac
+  # TODO: Figure out how to use CLI without restarting terminal to install
+  # extensions via Strap. Currently, a terminal restart is needed before the CLI
+  # can be used. https://code.visualstudio.com/docs/setup/mac
+  # export PATH="$PATH:/Applications/$APP.app/Contents/Resources/app/bin"
+  echo $APP
+  # Install extensions
   if install_codium_extensions; then
     echo "-> install_codium_extensions() ran successfully for $i."
   else

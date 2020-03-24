@@ -266,28 +266,42 @@ GPG is an implementation of OpenPGP.
 
 #### Keybase PGP
 
+##### Background
+
 - **Keybase solves the key identity problem.**
   - Even if you have someone's public PGP key, you can't verify it actually came from them unless you exchange it in person.
   - Keybase provides a unified identity for verification of PGP keys. Each device gets its own private key, and they share identity.
   - It was previously challenging to move PGP keys among devices, but now it can be accomplished simply by signing in to Keybase.
-- Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
-- Generate a new PGP key with `keybase pgp gen`. If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
-- List keys with `keybase pgp list`.
-- View a public key with `keybase pgp export`. If you have multiple keys, specify the key with `keybase pgp export -q <key_id>`.
-- Export Keybase PGP key for use with GPG:
-
-  ```sh
-  # Public key
-  keybase pgp export -q 16digit_PGPkeyid | gpg --import
-  # Private key
-  keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
-  ```
-
 - [Following](https://keybase.io/docs/server_security/following) someone is a way of verifying their cryptographic identity, not a way of subscribing to updates from the person like social media. I think calling this "following" is confusing. It's really more like verifying.
 - Keybase uses the [NaCl](https://nacl.cr.yp.to/) (salt) library for encryption, which turned out to be a great choice. It's been stable and has avoided vulnerabilities. They also used Go to build many of the features.
 - The Keybase database is represented as a merkle tree. See [Keybase docs: server security](https://keybase.io/docs/server_security) and [Wikipedia](http://en.wikipedia.org/wiki/Merkle_tree).
 - Keybase doesn't directly run on blockchain, but they do [push the Keybase merkle root to the Bitcoin blockchain](https://keybase.io/docs/server_security/merkle_root_in_bitcoin_blockchain) for verification.
 - The [Software Engineering Daily podcast episode with Max Krohn from 2017-10-24](https://softwareengineeringdaily.com/2017/10/24/keybase-with-max-krohn/) has more helpful explanation.
+
+##### Info
+
+- To see available commands, run `keybase help pgp` or see the [command-line docs](https://keybase.io/docs/command_line).
+- Manage GPG/PGP keys in Keybase from the command line with `keybase pgp`.
+- List keys with `keybase pgp list`.
+- Generate a new PGP key with `keybase pgp gen`.
+
+  - If you already have a key, add the `--multi` flag, like `keybase pgp gen --multi`.
+  - You will be prompted with several options. I set a password on my key to keep it secure. Storing the private key on the keybase.io servers is a contentious option, because it hypothetically [could put the key at risk](https://github.com/keybase/keybase-issues/issues/160). However, I agree with [this comment](https://github.com/keybase/keybase-issues/issues/160#issuecomment-518472677): if you don't trust Keybase, don't use Keybase. From what I understand, if you select `Push an encrypted copy of your new secret key to the Keybase.io server? [Y/n] Y` during `keybase pgp gen`, it will have the same ultimate effect as `keybase pgp push-private`. Here are the important options for key management:
+
+    ```sh
+    # Generate a PGP key
+    keybase pgp gen
+    # Sync PGP key with Keybase using Keybase servers
+    keybase pgp push-private 16digit_PGPkeyid
+    # Export PGP key from Keybase to GPG using Keybase servers
+    keybase pgp pull-private 16digit_PGPkeyid
+    # Manual export of public key from Keybase to GPG
+    keybase pgp export -q 16digit_PGPkeyid | gpg --import
+    # Manual export of private key
+    keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
+    ```
+
+  - When the key is generated, Keybase will automatically export the key to the GPG keyring.
 
 #### Keybase chat
 

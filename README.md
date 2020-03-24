@@ -295,9 +295,11 @@ GPG is an implementation of OpenPGP.
     keybase pgp push-private 16digit_PGPkeyid
     # Export PGP key from Keybase to GPG using Keybase servers
     keybase pgp pull-private 16digit_PGPkeyid
+    # Manual export of public key from Keybase to GitHub
+    keybase pgp export -q key_id | pbcopy  # then go to GitHub settings and paste
     # Manual export of public key from Keybase to GPG
     keybase pgp export -q 16digit_PGPkeyid | gpg --import
-    # Manual export of private key
+    # Manual export of private key to GPG
     keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
     ```
 

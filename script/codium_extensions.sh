@@ -5,10 +5,10 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {
   if ! command -v "$EDITOR" >/dev/null; then
-    echo "-> Error: $EDITOR command not in PATH." >&2
+    printf "Error: %s command not in PATH.\n" "$EDITOR" >&2
     return 1
   fi
-  echo "Installing extensions for $EDITOR"
+  printf "Installing extensions for %s\n" "$EDITOR"
   if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
     cat ~/.dotfiles/codium/codium-extensions.txt \
       ~/.dotfiles/codium/code-extensions.txt >~/.dotfiles/codium/all.txt
@@ -19,16 +19,16 @@ install_codium_extensions() {
   while read -r EXTENSION; do
     INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")
     if [ "$INSTALLED" = "0" ]; then
-      echo "Installing $EXTENSION."
+      printf "Installing %s.\n" "$EXTENSION"
       $EDITOR --install-extension "$EXTENSION"
     else
-      echo "$EXTENSION already installed."
+      printf "%s already installed.\n" "$EXTENSION"
     fi
   done <$EXTENSIONS
 }
 if [ -z "$1" ]; then
-  echo "No editor name was given for the codium_extensions.sh script. "
-  echo "Please specify ≥1 editor [code, code-insiders, codium]."
+  printf "Error: No editor was given for the codium_extensions.sh script.\n"
+  printf "Please specify ≥1 editor [code, code-insiders, codium].\n"
   exit 1
 fi
 for i in "$@"; do
@@ -49,11 +49,11 @@ for i in "$@"; do
   # extensions via Strap. Currently, a terminal restart is needed before the CLI
   # can be used. https://code.visualstudio.com/docs/setup/mac
   # export PATH="$PATH:/Applications/$APP.app/Contents/Resources/app/bin"
-  echo $APP
+  printf "%s\n" $APP
   # Install extensions
   if install_codium_extensions; then
-    echo "-> install_codium_extensions() ran successfully for $i."
+    printf "install_codium_extensions() successful for %s.\n" "$i"
   else
-    echo "-> Error: install_codium_extensions() didn't run successfully for $i."
+    printf "Error: install_codium_extensions() unsuccessful for %s.\n" "$i"
   fi
 done

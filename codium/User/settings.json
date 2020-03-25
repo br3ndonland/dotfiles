@@ -1,6 +1,19 @@
 {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
+  "cSpell.enableFiletypes": ["!javascript", "!json", "!jsonc", "!plaintext"],
+  "cSpell.userWords": [
+    "amplicon",
+    "ampliconseq",
+    "basespace",
+    "illumina",
+    "intellia",
+    "intelliatx",
+    "lims",
+    "sharepoint",
+    "smartsheet",
+    "webhook"
+  ],
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.cursorBlinking": "solid",

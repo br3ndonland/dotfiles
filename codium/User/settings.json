@@ -18,7 +18,7 @@
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.cursorBlinking": "solid",
   "editor.insertSpaces": true,
-  "editor.fontFamily": "'Dank Mono', Inconsolata, Menlo, monospace",
+  "editor.fontFamily": "'Dank Mono', Hasklig, Inconsolata, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
   "editor.formatOnSave": true,

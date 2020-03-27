@@ -47,8 +47,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
   Clicking -bool true
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent \
-  "Apple Bitpool Min (editable)" -int 40
+# TODO: I was having difficulty connecting to AirPods after changing this
+# defaults write com.apple.BluetoothAudioAgent \
+#   "Apple Bitpool Min (editable)" -int 40
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "America/New_York" >/dev/null

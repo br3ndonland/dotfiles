@@ -113,7 +113,9 @@ See the _script/_ directory for the scripts in this repo.
 
 ## Shell
 
-- I use Zsh as my shell, which functions like Bash but offers more customization. See the [Wes Bos Command Line Power User course](https://commandlinepoweruser.com/) for an introduction to Zsh. There is a version of Zsh included with macOS, but it may be out of date, so I install with Homebrew.
+- I use Zsh as my shell, which functions like Bash but offers more customization.
+- I install with Homebrew to maintain consistent versions across multiple machines. However, note that [Zsh is now the default shell for new macOS users starting with macOS Catalina](https://support.apple.com/en-us/HT208050).
+- See the [Wes Bos Command Line Power User course](https://commandlinepoweruser.com/) for an introduction to Zsh.
 - I use the [Pure prompt](https://github.com/sindresorhus/pure) with Zsh.
 - For my terminal application, I use [Kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator.
 

@@ -15,6 +15,7 @@ l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
 lure = pull --rebase
 p = push
+pt = push --tags
 pso = push --set-upstream origin
 ra = remote add
 rv = remote -v

@@ -18,6 +18,8 @@ p = push
 pt = push --tags
 pso = push --set-upstream origin
 ra = remote add
+rei = rebase -i
+reia = rebase -i --autosquash
 rv = remote -v
 sdiff = !git diff && git submodule foreach 'git diff'
 spush = push --recurse-submodules=on-demand

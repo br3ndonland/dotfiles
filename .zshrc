@@ -2,7 +2,6 @@
 ### ------------------------------- Exports ------------------------------- ###
 export EDITOR="codium"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###

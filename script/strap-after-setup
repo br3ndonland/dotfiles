@@ -20,6 +20,9 @@ curl -sSL \
   https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |
   python
 
+# Create directory for Zsh shell functions
+mkdir ~/.zfunc
+
 # Set shell
 echo "-> Changing shell to Zsh. Password entry required, enabled with --debug."
 if [ "$SHELL" != "/bin/zsh" ]; then

@@ -3,7 +3,6 @@
 @vue/cli
 json-server
 npm-check
-parcel-bundler
 prettier
 pure-prompt
 trash-cli

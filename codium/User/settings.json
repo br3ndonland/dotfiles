@@ -9,6 +9,7 @@
     "brendon",
     "cors",
     "dois",
+    "gitmodules",
     "illumina",
     "intellia",
     "intelliatx",
@@ -17,7 +18,10 @@
     "pdfs",
     "sharepoint",
     "smartsheet",
+    "submodule",
+    "submodules",
     "todos",
+    "virtualenv",
     "webhook",
     "zotero"
   ],

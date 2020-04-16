@@ -82,7 +82,7 @@
   "update.mode": "manual",
   "update.showReleaseNotes": false,
   "window.restoreWindows": "all",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.enableExperiments": false,
   "workbench.panel.defaultLocation": "right",

@@ -79,7 +79,7 @@
                     "simple_modifications": []
                 },
                 {
-                    "disable_built_in_keyboard_if_exists": false,
+                    "disable_built_in_keyboard_if_exists": true,
                     "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,

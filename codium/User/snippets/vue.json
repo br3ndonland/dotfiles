@@ -21,22 +21,23 @@
       "\t\tprop2: {",
       "\t\t\ttype: String,",
       "\t\t\trequired: true,",
-      "\t\t\tdefault: `Hello, World!`",
-      "\t\t}",
+      "\t\t\tdefault: `Hello, World!`,",
+      "\t\t},",
       "\t},",
       "\tdata() {",
       "\t\treturn {",
       "\t\t\tkey1: value1,",
-      "\t\t\tkey2: value2",
+      "\t\t\tkey2: value2,",
       "\t\t}",
       "\t},",
       "\tcomputed: {},",
       "\twatch: {},",
       "\tcreated() {},",
-      "\tmethods: {}",
+      "\tmethods: {},",
       "}",
       "</script>",
-      "<style scoped></style>"
+      "<style scoped></style>",
+      ""
     ],
     "description": "Vue component layout based on eslint-plugin-vue"
   }

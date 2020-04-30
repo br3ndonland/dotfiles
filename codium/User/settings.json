@@ -28,6 +28,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.cursorBlinking": "phase",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', Hasklig, Inconsolata, Menlo, monospace",
   "editor.fontLigatures": true,
@@ -91,28 +92,8 @@
   "workbench.startupEditor": "none",
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
   "eslint.enable": false,
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80]
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80]
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80]
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80]
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",
   "markdown.extension.print.absoluteImgPath": false,
@@ -147,12 +128,5 @@
   "vetur.format.defaultFormatter.js": "prettier",
   "vetur.format.defaultFormatter.ts": "prettier",
   "vetur.format.options.tabSize": 2,
-  "vetur.format.options.useTabs": false,
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80]
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "vetur.format.options.useTabs": false
 }

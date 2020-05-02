@@ -1,5 +1,3 @@
-@11ty/eleventy
-@gridsome/cli
 @vue/cli
 gitmoji-cli
 json-server

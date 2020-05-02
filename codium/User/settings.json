@@ -32,7 +32,7 @@
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', Hasklig, Inconsolata, Menlo, monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
@@ -84,7 +84,7 @@
   "update.mode": "manual",
   "update.showReleaseNotes": false,
   "window.restoreWindows": "all",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.enableExperiments": false,
   "workbench.panel.defaultLocation": "right",

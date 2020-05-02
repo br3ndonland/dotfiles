@@ -109,6 +109,8 @@
   "python.disableInstallationCheck": true,
   "python.formatting.blackPath": "/usr/local/bin/black",
   "python.formatting.provider": "black",
+  "python.jediEnabled": true,
+  "python.languageServer": "Jedi",
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "/usr/local/bin/flake8",

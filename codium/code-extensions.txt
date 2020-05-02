@@ -6,3 +6,4 @@ ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
+VisualStudioExptTeam.vscodeintellicode

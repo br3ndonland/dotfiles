@@ -1,9 +1,7 @@
-dbaeumer.vscode-eslint
 eamodio.gitlens
 esbenp.prettier-vscode
 foxundermoon.shell-format
 ms-python.python
-ms-vscode.vscode-typescript-tslint-plugin
 octref.vetur
 sdras.vue-vscode-snippets
 streetsidesoftware.code-spell-checker

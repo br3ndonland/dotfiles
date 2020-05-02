@@ -1,5 +1,7 @@
-Imperative commit title limited to 50 characters
 
+# Imperative commit title limited to 50 characters
+#
 # - More detailed commit message body
 # - List of key points and updates that the commit provides
 # - Lines need to be manually wrapped at 72 characters
+#

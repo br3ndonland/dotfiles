@@ -41,6 +41,7 @@
     "strings": false
   },
   "editor.renderWhitespace": "none",
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
   "emmet.triggerExpansionOnTab": true,
@@ -130,5 +131,6 @@
   "vetur.format.defaultFormatter.js": "prettier",
   "vetur.format.defaultFormatter.ts": "prettier",
   "vetur.format.options.tabSize": 2,
-  "vetur.format.options.useTabs": false
+  "vetur.format.options.useTabs": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }

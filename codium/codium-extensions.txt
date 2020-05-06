@@ -6,5 +6,4 @@ octref.vetur
 sdras.vue-vscode-snippets
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck
-wallabyjs.quokka-vscode
 yzhang.markdown-all-in-one

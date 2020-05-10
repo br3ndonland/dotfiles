@@ -5,11 +5,6 @@ export PATH="/usr/local/sbin:$PATH"
 export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 ### ------------------------------- Aliases ------------------------------- ###
 alias dc="docker-compose"
-alias gpa="git push; if git remote | grep "keybase"; then git push keybase; fi;\
-if git remote | grep "srht"; then git push srht; fi;"
-alias gpt="git push --tags; if git remote | grep "keybase";\
-then git push --tags keybase; fi; if git remote | grep "srht";\
-then git push --tags srht; fi;"
 alias python="/usr/local/bin/python3"
 alias ssh-add=/usr/bin/ssh-add
 ### ---------- Pure Prompt: https://github.com/sindresorhus/pure ---------- ###

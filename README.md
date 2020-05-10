@@ -259,6 +259,12 @@ GPG is an implementation of OpenPGP.
 
 ### Keybase
 
+**UPDATE: Keybase was acquired by Zoom, and its future is uncertain.**
+
+- [Zoom Blog 20200507: Zoom acquires Keybase and announces goal of developing the most broadly used enterprise end-to-end encryption offering](https://blog.zoom.us/wordpress/2020/05/07/zoom-acquires-keybase-and-announces-goal-of-developing-the-most-broadly-used-enterprise-end-to-end-encryption-offering/)
+- [Keybase Blog 20200507: Keybase joins Zoom](https://keybase.io/blog/keybase-joins-zoom)
+- [The Verge 20200507: Zoom buys the identity service Keybase as part of 90-day security push](https://www.theverge.com/2020/5/7/21250418/zoom-keybase-acquisition-encryption-security-messages-services)
+
 #### Useful features
 
 - **PGP key and identity management** (see [below](#keybase-pgp))

@@ -365,14 +365,14 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 - [Generate an SSH key and add it to the SSH agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/):
 
   ```sh
-  ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa_$USER
+  ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa_"$(whoami)"
   eval "$(ssh-agent -s)"
-  ssh-add -K ~/.ssh/id_rsa_$USER
+  ssh-add -K ~/.ssh/id_rsa_"$(whoami)"
   ```
 
 - [Connect to GitHub with SSH](https://help.github.com/articles/connecting-to-github-with-ssh/). This allows your computer to send information to GitHub over an SSH connection, so you can push changes without having to provide your username and password every time. These steps will allow your computer to connect to GitHub with SSH, and should only need to be performed once for each machine.
   - [Add SSH key to GitHub account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/):
-    - `pbcopy < ~/.ssh/id_rsa_$USER.pub`
+    - `pbcopy < ~/.ssh/id_rsa_"$(whoami)".pub`
     - Go to GitHub and paste the key.
   - [Check SSH connection](https://help.github.com/articles/testing-your-ssh-connection/):
     - `ssh -T git@github.com`

@@ -27,6 +27,7 @@
   ],
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoClosingQuotes": "beforeWhitespace",
+  "editor.autoIndent": "advanced",
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.insertSpaces": true,

@@ -399,7 +399,6 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
   - Firefox account: sync preferences and add-ons
   - 1Password extension for desktop app
-  - Bear web clipper
   - [DuckDuckGo Privacy Essentials](https://github.com/duckduckgo/duckduckgo-privacy-extension)
   - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
   - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))

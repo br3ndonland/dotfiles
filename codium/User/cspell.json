@@ -1,4 +1,22 @@
 {
+  "languageSettings": [
+    {
+      "languageId": "python",
+      "includeRegExpList": ["/#.*/", "/('''|\"\"\")[^\\1]+?\\1/g"]
+    },
+    {
+      "languageId": "javascript",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "json",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "typescript",
+      "includeRegExpList": ["CStyleComment"]
+    }
+  ],
   "userWords": [
     "amplicon",
     "ampliconseq",

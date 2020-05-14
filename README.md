@@ -169,7 +169,7 @@ I mostly use [Dank Mono](https://dank.sh/), but also like [Fira Code](https://gi
 
   - I do still retain a global _.eslintrc_ in my dotfiles repo, because it is a useful template for sensible defaults.
 
-- In the past, I also used [JavaScript Standard Style](https://standardjs.com/) (aka StandardJS). Standard Style has also [reportedly](https://changelog.com/podcast/359) been favored by Brendan Eich (creator of JavaScript) and Sir Tim Berners-Lee (creator of the World Wide Web). Prettier provides a similar code style, but with more features, so I use Pretter instead.
+- In the past, I also used [JavaScript Standard Style](https://standardjs.com/) (aka StandardJS). Standard Style has also [reportedly](https://changelog.com/podcast/359) been favored by Brendan Eich (creator of JavaScript) and Sir Tim Berners-Lee (creator of the World Wide Web). Prettier provides a similar code style, but with more features, so I use Prettier instead.
 
 ### Python
 

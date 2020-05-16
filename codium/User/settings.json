@@ -107,6 +107,7 @@
     "editor.rulers": [80],
     "files.eol": "\n"
   },
+  "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",

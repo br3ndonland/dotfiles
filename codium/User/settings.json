@@ -1,11 +1,6 @@
 {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
-  "cSpell.diagnosticLevel": "Hint",
-  "cSpell.enableFiletypes": ["!jsonc"],
-  "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],
-  "cSpell.spellCheckDelayMs": 10000,
-  "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.autoIndent": "advanced",
   "editor.cursorBlinking": "phase",
@@ -73,6 +68,10 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.enableFiletypes": ["!jsonc"],
+  "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],
+  "cSpell.spellCheckDelayMs": 10000,
   "eslint.enable": false,
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",

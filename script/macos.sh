@@ -199,14 +199,14 @@ defaults write com.apple.dock show-recents -bool false
 # 11: Launchpad
 # 12: Notification Center
 # 13: Lock screen
-# Top right screen corner → Desktop
-defaults write com.apple.dock wvous-tr-corner -int 4
+# Top right screen corner → Lock screen
+defaults write com.apple.dock wvous-tr-corner -int 13
 defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom right screen corner → Mission Control
 defaults write com.apple.dock wvous-br-corner -int 2
 defaults write com.apple.dock wvous-br-modifier -int 0
-# Bottom left screen corner → Lock screen
-defaults write com.apple.dock wvous-bl-corner -int 13
+# Bottom left screen corner
+defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 ###############################################################################

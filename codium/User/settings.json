@@ -69,6 +69,8 @@
   "gitlens.views.repositories.avatars": false,
   "gitlens.views.search.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
+  "timeline.excludeSources": [],
+  "timeline.pageSize": 10,
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
   "aws.profile": "profile:default",
   "aws.telemetry": false,

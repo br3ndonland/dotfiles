@@ -70,6 +70,8 @@
   "gitlens.views.search.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
+  "aws.profile": "profile:default",
+  "aws.telemetry": false,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],

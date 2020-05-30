@@ -1,3 +1,4 @@
+AmazonWebServices.aws-toolkit-vscode
 be5invis.toml
 denoland.vscode-deno
 eamodio.gitlens

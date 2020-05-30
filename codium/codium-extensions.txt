@@ -1,4 +1,5 @@
 be5invis.toml
+denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
 foxundermoon.shell-format

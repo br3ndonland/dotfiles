@@ -95,6 +95,7 @@
     "editor.tabSize": 4
   },
   "python.disableInstallationCheck": true,
+  "python.experiments.enabled": false,
   "python.formatting.blackPath": "/usr/local/bin/black",
   "python.formatting.provider": "black",
   "python.jediEnabled": true,

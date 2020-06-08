@@ -1,6 +1,7 @@
 {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
   "breadcrumbs.enabled": true,
+  "debug.toolBarLocation": "docked",
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.autoIndent": "advanced",
   "editor.cursorBlinking": "phase",
@@ -63,6 +64,7 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.defaultGravatarsStyle": "identicon",
   "gitlens.hovers.avatars": false,
+  "gitlens.menus": false,
   "gitlens.views.compare.avatars": false,
   "gitlens.views.fileHistory.avatars": false,
   "gitlens.views.lineHistory.avatars": false,

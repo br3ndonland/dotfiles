@@ -44,6 +44,8 @@ required = true
 user = br3ndonland
 [gpg]
 program = gpg
+[pull]
+rebase = true
 [push]
 default = simple
 [sendemail]

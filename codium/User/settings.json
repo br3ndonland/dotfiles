@@ -133,6 +133,10 @@
     "editor.rulers": [80],
     "files.eol": "\n"
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [80]
+  },
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",

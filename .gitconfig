@@ -45,7 +45,7 @@ user = br3ndonland
 [gpg]
 program = gpg
 [pull]
-rebase = true
+ff = only
 [push]
 default = simple
 [sendemail]

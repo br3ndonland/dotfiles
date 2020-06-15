@@ -80,6 +80,9 @@
   "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],
   "cSpell.spellCheckDelayMs": 10000,
   "deno.unstable": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
   "eslint.enable": false,
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",

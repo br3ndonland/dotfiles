@@ -43,5 +43,9 @@ bindkey '^N' kill-buffer          # ctrl+n     delete all lines
 bindkey '^_' undo                 # ctrl+/     undo
 bindkey '^\' redo                 # ctrl+\     redo
 ### ---------------------------- Integrations ----------------------------- ###
-fpath+=~/.zfunc:/usr/local/share/zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

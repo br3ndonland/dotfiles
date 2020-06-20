@@ -46,6 +46,10 @@ prompt pure
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   autoload -Uz compinit
-  compinit
+  if [ "$(whoami)" = "brendon.smith" ]; then
+    compinit -i # Ignore insecure directories (perms issues for non-admin user)
+  else
+    compinit
+  fi
 fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

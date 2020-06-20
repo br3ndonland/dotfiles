@@ -7,10 +7,6 @@ export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
 alias dc="docker-compose"
 alias python="/usr/local/bin/python3"
 alias ssh-add=/usr/bin/ssh-add
-### ---------- Pure Prompt: https://github.com/sindresorhus/pure ---------- ###
-autoload -U promptinit
-promptinit
-prompt pure
 ### ------ History file configuration - based on ohmyzsh history.zsh ------ ###
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
@@ -42,6 +38,10 @@ bindkey '^[[3;3~' kill-word       # alt+del    delete next word
 bindkey '^N' kill-buffer          # ctrl+n     delete all lines
 bindkey '^_' undo                 # ctrl+/     undo
 bindkey '^\' redo                 # ctrl+\     redo
+### ---------- Pure Prompt: https://github.com/sindresorhus/pure ---------- ###
+autoload -U promptinit
+promptinit
+prompt pure
 ### ---------------------------- Integrations ----------------------------- ###
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

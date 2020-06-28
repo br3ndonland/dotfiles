@@ -15,6 +15,10 @@ defaults write NSGlobalDomain AppleAccentColor -string "-1"
 defaults write NSGlobalDomain AppleHighlightColor -string \
   "0.847059 0.847059 0.862745 Graphite"
 
+# Disable font smoothing
+# TODO: not sure if this works
+defaults write NSGlobalDomain CGFontRenderingFontSmoothingDisabled -bool true
+
 # Set temperature units to Celsius
 defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 

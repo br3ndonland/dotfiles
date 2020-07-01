@@ -76,10 +76,10 @@
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
   "aws.profile": "profile:default",
   "aws.telemetry": false,
-  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],
-  "cSpell.spellCheckDelayMs": 10000,
+  "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"

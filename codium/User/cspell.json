@@ -1,4 +1,5 @@
 {
+  "ignoreRegExpList": ["/(```+)\\s?[a-z][\\s\\S]+?\\1/g"],
   "languageSettings": [
     {
       "languageId": "python",

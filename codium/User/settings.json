@@ -62,6 +62,8 @@
   "gitlens.codeLens.enabled": false,
   "gitlens.blame.avatars": false,
   "gitlens.currentLine.enabled": false,
+  "gitlens.defaultDateStyle": "absolute",
+  "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
   "gitlens.defaultGravatarsStyle": "identicon",
   "gitlens.hovers.avatars": false,
   "gitlens.menus": false,

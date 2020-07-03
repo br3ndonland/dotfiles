@@ -10,11 +10,12 @@ install_codium_extensions() {
   fi
   printf "Installing extensions for %s\n" "$EDITOR"
   if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
-    cat ~/.dotfiles/codium/codium-extensions.txt \
-      ~/.dotfiles/codium/code-extensions.txt >~/.dotfiles/codium/all.txt
-    EXTENSIONS=~/.dotfiles/codium/all.txt
+    cat ~/.dotfiles/codium/extensions/marketplace-open-vsx.txt \
+      ~/.dotfiles/codium/extensions/marketplace-proprietary.txt \
+      >~/.dotfiles/codium/extensions/marketplace-all.txt
+    EXTENSIONS=~/.dotfiles/codium/extensions/marketplace-all.txt
   else
-    EXTENSIONS=~/.dotfiles/codium/codium-extensions.txt
+    EXTENSIONS=~/.dotfiles/codium/extensions/marketplace-open-vsx.txt
   fi
   while read -r EXTENSION; do
     INSTALLED=$($EDITOR --list-extensions | grep -ce "^$EXTENSION\$")

@@ -1,13 +1,10 @@
-AmazonWebServices.aws-toolkit-vscode
-be5invis.toml
+bungcip.better-toml
 denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
-foxundermoon.shell-format
 ms-azuretools.vscode-docker
 ms-python.python
 octref.vetur
-sdras.vue-vscode-snippets
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck
 yzhang.markdown-all-in-one

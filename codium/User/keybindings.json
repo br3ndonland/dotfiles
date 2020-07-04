@@ -10,7 +10,8 @@
     "key": "ctrl+alt+i",
     "command": "editor.action.insertSnippet",
     "args": {
-      "snippet": "![$TM_SELECTED_TEXT](img/$0)"
+      "langId": "markdown",
+      "name": "Markdown HTML img"
     },
     "when": "editorTextFocus && editorLangId == 'markdown'"
   },

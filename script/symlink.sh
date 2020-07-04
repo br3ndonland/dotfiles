@@ -35,6 +35,10 @@ symlink_dotfiles() {
         ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
       ln -fs ~/.dotfiles/codium/User/snippets/vue.json \
         ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
+      ln -fs ~/.dotfiles/codium/User/snippets/markdown.json \
+        ~/Library/Application\ Support/VSCodium/User/snippets/markdown.json
+      ln -fs ~/.dotfiles/codium/User/snippets/markdown.json \
+        ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/markdown.json
       # Top-level dotfiles
       ln -fs ~/.dotfiles/.gitconfig ~/.gitconfig
       ln -fs ~/.dotfiles/.gitmessage ~/.gitmessage

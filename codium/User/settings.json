@@ -18,6 +18,7 @@
   },
   "editor.renderWhitespace": "none",
   "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
   "emmet.triggerExpansionOnTab": true,

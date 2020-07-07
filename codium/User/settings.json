@@ -82,7 +82,9 @@
   "timeline.excludeSources": [],
   "timeline.pageSize": 10,
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
+  "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
+  "aws.samcli.location": "/usr/local/bin/sam",
   "aws.telemetry": false,
   "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],

@@ -28,6 +28,9 @@
   "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
+  "files.associations": {
+    ".env*": "dotenv"
+  },
   "files.autoSave": "onWindowChange",
   "files.exclude": {
     "**/._*": true
@@ -93,6 +96,9 @@
   "deno.unstable": false,
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "eslint.enable": false,
   "grunt.autoDetect": "off",

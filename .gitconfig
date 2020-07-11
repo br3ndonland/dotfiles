@@ -36,7 +36,9 @@ template = ~/.gitmessage
 [core]
 editor = code --wait
 [credential]
-helper = osxkeychain
+helper = manager-core
+[credential "https://dev.azure.com"]
+useHttpPath = true
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f

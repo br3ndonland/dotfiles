@@ -246,6 +246,7 @@ GPG is an implementation of OpenPGP.
       chmod 700 ~/.gnupg
       chmod 600 ~/.gnupg/gpg.conf
       ```
+    - Note that, with `no-tty`, you will get an error if trying to run `gpg` from the command line.
 
 - Trust GPG keys using the GPG TTY interface:
   - If you see `gpg: WARNING: This key is not certified with a trusted signature!` when examining signed Git commits with `git log --show-signature`, you may want to trust the keys.
@@ -325,6 +326,22 @@ GPG is an implementation of OpenPGP.
 - Keybase has not leaked passwords. [Slack has been vulnerable to password leaks and other attacks](https://slackhq.com/march-2015-security-incident-and-the-launch-of-two-factor-authentication), and it took Slack four years before they notified users. [The Keybase CEO's Slack credentials were compromised](https://keybase.io/blog/slack-incident).
 - Keybase does not use third-party trackers. Slack is polluted with trackers. Here's a screenshot of the [Brave browser](https://brave.com/) blocking Slack trackers during a typical session in the Slack workspace used in my previous developer job:
   ![Brave browser blocking Slack trackers](img/brave-slack-trackers.png)
+
+#### Keybase crypto
+
+Keybase provides useful [cryptographic tools](https://keybase.io/blog/crypto) for PGP encrypting and decrypting files. One common use case is storing credentials in encrypted files. Here's how to improve security when [configuring Docker for use with GitHub Packages](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages):
+
+```sh
+# generate PAT in GitHub and copy to clipboard
+# https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+
+# transfer PAT from clipboard to PGP encrypted file
+pbpaste | keybase pgp encrypt -o pat-github-packages.asc -s
+
+# decrypt and log in: https://docs.docker.com/engine/reference/commandline/login/
+keybase pgp decrypt -i pat-github-packages.asc | docker login \
+  https://docker.pkg.github.com -u YOUR_GITHUB_USERNAME --password-stdin
+```
 
 #### Keybase Git
 

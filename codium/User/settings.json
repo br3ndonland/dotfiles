@@ -95,7 +95,7 @@
   "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"

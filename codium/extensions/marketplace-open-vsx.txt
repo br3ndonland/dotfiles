@@ -3,7 +3,6 @@ denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
 mikestead.dotenv
-ms-azuretools.vscode-docker
 ms-python.python
 octref.vetur
 sourcery.sourcery

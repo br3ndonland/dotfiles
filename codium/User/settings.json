@@ -82,7 +82,7 @@
   "gitlens.views.search.avatars": false,
   "gitlens.views.search.location": "scm",
   "merge-conflict.autoNavigateNextConflict.enabled": true,
-  "timeline.excludeSources": [],
+  "timeline.excludeSources": ["git-history"],
   "timeline.pageSize": 10,
   // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
   "aws.onDefaultRegionMissing": "add",

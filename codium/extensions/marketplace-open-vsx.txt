@@ -5,6 +5,7 @@ esbenp.prettier-vscode
 mikestead.dotenv
 ms-python.python
 octref.vetur
+redhat.vscode-yaml
 sourcery.sourcery
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck

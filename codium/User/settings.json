@@ -139,6 +139,7 @@
   "python.linting.flake8Path": "/usr/local/bin/flake8",
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "/usr/local/bin/mypy",
+  "python.linting.mypyArgs": ["--show-error-codes", "--warn-unused-ignores"],
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "/usr/local/bin/python3",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,

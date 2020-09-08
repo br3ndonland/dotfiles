@@ -142,6 +142,7 @@
   "python.linting.mypyArgs": ["--ignore-missing-imports", "--show-error-codes"],
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "shellcheck.executablePath": "/usr/local/bin/shellcheck",

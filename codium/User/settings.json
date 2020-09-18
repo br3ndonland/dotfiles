@@ -95,7 +95,7 @@
   "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,
   "[dockerfile]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.formatOnSave": false
   },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -150,6 +150,7 @@
     "editor.rulers": [80],
     "files.eol": "\n"
   },
+  "shellformat.effectLanguages": ["shellscript"],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

@@ -1,9 +1,9 @@
 #!/bin/zsh
-### ------------------------------- Exports ------------------------------- ###
+### ------------------------------- exports ------------------------------- ###
 export EDITOR="code --wait"
-export PATH="/usr/local/sbin:$PATH"
-export SSH_KEY_PATH="~/.ssh/id_rsa_${USER}"
-### ------------------------------- Aliases ------------------------------- ###
+export PATH="/usr/local/sbin:$HOME/.poetry/bin:$PATH"
+export SSH_KEY_PATH="$HOME/.ssh/id_rsa_${USER}"
+### ------------------------------- aliases ------------------------------- ###
 alias dc="docker-compose"
 alias python="/usr/local/bin/python3"
 alias ssh-add=/usr/bin/ssh-add

@@ -16,9 +16,9 @@ echo "Open the app, then in the command palette, type 'shell command'."
 
 # Install Poetry: https://python-poetry.org/docs/
 echo "-> Installing Poetry for Python packaging and dependency management"
-curl -sSL \
+curl -fsSL \
   https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |
-  python
+  python -
 
 # Create directory for Zsh shell functions
 mkdir ~/.zfunc

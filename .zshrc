@@ -6,8 +6,7 @@ export SSH_KEY_PATH="$HOME/.ssh/id_rsa_${USER}"
 ### ------------------------------- aliases ------------------------------- ###
 alias dc="docker-compose"
 alias python="/usr/local/bin/python3"
-alias ssh-add=/usr/bin/ssh-add
-### ------ History file configuration - based on ohmyzsh history.zsh ------ ###
+### ------ history file configuration - based on ohmyzsh history.zsh ------ ###
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
@@ -18,7 +17,7 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history before running
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
-### ---- Key bindings - based on https://github.com/romkatv/zsh4humans ---- ###
+### ---- key bindings - based on https://github.com/romkatv/zsh4humans ---- ###
 # enable emacs keymap
 bindkey -e
 # TTY sends different key codes. Translate them to regular.
@@ -38,18 +37,21 @@ bindkey '^[[3;3~' kill-word       # alt+del    delete next word
 bindkey '^N' kill-buffer          # ctrl+n     delete all lines
 bindkey '^_' undo                 # ctrl+/     undo
 bindkey '^\' redo                 # ctrl+\     redo
-### ---------- Pure Prompt: https://github.com/sindresorhus/pure ---------- ###
+### ---------- pure prompt: https://github.com/sindresorhus/pure ---------- ###
 autoload -U promptinit
 promptinit
 prompt pure
-### ---------------------------- Integrations ----------------------------- ###
+### ----------------------------- Completions ----------------------------- ###
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions:$FPATH
   autoload -Uz compinit
   if [ "$(whoami)" = "brendon.smith" ]; then
     compinit -i # Ignore insecure directories (perms issues for non-admin user)
   else
     compinit
   fi
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C "$(brew --prefix)"/bin/terraform terraform
 fi
+### ------------------------- Syntax highlighting ------------------------- ###
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

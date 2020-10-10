@@ -130,7 +130,7 @@ See the _script/_ directory for the scripts in this repo.
 
 ## Fonts
 
-I mostly use [Dank Mono](https://dank.sh/), but also like [Fira Code](https://github.com/tonsky/FiraCode) and [Ubuntu Mono](https://design.ubuntu.com/font/).
+I mostly use [Dank Mono](https://gumroad.com/l/dank-mono), but also like [Recursive Mono](https://www.recursive.design/), [Fira Code](https://github.com/tonsky/FiraCode) and [Ubuntu Mono](https://design.ubuntu.com/font/).
 
 ## Language-specific setup
 

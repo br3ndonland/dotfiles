@@ -10,9 +10,13 @@ echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/npm_globals.sh
 [ "$(uname -s)" = "Darwin" ] && ~/.dotfiles/script/macos.sh
 
-echo "-> Must install VSCodium CLI before running codium_extensions.sh."
-echo "Open the app, then in the command palette, type 'shell command'."
-# ~/.dotfiles/script/codium_extensions.sh codium code-insiders
+echo "-> Installing VSCode extensions"
+CODE_DISTRO=${CODE_DISTRO:-"codium"}
+if [ "$(whoami)" = "codespace" ]; then
+  echo "Error: Codespaces VSCode CLI can't install extensions."
+else
+  ~/.dotfiles/script/codium_extensions.sh "$CODE_DISTRO"
+fi
 
 # Install Poetry: https://python-poetry.org/docs/
 echo "-> Installing Poetry for Python packaging and dependency management"

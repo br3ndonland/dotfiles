@@ -24,7 +24,7 @@ curl -fsSL \
 mkdir ~/.zfunc
 
 # Set shell
-echo "-> Changing shell to Zsh. Password entry required, enabled with --debug."
-if [ "$SHELL" != "/bin/zsh" ]; then
+echo "-> Changing shell to Zsh. Password entry required."
+if [ "$SHELL" != "/bin/zsh" ] && which zsh; then
   chsh -s /bin/zsh
 fi

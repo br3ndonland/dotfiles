@@ -329,18 +329,19 @@ GPG is an implementation of OpenPGP.
 
 #### Keybase crypto
 
-Keybase provides useful [cryptographic tools](https://keybase.io/blog/crypto) for PGP encrypting and decrypting files. One common use case is storing credentials in encrypted files. Here's how to improve security when [configuring Docker for use with GitHub Packages](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages):
+Keybase provides useful [cryptographic tools](https://keybase.io/blog/crypto) for PGP encrypting and decrypting files. One common use case is storing credentials in encrypted files. Here's how to improve security when [configuring Docker for use with GitHub Packages](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages), by storing the [Personal Access Token (PAT)](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) in an encrypted file:
 
 ```sh
-# generate PAT in GitHub and copy to clipboard
-# https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+# create PAT on GitHub and copy to clipboard
 
-# transfer PAT from clipboard to PGP encrypted file
-pbpaste | keybase pgp encrypt -o pat-github-packages.asc -s
+# transfer PAT from clipboard to encrypted file
+pbpaste | keybase encrypt -o pat-ghcr.asc $YOUR_USERNAME
 
-# decrypt and log in: https://docs.docker.com/engine/reference/commandline/login/
-keybase pgp decrypt -i pat-github-packages.asc | docker login \
-  https://docker.pkg.github.com -u YOUR_GITHUB_USERNAME --password-stdin
+# decrypt and log in
+keybase decrypt -i pat-ghcr.asc | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+
+# can also use keybase pgp encrypt and keybase pgp decrypt, but must export PGP key
+
 ```
 
 #### Keybase Git

@@ -123,8 +123,16 @@ See the _script/_ directory for the scripts in this repo.
 
 - I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is free of proprietary features and telemetry.
   - I sometimes still use VSCode for the [remote development features](https://code.visualstudio.com/docs/remote/remote-overview), to work on servers via SSH. I'm considering [code-server](https://github.com/cdr/code-server) or [Pony SSH](https://github.com/thingalon/pony-ssh) for use with VSCodium.
-  - I used to configure VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[codium_extensions.sh](script/codium_extensions.sh)_ along with the name of the editor, like `codium_extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm_globals.sh](script/npm_globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
-  - Microsoft is rolling out a new [settings sync feature](https://code.visualstudio.com/docs/editor/settings-sync) built directly into VSCode. It requires a Microsoft account, and syncs through Azure.
+  - I previously configured VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[codium_extensions.sh](script/codium_extensions.sh)_ along with the name of the editor, like `codium_extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm_globals.sh](script/npm_globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
+  - VSCode is developing a new [settings sync feature](https://code.visualstudio.com/docs/editor/settings-sync) built directly into VSCode. It requires a GitHub or Microsoft account. I have my own scripts in this repo to manage my VSCode settings, and don't need a separate service.
+  - I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces). So far, I don't like it because:
+    - After the beta, I will have to pay GitHub to use it.
+    - Keybindings conflict with browser keybindings. I can't open the command palette from the keyboard, because Cmd+shift+p is already in use by the browser.
+    - Changing the workbench theme doesn't seem to work. All I get is the blinding light theme. I'm blinded by the light.
+    - I don't know how I would approach [GPG](#gpg)-signing Git commits. I might be able to use [SSH agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding), but I'm not sure.
+    - I don't know if or how persistent file storage is available.
+    - I don't know how to install proprietary custom fonts (like [Dank Mono](https://gumroad.com/l/dank-mono))
+    - I don't know how to install proprietary extensions (like [Dracula Pro](https://draculatheme.com/pro))
 - For Jupyter Notebooks, I use JupyterLab. I install JupyterLab within a Python virtual environment, as recommended in the [docs](https://jupyterlab.readthedocs.io/en/stable/).
 - For R and R Markdown, I use [RStudio](https://rstudio.com/products/rstudio/).
 

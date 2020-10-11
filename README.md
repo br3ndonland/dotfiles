@@ -256,7 +256,7 @@ GPG is an implementation of OpenPGP.
   - See the [GPG docs](https://www.gnupg.org/gph/en/manual/x334.html) for more info.
 - [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
 - [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
-- **If working on a server, you can use [ssh agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/) to access your SSH and GPG keys without having to copy them.**
+- **If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.**
 
 ### Keybase
 
@@ -402,7 +402,7 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
   - [Check SSH connection](https://help.github.com/articles/testing-your-ssh-connection/):
     - `ssh -T git@github.com`
     - Verify output looks similar to output provided in the linked GitHub article, type `yes`, verify username.
-- **If working on a server, you can use [ssh agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/) to access your SSH and GPG keys without having to copy them.**
+- **If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.**
 
   ```
   Host yourserver.com

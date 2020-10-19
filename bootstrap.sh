@@ -45,10 +45,11 @@ STDIN_FILE_DESCRIPTOR="0"
 STRAP_GIT_NAME=${STRAP_GIT_NAME:-"Brendon Smith"}
 STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:-"br3ndonland@protonmail.com"}
 STRAP_GITHUB_USER=${STRAP_GITHUB_USER:-"br3ndonland"}
+STRAP_GITHUB_TOKEN=${STRAP_GITHUB_TOKEN?STRAP_GITHUB_TOKEN not set}
 
+# Prompt for sudo password and initialize (or reinitialize) sudo
 sudo --reset-timestamp
 
-# functions for turning off debug for use when handling the user password
 clear_debug() {
   set +x
 }
@@ -58,7 +59,6 @@ reset_debug() {
   fi
 }
 
-# Initialise (or reinitialise) sudo to save unhelpful prompts later.
 sudo_init() {
   if [ -z "$STRAP_INTERACTIVE" ]; then
     return

@@ -53,5 +53,8 @@ if type brew &>/dev/null; then
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C "$(brew --prefix)"/bin/terraform terraform
 fi
-### ------------------------- Syntax highlighting ------------------------- ###
+# if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+# if which pyenv-virtualenv-init >/dev/null; then
+#   eval "$(pyenv virtualenv-init -)"
+# fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

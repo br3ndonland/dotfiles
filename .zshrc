@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash
 ### ------------------------------- exports ------------------------------- ###
 export EDITOR="code --wait"
 export PATH="/usr/local/sbin:$HOME/.poetry/bin:$PATH"
@@ -9,7 +10,6 @@ alias python="/usr/local/bin/python3"
 ### ------ history file configuration - based on ohmyzsh history.zsh ------ ###
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
-SAVEHIST=10000
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first if HISTFILE > HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
@@ -32,16 +32,14 @@ bindkey '^?' backward-delete-char # bs         delete one char backward
 bindkey '^[[3~' delete-char       # delete     delete one char forward
 bindkey '^[[1;3C' forward-word    # alt+right  go forward one word
 bindkey '^[[1;3D' backward-word   # alt+left   go backward one word
-bindkey '^H' backward-kill-word   # alt+bs    delete previous word
+bindkey '^H' backward-kill-word   # alt+bs     delete previous word
 bindkey '^[[3;3~' kill-word       # alt+del    delete next word
 bindkey '^N' kill-buffer          # ctrl+n     delete all lines
-bindkey '^_' undo                 # ctrl+/     undo
-bindkey '^\' redo                 # ctrl+\     redo
 ### ---------- pure prompt: https://github.com/sindresorhus/pure ---------- ###
 autoload -U promptinit
 promptinit
 prompt pure
-### ----------------------------- Completions ----------------------------- ###
+### ------------- completions, integrations, and highlighting ------------- ###
 if type brew &>/dev/null; then
   FPATH=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions:$FPATH
   autoload -Uz compinit
@@ -57,4 +55,5 @@ fi
 # if which pyenv-virtualenv-init >/dev/null; then
 #   eval "$(pyenv virtualenv-init -)"
 # fi
+# shellcheck disable=SC1091
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

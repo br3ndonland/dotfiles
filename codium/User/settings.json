@@ -147,6 +147,7 @@
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "shellcheck.executablePath": "/usr/local/bin/shellcheck",
+  "shellcheck.customArgs": ["--shell=bash"],
   "[shellscript]": {
     "editor.rulers": [80],
     "files.eol": "\n"

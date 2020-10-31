@@ -6,8 +6,6 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 
 - [Installation](#installation)
 - [Hardware](#hardware)
-  - [Computer](#computer)
-  - [Peripherals](#peripherals)
 - [macOS](#macos)
 - [Homebrew package management](#homebrew-package-management)
 - [Shell](#shell)
@@ -45,21 +43,10 @@ See the _script/_ directory for the scripts in this repo.
 
 ## Hardware
 
-### Computer
-
-| MacBook Air mid-2013 11" |                                |
-| ------------------------ | ------------------------------ |
-| Processor                | 1.7 GHz Intel Core i7          |
-| Memory                   | 8 GB 1600 MHz DDR3             |
-| Graphics                 | Intel HD Graphics 5000 1536 MB |
-
-### Peripherals
-
+- Mac mini
 - [Microsoft Sculpt ergonomic keyboard](https://www.amazon.com/dp/B00CYX26BC)
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
-- External hard drives (Seagate Backup Plus Slim, Western Digital My Passport)
-- AmazonBasics USB 3.0 hubs
-- Plugable USB3-E1000 Gigabit Ethernet Adapter (drivers available [here](https://plugable.com/drivers/usb3ethernet/))
+- External hard drives (Seagate)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
 - [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html)
   ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)

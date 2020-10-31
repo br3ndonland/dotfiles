@@ -5,7 +5,7 @@ set -e
 [ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 [ "$(whoami)" = "codespace" ] && export CODESPACE=1
-STRAP_DEBUG="1" # [[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
+[[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
 STRAP_SUCCESS=""
 
 sudo_askpass() {

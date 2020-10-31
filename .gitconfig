@@ -16,9 +16,9 @@ f = fetch
 l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
 logd = log --pretty=format:'- %s (%h)' develop..HEAD
-logdpr = logd --grep 'pull request'
-logt = log --pretty=format:'- %s (%h)' '$(git describe --abbrev=0 --tags)'..HEAD
-logtpr = logt --grep 'pull request'
+logdpr = log --pretty=format:'- %s (%h)%n  %b' develop..HEAD --grep 'pull request'
+logm = log --pretty=format:'- %s (%h)' master..HEAD
+logmpr = log --pretty=format:'- %s (%h)%n  %b' master..HEAD --grep 'pull request'
 lure = pull --rebase
 p = push
 pt = push --tags

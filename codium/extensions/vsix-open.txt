@@ -1,3 +1,0 @@
-AmazonWebServices.aws-toolkit-vscode
-foxundermoon.shell-format
-kddejong.vscode-cfn-lint

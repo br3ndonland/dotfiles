@@ -2,6 +2,7 @@ bungcip.better-toml
 denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
+foxundermoon.shell-format
 hashicorp.terraform
 mikestead.dotenv
 ms-python.python

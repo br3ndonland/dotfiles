@@ -1,7 +1,5 @@
 #!/bin/bash
-### -------------------- Strap pre-installation script -------------------- ###
-# Based on https://github.com/MikeMcQuaid/dotfiles
-# Designed for use with Strap: https://github.com/MikeMcQuaid/strap
+### ------------------ Bootstrap pre-installation script ------------------ ###
 # Run by run_dotfile_scripts() in strap.sh
 
 echo "### ------------------------ Important notes ------------------------ ###"

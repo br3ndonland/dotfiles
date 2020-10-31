@@ -1,6 +1,5 @@
 #!/bin/bash
 ### ---------------- Symlink dotfiles into home directory ----------------- ###
-# Designed for use with Strap: https://github.com/MikeMcQuaid/strap
 # Run by strap-after-setup
 symlink_dotfiles() {
   if [ -d ~/.dotfiles ]; then

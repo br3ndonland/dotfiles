@@ -1,7 +1,5 @@
 #!/bin/bash
 ### ------------------- Strap post-installation scripts ------------------- ###
-# Based on https://github.com/MikeMcQuaid/dotfiles
-# Designed for use with Strap: https://github.com/MikeMcQuaid/strap
 # Run by run_dotfile_scripts() in strap.sh
 
 # Run scripts: scripts must be executable (chmod +x)

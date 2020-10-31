@@ -1,6 +1,5 @@
 #!/bin/sh
-### ------------------ Install VSCode/VSCodium extensions ------------------ ###
-# Designed for use with Strap: https://github.com/MikeMcQuaid/strap
+### --------------------- Install VSCodium extensions --------------------- ###
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 install_codium_extensions() {

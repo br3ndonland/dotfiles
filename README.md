@@ -25,15 +25,21 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 
 ## Installation
 
-Dotfiles are application configuration and settings files. They frequently begin with a dot, hence the name. This dotfiles repository is meant to be installed in conjunction with my [Homebrew Brewfile](https://github.com/br3ndonland/homebrew-brewfile) and [Strap](https://github.com/MikeMcQuaid/strap).
+Dotfiles are application configuration and settings files. They frequently begin with a dot, hence the name. This dotfiles repository is meant to be installed in conjunction with my [Homebrew Brewfile](https://github.com/br3ndonland/homebrew-brewfile) and _bootstrap.sh_.
 
 A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
 
-[Strap](https://github.com/MikeMcQuaid/strap) is a shell script to automate setup of a new macOS development machine. Strap is _idempotent_, meaning it can be run repeatedly on the same system. There are several options for generating `strap.sh`. The web app is easiest, but Strap can also be set up locally.
+_bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, sign in to GitHub in a web browser and generate a GitHub token with `public_repo` scope, then run the following commands:
 
-All the user needs to do when setting up their macOS development machine is download the strap script customized for their GitHub account, then run it with `bash ~/Downloads/strap.sh`.
+```sh
+# save GitHub token to ~/.github/github-token-bootstrap.txt
+export STRAP_GITHUB_TOKEN=$(cat $HOME/.github/github-token-bootstrap.txt)
+curl -fsSL -o bootstrap.sh https://raw.githubusercontent.com/br3ndonland/dotfiles/master/bootstrap.sh
+chmod +x bootstrap.sh
+bash bootstrap.sh
+```
 
-During execution of `strap.sh`, Strap can run three scripts from the dotfiles repo. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly (without extensions) for Strap to recognize them.
+_bootstrap.sh_ will set up macOS and Homebrew, then run the scripts in the _script/_ directory. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly (without extensions) for _bootstrap.sh_ to recognize them.
 
 1. _dotfiles/script/setup_
 2. _dotfiles/script/bootstrap_

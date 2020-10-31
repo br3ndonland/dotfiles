@@ -11,7 +11,7 @@ echo "-> Running scripts from script/strap-after-setup"
 [ "$(uname -s)" = "Darwin" ] && ~/.dotfiles/script/macos.sh
 
 echo "-> Installing VSCode extensions"
-CODE_DISTRO=${CODE_DISTRO:-"codium"}
+CODE_DISTRO=${CODE_DISTRO:-"code"}
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
 else

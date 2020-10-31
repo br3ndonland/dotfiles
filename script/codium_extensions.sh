@@ -9,7 +9,7 @@ install_codium_extensions() {
     return 1
   fi
   printf "\nInstalling extensions for %s\n\n" "$EDITOR"
-  if [ "$EDITOR" = "code" ] || [ "$EDITOR" = "code-insiders" ]; then
+  if [ "$EDITOR" = "code-insiders" ]; then
     cat ~/.dotfiles/codium/extensions/marketplace-open-vsx.txt \
       ~/.dotfiles/codium/extensions/marketplace-proprietary.txt \
       >~/.dotfiles/codium/extensions/marketplace-all.txt
@@ -38,13 +38,10 @@ for i in "$@"; do
   EDITOR=$i
   case $i in
   code)
-    APP="Visual\ Studio\ Code"
+    APP="VSCodium"
     ;;
   code-insiders)
     APP="Visual\ Studio\ Code\ -\ Insiders"
-    ;;
-  codium)
-    APP="VSCodium"
     ;;
   esac
   if [ "$(uname -s)" = "Darwin" ]; then

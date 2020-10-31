@@ -280,9 +280,11 @@ if [ "$HOMEBREW_PREFIX" = "/usr/local" ]; then
 fi
 (
   cd "$HOMEBREW_PREFIX"
-  HOMEBREW_DIRS="Cellar Frameworks bin etc include lib opt sbin share var"
-  sudo_askpass mkdir -p "$HOMEBREW_DIRS"
-  sudo_askpass chown -R "$USER:admin" "$HOMEBREW_DIRS"
+  HOMEBREW_DIRS=(Cellar Frameworks bin etc include lib opt sbin share var)
+  for DIR in "${HOMEBREW_DIRS[@]}"; do
+    sudo_askpass mkdir -p "$DIR"
+    sudo_askpass chown -R "$USER:admin" "$DIR"
+  done
 )
 
 HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"

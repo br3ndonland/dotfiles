@@ -26,7 +26,7 @@ defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 ###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+# Peripherals                                                                 #
 ###############################################################################
 
 # Disable automatic text substitution and autocorrect
@@ -45,15 +45,6 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Disable “natural” scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-# Tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
-  Clicking -bool true
-
-# Increase sound quality for Bluetooth headphones/headsets
-# TODO: I was having difficulty connecting to AirPods after changing this
-# defaults write com.apple.BluetoothAudioAgent \
-#   "Apple Bitpool Min (editable)" -int 40
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "America/New_York" >/dev/null

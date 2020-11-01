@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ### ---------------- Symlink dotfiles into home directory ----------------- ###
 # Run by strap-after-setup
 

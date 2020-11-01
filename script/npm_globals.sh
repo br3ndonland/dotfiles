@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ### --------------------- Install global npm packages --------------------- ###
 # Run by strap-after-setup
 # Manage global packages after install: https://www.npmjs.com/package/npm-check
+
 npm_install_globals() {
   if [ -d ~/.dotfiles ]; then
     (
@@ -25,6 +26,7 @@ npm_install_globals() {
     echo "-> Error: dotfiles directory not found."
   fi
 }
+
 if npm_install_globals; then
   echo "-> npm_install_globals() ran successfully."
 else

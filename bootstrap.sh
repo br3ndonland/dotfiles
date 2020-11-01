@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ### ------------ bootstrap.sh - set up development environment ------------ ###
 # https://github.com/MikeMcQuaid/strap, https://github.com/MikeMcQuaid/dotfiles
 set -e
@@ -77,7 +77,7 @@ sudo_init() {
     clear_debug
     SUDO_PASSWORD_SCRIPT="$(
       cat <<BASH
-#!/bin/bash
+#!/usr/bin/env bash
 echo "$SUDO_PASSWORD"
 BASH
     )"

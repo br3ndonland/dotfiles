@@ -1,6 +1,6 @@
-#!/bin/bash
-### ------------------- Strap post-installation scripts ------------------- ###
-# Run by run_dotfile_scripts() in strap.sh
+#!/usr/bin/env bash
+### ----------------- Bootstrap post-installation scripts ----------------- ###
+# Run by run_dotfile_scripts in bootstrap.sh
 
 # Run scripts: scripts must be executable (chmod +x)
 echo "-> Running scripts from script/strap-after-setup"

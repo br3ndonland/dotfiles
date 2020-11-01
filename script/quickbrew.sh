@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 ### ----------------------------- Linux setup ----------------------------- ###
 # A simple Linux setup script for Homebrew, Brew Bundle, and apt-get.
 
@@ -6,7 +6,7 @@
 RAW="https://raw.githubusercontent.com"
 BREW_SCRIPT="Homebrew/install/master/install.sh"
 printf "\nDownloading and installing Homebrew.\n"
-printf "\n" | /bin/bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)"
+printf "\n" | /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)"
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew &&
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

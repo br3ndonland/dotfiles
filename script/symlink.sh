@@ -1,66 +1,49 @@
 #!/bin/bash
 ### ---------------- Symlink dotfiles into home directory ----------------- ###
 # Run by strap-after-setup
+
 symlink_dotfiles() {
-  if [ -d ~/.dotfiles ]; then
-    (
-      echo "-> Dotfiles found. Symlinking dotfiles into home directory."
-      # TODO: iterate more effectively over dotfiles instead of hardcoding paths
-      # dotdirs (configuration directories that begin with a dot)
-      mkdir -p ~/{.config,.gnupg,.ssh}
-      ln -fs ~/.dotfiles/.config/karabiner ~/.config
-      # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
-      # Restart Karabiner after symlinking config
-      KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
-      if (launchctl kickstart "$KARABINER"); then
-        launchctl kickstart -k "$KARABINER"
-      fi
-      ln -fs ~/.dotfiles/.config/kitty ~/.config
-      ln -fs ~/.dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
-      ln -fs ~/.dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-      ln -fs ~/.dotfiles/.ssh/config ~/.ssh/config
-      # VSCode and variants
-      mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets
-      mkdir -p ~/Library/Application\ Support/VSCodium/User/snippets
-      ln -fs ~/.dotfiles/codium/User/settings.json \
-        ~/Library/Application\ Support/VSCodium/User/settings.json
-      ln -fs ~/.dotfiles/codium/User/settings.json \
-        ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
-      ln -fs ~/.dotfiles/codium/User/keybindings.json \
-        ~/Library/Application\ Support/VSCodium/User/keybindings.json
-      ln -fs ~/.dotfiles/codium/User/keybindings.json \
-        ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
-      ln -fs ~/.dotfiles/codium/User/snippets/vue.json \
-        ~/Library/Application\ Support/VSCodium/User/snippets/vue.json
-      ln -fs ~/.dotfiles/codium/User/snippets/vue.json \
-        ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/vue.json
-      ln -fs ~/.dotfiles/codium/User/snippets/markdown.json \
-        ~/Library/Application\ Support/VSCodium/User/snippets/markdown.json
-      ln -fs ~/.dotfiles/codium/User/snippets/markdown.json \
-        ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets/markdown.json
-      # Top-level dotfiles
-      ln -fs ~/.dotfiles/.gitconfig ~/.gitconfig
-      ln -fs ~/.dotfiles/.gitmessage ~/.gitmessage
-      ln -fs ~/.dotfiles/.prettierrc ~/.prettierrc
-      ln -fs ~/.dotfiles/.zshrc ~/.zshrc
-    )
-  else
-    echo "-> Error: Dotfiles directory not found. Symlinking not successful."
-  fi
+  echo "-> Symlinking dotfiles into home directory."
+  DOTS=$HOME/.dotfiles
+  NOTS=("$DOTS/.git" "$DOTS/.github" "$DOTS/.gitignore")
+  for FILE in "$DOTS/."*; do
+    ! [[ ${NOTS[*]} =~ $FILE ]] && ln -fns "$FILE" "$HOME/${FILE##$DOTS/}"
+  done
 }
-if symlink_dotfiles; then
-  echo "-> symlink_dotfiles() ran successfully."
-else
-  echo "-> symlink_dotfiles() did not run successfully."
-fi
+
+symlink_vscodium() {
+  echo "-> Symlinking VSCodium settings."
+  DOTS=$HOME/.dotfiles/codium/User
+  APP_DIR=$HOME/Library/Application\ Support
+  for DIR in $APP_DIR/{VSCodium,Code\ -\ Insiders}/User; do
+    ! [ -d "$DIR" ] && mkdir -p "$DIR"
+    for FILE in "$DOTS/"*; do
+      ln -fns "$FILE" "$DIR/${FILE##$DOTS/}"
+    done
+  done
+}
 
 set_perms() {
-  # Set permissions for GPG
+  echo "-> Setting permissions on GPG directories."
   chmod 700 ~/.gnupg
   chmod 600 ~/.gnupg/gpg.conf
 }
-if set_perms; then
-  echo "-> set_perms() ran successfully."
+
+if symlink_dotfiles && symlink_vscodium; then
+  echo "-> Symlinking successful."
+  # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
+  # Restart Karabiner after symlinking config
+  KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
+  if (launchctl kickstart "$KARABINER"); then
+    launchctl kickstart -k "$KARABINER"
+  fi
 else
-  echo "-> set_perms() did not run successfully."
+  echo "-> Symlinking unsuccessful."
+  ! [ -d ~/.dotfiles ] && echo "-> Error: Dotfiles directory not found"
+fi
+
+if set_perms; then
+  echo "-> Permissions successfully set on GPG directories."
+else
+  echo "-> Permissions not successfully set on GPG directories."
 fi

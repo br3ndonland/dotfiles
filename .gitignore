@@ -1,2 +1,8 @@
 .DS_Store
 .config/karabiner/automatic_backups
+*.gpg*
+*keys*
+id_rsa*
+known_hosts
+marketplace-all.txt
+pub*

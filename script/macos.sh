@@ -15,11 +15,9 @@ defaults write NSGlobalDomain AppleAccentColor -string "-1"
 defaults write NSGlobalDomain AppleHighlightColor -string \
   "0.847059 0.847059 0.862745 Graphite"
 
-# Disable font smoothing
-# TODO: not sure if this works
-defaults write NSGlobalDomain CGFontRenderingFontSmoothingDisabled -bool true
-
-# Set temperature units to Celsius
+# Use metric units
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
 defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
 # Save to disk by default, instead of iCloud

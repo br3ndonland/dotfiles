@@ -1,7 +1,7 @@
 #! /bin/sh
 ### -------------------------- Set macOS defaults -------------------------- ###
-# Based on: https://github.com/mathiasbynens/dotfiles
-
+# https://github.com/herrbischoff/awesome-macos-command-line
+# https://github.com/mathiasbynens/dotfiles
 # Back up macOS default settings before changing
 defaults read >~/Desktop/macos-defaults.txt
 
@@ -24,6 +24,10 @@ defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
 # Save to disk by default, instead of iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Set menu bar clock format
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d h:mm a"
 
 ###############################################################################
 # Peripherals                                                                 #

@@ -2,6 +2,7 @@
 ### --------------------- Install VSCodium extensions --------------------- ###
 # Run by strap-after-setup
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
+
 install_codium_extensions() {
   if ! command -v "$EDITOR" >/dev/null; then
     printf "Error: %s command not in PATH.\n" "$EDITOR" >&2
@@ -29,7 +30,7 @@ install_codium_extensions() {
 
 if [ -z "$1" ]; then
   printf "\nError: No editor was given for the codium_extensions.sh script.\n"
-  printf "Please specify ≥1 editor: code code-insiders codium\n"
+  printf "Please specify ≥1 editor: code code-insiders\n"
   exit 1
 fi
 

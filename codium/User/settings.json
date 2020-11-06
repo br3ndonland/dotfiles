@@ -59,6 +59,7 @@
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.fontAliasing": "auto",
   "workbench.panel.defaultLocation": "right",
+  "workbench.settings.editor": "json",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
   // Git

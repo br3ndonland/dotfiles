@@ -53,6 +53,7 @@
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.enableExperiments": false,
+  "workbench.editor.pinnedTabSizing": "compact",
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",

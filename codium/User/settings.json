@@ -48,6 +48,7 @@
   "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
   "update.mode": "manual",
   "update.showReleaseNotes": false,
+  "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "all",
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",

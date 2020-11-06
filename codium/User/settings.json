@@ -1,5 +1,5 @@
 {
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ VSCode settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  // VSCode settings
   "breadcrumbs.enabled": true,
   "debug.toolBarLocation": "docked",
   "editor.autoClosingQuotes": "beforeWhitespace",
@@ -55,7 +55,7 @@
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Git ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+  // Git
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -85,7 +85,7 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "timeline.excludeSources": ["git-history"],
   "timeline.pageSize": 10,
-  // ~~~~~~~~~~~~~~~~~~~~~~ Language-specific settings ~~~~~~~~~~~~~~~~~~~~~ //
+  // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
   "aws.samcli.location": "/usr/local/bin/sam",

@@ -169,6 +169,5 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "yaml.format.enable": false,
-  "yaml.schemas": {}
+  "yaml.format.enable": false
 }

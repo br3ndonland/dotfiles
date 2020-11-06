@@ -15,10 +15,10 @@ com = checkout master
 f = fetch
 l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
-logd = log --pretty=format:'- %s (%h)' develop..HEAD
-logdpr = log --pretty=format:'- %s (%h)%n  %b' develop..HEAD --grep 'pull request'
-logm = log --pretty=format:'- %s (%h)' master..HEAD
-logmpr = log --pretty=format:'- %s (%h)%n  %b' master..HEAD --grep 'pull request'
+logd = log --pretty=format:'- %s (%h)' --reverse develop..HEAD
+logdpr = log --pretty=format:'- %s (%h)%n  %b' --reverse develop..HEAD --grep 'pull request'
+logm = log --pretty=format:'- %s (%h)' --reverse master..HEAD
+logmpr = log --pretty=format:'- %s (%h)%n  %b' --reverse master..HEAD --grep 'pull request'
 lure = pull --rebase
 p = push
 pt = push --tags

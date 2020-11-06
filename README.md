@@ -34,7 +34,7 @@ _bootstrap.sh_ is a shell script to automate setup of a new macOS development ma
 ```sh
 # save GitHub token to ~/.github/github-token-bootstrap.txt
 export STRAP_GITHUB_TOKEN=$(cat $HOME/.github/github-token-bootstrap.txt)
-curl -fsSL -o bootstrap.sh https://raw.githubusercontent.com/br3ndonland/dotfiles/master/bootstrap.sh
+curl -fsSL -o bootstrap.sh https://raw.githubusercontent.com/br3ndonland/dotfiles/main/bootstrap.sh
 chmod +x bootstrap.sh
 bash bootstrap.sh
 ```

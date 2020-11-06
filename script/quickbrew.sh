@@ -18,7 +18,7 @@ test -r ~/.zshrc &&
 
 # Install Homebrew dependencies from Brewfile with Brew Bundle
 printf "\nDownloading Brewfile and installing with Brew Bundle.\n"
-BREWFILE="${GITHUB_USER:-br3ndonland}/homebrew-brewfile/master/Brewfile"
+BREWFILE="${GITHUB_USER:-br3ndonland}/homebrew-brewfile/main/Brewfile"
 curl -fsSL "$RAW/$BREWFILE" | brew bundle check || brew bundle
 
 # Install apt-get packages

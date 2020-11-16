@@ -64,5 +64,27 @@
     "key": "alt+cmd+left",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
+  },
+  // Go to definition
+  {
+    "key": "ctrl+cmd+g",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  // Go to references
+  {
+    "key": "ctrl+alt+cmd+g",
+    "command": "editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "shift+f12",
+    "command": "-editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
   }
 ]

@@ -370,26 +370,35 @@ if [ -n "$STRAP_GITHUB_USER" ] && {
   fi
 fi
 
-# Install from local Brewfile
-if [ -f "$HOME/.Brewfile" ]; then
-  log "Installing from user Brewfile on GitHub:"
-  brew bundle check --global || brew bundle --global
-  logk
-fi
+run_brew_installs() {
+  # Install from local Brewfile
+  if [ -f "$HOME/.Brewfile" ]; then
+    log "Installing from user Brewfile on GitHub:"
+    brew bundle check --global || brew bundle --global
+    logk
+  fi
+  # Tap a custom Homebrew tap
+  if [ -n "$CUSTOM_HOMEBREW_TAP" ]; then
+    read -ra CUSTOM_HOMEBREW_TAP <<<"$CUSTOM_HOMEBREW_TAP"
+    log "Running 'brew tap ${CUSTOM_HOMEBREW_TAP[*]}':"
+    brew tap "${CUSTOM_HOMEBREW_TAP[@]}"
+    logk
+  fi
+  # Run a custom Brew command
+  if [ -n "$CUSTOM_BREW_COMMAND" ]; then
+    log "Executing 'brew $CUSTOM_BREW_COMMAND':"
+    # shellcheck disable=SC2086
+    brew $CUSTOM_BREW_COMMAND
+    logk
+  fi
+}
 
-# Tap a custom Homebrew tap
-if [ -n "$CUSTOM_HOMEBREW_TAP" ]; then
-  read -ra CUSTOM_HOMEBREW_TAP <<<"$CUSTOM_HOMEBREW_TAP"
-  log "Running 'brew tap ${CUSTOM_HOMEBREW_TAP[*]}':"
-  brew tap "${CUSTOM_HOMEBREW_TAP[@]}"
-  logk
-fi
+CPU=$(sysctl -n machdep.cpu.brand_string)
 
-if [ -n "$CUSTOM_BREW_COMMAND" ]; then
-  log "Executing 'brew $CUSTOM_BREW_COMMAND':"
-  # shellcheck disable=SC2086
-  brew $CUSTOM_BREW_COMMAND
-  logk
+if [[ "$CPU" =~ "Intel" ]]; then
+  log "Running Homebrew installs." && run_brew_installs
+else
+  log "Skipping Homebrew installs for non-Intel CPU: $CPU."
 fi
 
 run_dotfile_scripts script/strap-after-setup

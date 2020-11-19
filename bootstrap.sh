@@ -104,6 +104,7 @@ BASH
     export SUDO_ASKPASS
   fi
 }
+
 sudo_refresh() {
   clear_debug
   if [ -n "$SUDO_ASKPASS" ]; then
@@ -233,6 +234,7 @@ install_xcode() {
     logk
   fi
 }
+
 check_xcode_license() {
   if /usr/bin/xcrun clang 2>&1 | grep $Q license; then
     if [ -n "$STRAP_INTERACTIVE" ]; then
@@ -244,7 +246,13 @@ check_xcode_license() {
     fi
   fi
 }
-[ $MACOS ] && install_xcode && check_xcode_license
+
+if [ $MACOS ]; then
+  install_xcode
+  check_xcode_license
+else
+  echo "Xcode skipped."
+fi
 
 logn "Configuring Git:"
 if [ -n "$STRAP_GIT_NAME" ] && ! git config user.name >/dev/null; then

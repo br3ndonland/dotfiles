@@ -16,6 +16,8 @@ codespace)
   ;;
 esac
 
+[ $MACOS ] && CPU=$(sysctl -n machdep.cpu.brand_string) || CPU="Unsupported CPU"
+
 [[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
 STRAP_SUCCESS=""
 
@@ -403,8 +405,6 @@ run_brew_installs() {
     logk
   fi
 }
-
-CPU=$(sysctl -n machdep.cpu.brand_string)
 
 if [[ "$CPU" =~ "Intel" ]]; then
   log "Running Homebrew installs." && run_brew_installs

@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 ### ------------ bootstrap.sh - set up development environment ------------ ###
 # https://github.com/MikeMcQuaid/strap, https://github.com/MikeMcQuaid/dotfiles
+
 set -e
-[ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
-[ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
-[ "$(whoami)" = "codespace" ] && export CODESPACE=1
+
+case $(uname -s) in
+Darwin)
+  export MACOS=1 && export UNIX=1
+  ;;
+Linux)
+  export LINUX=1 && export UNIX=1
+  ;;
+codespace)
+  export CODESPACE=1
+  ;;
+esac
+
 [[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
 STRAP_SUCCESS=""
 

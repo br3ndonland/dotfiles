@@ -29,8 +29,15 @@ symlink_repo_dotfiles() {
 symlink_vscodium_settings() {
   echo "-> Symlinking VSCodium settings."
   SETTINGS_DIR=$HOME/.dotfiles/codium
-  APP_DIR=$HOME/Library/Application\ Support
-  for DIR in $APP_DIR/{VSCodium,Code\ -\ Insiders}; do
+  case $(uname -s) in
+  Darwin)
+    APP_DIR=$HOME/Library/Application\ Support
+    ;;
+  Linux)
+    APP_DIR=$HOME/.config
+    ;;
+  esac
+  for DIR in $APP_DIR/{Code,Code\ -\ Insiders,VSCodium}; do
     symlink_dir_contents "$SETTINGS_DIR/User" "$SETTINGS_DIR" "$DIR"
   done
 }
@@ -44,6 +51,8 @@ if symlink_repo_dotfiles && symlink_vscodium_settings; then
   KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
   if (launchctl kickstart "$KARABINER"); then
     launchctl kickstart -k "$KARABINER"
+  else
+    echo "-> Skipping Karabiner restart."
   fi
   echo "-> Finished."
 else

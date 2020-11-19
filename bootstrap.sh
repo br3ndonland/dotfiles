@@ -288,49 +288,6 @@ if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
 fi
 logk
 
-# Setup Homebrew directory and permissions.
-logn "Installing Homebrew:"
-
-HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
-[ -n "$HOMEBREW_PREFIX" ] || HOMEBREW_PREFIX="/usr/local"
-[ -d "$HOMEBREW_PREFIX" ] || sudo_askpass mkdir -p "$HOMEBREW_PREFIX"
-
-if [ "$HOMEBREW_PREFIX" = "/usr/local" ]; then
-  sudo_askpass chown "root:wheel" "$HOMEBREW_PREFIX" 2>/dev/null || true
-fi
-(
-  cd "$HOMEBREW_PREFIX"
-  sudo_askpass mkdir -p Cellar Frameworks bin etc include lib opt sbin share var
-  sudo_askpass chown -R "$USER:admin" \
-    Cellar Frameworks bin etc include lib opt sbin share var
-)
-
-HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"
-
-[ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="/usr/local/Homebrew"
-[ -d "$HOMEBREW_REPOSITORY" ] || sudo_askpass mkdir -p "$HOMEBREW_REPOSITORY"
-sudo_askpass chown -R "$USER:admin" "$HOMEBREW_REPOSITORY"
-
-if [ $HOMEBREW_PREFIX != $HOMEBREW_REPOSITORY ]; then
-  ln -sf "$HOMEBREW_REPOSITORY/bin/brew" "$HOMEBREW_PREFIX/bin/brew"
-fi
-
-# Download Homebrew.
-export GIT_DIR="$HOMEBREW_REPOSITORY/.git" GIT_WORK_TREE="$HOMEBREW_REPOSITORY"
-git init $Q
-git config remote.origin.url "https://github.com/Homebrew/brew"
-git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-git fetch $Q --tags --force
-git reset $Q --hard origin/master
-unset GIT_DIR GIT_WORK_TREE
-logk
-
-# Update Homebrew.
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"
-log "Updating Homebrew:"
-brew update
-logk
-
 # Check for and install any remaining software updates.
 logn "Checking for software updates:"
 if softwareupdate -l 2>&1 | grep $Q "No new software available."; then
@@ -390,7 +347,45 @@ if [ -n "$STRAP_GITHUB_USER" ] && {
   fi
 fi
 
+install_homebrew() {
+  logn "Installing Homebrew:"
+  HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
+  [ -n "$HOMEBREW_PREFIX" ] || HOMEBREW_PREFIX="/usr/local"
+  [ -d "$HOMEBREW_PREFIX" ] || sudo_askpass mkdir -p "$HOMEBREW_PREFIX"
+  if [ "$HOMEBREW_PREFIX" = "/usr/local" ]; then
+    sudo_askpass chown "root:wheel" "$HOMEBREW_PREFIX" 2>/dev/null || true
+  fi
+  (
+    cd "$HOMEBREW_PREFIX"
+    sudo_askpass mkdir -p Cellar Frameworks bin etc include lib opt sbin share var
+    sudo_askpass chown -R "$USER:admin" \
+      Cellar Frameworks bin etc include lib opt sbin share var
+  )
+  HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"
+  [ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="/usr/local/Homebrew"
+  [ -d "$HOMEBREW_REPOSITORY" ] || sudo_askpass mkdir -p "$HOMEBREW_REPOSITORY"
+  sudo_askpass chown -R "$USER:admin" "$HOMEBREW_REPOSITORY"
+  if [ $HOMEBREW_PREFIX != $HOMEBREW_REPOSITORY ]; then
+    ln -sf "$HOMEBREW_REPOSITORY/bin/brew" "$HOMEBREW_PREFIX/bin/brew"
+  fi
+  # Download Homebrew.
+  export GIT_DIR="$HOMEBREW_REPOSITORY/.git" GIT_WORK_TREE="$HOMEBREW_REPOSITORY"
+  git init $Q
+  git config remote.origin.url "https://github.com/Homebrew/brew"
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  git fetch $Q --tags --force
+  git reset $Q --hard origin/master
+  unset GIT_DIR GIT_WORK_TREE
+  logk
+  # Update Homebrew.
+  export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+  log "Updating Homebrew:"
+  brew update
+  logk
+}
+
 run_brew_installs() {
+  log "Running Homebrew installs."
   # Install from local Brewfile
   if [ -f "$HOME/.Brewfile" ]; then
     log "Installing from user Brewfile on GitHub:"
@@ -413,10 +408,12 @@ run_brew_installs() {
   fi
 }
 
-if [[ "$CPU" =~ "Intel" ]]; then
-  log "Running Homebrew installs." && run_brew_installs
-else
-  log "Skipping Homebrew installs for non-Intel CPU: $CPU."
+if [[ $MACOS ]] && [[ "$CPU" =~ "Intel" ]]; then
+  install_homebrew
+  run_brew_installs
+elif [[ "$CPU" =~ "Apple" ]]; then
+  echo "Skipping Homebrew installs for Mac with non-Intel CPU: $CPU."
+  echo "Homebrew prefix for Apple Silicon processors will be /opt/homebrew"
 fi
 
 run_dotfile_scripts script/strap-after-setup

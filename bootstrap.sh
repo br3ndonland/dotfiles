@@ -7,6 +7,7 @@ set -e
 case $(uname -s) in
 Darwin)
   export MACOS=1 && export UNIX=1
+  CPU=$(sysctl -n machdep.cpu.brand_string)
   ;;
 Linux)
   export LINUX=1 && export UNIX=1
@@ -15,8 +16,6 @@ codespace)
   export CODESPACE=1
   ;;
 esac
-
-[ $MACOS ] && CPU=$(sysctl -n machdep.cpu.brand_string) || CPU="Unsupported CPU"
 
 [[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
 STRAP_SUCCESS=""

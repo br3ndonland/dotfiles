@@ -36,6 +36,7 @@ bindkey '^H' backward-kill-word   # alt+bs     delete previous word
 bindkey '^[[3;3~' kill-word       # alt+del    delete next word
 bindkey '^N' kill-buffer          # ctrl+n     delete all lines
 ### ---------- pure prompt: https://github.com/sindresorhus/pure ---------- ###
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit
 promptinit
 prompt pure

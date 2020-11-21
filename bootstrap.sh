@@ -157,7 +157,7 @@ run_dotfile_scripts() {
 }
 
 [ "$USER" = "root" ] && abort "Run Strap as yourself, not root."
-groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to the admin group."
+[ $MACOS ] && groups | grep $Q -E "\b(admin)\b" || log "Add $USER to admin."
 
 if [ $MACOS ]; then
   [ -z "$STRAP_CI" ] && caffeinate -s -w $$ &

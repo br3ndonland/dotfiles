@@ -55,14 +55,14 @@ for i in "$@"; do
     APP="Visual\ Studio\ Code\ -\ Insiders"
     ;;
   esac
-  if [ "$(uname -s)" = "Darwin" ]; then
-    export PATH="/Applications/$APP.app/Contents/Resources/app/bin:$PATH"
-  fi
-  if ! command -v "$EDITOR" >/dev/null; then
+  BIN_PATH="/Applications/$APP.app/Contents/Resources/app/bin"
+  if [ "$(uname -s)" = "Darwin" ] && ! [ -d "$BIN_PATH" ]; then
+    printf "\nError: CLI for %s not found.\n" "$i"
+    exit 1
+  elif ! command -v "$EDITOR" >/dev/null; then
     printf "Error: %s command not in PATH.\n" "$EDITOR" >&2
-    return 1
-  fi
-  if install_codium_extensions; then
+    [ "$(uname -s)" = "Darwin" ] && export PATH="$BIN_PATH:$PATH" || exit 1
+  elif install_codium_extensions; then
     printf "\nExtensions successfully installed for %s.\n" "$i"
   else
     printf "\nError: extensions not successfully installed for %s.\n" "$i"

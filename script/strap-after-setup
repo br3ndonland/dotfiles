@@ -19,12 +19,14 @@ else
   echo "Not macOS. Skipping macos.sh."
 fi
 
-echo "-> Installing VSCode extensions"
 CODE_DISTRO=${CODE_DISTRO:-"code"}
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
-else
+elif command -v "$CODE_DISTRO" >/dev/null; then
+  echo "-> Installing VSCode extensions"
   ~/.dotfiles/script/codium_extensions.sh "$CODE_DISTRO"
+else
+  echo "$CODE_DISTRO command not in PATH." >&2
 fi
 
 # Install Poetry: https://python-poetry.org/docs/

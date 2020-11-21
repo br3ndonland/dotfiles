@@ -29,23 +29,15 @@ Dotfiles are application configuration and settings files. They frequently begin
 
 A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
 
-_bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, sign in to GitHub in a web browser and generate a GitHub token with `public_repo` scope, then run the following commands:
+_bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, simply run the following commands:
 
 ```sh
-# save GitHub token to ~/.github/github-token-bootstrap.txt
-export STRAP_GITHUB_TOKEN=$(cat $HOME/.github/github-token-bootstrap.txt)
 curl -fsSL -o bootstrap.sh https://raw.githubusercontent.com/br3ndonland/dotfiles/main/bootstrap.sh
 chmod +x bootstrap.sh
 bash bootstrap.sh
 ```
 
-_bootstrap.sh_ will set up macOS and Homebrew, then run the scripts in the _script/_ directory. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git), stored in the dotfiles repo in _script/_, and named exactly (without extensions) for _bootstrap.sh_ to recognize them.
-
-1. _dotfiles/script/setup_
-2. _dotfiles/script/bootstrap_
-3. _dotfiles/script/strap-after-setup_
-
-See the _script/_ directory for the scripts in this repo.
+_bootstrap.sh_ will set up macOS and Homebrew, then run the scripts in the _script/_ directory. The scripts must be executable (`chmod +x`, execute permissions can be committed to version control with Git).
 
 ## Hardware
 

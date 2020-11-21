@@ -294,6 +294,7 @@ GPG is an implementation of OpenPGP.
 
     ```sh
     # Generate a PGP key
+    # When the key is generated, Keybase will automatically export it to GPG.
     keybase pgp gen
     # Sync PGP key with Keybase using Keybase servers
     keybase pgp push-private 16digit_PGPkeyid
@@ -305,9 +306,15 @@ GPG is an implementation of OpenPGP.
     keybase pgp export -q 16digit_PGPkeyid | gpg --import
     # Manual export of private key to GPG
     keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
-    ```
 
-  - When the key is generated, Keybase will automatically export the key to the GPG keyring.
+    # If none of the Keybase methods work, try GPG. On the source computer
+    # where the GPG private keys are stored, export to a synced directory:
+    mkdir -p /path/to/.keys
+    gpg -a --export > /path/to/.keys/pubkeys.asc
+    gpg -a --export-secret-keys > /path/to/.keys/privatekeys.asc
+    # import from the synced directory on the destination computer:
+    gpg --import /path/to/.keys/privatekeys.asc
+    ```
 
 #### Keybase chat
 

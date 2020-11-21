@@ -57,7 +57,6 @@ STDIN_FILE_DESCRIPTOR="0"
 STRAP_GIT_NAME=${STRAP_GIT_NAME:-"Brendon Smith"}
 STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:-"br3ndonland@protonmail.com"}
 STRAP_GITHUB_USER=${STRAP_GITHUB_USER:-"br3ndonland"}
-STRAP_GITHUB_TOKEN=${STRAP_GITHUB_TOKEN?STRAP_GITHUB_TOKEN not set}
 
 # Prompt for sudo password and initialize (or reinitialize) sudo
 sudo --reset-timestamp
@@ -277,12 +276,14 @@ if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
     git config --global credential.helper osxkeychain
   fi
 
-  if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
+  if [ -n "$STRAP_GITHUB_USER" ]; then
     PROTOCOL="protocol=https\\nhost=github.com"
     printf "%s\\n" "$PROTOCOL" | git credential-osxkeychain erase
     printf "%s\\nusername=%s\\npassword=%s\\n" \
       "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
       git credential-osxkeychain store
+  else
+    printf "Skipping Git credential setup."
   fi
 fi
 logk

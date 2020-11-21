@@ -41,6 +41,7 @@ autoload -U promptinit
 promptinit
 prompt pure
 ### ------------- completions, integrations, and highlighting ------------- ###
+[ $(uname) = "Linux" ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 if type brew &>/dev/null; then
   FPATH=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions:$FPATH
   autoload -Uz compinit
@@ -57,4 +58,4 @@ fi
 #   eval "$(pyenv virtualenv-init -)"
 # fi
 # shellcheck disable=SC1091
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

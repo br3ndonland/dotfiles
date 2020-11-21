@@ -47,7 +47,7 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.rendererType": "auto",
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.shell.linux": "/bin/zsh",
+  "terminal.integrated.shell.linux": "/home/linuxbrew/.linuxbrew/bin/zsh",
   "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
   "update.mode": "manual",
   "update.showReleaseNotes": false,

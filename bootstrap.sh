@@ -157,10 +157,10 @@ run_dotfile_scripts() {
 }
 
 [ "$USER" = "root" ] && abort "Run Strap as yourself, not root."
-[ $MACOS ] && groups | grep $Q -E "\b(admin)\b" || log "Add $USER to admin."
 
 if [ $MACOS ]; then
   [ -z "$STRAP_CI" ] && caffeinate -s -w $$ &
+  groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to admin."
   logn "Configuring security settings:"
   SAFARI="com.apple.Safari"
   defaults write $SAFARI $SAFARI.ContentPageGroupIdentifier.WebKit2JavaEnabled \

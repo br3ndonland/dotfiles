@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 ### ------------------------------- exports ------------------------------- ###
 export EDITOR="code --wait"
+[ $(uname) = "Linux" ] && export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$HOME/.poetry/bin:$PATH"
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa_${USER}"
 ### ------------------------------- aliases ------------------------------- ###

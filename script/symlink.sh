@@ -31,13 +31,21 @@ symlink_vscodium_settings() {
   SETTINGS_DIR=$HOME/.dotfiles/codium
   case $(uname -s) in
   Darwin)
-    APP_DIR=$HOME/Library/Application\ Support
+    declare -a DIRS=(
+      "$HOME/Library/Application Support/Code"
+      "$HOME/Library/Application Support/Code - Insiders"
+      "$HOME/Library/Application Support/VSCodium"
+    )
     ;;
   Linux)
-    APP_DIR=$HOME/.config
+    declare -a DIRS=(
+      "$HOME/.config/Code"
+      "$HOME/.config/Code - Insiders"
+      "$HOME/.config/VSCodium"
+    )
     ;;
   esac
-  for DIR in $APP_DIR/{Code,Code\ -\ Insiders,VSCodium}; do
+  for DIR in "${DIRS[@]}"; do
     symlink_dir_contents "$SETTINGS_DIR/User" "$SETTINGS_DIR" "$DIR"
   done
 }

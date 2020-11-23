@@ -1,24 +1,37 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # shellcheck shell=bash
-### ------------------------------- exports ------------------------------- ###
-export EDITOR="code --wait"
-[ $(uname) = "Linux" ] && export GPG_TTY=$(tty)
+
+### exports
+if command -v code >/dev/null 2>&1; then
+  export EDITOR="code --wait"
+elif command -v code-insiders >/dev/null 2>&1; then
+  export EDITOR="code-insiders --wait"
+else
+  export EDITOR="vim"
+fi
+if [ "$(uname)" = "Linux" ]; then
+  export GPG_TTY=$TTY
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 export PATH="/usr/local/sbin:$HOME/.poetry/bin:$PATH"
-export SSH_KEY_PATH="$HOME/.ssh/id_rsa_${USER}"
-### ------------------------------- aliases ------------------------------- ###
+export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
+
+### aliases
 alias dc="docker-compose"
-alias python="/usr/local/bin/python3"
-### ------ history file configuration - based on ohmyzsh history.zsh ------ ###
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+alias python="python3"
+
+### history file configuration - based on ohmyzsh history.zsh
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
-setopt extended_history       # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first # delete duplicates first if HISTFILE > HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history before running
-setopt inc_append_history     # add commands to HISTFILE in order of execution
-setopt share_history          # share command history data
-### ---- key bindings - based on https://github.com/romkatv/zsh4humans ---- ###
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+
+### key bindings - based on https://github.com/romkatv/zsh4humans
 # enable emacs keymap
 bindkey -e
 # TTY sends different key codes. Translate them to regular.
@@ -36,15 +49,16 @@ bindkey '^[[1;3D' backward-word   # alt+left   go backward one word
 bindkey '^H' backward-kill-word   # alt+bs     delete previous word
 bindkey '^[[3;3~' kill-word       # alt+del    delete next word
 bindkey '^N' kill-buffer          # ctrl+n     delete all lines
-### ---------- pure prompt: https://github.com/sindresorhus/pure ---------- ###
-fpath+=$HOME/.zsh/pure
+
+### pure prompt: https://github.com/sindresorhus/pure
+FPATH+=$HOME/.zsh/pure
 autoload -U promptinit
 promptinit
 prompt pure
-### ------------- completions, integrations, and highlighting ------------- ###
-[ $(uname) = "Linux" ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+### completions and integrations
 if type brew &>/dev/null; then
-  FPATH=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions:$FPATH
+  FPATH+=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions
   autoload -Uz compinit
   if [ "$(whoami)" = "brendon.smith" ]; then
     compinit -i # Ignore insecure directories (perms issues for non-admin user)
@@ -58,5 +72,5 @@ fi
 # if which pyenv-virtualenv-init >/dev/null; then
 #   eval "$(pyenv virtualenv-init -)"
 # fi
-# shellcheck disable=SC1091
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# shellcheck disable=SC1090
+. "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

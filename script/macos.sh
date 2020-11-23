@@ -230,6 +230,13 @@ defaults write com.apple.mail SendFormat Plain
 defaults write com.apple.mail DisableURLLoading -bool true
 
 ###############################################################################
+# Networking                                                                  #
+###############################################################################
+
+# Configure IP: networksetup -setmanual <networkservice> <ip> <subnet> <router>
+networksetup -setmanual "Ethernet" 10.0.0.131 255.255.255.0 10.0.0.1
+
+###############################################################################
 # TextEdit                                                                    #
 ###############################################################################
 

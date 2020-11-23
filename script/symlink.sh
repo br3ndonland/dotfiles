@@ -33,6 +33,7 @@ symlink_vscodium_settings() {
   Darwin)
     declare -a DIRS=(
       "$HOME/Library/Application Support/Code"
+      "$HOME/Library/Application Support/Code - Exploration"
       "$HOME/Library/Application Support/Code - Insiders"
       "$HOME/Library/Application Support/VSCodium"
     )
@@ -40,6 +41,7 @@ symlink_vscodium_settings() {
   Linux)
     declare -a DIRS=(
       "$HOME/.config/Code"
+      "$HOME/.config/Code - Exploration"
       "$HOME/.config/Code - Insiders"
       "$HOME/.config/VSCodium"
     )

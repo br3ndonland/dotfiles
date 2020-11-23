@@ -49,7 +49,7 @@ if symlink_repo_dotfiles && symlink_vscodium_settings; then
   # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
   # Restart Karabiner after symlinking config
   KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
-  if (launchctl kickstart "$KARABINER"); then
+  if launchctl kickstart "$KARABINER" >/dev/null 2>&1; then
     launchctl kickstart -k "$KARABINER"
   else
     echo "-> Skipping Karabiner restart."

@@ -8,7 +8,7 @@
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', 'Rec Mono Duotone', 'Fira Code', monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
@@ -43,7 +43,7 @@
   "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "block",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 12,
   "terminal.integrated.rendererType": "auto",
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shell.linux": "/home/linuxbrew/.linuxbrew/bin/zsh",

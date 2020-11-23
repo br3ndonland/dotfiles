@@ -27,7 +27,6 @@
   "explorer.decorations.badges": false,
   "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": true,
-  "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
     ".env*": "dotenv"
   },

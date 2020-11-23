@@ -4,7 +4,7 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 
 check_open_vsx() {
-  if ! (command -v curl >/dev/null && command -v jq >/dev/null); then
+  if ! (command -v curl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1); then
     printf "curl and jq required to check extension version.\n"
     return
   fi
@@ -22,8 +22,8 @@ check_open_vsx() {
 }
 
 install_codium_extensions() {
-  printf "\nInstalling extensions for %s...\n\n" "$EDITOR"
-  if [ "$EDITOR" = "code-insiders" ]; then
+  printf "\nInstalling extensions for %s...\n\n" "$1"
+  if [ "$1" = "code-insiders" ]; then
     cat ~/.dotfiles/codium/extensions/marketplace-open-vsx.txt \
       ~/.dotfiles/codium/extensions/marketplace-proprietary.txt \
       >~/.dotfiles/codium/extensions/marketplace-all.txt
@@ -31,11 +31,15 @@ install_codium_extensions() {
   else
     EXTENSIONS=~/.dotfiles/codium/extensions/marketplace-open-vsx.txt
   fi
-  INSTALLED=("$($EDITOR --list-extensions --show-versions)")
+  declare -a INSTALLED=("$($1 --list-extensions --show-versions)")
   while read -r EXT; do
     EXT_INFO=$(printf %s "${INSTALLED[@]}" | grep "$EXT")
-    ! [ "$EXT_INFO" ] && $EDITOR --install-extension "$EXT" && continue
-    ! [ "$EDITOR" = "code-insiders" ] && check_open_vsx "$EXT_INFO" && continue
+    if [ "$EXT_INFO" ]; then
+      printf "Extension '%s' installed.\n" "$EXT_INFO"
+    else
+      $1 --install-extension "$EXT"
+    fi
+    if [ "$1" = "codium" ]; then check_open_vsx "$EXT_INFO"; else continue; fi
   done <$EXTENSIONS
 }
 
@@ -46,23 +50,25 @@ if [ -z "$1" ]; then
 fi
 
 for i in "$@"; do
-  EDITOR=$i
   case $i in
   code)
-    APP="VSCodium"
+    MACOS_APP="Code"
     ;;
   code-insiders)
-    APP="Visual\ Studio\ Code\ -\ Insiders"
+    MACOS_APP="Visual\ Studio\ Code\ -\ Insiders"
+    ;;
+  codium)
+    MACOS_APP="VSCodium"
     ;;
   esac
-  BIN_PATH="/Applications/$APP.app/Contents/Resources/app/bin"
-  if [ "$(uname -s)" = "Darwin" ] && ! [ -d "$BIN_PATH" ]; then
-    printf "\nError: CLI for %s not found.\n" "$i"
+  MACOS_BIN="/Applications/$MACOS_APP.app/Contents/Resources/app/bin"
+  if [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
+    export PATH="$MACOS_BIN:$PATH"
+  fi
+  if ! command -v "$i" >/dev/null 2>&1; then
+    printf "\nError: %s command not on PATH.\n" "$i" >&2
     exit 1
-  elif ! command -v "$EDITOR" >/dev/null; then
-    printf "Error: %s command not in PATH.\n" "$EDITOR" >&2
-    [ "$(uname -s)" = "Darwin" ] && export PATH="$BIN_PATH:$PATH" || exit 1
-  elif install_codium_extensions; then
+  elif install_codium_extensions "$i"; then
     printf "\nExtensions successfully installed for %s.\n" "$i"
   else
     printf "\nError: extensions not successfully installed for %s.\n" "$i"

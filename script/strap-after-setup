@@ -19,14 +19,14 @@ else
   echo "Not macOS. Skipping macos.sh."
 fi
 
-CODE_DISTRO=${CODE_DISTRO:-"code"}
+declare -a VSCODES
+for i in {code,code-insiders,code-server,codium}; do
+  if command -v "$i" >/dev/null 2>&1; then VSCODES+=("$i"); else continue; fi
+done
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
-elif command -v "$CODE_DISTRO" >/dev/null; then
-  echo "-> Installing VSCode extensions"
-  ~/.dotfiles/script/codium_extensions.sh "$CODE_DISTRO"
 else
-  echo "$CODE_DISTRO command not in PATH." >&2
+  ~/.dotfiles/script/codium_extensions.sh "${VSCODES[@]}"
 fi
 
 # Set shell

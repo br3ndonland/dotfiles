@@ -23,7 +23,7 @@ check_open_vsx() {
 
 install_codium_extensions() {
   printf "\nInstalling extensions for %s...\n\n" "$1"
-  if [ "$1" = "code-insiders" ]; then
+  if [[ "$DISTRO" == "code-exploration" || "$DISTRO" == "code-insiders" ]]; then
     cat ~/.dotfiles/codium/extensions/marketplace-open-vsx.txt \
       ~/.dotfiles/codium/extensions/marketplace-proprietary.txt \
       >~/.dotfiles/codium/extensions/marketplace-all.txt

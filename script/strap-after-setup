@@ -20,7 +20,7 @@ else
 fi
 
 declare -a VSCODES
-for i in {code,code-insiders,code-server,codium}; do
+for i in {code,code-exploration,code-insiders,code-server,codium}; do
   if command -v "$i" >/dev/null 2>&1; then VSCODES+=("$i"); else continue; fi
 done
 if [ "$(whoami)" = "codespace" ]; then

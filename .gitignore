@@ -2,6 +2,12 @@
 .config/karabiner/automatic_backups
 *.gpg*
 *keys*
+codium/*[Ee]xtension*
+!codium/extensions/*.txt
+codium/logs
+codium/machineid
+codium/User
+!codium/User/*.json
 id_rsa*
 known_hosts
 marketplace-all.txt

@@ -4,6 +4,7 @@
 *keys*
 codium/*[Ee]xtension*
 !codium/extensions/*.txt
+codium/languagepacks.json
 codium/logs
 codium/machineid
 codium/User

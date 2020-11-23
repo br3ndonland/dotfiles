@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-### ------------------ Bootstrap pre-installation script ------------------ ###
-# Run by run_dotfile_scripts in bootstrap.sh
-
-echo "### ------------------------ Important notes ------------------------ ###"
-echo "-> Log in to Mac App Store to enable the mas cli."
-echo "-> --debug is required for password prompt from script/strap-after-setup."
-echo "### ----------------------------------------------------------------- ###"

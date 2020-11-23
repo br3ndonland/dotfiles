@@ -29,24 +29,24 @@ else
   echo "$CODE_DISTRO command not in PATH." >&2
 fi
 
-# Install Poetry: https://python-poetry.org/docs/
-echo "-> Installing Poetry for Python packaging and dependency management"
-curl -fsSL \
-  https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |
-  python -
-
-# Create directory for Zsh shell functions
-mkdir ~/.zfunc
-
 # Set shell
-if [ "$SHELL" != "/bin/zsh" ] && command -v zsh; then
+if ! [[ $SHELL =~ "zsh" ]] && command -v zsh >/dev/null 2>&1; then
   echo "-> Changing shell to Zsh. Password entry required."
-  if [ "$LINUX" ]; then
+  if [ "$(uname)" = "Linux" ]; then
     command -v zsh | sudo tee -a /etc/shells
-    sudo chsh -s "$(command -v zsh)" "${USER}"
+    sudo chsh -s "$(command -v zsh)" "$USER"
   else
     chsh -s "$(command -v zsh)"
   fi
 else
   echo "-> Shell is already set to Zsh."
 fi
+
+RAW="https://raw.githubusercontent.com"
+# Install prompt
+# zsh4humans and powerlevel10k
+sh -c "$(curl -fsSL $RAW/romkatv/zsh4humans/v5/install)"
+
+# Install Poetry: https://python-poetry.org/docs/
+echo "-> Installing Poetry for Python packaging and dependency management"
+curl -fsSL $RAW/python-poetry/poetry/master/get-poetry.py | python3 -

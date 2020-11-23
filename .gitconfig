@@ -37,8 +37,6 @@ tag = tag -a -s
 [commit]
 gpgsign = true
 template = ~/.gitmessage
-[core]
-editor = code --wait
 [credential]
 helper = manager-core
 [credential "https://dev.azure.com"]

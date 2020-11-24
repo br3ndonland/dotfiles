@@ -99,9 +99,6 @@
   "[dockerfile]": {
     "editor.formatOnSave": false
   },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
   "eslint.enable": false,
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",

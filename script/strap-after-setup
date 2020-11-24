@@ -26,7 +26,7 @@ done
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
 else
-  ~/.dotfiles/script/codium_extensions.sh "${VSCODES[@]}"
+  ~/.dotfiles/script/vscode-extensions.sh "${VSCODES[@]}"
 fi
 
 # Set shell

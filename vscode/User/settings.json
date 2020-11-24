@@ -87,7 +87,7 @@
   "aws.telemetry": false,
   "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],
-  "cSpell.import": ["~/.dotfiles/codium/User/cspell.json"],
+  "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],
   "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,
   "[dockerfile]": {

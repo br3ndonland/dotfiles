@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-### ---------------- Symlink dotfiles into home directory ----------------- ###
-# Run by strap-after-setup
+### ------------------------ symlink dotfiles repo ------------------------ ###
 
 symlink_dir_contents() {
   TARGET_DIR=$3/${1##$2/}
@@ -26,12 +25,12 @@ symlink_repo_dotfiles() {
   done
 }
 
-symlink_vscodium_settings() {
-  echo "-> Symlinking VSCodium settings."
-  SETTINGS_DIR=$HOME/.dotfiles/codium
+symlink_vscode_settings() {
+  echo "-> Symlinking VSCode settings."
+  SETTINGS_DIR=$HOME/.dotfiles/vscode
   case $(uname -s) in
   Darwin)
-    declare -a DIRS=(
+    DIRS=(
       "$HOME/Library/Application Support/Code"
       "$HOME/Library/Application Support/Code - Exploration"
       "$HOME/Library/Application Support/Code - Insiders"
@@ -39,7 +38,7 @@ symlink_vscodium_settings() {
     )
     ;;
   Linux)
-    declare -a DIRS=(
+    DIRS=(
       "$HOME/.config/Code"
       "$HOME/.config/Code - Exploration"
       "$HOME/.config/Code - Insiders"
@@ -52,12 +51,12 @@ symlink_vscodium_settings() {
   done
 }
 
-if symlink_repo_dotfiles && symlink_vscodium_settings; then
+if symlink_repo_dotfiles && symlink_vscode_settings; then
   echo "-> Symlinking successful. Finishing up..."
   chmod 700 "$HOME"/.gnupg
   chmod 600 "$HOME"/.gnupg/gpg.conf
-  # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
   # Restart Karabiner after symlinking config
+  # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
   KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
   if launchctl kickstart "$KARABINER" >/dev/null 2>&1; then
     launchctl kickstart -k "$KARABINER"

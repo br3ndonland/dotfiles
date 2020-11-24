@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-### --------------------- Install VSCodium extensions --------------------- ###
-# Run by strap-after-setup
+### ---------------------- Install VSCode extensions ---------------------- ###
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 
 check_open_vsx() {
@@ -21,15 +20,15 @@ check_open_vsx() {
   fi
 }
 
-install_codium_extensions() {
+install_extensions() {
   printf "\nInstalling extensions for %s...\n\n" "$1"
-  if [[ "$DISTRO" == "code-exploration" || "$DISTRO" == "code-insiders" ]]; then
-    cat ~/.dotfiles/codium/extensions/marketplace-open-vsx.txt \
-      ~/.dotfiles/codium/extensions/marketplace-proprietary.txt \
-      >~/.dotfiles/codium/extensions/marketplace-all.txt
-    EXTENSIONS=~/.dotfiles/codium/extensions/marketplace-all.txt
+  if [[ "$1" == "code-exploration" || "$1" == "code-insiders" ]]; then
+    cat ~/.dotfiles/vscode/extensions/marketplace-open-vsx.txt \
+      ~/.dotfiles/vscode/extensions/marketplace-proprietary.txt \
+      >~/.dotfiles/vscode/extensions/marketplace-all.txt
+    EXTENSIONS=~/.dotfiles/vscode/extensions/marketplace-all.txt
   else
-    EXTENSIONS=~/.dotfiles/codium/extensions/marketplace-open-vsx.txt
+    EXTENSIONS=~/.dotfiles/vscode/extensions/marketplace-open-vsx.txt
   fi
   declare -a INSTALLED=("$($1 --list-extensions --show-versions)")
   while read -r EXT; do
@@ -44,31 +43,33 @@ install_codium_extensions() {
 }
 
 if [ -z "$1" ]; then
-  printf "\nError: No editor was given for the codium_extensions.sh script.\n"
-  printf "Please specify ≥1 editor: code code-insiders\n"
+  printf "\nError: No argument was provided. Please specify ≥1 editor.\n"
   exit 1
 fi
 
 for i in "$@"; do
   case $i in
   code)
-    MACOS_APP="Code"
+    MACOS_DIR="Code"
+    ;;
+  code-exploration)
+    MACOS_DIR="Visual Studio Code - Exploration"
     ;;
   code-insiders)
-    MACOS_APP="Visual\ Studio\ Code\ -\ Insiders"
+    MACOS_DIR="Visual Studio Code - Insiders"
     ;;
   codium)
-    MACOS_APP="VSCodium"
+    MACOS_DIR="VSCodium"
     ;;
   esac
-  MACOS_BIN="/Applications/$MACOS_APP.app/Contents/Resources/app/bin"
+  MACOS_BIN="/Applications/$MACOS_DIR.app/Contents/Resources/app/bin"
   if [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
     export PATH="$MACOS_BIN:$PATH"
   fi
   if ! command -v "$i" >/dev/null 2>&1; then
     printf "\nError: %s command not on PATH.\n" "$i" >&2
     exit 1
-  elif install_codium_extensions "$i"; then
+  elif install_extensions "$i"; then
     printf "\nExtensions successfully installed for %s.\n" "$i"
   else
     printf "\nError: extensions not successfully installed for %s.\n" "$i"

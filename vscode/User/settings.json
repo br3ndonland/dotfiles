@@ -1,5 +1,5 @@
 {
-  // VSCode settings
+  // General settings
   "breadcrumbs.enabled": true,
   "debug.toolBarLocation": "docked",
   "editor.autoClosingQuotes": "beforeWhitespace",
@@ -56,6 +56,12 @@
   "workbench.colorTheme": "Dracula Pro",
   "workbench.enableExperiments": false,
   "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
   "workbench.fontAliasing": "auto",
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.editor": "json",

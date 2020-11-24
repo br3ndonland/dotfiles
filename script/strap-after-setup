@@ -8,9 +8,9 @@ echo "-> Running scripts from script/strap-after-setup"
 ~/.dotfiles/script/symlink.sh
 
 if command -v npm 1>/dev/null; then
-  ~/.dotfiles/script/npm_globals.sh
+  ~/.dotfiles/script/npm-globals.sh
 else
-  echo "npm not found. Skipping npm_globals.sh."
+  echo "npm not found. Skipping npm-globals.sh."
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then

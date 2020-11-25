@@ -179,13 +179,40 @@ I mostly use [Dank Mono](https://gumroad.com/l/dank-mono), but also like [Recurs
 
 ### GPG
 
-GPG is an implementation of OpenPGP.
+GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 
-#### Installation and key generation
+#### Installation
 
-- Install `gpg` with a package manager:
+- Install `gpg`:
   - Ubuntu: `sudo apt-get install gpg`
-  - macOS: `brew install gpg`.
+  - macOS: `brew install gpg`
+  - Manually: [Download from GnuPG](https://www.gnupg.org/download/index.html)
+- Install `pinentry`:
+  - macOS: `brew install pinentry` (terminal) or `brew install pinentry-mac` (GUI)
+  - Ubuntu Linux: `apt install pinentry`
+  - Manually: [Download](https://www.gnupg.org/download/index.html) `libgpg-error`, `libassuan`, and `pinentry`, then build from source and install in order (`libgpg-error`, then `libassuan`, then `pinentry`):
+    ```sh
+    cd /path/to/libgpg-error
+    ./configure; make; sudo make install
+    cd /path/to/libassuan
+    ./configure; make; sudo make install
+    cd /path/to/pinentry
+    ./configure; make; sudo make install
+    ```
+- Set the `pinentry` program:
+  - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /usr/local/bin/pinentry`
+  - The path apparently has to be absolute, so it may vary by system.
+  - See the [GPG agent options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
+- [Export the `GPG_TTY` environment variable](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html): `export GPG_TTY=$(tty)` (can add to shell profile to automatically export). Note that this is not the same thing as `export GPG_TTY=$TTY`, which may raise cryptic `Inappropriate ioctl for device` errors.
+- Ensure proper permissions are set on GPG config files:
+  ```sh
+  chmod 700 ~/.gnupg
+  chmod 600 ~/.gnupg/gpg.conf
+  ```
+- See the [GPG configuration docs](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html) for more.
+
+#### Key generation
+
 - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
 - View keys with `gpg --list-secret-keys`.
 - Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
@@ -206,7 +233,8 @@ GPG is an implementation of OpenPGP.
 
 #### Signing Git commits with GPG
 
-- See [Pro Git | 7.4 Git tools - signing your work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work).
+- See [Pro Git: Signing your work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work).
+- Install and configure `pinentry` as described above.
 - Configure Git to use GPG and your key for commits, using _.gitconfig_:
   - Set `signingkey`: `git config --global user.signingkey 16digit_PGPkeyid` the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
     ```ini
@@ -220,30 +248,13 @@ GPG is an implementation of OpenPGP.
     [commit]
     gpgsign = true
     ```
-- Configure GPG to allow Git commit signing with one of these options, depending on desired config:
 
-  - Use `tty` (for command-line commits):
-    - `tty` is a back-end service used by GPG to pass information through the program. See the [GPG Agent Options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
-    - Export the `GPG_TTY` environment variable: `export GPG_TTY=$(tty)`
-    - Can add to shell profile to automatically export
-  - Disable `tty` and use `pinentry` (for commits in VSCode or other IDE):
+#### General
 
-    - Install `pinentry` with package manager:
-      - macOS: `brew install pinentry-mac`
-      - Ubuntu Linux: `apt install pinentry`
-    - Update GPG config files:
-      - _~/.gnupg/gpg.conf:_ `no-tty`
-      - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /usr/local/bin/pinentry-mac`
-    - Ensure proper permissions are set on GPG config files:
-      ```sh
-      chmod 700 ~/.gnupg
-      chmod 600 ~/.gnupg/gpg.conf
-      ```
-    - Note that, with `no-tty`, you will get an error if trying to run `gpg` from the command line.
-
+- Restart the agent: `gpgconf --kill gpg-agent` or `gpgconf --kill all`. See the [GPG docs on invoking `gpg-agent`](https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html).
+- Verify GPG signing capabilities: `echo "test" | gpg --clearsign`
 - Trust GPG keys using the GPG TTY interface:
   - If you see `gpg: WARNING: This key is not certified with a trusted signature!` when examining signed Git commits with `git log --show-signature`, you may want to trust the keys.
-  - Enable `tty` if you previously disabled it (comment out `no-tty` in _~/.gnupg/gpg.conf_).
   - Enter the GPG key editor from the command line with `gpg --edit-key <PGPkeyid>`.
   - Set trust level for the key by typing `trust`, and entering a trust level.
   - See the [GPG docs](https://www.gnupg.org/gph/en/manual/x334.html) for more info.

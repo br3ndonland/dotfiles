@@ -27,7 +27,9 @@ bindkey '^[[3;3~' kill-word
 bindkey '^N' kill-buffer
 
 ### Exports
-if command -v code >/dev/null 2>&1; then
+if command -v codium >/dev/null 2>&1; then
+  export EDITOR="codium --wait"
+elif command -v code >/dev/null 2>&1; then
   export EDITOR="code --wait"
 elif command -v code-insiders >/dev/null 2>&1; then
   export EDITOR="code-insiders --wait"

@@ -55,20 +55,19 @@ if [ -d $HOME/.zsh/pure ]; then
 fi
 
 ### Completions
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+# Ignore insecure directories (perms issues for non-admin user)
+[ "$(whoami)" = "brendon.smith" ] && compinit -i || compinit
 if type brew &>/dev/null; then
   fpath+=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions
-  autoload -Uz compinit
-  if [ "$(whoami)" = "brendon.smith" ]; then
-    compinit -i # Ignore insecure directories (perms issues for non-admin user)
-  else
-    compinit
-  fi
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C "$(brew --prefix)"/bin/terraform terraform
   # shellcheck disable=SC1090
   . "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-  zstyle :compinstall filename '~/.zshrc'
-  autoload -Uz compinit
-  compinit
+  if [ -d $HOME/.zsh/zsh-syntax-highlighting ]; then
+    # shellcheck disable=SC1090
+    . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
 fi

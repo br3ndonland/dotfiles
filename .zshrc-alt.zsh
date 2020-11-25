@@ -34,12 +34,12 @@ elif command -v code-insiders >/dev/null 2>&1; then
 else
   export EDITOR="vim"
 fi
-if [ "$(uname)" = "Linux" ]; then
-  export GPG_TTY=$TTY
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+export GPG_TTY=$(tty)
 export PATH=$HOME/.poetry/bin:$PATH
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
+if [ "$(uname)" = "Linux" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 ### Aliases
 alias python="python3"

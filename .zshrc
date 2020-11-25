@@ -29,11 +29,11 @@ elif command -v code-insiders >/dev/null 2>&1; then
 else
   export EDITOR="vim"
 fi
+export GPG_TTY=$(tty)
+export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 if [ "$(uname)" = "Linux" ]; then
-  export GPG_TTY=$TTY
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 
 # PATH extensions: array items must be unquoted and $path must be lowercase
 # shellcheck disable=SC2206

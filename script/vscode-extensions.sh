@@ -63,8 +63,11 @@ for i in "$@"; do
     ;;
   esac
   MACOS_BIN="/Applications/$MACOS_DIR.app/Contents/Resources/app/bin"
-  if [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
+  if command -v "$i" >/dev/null 2>&1; then
+    printf "\n%s command on PATH.\n" "$i"
+  elif [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
     export PATH="$MACOS_BIN:$PATH"
+    printf "\n%s command loaded onto PATH.\n" "$i"
   fi
   if ! command -v "$i" >/dev/null 2>&1; then
     printf "\nError: %s command not on PATH.\n" "$i" >&2

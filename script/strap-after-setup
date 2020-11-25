@@ -46,6 +46,11 @@ RAW="https://raw.githubusercontent.com"
 # Install prompt
 # zsh4humans and powerlevel10k
 sh -c "$(curl -fsSL $RAW/romkatv/zsh4humans/v5/install)"
+# pure prompt: https://github.com/sindresorhus/pure
+# mkdir -p "$HOME/.zsh"
+# git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+#   "$HOME/.zsh/zsh-syntax-highlighting"
 
 # Install Poetry: https://python-poetry.org/docs/
 echo "-> Installing Poetry for Python packaging and dependency management"

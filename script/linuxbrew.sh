@@ -4,7 +4,7 @@
 
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
 if command -v brew >/dev/null 2>&1; then
-  echo "Homebrew detected."
+  printf "Homebrew detected."
 else
   RAW="https://raw.githubusercontent.com"
   BREW_SCRIPT="Homebrew/install/master/install.sh"

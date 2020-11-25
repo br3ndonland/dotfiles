@@ -415,7 +415,7 @@ elif [[ "$CPU" =~ "Apple" ]]; then
   echo "Skipping Homebrew installs for Mac with non-Intel CPU: $CPU."
   echo "Homebrew prefix for Apple Silicon processors will be /opt/homebrew"
 elif $LINUX; then
-  run_dotfile_scripts script/quickbrew.sh
+  run_dotfile_scripts script/linuxbrew.sh
 else
   echo "Skipping Homebrew installs."
 fi

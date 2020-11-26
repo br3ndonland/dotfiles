@@ -142,7 +142,7 @@
   "markdown.extension.toc.updateOnSave": true,
   "[python]": {
     "editor.defaultFormatter": "ms-python.python",
-    "editor.rulers": [88],
+    "editor.rulers": [],
     "editor.tabSize": 4
   },
   "python.disableInstallationCheck": true,
@@ -160,7 +160,7 @@
   "python.testing.promptToConfigure": false,
   "shellcheck.customArgs": ["--shell=bash"],
   "[shellscript]": {
-    "editor.rulers": [80],
+    "editor.rulers": [],
     "files.eol": "\n"
   },
   "shellformat.effectLanguages": ["shellscript"],

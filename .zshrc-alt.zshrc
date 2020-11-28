@@ -1,16 +1,15 @@
 #!/usr/bin/env zsh
-# shellcheck shell=bash
 ### -------------------- Alternative Zsh configuration -------------------- ###
-# To use: ln -fns .zshrc-alt.zsh ~/.zshrc
+# usage: ln -fns $(pwd)/.zshrc-alt.zshrc ~/.zshrc
 
-### Initial setup configured by zsh-newuser-install
+### initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=50000
-setopt autocd extendedglob nomatch
+setopt autocd extendedglob glob_dots no_auto_menu nomatch
 
-### Keybindings: based on https://github.com/romkatv/zsh4humans
+### keybindings: based on https://github.com/romkatv/zsh4humans
 bindkey -e
 bindkey -s '^[[1~' '^[[H'
 bindkey -s '^[[4~' '^[[F'
@@ -26,48 +25,47 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;3~' kill-word
 bindkey '^N' kill-buffer
 
-### Exports
+### exports
 if command -v codium >/dev/null 2>&1; then
-  export EDITOR="codium --wait"
+  export EDITOR='codium --wait'
 elif command -v code >/dev/null 2>&1; then
-  export EDITOR="code --wait"
+  export EDITOR='code --wait'
 elif command -v code-insiders >/dev/null 2>&1; then
-  export EDITOR="code-insiders --wait"
+  export EDITOR='code-insiders --wait'
 else
-  export EDITOR="vim"
+  export EDITOR='vim'
 fi
-export GPG_TTY=$(tty)
+TTY=$(tty)
+export GPG_TTY=$TTY
 export PATH=$HOME/.poetry/bin:$PATH
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
-if [ "$(uname)" = "Linux" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ $(uname) = 'Linux' ]]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-### Aliases
-alias python="python3"
+### aliases
+alias python='python3'
 
-### Prompt: https://github.com/sindresorhus/pure
-if [ -d $HOME/.zsh/pure ]; then
+### prompt: https://github.com/sindresorhus/pure
+if [[ -d $HOME/.zsh/pure ]]; then
   fpath+=$HOME/.zsh/pure
   autoload -U promptinit
   promptinit
   prompt pure
 fi
 
-### Completions
-zstyle :compinstall filename '~/.zshrc'
+### completions
+zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
-# Ignore insecure directories (perms issues for non-admin user)
-[ "$(whoami)" = "brendon.smith" ] && compinit -i || compinit
+# ignore insecure directories (perms issues for non-admin user)
+[[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
 if type brew &>/dev/null; then
-  fpath+=$HOME/.zfunc:"$(brew --prefix)"/share/zsh-completions
+  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh-completions
   autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C "$(brew --prefix)"/bin/terraform terraform
-  # shellcheck disable=SC1090
-  . "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+  . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-  if [ -d $HOME/.zsh/zsh-syntax-highlighting ]; then
-    # shellcheck disable=SC1090
+  if [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
     . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   fi
 fi

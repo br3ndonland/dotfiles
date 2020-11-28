@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-# shellcheck shell=bash
 ### zsh4humans: https://github.com/romkatv/zsh4humans
 
 ### style
@@ -20,22 +19,22 @@ z4h init || return
 
 ### exports
 if command -v codium >/dev/null 2>&1; then
-  export EDITOR="codium --wait"
+  export EDITOR='codium --wait'
 elif command -v code >/dev/null 2>&1; then
-  export EDITOR="code --wait"
+  export EDITOR='code --wait'
 elif command -v code-insiders >/dev/null 2>&1; then
-  export EDITOR="code-insiders --wait"
+  export EDITOR='code-insiders --wait'
 else
-  export EDITOR="vim"
+  export EDITOR='vim'
 fi
-export GPG_TTY=$(tty)
+TTY=$(tty)
+export GPG_TTY=$TTY
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
-if [ "$(uname)" = "Linux" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ $(uname) = 'Linux' ]]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 ### PATH extensions: array items must be unquoted and $path must be lowercase
-# shellcheck disable=SC2206
 path=($HOME/bin $HOME/.local/bin $HOME/.poetry/bin $path)
 
 ### sources: z4h source /path/to/script
@@ -58,8 +57,8 @@ md() {
 compdef _directories md
 
 ### aliases
-alias dc="docker-compose"
-alias python="python3"
+alias dc='docker-compose'
+alias python='python3'
 alias tree='tree -a -I .git'
 
 ### Zsh options: http://zsh.sourceforge.net/Doc/Release/Options.html

@@ -158,7 +158,26 @@
   "python.showStartPage": false,
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
+  "shellcheck.enable": true,
+  "shellcheck.run": "onSave",
   "shellcheck.customArgs": ["--shell=bash"],
+  "shellcheck.exclude": [
+    "SC1071", // only supports sh/bash/dash/ksh
+    "SC1090", // can't follow non-constant source
+    "SC1091", // not following source
+    "SC2015", // A && B || C is not if-then-else
+    "SC2034", // variable appears unused
+    "SC2046", // quote to prevent word splitting
+    "SC2086", // quote to prevent word splitting
+    "SC2206", // quote to prevent word splitting
+    "SC2207" // quote to prevent word splitting
+  ],
+  "shellcheck.ignoreFileSchemes": ["git", "gitfs"],
+  "shellcheck.ignorePatterns": {
+    "**/*.zsh": false,
+    "**/*.zshrc": false,
+    "**/zshrc": false
+  },
   "[shellscript]": {
     "editor.rulers": [],
     "files.eol": "\n"

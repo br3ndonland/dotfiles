@@ -25,7 +25,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.decorations.badges": false,
-  "extensions.autoUpdate": true,
+  "extensions.autoUpdate": false,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".env*": "dotenv"

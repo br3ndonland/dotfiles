@@ -2,9 +2,9 @@
 ### zsh4humans: https://github.com/romkatv/zsh4humans
 
 ### style
-zstyle :z4h prompt-position top
 zstyle ':z4h:' auto-update 'ask'
 zstyle ':z4h:' auto-update-days '28'
+zstyle ':z4h:' prompt-position top
 zstyle ':z4h:bindkey' keyboard 'mac'
 zstyle ':z4h:autosuggestions' forward-char 'accept'
 zstyle ':z4h:ssh:*' enable 'no'

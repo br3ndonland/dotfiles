@@ -1,21 +1,29 @@
 #!/usr/bin/env zsh
-### zsh4humans: https://github.com/romkatv/zsh4humans
+### Zsh configuration
+# usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
-### style
-zstyle ':z4h:' auto-update 'ask'
-zstyle ':z4h:' auto-update-days '28'
-zstyle ':z4h:' prompt-position top
-zstyle ':z4h:bindkey' keyboard 'mac'
-zstyle ':z4h:autosuggestions' forward-char 'accept'
-zstyle ':z4h:ssh:*' enable 'no'
-zstyle ':zle:up-line-or-beginning-search' leave-cursor 'yes'
-zstyle ':zle:down-line-or-beginning-search' leave-cursor 'yes'
+### initial setup configured by zsh-newuser-install
+# To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=50000
+setopt autocd extendedglob glob_dots no_auto_menu nomatch
 
-### repos
-# z4h install ohmyzsh/ohmyzsh || return
-
-### initialization
-z4h init || return
+### keybindings: based on https://github.com/romkatv/zsh4humans
+bindkey -e
+bindkey -s '^[[1~' '^[[H'
+bindkey -s '^[[4~' '^[[F'
+bindkey -s '^[[5~' ''
+bindkey -s '^[[6~' ''
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^?' backward-delete-char
+bindkey '^[[3~' delete-char
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+bindkey '^H' backward-kill-word
+bindkey '^[[3;3~' kill-word
+bindkey '^N' kill-buffer
 
 ### exports
 if command -v codium >/dev/null 2>&1; then
@@ -29,38 +37,35 @@ else
 fi
 TTY=$(tty)
 export GPG_TTY=$TTY
+export PATH=$HOME/.poetry/bin:$PATH
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 if [[ $(uname) = 'Linux' ]]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-### PATH extensions: array items must be unquoted and $path must be lowercase
-path=($HOME/bin $HOME/.local/bin $HOME/.poetry/bin $path)
-
-### sources: z4h source /path/to/script
-
-### keybindings
-z4h bindkey undo Ctrl+/                # undo last command line change
-z4h bindkey redo Alt+/                 # redo last undone command line change
-z4h bindkey z4h-cd-back Shift+Left     # cd into previous directory
-z4h bindkey z4h-cd-forward Shift+Right # cd into next directory
-z4h bindkey z4h-cd-up Shift+Up         # cd into parent directory
-z4h bindkey z4h-cd-down Shift+Down     # cd into a child directory
-
-### autoload functions
-autoload -Uz zmv
-
-### additional functions and completions
-md() {
-  [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" || return
-}
-compdef _directories md
-
 ### aliases
-alias dc='docker-compose'
 alias python='python3'
-alias tree='tree -a -I .git'
 
-### Zsh options: http://zsh.sourceforge.net/Doc/Release/Options.html
-setopt glob_dots    # no special treatment for file names with a leading dot
-setopt no_auto_menu # require an extra TAB press to open the completion menu
+### prompt: https://github.com/sindresorhus/pure
+if [[ -d $HOME/.zsh/pure ]]; then
+  fpath+=$HOME/.zsh/pure
+  autoload -U promptinit
+  promptinit
+  prompt pure
+fi
+
+### completions
+zstyle :compinstall filename $HOME/.zshrc
+autoload -Uz compinit
+# ignore insecure directories (perms issues for non-admin user)
+[[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
+if type brew &>/dev/null; then
+  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh-completions
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+  . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  if [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
+    . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
+fi

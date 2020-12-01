@@ -13,6 +13,6 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm i -g prettier@>=2.1
       - run: prettier --check .
-      - run: shellcheck *.sh script/* .zshrc .zshrc-alt.zshrc
+      - run: shellcheck *.sh script/* .zshrc .zshrc-z4h.zshrc
         env:
           SHELLCHECK_OPTS: --shell=bash -e SC1071 -e SC1091 -e SC2015 -e SC2034 -e SC2046 -e SC2086 -e SC2206 -e SC2207

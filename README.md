@@ -488,7 +488,7 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
 - [Audacity](https://www.audacityteam.org/)
 - [HandBrake](https://handbrake.fr/)
-- [Plex](https://www.plex.tv/) media server
+- [Jellyfin](https://jellyfin.org/) media server
 - [VLC](https://www.videolan.org/vlc/) media player
 
 ## Science

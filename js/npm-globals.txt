@@ -6,3 +6,4 @@ npm-check
 prettier
 trash-cli
 typescript
+webtorrent-cli

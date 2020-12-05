@@ -86,5 +86,10 @@
     "key": "shift+f12",
     "command": "-editor.action.goToReferences",
     "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  // Search commits with GitLens
+  {
+    "key": "ctrl+alt+cmd+f",
+    "command": "gitlens.showCommitSearch"
   }
 ]

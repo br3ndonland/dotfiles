@@ -180,11 +180,11 @@
     "**/*.zshrc": false,
     "**/zshrc": false
   },
+  "shellformat.effectLanguages": ["shellscript"],
   "[shellscript]": {
     "editor.rulers": [],
     "files.eol": "\n"
   },
-  "shellformat.effectLanguages": ["shellscript"],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

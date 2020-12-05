@@ -27,6 +27,9 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d h:mm a"
 
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+sudo systemsetup -settimezone "America/New_York" >/dev/null
+
 ###############################################################################
 # Peripherals                                                                 #
 ###############################################################################
@@ -48,8 +51,8 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Disable “natural” scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/New_York" >/dev/null
+# Use keyboard navigation to move focus between controls (tab navigation)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 ###############################################################################
 # Screen                                                                      #
@@ -75,7 +78,7 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: show hidden files by default
-#defaults write com.apple.finder AppleShowAllFiles -bool true
+# defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Prefer Finder tabs: Dock -> Prefer tabs when opening documents
 defaults write NSGlobalDomain AppleWindowTabbingMode -string "always"
@@ -148,7 +151,7 @@ defaults write com.apple.dock show-process-indicators -bool true
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-#defaults write com.apple.dock persistent-apps -array
+# defaults write com.apple.dock persistent-apps -array
 
 # Don’t animate opening applications from the Dock
 defaults write com.apple.dock launchanim -bool false

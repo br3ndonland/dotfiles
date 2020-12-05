@@ -43,13 +43,16 @@ _bootstrap.sh_ will set up macOS and Homebrew, then run the scripts in the _scri
 
 ## Hardware
 
-- Mac mini
-- [Microsoft Sculpt ergonomic keyboard](https://www.amazon.com/dp/B00CYX26BC)
+- [Apple Silicon M1](https://www.apple.com/mac/m1/) Mac mini
+- [Dell S3221QS 32" curved 4K monitor](https://www.amazon.com/dp/B08G8WMRRP)
+- [Seagate external hard drives](https://www.amazon.com/dp/B07MY44VNM)
+- [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC) and [Dygma Raise](https://dygma.com/) keyboards
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
-- External hard drives (Seagate)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
-- [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html)
+- [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html) _(this pic is a little outdated, but you get the "picture")_
+
   ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)
+
 - <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen cabinet.</summary>
 
   ![DIY standing desk](img/diy-standing-desk.jpg)

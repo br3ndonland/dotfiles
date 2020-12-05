@@ -232,14 +232,14 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 
 #### Installation
 
-- Install `gpg`:
-  - Ubuntu: `sudo apt-get install gpg`
-  - macOS: `brew install gpg`
+- Install `gnupg`:
+  - macOS: `brew install gnupg`
+  - Ubuntu Linux: `sudo apt-get install gnupg`
   - Manually: [Download from GnuPG](https://www.gnupg.org/download/index.html)
 - Install `pinentry`:
-  - macOS: `brew install pinentry` (terminal) or `brew install pinentry-mac` (GUI)
+  - macOS: `brew install pinentry` (terminal) or `brew install pinentry-mac` ([app](https://github.com/GPGTools/pinentry-mac) from [GPGTools suite](https://gpgtools.org/) that enables use of macOS keychain and GUI apps like VSCode)
   - Ubuntu Linux: `apt install pinentry`
-  - Manually: [Download](https://www.gnupg.org/download/index.html) `libgpg-error`, `libassuan`, and `pinentry`, then build from source and install in order (`libgpg-error`, then `libassuan`, then `pinentry`):
+  - Manually: On macOS, Apple's command-line tools (`xcode-select`) should have the build prerequisites. [Download](https://www.gnupg.org/download/index.html) `libgpg-error`, `libassuan`, and `pinentry`, then build from source and install in order (`libgpg-error`, then `libassuan`, then `pinentry`):
     ```sh
     cd /path/to/libgpg-error
     ./configure; make; sudo make install
@@ -276,9 +276,9 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
   - Encrypt a message with `echo "Hello, World!" | gpg --encrypt --armor --recipient "<email>"`. Optionally, save the encrypted message in a .gpg file.
   - If the message was saved in a file, send the file over email, Slack, or any other medium.
   - Decrypt the message with `gpg --decrypt`.
-    - If copying the text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
-    - If reading a file, include the filename when decrypting: `gpg --decrypt gcloud.gpg`.
-    - Decrypted output can be autosaved to a new file: `gpg --decrypt gcloud.gpg --output file.txt`.
+    - If copying the encrypted text directly, include it in quotes: `echo "BIG LONG GPG STRING" | gpg --decrypt`.
+    - If reading a file, include the filename when decrypting: `gpg --decrypt message.gpg`.
+    - Decrypted output can be autosaved to a new file: `gpg --decrypt message.gpg --output file.txt`.
 
 #### Signing Git commits with GPG
 
@@ -309,7 +309,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
   - See the [GPG docs](https://www.gnupg.org/gph/en/manual/x334.html) for more info.
 - [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
 - [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
-- **If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.**
+- If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.
 
 ### Keybase
 
@@ -353,8 +353,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
   - You will be prompted with several options. I set a password on my key to keep it secure. Storing the private key on the keybase.io servers is a contentious option, because it hypothetically [could put the key at risk](https://github.com/keybase/keybase-issues/issues/160). However, I agree with [this comment](https://github.com/keybase/keybase-issues/issues/160#issuecomment-518472677): if you don't trust Keybase, don't use Keybase. From what I understand, if you select `Push an encrypted copy of your new secret key to the Keybase.io server? [Y/n] Y` during `keybase pgp gen`, it will have the same ultimate effect as `keybase pgp push-private`. Here are the important options for key management:
 
     ```sh
-    # Generate a PGP key
-    # When the key is generated, Keybase will automatically export it to GPG.
+    # Generate a PGP key (Keybase will automatically export it to GPG)
     keybase pgp gen
     # Sync PGP key with Keybase using Keybase servers
     keybase pgp push-private 16digit_PGPkeyid
@@ -366,9 +365,11 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
     keybase pgp export -q 16digit_PGPkeyid | gpg --import
     # Manual export of private key to GPG
     keybase pgp export -q 16digit_PGPkeyid --secret | gpg --allow-secret-key-import --import
+    ```
 
-    # If none of the Keybase methods work, try GPG. On the source computer
-    # where the GPG private keys are stored, export to a synced directory:
+  - If none of the Keybase methods work, try GPG. On the source computer where the GPG private keys are stored, export to a synced directory:
+
+    ```sh
     mkdir -p /path/to/.keys
     gpg -a --export > /path/to/.keys/pubkeys.asc
     gpg -a --export-secret-keys > /path/to/.keys/privatekeys.asc
@@ -385,6 +386,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 - Keybase chat does not have a free message limit. Slack does. I frequently hit this free message limit when participating in large workspaces for my courses on Udacity, and it negatively impacted my ability to build projects with classmates. We switched to a Keybase team instead.
 - Keybase has not leaked passwords. [Slack has been vulnerable to password leaks and other attacks](https://slackhq.com/march-2015-security-incident-and-the-launch-of-two-factor-authentication), and it took Slack four years before they notified users. [The Keybase CEO's Slack credentials were compromised](https://keybase.io/blog/slack-incident).
 - Keybase does not use third-party trackers. Slack is polluted with trackers. Here's a screenshot of the [Brave browser](https://brave.com/) blocking Slack trackers during a typical session in the Slack workspace used in my previous developer job:
+
   ![Brave browser blocking Slack trackers](img/brave-slack-trackers.png)
 
 #### Keybase crypto

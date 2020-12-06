@@ -19,7 +19,9 @@ zstyle ':zle:down-line-or-beginning-search' leave-cursor 'yes'
 z4h init || return
 
 ### exports
-if command -v codium >/dev/null 2>&1; then
+if command -v code-exploration >/dev/null 2>&1; then
+  export EDITOR='code-exploration --wait'
+elif command -v codium >/dev/null 2>&1; then
   export EDITOR='codium --wait'
 elif command -v code >/dev/null 2>&1; then
   export EDITOR='code --wait'

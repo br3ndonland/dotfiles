@@ -36,7 +36,7 @@ if [[ $(uname) = 'Linux' ]]; then
 fi
 
 ### PATH extensions: array items must be unquoted and $path must be lowercase
-path=($HOME/bin $HOME/.local/bin $HOME/.poetry/bin $path)
+path=($path $HOME/.local/bin $HOME/.poetry/bin)
 
 ### sources: z4h source /path/to/script
 

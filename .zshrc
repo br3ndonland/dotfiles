@@ -37,7 +37,7 @@ else
 fi
 TTY=$(tty)
 export GPG_TTY=$TTY
-export PATH=$HOME/.poetry/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/.poetry/bin
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 if [[ $(uname) = 'Linux' ]]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

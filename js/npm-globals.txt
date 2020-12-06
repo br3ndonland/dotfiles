@@ -1,4 +1,5 @@
 @vue/cli
+fx
 gitmoji-cli
 json
 json-server

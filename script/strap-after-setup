@@ -5,16 +5,16 @@
 # Run scripts: scripts must be executable (chmod +x)
 echo "-> Running scripts from script/strap-after-setup"
 
-~/.dotfiles/script/symlink.sh
+"$HOME"/.dotfiles/script/symlink.sh
 
 if command -v npm 1>/dev/null; then
-  ~/.dotfiles/script/npm-globals.sh
+  "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-  ~/.dotfiles/script/macos.sh
+  "$HOME"/.dotfiles/script/macos.sh
 else
   echo "Not macOS. Skipping macos.sh."
 fi
@@ -26,7 +26,7 @@ done
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
 else
-  ~/.dotfiles/script/vscode-extensions.sh "${VSCODES[@]}"
+  "$HOME"/.dotfiles/script/vscode-extensions.sh "${VSCODES[@]}"
 fi
 
 # Set shell

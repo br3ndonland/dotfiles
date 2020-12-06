@@ -22,15 +22,13 @@ else
 fi
 
 ### Install VSCode extensions
-declare -a VSCODES
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
-  if command -v "$i" &>/dev/null; then VSCODES+=("$i"); else continue; fi
+  if [ "$(whoami)" = "codespace" ]; then
+    echo "Error: Codespaces VSCode CLI can't install extensions."
+  else
+    "$HOME"/.dotfiles/script/vscode-extensions.sh "$i"
+  fi
 done
-if [ "$(whoami)" = "codespace" ]; then
-  echo "Error: Codespaces VSCode CLI can't install extensions."
-else
-  "$HOME"/.dotfiles/script/vscode-extensions.sh "${VSCODES[@]}"
-fi
 
 ### Set shell
 if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then

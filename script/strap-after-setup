@@ -8,7 +8,7 @@ echo "-> Running scripts from script/strap-after-setup"
 "$HOME"/.dotfiles/script/symlink.sh
 
 if command -v npm 1>/dev/null; then
-  "$HOME"/.dotfiles/script/npm-globals.sh
+  sudo "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
 fi

@@ -182,7 +182,7 @@ I mostly use [Dank Mono](https://gumroad.com/l/dank-mono), but also like [Recurs
 - [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
   - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012,
     > Yeah, we're never going to do this.
-  - Instead, package names can be specified in a text file, _[npm-globals.txt](js/npm-globals.txt)_, and installed with a shell script, _[npm-globals.sh](script/npm-globals.sh)_. Global npm packages will be installed in _/usr/local/lib/node_modules_.
+  - Instead, package names can be specified in a text file, _[npm-globals.txt](js/npm-globals.txt)_, and installed with a shell script, _[npm-globals.sh](script/npm-globals.sh)_. Global npm packages will be installed in _/usr/local/lib/node_modules_. Note that `sudo` permissions may be required to run the script.
   - [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -ug`. If not using npm-check, a list of global npm packages can be seen after installation with `npm list -g --depth=0`.
 - I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
 - ESLint notes:

@@ -3,18 +3,18 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 
 check_open_vsx() {
-  if ! (command -v curl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1); then
-    printf "curl and jq required to check extension version.\n"
+  if ! command -v curl >/dev/null 2>&1 && ! command -v fx >/dev/null 2>&1; then
+    printf "curl and antonmedv/fx required to check extension version.\n"
     return
   fi
   URL="https://open-vsx.org/api/$(printf %s "$1" | cut -d @ -f 1 | tr '.' '/')"
   LOCAL_VERSION=$(printf %s "$1" | cut -d @ -f 2)
   OPEN_VSX_VERSION=$(
     curl -fs -X GET "$URL" -H "accept: application/json" |
-      jq --raw-output .version
+      fx .version
   )
   if [[ "$LOCAL_VERSION" == "$OPEN_VSX_VERSION" ]]; then
-    printf "Extension '%s' installed and up-to-date with Open VSX.\n" "$1"
+    printf "Extension '%s' up-to-date with Open VSX.\n" "$1"
   else
     $EDITOR --install-extension "$(printf %s "$1" | cut -d @ -f 1)"
   fi

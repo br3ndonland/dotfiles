@@ -172,7 +172,7 @@ I previously configured VSCode and VSCodium using the [Settings Sync](https://ma
 
 ## Fonts
 
-I mostly use [Dank Mono](https://gumroad.com/l/dank-mono), but also like [Recursive Mono](https://www.recursive.design/), [Fira Code](https://github.com/tonsky/FiraCode) and [Ubuntu Mono](https://design.ubuntu.com/font/).
+[Dank Mono](https://gumroad.com/l/dank-mono) is my programming font of choice. The rounded characters are eminently readable, the italics are elegant, and the ligatures are intuitive. [Recursive Mono](https://www.recursive.design/), [Fira Code](https://github.com/tonsky/FiraCode), and [Ubuntu Mono](https://design.ubuntu.com/font/) are decent free alternatives.
 
 ## Language-specific setup
 

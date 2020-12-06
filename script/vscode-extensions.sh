@@ -3,7 +3,7 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 
 check_open_vsx() {
-  if ! command -v curl >/dev/null 2>&1 && ! command -v fx >/dev/null 2>&1; then
+  if ! command -v curl &>/dev/null && ! command -v fx &>/dev/null; then
     printf "curl and antonmedv/fx required to check extension version.\n"
     return
   fi
@@ -63,13 +63,13 @@ for i in "$@"; do
     ;;
   esac
   MACOS_BIN="/Applications/$MACOS_DIR.app/Contents/Resources/app/bin"
-  if command -v "$i" >/dev/null 2>&1; then
+  if command -v "$i" &>/dev/null; then
     printf "\n%s command on PATH.\n" "$i"
   elif [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
     export PATH="$MACOS_BIN:$PATH"
     printf "\n%s command loaded onto PATH.\n" "$i"
   fi
-  if ! command -v "$i" >/dev/null 2>&1; then
+  if ! command -v "$i" &>/dev/null; then
     printf "\nError: %s command not on PATH.\n" "$i" >&2
     exit 1
   elif install_extensions "$i"; then

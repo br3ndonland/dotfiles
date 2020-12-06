@@ -3,7 +3,7 @@
 # A simple Linux setup script for Homebrew, Brew Bundle, and apt-get.
 
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
-if command -v brew >/dev/null 2>&1; then
+if command -v brew &>/dev/null; then
   printf "Homebrew detected."
 else
   RAW="https://raw.githubusercontent.com"

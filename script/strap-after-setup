@@ -7,7 +7,7 @@ echo "-> Running scripts from script/strap-after-setup"
 
 "$HOME"/.dotfiles/script/symlink.sh
 
-if command -v npm 1>/dev/null; then
+if command -v npm &>/dev/null; then
   sudo "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
@@ -21,7 +21,7 @@ fi
 
 declare -a VSCODES
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
-  if command -v "$i" >/dev/null 2>&1; then VSCODES+=("$i"); else continue; fi
+  if command -v "$i" &>/dev/null; then VSCODES+=("$i"); else continue; fi
 done
 if [ "$(whoami)" = "codespace" ]; then
   echo "Error: Codespaces VSCode CLI can't install extensions."
@@ -30,7 +30,7 @@ else
 fi
 
 # Set shell
-if ! [[ $SHELL =~ "zsh" ]] && command -v zsh >/dev/null 2>&1; then
+if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
   echo "-> Changing shell to Zsh. Password entry required."
   if [ "$(uname)" = "Linux" ]; then
     command -v zsh | sudo tee -a /etc/shells

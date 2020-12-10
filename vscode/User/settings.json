@@ -154,7 +154,6 @@
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.linting.mypyArgs": ["--ignore-missing-imports", "--show-error-codes"],
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,

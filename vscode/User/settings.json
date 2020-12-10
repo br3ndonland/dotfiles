@@ -143,6 +143,9 @@
   "markdown.extension.toc.levels": "2..3",
   "markdown.extension.toc.updateOnSave": true,
   "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
     "editor.defaultFormatter": "ms-python.python",
     "editor.rulers": [],
     "editor.tabSize": 4
@@ -157,6 +160,7 @@
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,
+  "python.sortImports.args": ["--profile", "black"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "shellcheck.enable": true,

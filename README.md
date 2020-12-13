@@ -473,21 +473,22 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
 ## General productivity
 
-- [1Password](https://1password.com/) (Homebrew Cask or Mac App Store)
-- [Backblaze](https://www.backblaze.com/) (Homebrew Cask)
+- [1Password](https://1password.com/) (Mac App Store)
+- [Backblaze](https://www.backblaze.com/) (Homebrew Cask or direct download)
 - [Bear](https://bear.app) (Mac App Store)
-- [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (Homebrew Cask)
+- [Firefox](https://www.mozilla.org/en-US/firefox/) (Homebrew Cask)
   - Firefox account: sync preferences and add-ons
   - 1Password extension for desktop app
   - [DuckDuckGo Privacy Essentials](https://github.com/duckduckgo/duckduckgo-privacy-extension)
   - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
   - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
   - [Stylus](https://github.com/openstyles/stylus) (alternative to Dark Reader, also a [Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
-    - [GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)
+    - [GitHub Custom Fonts](https://github.com/StylishThemes/GitHub-Dark)
+    - ~~[GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)~~ _(GitHub [finally](https://github.blog/2020-12-08-new-from-universe-2020-dark-mode-github-sponsors-for-companies-and-more/) has a native dark mode!)_
     - [GitLab Dark](https://gitlab.com/maxigaz/gitlab-dark)
     - [Wikipedia Dark](https://github.com/n0x-styles/wikipedia-dark)
 - macOS Keynote, Numbers, and Pages
-- [ProtonVPN](https://protonvpn.com/) (Homebrew Cask)
+- [ProtonVPN](https://protonvpn.com/) (Homebrew Cask or direct download)
 
 ## Media
 

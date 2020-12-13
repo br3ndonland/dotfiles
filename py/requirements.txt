@@ -1,0 +1,7 @@
+awscli
+black
+cookiecutter
+flake8
+httpie
+jupyterlab
+youtube-dl

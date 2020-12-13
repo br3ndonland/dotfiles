@@ -1,7 +1,6 @@
 @vue/cli
 fx
 gitmoji-cli
-json
 json-server
 npm-check
 prettier

@@ -3,6 +3,7 @@
 # Run by run_dotfile_scripts in bootstrap.sh
 # Scripts must be executable (chmod +x)
 echo "-> Running strap-after-setup. Some steps may require password entry."
+RAW="https://raw.githubusercontent.com"
 
 ### Symlink dotfiles
 "$HOME"/.dotfiles/script/symlink.sh
@@ -19,6 +20,15 @@ if command -v npm &>/dev/null; then
   sudo "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
+fi
+
+### Install user Python packages
+if command -v python3 &>/dev/null; then
+  if ! command -v poetry &>/dev/null; then
+    curl -fsSL $RAW/python-poetry/poetry/master/get-poetry.py | python3 -
+  fi
+else
+  echo "Python 3 not found. Skipping Poetry install."
 fi
 
 ### Install VSCode extensions
@@ -39,8 +49,6 @@ else
   echo "-> Shell is already set to Zsh."
 fi
 
-RAW="https://raw.githubusercontent.com"
-
 ### Install prompt
 # pure prompt: https://github.com/sindresorhus/pure
 mkdir -p "$HOME/.zsh"
@@ -49,7 +57,3 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
   "$HOME/.zsh/zsh-syntax-highlighting"
 # zsh4humans and powerlevel10k: https://github.com/romkatv/zsh4humans
 # sh -c "$(curl -fsSL $RAW/romkatv/zsh4humans/v5/install)"
-
-### Install Poetry: https://python-poetry.org/docs/
-echo "-> Installing Poetry for Python packaging and dependency management"
-curl -fsSL $RAW/python-poetry/poetry/master/get-poetry.py | python3 -

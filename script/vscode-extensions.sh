@@ -16,7 +16,7 @@ check_open_vsx() {
   if [[ "$LOCAL_VERSION" == "$OPEN_VSX_VERSION" ]]; then
     printf "Extension '%s' up-to-date with Open VSX.\n" "$1"
   else
-    $EDITOR --install-extension "$(printf %s "$1" | cut -d @ -f 1)"
+    $EDITOR --install-extension "$(printf %s "$1" | cut -d @ -f 1)" --force
   fi
 }
 

@@ -3,7 +3,7 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-gallery
 
 check_open_vsx() {
-  if ! command -v curl &>/dev/null && ! command -v fx &>/dev/null; then
+  if ! (command -v curl &>/dev/null && command -v fx &>/dev/null); then
     printf "curl and antonmedv/fx required to check extension version.\n"
     return
   fi

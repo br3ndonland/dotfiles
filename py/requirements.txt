@@ -4,4 +4,5 @@ cookiecutter
 flake8
 httpie
 jupyterlab
+mypy
 youtube-dl

@@ -8,7 +8,18 @@ pipx_install_requirements() {
   PY="$(python3 --version)"
   PIPX_LIST="$(pipx list)"
   while read -r P; do
-    [[ $P =~ "httpie" ]] && CMD="http" || CMD="$P"
+    case "$P" in
+    "awscli")
+      : "aws"
+      ;;
+    "httpie")
+      : "http"
+      ;;
+    *)
+      : "$P"
+      ;;
+    esac
+    CMD="$_"
     if [[ $(echo "$PIPX_LIST" | grep -ce "package $P .*, $PY") -gt 0 ]]; then
       echo "$P already installed."
     elif [[ $(echo "$PIPX_LIST" | grep -ce "package $P") -gt 0 ]]; then

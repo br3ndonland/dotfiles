@@ -49,13 +49,15 @@ _bootstrap.sh_ will set up macOS and Homebrew, then run the scripts in the _scri
 - [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC) and [Dygma Raise](https://dygma.com/) keyboards
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
-- [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html) _(this pic is a little outdated, but you get the "picture")_
+- <details><summary><a href="https://www.fully.com/standing-desks/jarvis.html">Fully Jarvis standing desk</a></summary>
 
-  ![Fully Jarvis standing desk](img/fully-jarvis-standing-desk.jpg)
+  ![Fully Jarvis standing desk](https://user-images.githubusercontent.com/26674818/102920846-6b6cc280-4459-11eb-90c5-12e38abd16c1.jpeg)
+
+  </details>
 
 - <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen cabinet.</summary>
 
-  ![DIY standing desk](img/diy-standing-desk.jpg)
+  ![DIY standing desk](https://user-images.githubusercontent.com/26674818/102920844-6b6cc280-4459-11eb-9248-b16a7da7b5d0.jpg)
 
   - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
   - I ran an ethernet cable from my router into the cabinet.
@@ -385,9 +387,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 - [Keybase chat is end-to-end encrypted](https://book.keybase.io/chat). Slack is not.
 - Keybase chat does not have a free message limit. Slack does. I frequently hit this free message limit when participating in large workspaces for my courses on Udacity, and it negatively impacted my ability to build projects with classmates. We switched to a Keybase team instead.
 - Keybase has not leaked passwords. [Slack has been vulnerable to password leaks and other attacks](https://slackhq.com/march-2015-security-incident-and-the-launch-of-two-factor-authentication), and it took Slack four years before they notified users. [The Keybase CEO's Slack credentials were compromised](https://keybase.io/blog/slack-incident).
-- Keybase does not use third-party trackers. Slack is polluted with trackers. Here's a screenshot of the [Brave browser](https://brave.com/) blocking Slack trackers during a typical session in the Slack workspace used in my previous developer job:
-
-  ![Brave browser blocking Slack trackers](img/brave-slack-trackers.png)
+- Keybase does not use third-party trackers, but Slack is polluted with trackers. Try running slack in the Brave browser. You'll probably see "99+" trackers blocked.
 
 #### Keybase crypto
 
@@ -441,7 +441,7 @@ keybase decrypt -i pat-ghcr.asc | docker login ghcr.io -u YOUR_GITHUB_USERNAME -
     ...
     ```
 
-- There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [sign releases with tags, but don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code. However, in order to sign tags, you still need to export the PGP key. **Whether you sign all commits or just tags, Keybase should improve this feature.**
+- There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [sign releases with tags, but don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code. However, in order to sign tags, you still need to set up commit signing, so why not just sign commits also? **Whether you sign all commits or just tags, Keybase should improve this feature.**
 
 ### ProtonMail
 

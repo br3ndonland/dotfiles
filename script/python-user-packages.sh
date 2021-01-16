@@ -9,10 +9,10 @@ pipx_install_requirements() {
   PIPX_LIST="$(pipx list)"
   while read -r P; do
     case "$P" in
-    "awscli")
+    awscli)
       : "aws"
       ;;
-    "httpie")
+    httpie)
       : "http"
       ;;
     *)

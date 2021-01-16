@@ -7,7 +7,7 @@ if command -v brew &>/dev/null; then
   printf "Homebrew detected."
 else
   RAW="https://raw.githubusercontent.com"
-  BREW_SCRIPT="Homebrew/install/master/install.sh"
+  BREW_SCRIPT="Homebrew/install/HEAD/install.sh"
   printf "\nDownloading and installing Homebrew.\n"
   printf "\n" | /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)"
   if [ -d /home/linuxbrew/.linuxbrew ]; then
@@ -24,7 +24,7 @@ if [ -f ~/.Brewfile ]; then
   brew bundle check --global
 else
   printf "\nDownloading Brewfile and installing with Brew Bundle.\n"
-  BREWFILE="${GITHUB_USER:-br3ndonland}/homebrew-brewfile/main/Brewfile"
+  BREWFILE="${STRAP_GITHUB_USER:-br3ndonland}/dotfiles/HEAD/Brewfile"
   curl -fsSL "$RAW/$BREWFILE" | brew bundle --file=-
 fi
 

@@ -308,10 +308,9 @@ else
   logk
 fi
 
-# Set up dotfiles.
+# Set up dotfiles
 if [ -n "$STRAP_GITHUB_USER" ]; then
   DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
-
   if git ls-remote "$DOTFILES_URL" &>/dev/null; then
     log "Fetching $STRAP_GITHUB_USER/dotfiles from GitHub:"
     if [ ! -d "$HOME/.dotfiles" ]; then
@@ -323,30 +322,7 @@ if [ -n "$STRAP_GITHUB_USER" ]; then
         git pull $Q --rebase --autostash
       )
     fi
-    run_dotfile_scripts script/setup
-    logk
-  fi
-fi
-
-# Set up Brewfile.
-BREW_DOT=".homebrew-brewfile/Brewfile"
-if [ -n "$STRAP_GITHUB_USER" ] && {
-  [ ! -f "$HOME/.Brewfile" ] || [ "$HOME/.Brewfile" -ef "$HOME/$BREW_DOT" ]
-}; then
-  BREW_REPO="https://github.com/$STRAP_GITHUB_USER/homebrew-brewfile"
-  if git ls-remote "$BREW_REPO" &>/dev/null; then
-    log "Fetching $STRAP_GITHUB_USER/homebrew-brewfile from GitHub:"
-    if [ ! -d "$HOME/.homebrew-brewfile" ]; then
-      log "Cloning to ~/.homebrew-brewfile:"
-      git clone $Q "$BREW_REPO" ~/.homebrew-brewfile
-      logk
-    else
-      (
-        cd ~/.homebrew-brewfile
-        git pull $Q
-      )
-    fi
-    ln -sf ~/.homebrew-brewfile/Brewfile ~/.Brewfile
+    run_dotfile_scripts script/symlink.sh
     logk
   fi
 fi
@@ -388,7 +364,7 @@ run_brew_installs() {
   log "Running Homebrew installs."
   # Install from local Brewfile
   if [ -f "$HOME/.Brewfile" ]; then
-    log "Installing from user Brewfile on GitHub:"
+    log "Installing from user Brewfile:"
     brew bundle check --global || brew bundle --global
     logk
   fi

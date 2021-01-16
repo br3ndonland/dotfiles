@@ -5,9 +5,6 @@
 echo "-> Running strap-after-setup. Some steps may require password entry."
 RAW="https://raw.githubusercontent.com"
 
-### Symlink dotfiles
-"$HOME"/.dotfiles/script/symlink.sh
-
 ### Configure macOS
 if [ "$(uname -s)" = "Darwin" ]; then
   "$HOME"/.dotfiles/script/macos.sh

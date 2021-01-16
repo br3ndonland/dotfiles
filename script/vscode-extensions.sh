@@ -50,19 +50,19 @@ fi
 for i in "$@"; do
   case $i in
   code)
-    MACOS_DIR="Code"
+    : "Code"
     ;;
   code-exploration)
-    MACOS_DIR="Visual Studio Code - Exploration"
+    : "Visual Studio Code - Exploration"
     ;;
   code-insiders)
-    MACOS_DIR="Visual Studio Code - Insiders"
+    : "Visual Studio Code - Insiders"
     ;;
   codium)
-    MACOS_DIR="VSCodium"
+    : "VSCodium"
     ;;
   esac
-  MACOS_BIN="/Applications/$MACOS_DIR.app/Contents/Resources/app/bin"
+  MACOS_BIN="/Applications/$_.app/Contents/Resources/app/bin"
   if command -v "$i" &>/dev/null; then
     printf "\n%s command on PATH.\n" "$i"
   elif [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then

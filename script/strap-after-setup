@@ -20,6 +20,8 @@ if command -v npm &>/dev/null; then
   sudo "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
+  mkdir -p "$HOME/.zsh"
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
 
 ### Install user Python packages
@@ -53,12 +55,3 @@ if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
 else
   echo "-> Shell is already set to Zsh."
 fi
-
-### Install prompt
-# pure prompt: https://github.com/sindresorhus/pure
-mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-  "$HOME/.zsh/zsh-syntax-highlighting"
-# zsh4humans and powerlevel10k: https://github.com/romkatv/zsh4humans
-# sh -c "$(curl -fsSL $RAW/romkatv/zsh4humans/v5/install)"

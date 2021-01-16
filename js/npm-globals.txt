@@ -4,6 +4,7 @@ gitmoji-cli
 json-server
 npm-check
 prettier
+pure-prompt
 trash-cli
 typescript
 webtorrent-cli

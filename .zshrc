@@ -49,12 +49,12 @@ fi
 alias python='python3'
 
 ### prompt: https://github.com/sindresorhus/pure
-if [[ -d $HOME/.zsh/pure ]]; then
-  fpath+=$HOME/.zsh/pure
-  autoload -U promptinit
-  promptinit
-  prompt pure
+if ! command -v npm &>/dev/null || [[ $(uname) = 'Linux' ]]; then
+  [[ -d $HOME/.zsh/pure ]] && fpath+=$HOME/.zsh/pure
 fi
+autoload -U promptinit
+promptinit
+prompt pure
 
 ### completions
 zstyle :compinstall filename $HOME/.zshrc

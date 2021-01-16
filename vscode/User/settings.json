@@ -91,6 +91,7 @@
   "gitlens.views.fileHistory.avatars": false,
   "gitlens.views.formats.commits.description": "${author, }${date}",
   "gitlens.views.formats.stashes.description": "${date}",
+  "gitlens.views.lineHistory.enabled": true,
   "gitlens.views.remotes.avatars": false,
   "gitlens.views.repositories.avatars": false,
   "gitlens.views.repositories.enabled": true,

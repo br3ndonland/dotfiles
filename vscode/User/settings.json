@@ -200,6 +200,7 @@
   "vetur.format.defaultFormatter.ts": "prettier",
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
+  "vetur.ignoreProjectWarning": true,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

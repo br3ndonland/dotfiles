@@ -38,9 +38,7 @@ tag = tag -a -s
 gpgsign = true
 template = ~/.gitmessage
 [credential]
-helper = manager-core
-[credential "https://dev.azure.com"]
-useHttpPath = true
+helper = osxkeychain
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f

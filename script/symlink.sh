@@ -56,7 +56,7 @@ if symlink_repo_dotfiles && symlink_vscode_settings; then
   chmod 700 "$HOME"/.gnupg
   chmod 600 "$HOME"/.gnupg/gpg.conf
   # Restart Karabiner after symlinking config
-  # https://pqrs.org/osx/karabiner/document.html#configuration-file-path
+  # https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/
   KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
   if launchctl kickstart "$KARABINER" &>/dev/null; then
     launchctl kickstart -k "$KARABINER"

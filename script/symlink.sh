@@ -30,22 +30,22 @@ symlink_vscode_settings() {
   SETTINGS_DIR=$HOME/.dotfiles/vscode
   case $(uname -s) in
   Darwin)
-    DIRS=(
-      "$HOME/Library/Application Support/Code"
-      "$HOME/Library/Application Support/Code - Exploration"
-      "$HOME/Library/Application Support/Code - Insiders"
-      "$HOME/Library/Application Support/VSCodium"
-    )
+    : "$HOME/Library/Application Support"
     ;;
   Linux)
-    DIRS=(
-      "$HOME/.config/Code"
-      "$HOME/.config/Code - Exploration"
-      "$HOME/.config/Code - Insiders"
-      "$HOME/.config/VSCodium"
-    )
+    : "$HOME/.config"
+    ;;
+  *)
+    echo "-> Error: symlink_vscode_settings only supports macOS and Linux."
+    return 1
     ;;
   esac
+  DIRS=(
+    "$_/Code"
+    "$_/Code - Exploration"
+    "$_/Code - Insiders"
+    "$_/VSCodium"
+  )
   for DIR in "${DIRS[@]}"; do
     symlink_dir_contents "$SETTINGS_DIR/User" "$SETTINGS_DIR" "$DIR"
   done

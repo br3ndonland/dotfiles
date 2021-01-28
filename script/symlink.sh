@@ -30,6 +30,7 @@ symlink_vscode_settings() {
   SETTINGS_DIR=$HOME/.dotfiles/vscode
   case $(uname -s) in
   Darwin)
+    ln -fns "$HOME/.dotfiles/.config/TabNine" "$HOME/Library/Preferences/TabNine"
     : "$HOME/Library/Application Support"
     ;;
   Linux)

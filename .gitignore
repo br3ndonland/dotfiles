@@ -1,5 +1,7 @@
 .DS_Store
 .config/karabiner/automatic_backups
+.config/TabNine/*
+!.config/TabNine/tabnine_config.json
 *.gpg*
 *keys*
 vscode/*[Ee]xtension*

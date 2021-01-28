@@ -55,14 +55,9 @@
   "window.restoreWindows": "all",
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",
-  "workbench.enableExperiments": false,
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": [],
+  "workbench.enableExperiments": false,
   "workbench.fontAliasing": "auto",
   "workbench.panel.defaultLocation": "right",
   "workbench.settings.editor": "json",

@@ -7,7 +7,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=50000
-setopt autocd extendedglob glob_dots no_auto_menu nomatch
+setopt autocd extendedglob globdots histignorespace noautomenu nomatch
 
 ### keybindings: based on https://github.com/romkatv/zsh4humans
 bindkey -e

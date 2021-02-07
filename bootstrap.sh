@@ -361,6 +361,11 @@ install_homebrew() {
 }
 
 run_brew_installs() {
+  if ! command -v brew &>/dev/null; then
+    log "brew command not in shell environment. Attempting to load."
+    eval "$($DEFAULT_HOMEBREW_PREFIX/bin/brew shellenv)"
+    command -v brew &>/dev/null && logk || return 1
+  fi
   log "Running Homebrew installs."
   # Install from local Brewfile
   if [ -f "$HOME/.Brewfile" ]; then
@@ -388,10 +393,11 @@ if [ "$MACOS" -gt 0 ]; then
   RAW="https://raw.githubusercontent.com"
   BREW_SCRIPT="Homebrew/install/HEAD/install.sh"
   /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)" || install_homebrew
+  run_brew_installs || abort "Unable to load Homebrew."
 elif [ "$LINUX" -gt 0 ]; then
   run_dotfile_scripts script/linuxbrew.sh
 else
-  echo "Skipping Homebrew installs."
+  log "Skipping Homebrew installs."
 fi
 
 run_dotfile_scripts script/strap-after-setup

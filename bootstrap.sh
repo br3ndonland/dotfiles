@@ -163,7 +163,7 @@ run_dotfile_scripts() {
 
 [ "$USER" = "root" ] && abort "Run bootstrap.sh as yourself, not root."
 
-if [ $MACOS ] && [ $MACOS -gt 0 ]; then
+if [ "$MACOS" -gt 0 ]; then
   [ -z "$STRAP_CI" ] && caffeinate -s -w $$ &
   groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to admin."
   logn "Configuring security settings:"
@@ -249,7 +249,7 @@ check_xcode_license() {
   fi
 }
 
-if [ $MACOS ] && [ $MACOS -gt 0 ]; then
+if [ "$MACOS" -gt 0 ]; then
   install_xcode_clt
   check_xcode_license
 else
@@ -297,7 +297,7 @@ logn "Checking for software updates:"
 if softwareupdate -l 2>&1 | grep $Q "No new software available."; then
   logk
 else
-  if [ $MACOS ] && [ $MACOS -gt 0 ] && [ -z "$STRAP_CI" ]; then
+  if [ "$MACOS" -gt 0 ] && [ -z "$STRAP_CI" ]; then
     echo
     log "Installing software updates:"
     sudo_askpass softwareupdate --install --all
@@ -384,12 +384,11 @@ run_brew_installs() {
   fi
 }
 
-if [ $MACOS ] && [ $MACOS -gt 0 ]; then
+if [ "$MACOS" -gt 0 ]; then
   RAW="https://raw.githubusercontent.com"
   BREW_SCRIPT="Homebrew/install/HEAD/install.sh"
   /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)" || install_homebrew
-  run_brew_installs
-elif [ $LINUX ] && [ $LINUX -gt 0 ]; then
+elif [ "$LINUX" -gt 0 ]; then
   run_dotfile_scripts script/linuxbrew.sh
 else
   echo "Skipping Homebrew installs."

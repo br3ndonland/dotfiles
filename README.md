@@ -32,7 +32,7 @@ Dotfiles are application configuration and settings files. They frequently begin
 _bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, simply open a terminal and run the following command:
 
 ```sh
-/usr/bin/env bash -c "$(https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"
+/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"
 ```
 
 _bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _script/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_.

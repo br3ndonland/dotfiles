@@ -28,7 +28,7 @@ defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d h:mm a"
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/New_York" >/dev/null
+# sudo systemsetup -settimezone "America/New_York" >/dev/null
 
 ###############################################################################
 # Peripherals                                                                 #

@@ -181,6 +181,7 @@
     "**/zshrc": false
   },
   "shellformat.effectLanguages": ["shellscript"],
+  "shellformat.path": "/opt/homebrew/bin/shfmt",
   "[shellscript]": {
     "editor.rulers": [],
     "files.eol": "\n"

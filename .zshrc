@@ -4,6 +4,7 @@
 
 ### initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
+# See man zshoptions or http://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=50000
@@ -41,9 +42,6 @@ TTY=$(tty)
 export GPG_TTY=$TTY
 export PATH=$PATH:$HOME/.local/bin:$HOME/.poetry/bin
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
-if [[ $(uname) = 'Linux' ]]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
 
 ### aliases
 alias python='python3'
@@ -56,18 +54,35 @@ autoload -U promptinit
 promptinit
 prompt pure
 
+### homebrew
+case $(uname) in
+Darwin)
+  if [[ $(uname -m) == 'arm64' ]]; then
+    BREW_PREFIX='/opt/homebrew'
+  elif [[ $(uname -m) == 'x86_64' ]]; then
+    BREW_PREFIX='/usr/local'
+  fi
+  ;;
+Linux) BREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
+esac
+eval $($BREW_PREFIX/bin/brew shellenv)
+
 ### completions
+if type brew &>/dev/null; then
+  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh/site-functions
+  if [[ -d $(brew --prefix)/bin/terraform ]]; then
+    autoload -U +X bashcompinit && bashcompinit
+    complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+  fi
+fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
 # ignore insecure directories (perms issues for non-admin user)
 [[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
-if type brew &>/dev/null; then
-  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh-completions
-  autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+
+### syntax highlighting
+if [[ -d $(brew --prefix)/share/zsh-syntax-highlighting ]]; then
   . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-  if [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
-    . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  fi
+elif [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
+  . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

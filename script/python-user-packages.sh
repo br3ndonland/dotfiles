@@ -9,15 +9,9 @@ pipx_install_requirements() {
   PIPX_LIST="$(pipx list)"
   while read -r P; do
     case "$P" in
-    awscli)
-      : "aws"
-      ;;
-    httpie)
-      : "http"
-      ;;
-    *)
-      : "$P"
-      ;;
+    awscli) : "aws" ;;
+    httpie) : "http" ;;
+    *) : "$P" ;;
     esac
     CMD="$_"
     if [[ $(echo "$PIPX_LIST" | grep -ce "package $P .*, $PY") -gt 0 ]]; then

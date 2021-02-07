@@ -49,18 +49,10 @@ fi
 
 for i in "$@"; do
   case $i in
-  code)
-    : "Code"
-    ;;
-  code-exploration)
-    : "Visual Studio Code - Exploration"
-    ;;
-  code-insiders)
-    : "Visual Studio Code - Insiders"
-    ;;
-  codium)
-    : "VSCodium"
-    ;;
+  code) : "Code" ;;
+  code-exploration) : "Visual Studio Code - Exploration" ;;
+  code-insiders) : "Visual Studio Code - Insiders" ;;
+  codium) : "VSCodium" ;;
   esac
   MACOS_BIN="/Applications/$_.app/Contents/Resources/app/bin"
   if command -v "$i" &>/dev/null; then

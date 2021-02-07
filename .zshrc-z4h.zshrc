@@ -21,12 +21,12 @@ z4h init || return
 ### exports
 if command -v code-exploration &>/dev/null; then
   export EDITOR='code-exploration --wait'
-elif command -v codium &>/dev/null; then
-  export EDITOR='codium --wait'
-elif command -v code &>/dev/null; then
-  export EDITOR='code --wait'
 elif command -v code-insiders &>/dev/null; then
   export EDITOR='code-insiders --wait'
+elif command -v code &>/dev/null; then
+  export EDITOR='code --wait'
+elif command -v codium &>/dev/null; then
+  export EDITOR='codium --wait'
 else
   export EDITOR='vim'
 fi

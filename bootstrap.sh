@@ -253,7 +253,7 @@ if [ "$MACOS" -gt 0 ]; then
   install_xcode_clt
   check_xcode_license
 else
-  echo "Xcode skipped."
+  log "Not macOS. Xcode CLT install and license check skipped."
 fi
 
 logn "Configuring Git:"
@@ -287,10 +287,10 @@ if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
       "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
       git credential-osxkeychain store
   else
-    printf "Skipping Git credential setup."
+    log "Skipping Git credential setup."
   fi
+  logk
 fi
-logk
 
 # Check for and install any remaining software updates.
 logn "Checking for software updates:"
@@ -303,7 +303,7 @@ else
     sudo_askpass softwareupdate --install --all
     check_xcode_license
   else
-    echo "Skipping software updates."
+    log "Skipping software updates."
   fi
   logk
 fi

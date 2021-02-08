@@ -22,17 +22,16 @@ check_open_vsx() {
 
 install_extensions() {
   printf "\nInstalling extensions for %s...\n\n" "$1"
-  if [[ "$1" == "code-exploration" || "$1" == "code-insiders" ]]; then
-    cat ~/.dotfiles/vscode/extensions/marketplace-open-vsx.txt \
-      ~/.dotfiles/vscode/extensions/marketplace-proprietary.txt \
-      >~/.dotfiles/vscode/extensions/marketplace-all.txt
-    EXTENSIONS=~/.dotfiles/vscode/extensions/marketplace-all.txt
+  PREFIX="$HOME/.dotfiles/vscode/extensions/marketplace"
+  if [[ "$1" == "code-exploration" ]] || [[ "$1" == "code-insiders" ]]; then
+    cat "$PREFIX-open-vsx.txt" "$PREFIX-proprietary.txt" >"$PREFIX-all.txt"
+    EXTENSIONS="$PREFIX-all.txt"
   else
-    EXTENSIONS=~/.dotfiles/vscode/extensions/marketplace-open-vsx.txt
+    EXTENSIONS="$PREFIX-open-vsx.txt"
   fi
-  declare -a INSTALLED=("$($1 --list-extensions --show-versions)")
+  INSTALLED=("$($1 --list-extensions --show-versions)")
   while read -r EXT; do
-    EXT_INFO=$(printf %s "${INSTALLED[@]}" | grep "$EXT")
+    EXT_INFO=$(printf %s "${INSTALLED[@]}" | grep "$EXT@")
     if [ "$EXT_INFO" ]; then
       printf "Extension '%s' installed.\n" "$EXT_INFO"
     else

@@ -186,7 +186,14 @@
     "editor.rulers": [],
     "files.eol": "\n"
   },
-  "tabnine.disable_file_regex": ["[.]json$", "[.]md$", "[.]sh$", "[.]txt$"],
+  "tabnine.disable_file_regex": [
+    "Brewfile$",
+    "COMMIT_EDITMSG$",
+    "[.]json$",
+    "[.]md$",
+    "[.]sh$",
+    "[.]txt$"
+  ],
   "tabnine.experimentalAutoImports": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

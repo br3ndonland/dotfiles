@@ -29,7 +29,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 
 Dotfiles are application configuration and settings files. They frequently begin with a dot, hence the name. This dotfiles repository is meant to be installed by _[bootstrap.sh](bootstrap.sh)_.
 
-_bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, simply open a terminal and run the following command:
+_bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, simply open a terminal, set the environment variables `STRAP_GIT_EMAIL`, `STRAP_GIT_NAME`, and `STRAP_GIT_USER` (GitHub username), and run the following command:
 
 ```sh
 /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"

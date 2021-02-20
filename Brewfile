@@ -15,7 +15,7 @@ brew "git-lfs"
 brew "gnupg"
 brew "gnu-sed"
 brew "grep"
-# brew "mas" # macOS-only # no arm64_big_sur yet: https://github.com/mas-cli/mas/issues/308
+brew "mas" # macOS-only
 brew "node"
 brew "pinentry"
 brew "pipx"

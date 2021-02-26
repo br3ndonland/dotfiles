@@ -5,6 +5,7 @@
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.autoIndent": "advanced",
   "editor.cursorBlinking": "phase",
+  "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', 'Rec Mono Duotone', 'Fira Code', monospace",
   "editor.fontLigatures": true,

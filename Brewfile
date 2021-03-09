@@ -36,6 +36,7 @@ brew "zsh-syntax-highlighting"
 
 ### packages for personal use
 brew "ffmpeg"
+brew "media-info"
 brew "mp4v2"
 
 ### casks for work and personal use

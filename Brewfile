@@ -40,7 +40,7 @@ brew "media-info"
 brew "mp4v2"
 
 ### casks for work and personal use
-cask "1password-beta" # arm64_big_sur in beta: https://support.1password.com/betas/
+cask "1password"
 cask "alfred"
 cask "brave-browser"
 # cask "docker" # no arm64_big_sur yet: https://github.com/docker/for-mac/labels/area/m1
@@ -66,7 +66,7 @@ cask "protonvpn" # no arm64_big_sur yet: https://github.com/ProtonVPN/mac-app/is
 # cask "vscodium" # no arm64_big_sur yet: https://github.com/VSCodium/vscodium/issues/597
 
 ### mac app store
-# mas "1password", id: 1333542190 # arm64_big_sur in beta: https://support.1password.com/betas/
+# mas "1password", id: 1333542190
 mas "bear", id: 1091189122
 mas "cascadea", id: 1432182561
 mas "duckduckgo privacy essentials", id: 1482920575 # no arm64_big_sur yet: https://github.com/duckduckgo/privacy-essentials-safari

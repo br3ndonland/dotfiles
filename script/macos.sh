@@ -78,7 +78,7 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: show hidden files by default
-# defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Prefer Finder tabs: Dock -> Prefer tabs when opening documents
 defaults write NSGlobalDomain AppleWindowTabbingMode -string "always"

@@ -30,17 +30,9 @@ symlink_vscode_settings() {
   echo "-> Symlinking VSCode settings."
   SETTINGS_DIR=$HOME/.dotfiles/vscode
   case $(uname -s) in
-  Darwin)
-    ln -fns "$HOME/.dotfiles/.config/TabNine" "$HOME/Library/Preferences/TabNine"
-    : "$HOME/Library/Application Support"
-    ;;
-  Linux)
-    : "$HOME/.config"
-    ;;
-  *)
-    echo "-> Error: symlink_vscode_settings only supports macOS and Linux."
-    return 1
-    ;;
+  Darwin) : "$HOME/Library/Application Support" ;;
+  Linux) : "$HOME/.config" ;;
+  *) echo "-> Error: symlink.sh only supports macOS and Linux." && return 1 ;;
   esac
   DIRS=(
     "$_/Code"

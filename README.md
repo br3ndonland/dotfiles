@@ -249,7 +249,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
     ./configure; make; sudo make install
     ```
 - Set the `pinentry` program:
-  - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /usr/local/bin/pinentry`
+  - _~/.gnupg/gpg-agent.conf:_ `pinentry-program /opt/homebrew/bin/pinentry`
   - The path apparently has to be absolute, so it may vary by system.
   - See the [GPG agent options docs](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html) for more.
 - [Export the `GPG_TTY` environment variable](https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html): `export GPG_TTY=$(tty)` (can add to shell profile to automatically export). Note that this is not the same thing as `export GPG_TTY=$TTY`, which may raise cryptic `Inappropriate ioctl for device` errors.

@@ -24,7 +24,7 @@ fi
 ### Install user Python packages
 if command -v python3 &>/dev/null; then
   if ! command -v poetry &>/dev/null; then
-    curl -fsSL $RAW/python-poetry/poetry/master/get-poetry.py | python3 -
+    curl -fsSL $RAW/python-poetry/poetry/HEAD/get-poetry.py | python3 -
   fi
   if ! command -v pipx &>/dev/null; then
     python3 -m pip install --user pipx

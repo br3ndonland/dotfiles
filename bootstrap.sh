@@ -351,7 +351,7 @@ install_homebrew() {
   git config remote.origin.url "https://github.com/Homebrew/brew"
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
   git fetch $Q --tags --force
-  git reset $Q --hard origin/master
+  git reset $Q --hard origin/HEAD
   unset GIT_DIR GIT_WORK_TREE
   logk
   export PATH="$HOMEBREW_PREFIX/bin:$PATH"

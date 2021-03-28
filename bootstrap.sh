@@ -7,28 +7,22 @@ set -e
 case $(uname -s) in
 Darwin)
   export MACOS=1 && export UNIX=1
-  CPU=$(sysctl -n machdep.cpu.brand_string)
-  UNAME_MACHINE=$(uname -m)
-  if [[ $CPU == *Apple* ]] || [[ $UNAME_MACHINE == "arm64" ]]; then
+  if [[ $(uname -m) == "arm64" ]]; then
     DEFAULT_HOMEBREW_PREFIX="/opt/homebrew"
-  elif [[ $CPU == *Intel* ]] || [[ $UNAME_MACHINE == "x86_64" ]]; then
+  else
     DEFAULT_HOMEBREW_PREFIX="/usr/local"
   fi
   ;;
-Linux)
-  export LINUX=1 && export UNIX=1
-  ;;
-codespace)
-  export CODESPACE=1
-  ;;
+Linux) export LINUX=1 && export UNIX=1 ;;
+codespace) export CODESPACE=1 ;;
 esac
 
-STDIN_FILE_DESCRIPTOR="0"
-[[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
-[ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE="1"
-STRAP_GIT_NAME=${STRAP_GIT_NAME:-"Brendon Smith"}
-STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:-"br3ndonland@protonmail.com"}
-STRAP_GITHUB_USER=${STRAP_GITHUB_USER:-"br3ndonland"}
+STDIN_FILE_DESCRIPTOR=0
+[[ $1 = "--debug" || -o xtrace ]] && STRAP_DEBUG=1
+[ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
+STRAP_GIT_NAME=${STRAP_GIT_NAME:="Brendon Smith"}
+STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:="br3ndonland@protonmail.com"}
+STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="br3ndonland"}
 STRAP_SUCCESS=""
 
 sudo_askpass() {
@@ -92,10 +86,10 @@ sudo_init() {
     done
     clear_debug
     SUDO_PASSWORD_SCRIPT="$(
-      cat <<BASH
-#!/usr/bin/env bash
-echo "$SUDO_PASSWORD"
-BASH
+      cat <<-BASH
+				#!/usr/bin/env bash
+				echo "$SUDO_PASSWORD"
+				BASH
     )"
     unset SUDO_PASSWORD
     SUDO_ASKPASS_DIR="$(mktemp -d)"
@@ -141,7 +135,7 @@ escape() {
   printf '%s' "${1//\'/\'}"
 }
 
-# Given a list of scripts in the dotfiles repo, run the first one that exists.
+# Given a list of scripts in the dotfiles repo, run the first one that exists
 run_dotfile_scripts() {
   if [ -d ~/.dotfiles ]; then
     (
@@ -189,7 +183,7 @@ if [ "$MACOS" -gt 0 ]; then
   fi
 fi
 
-# Check and enable full-disk encryption.
+# Check for and enable full-disk encryption
 logn "Checking full-disk encryption status:"
 VAULT_MSG="FileVault is (On|Off, but will be enabled after the next restart)."
 if fdesetup status | grep $Q -E "$VAULT_MSG"; then
@@ -208,7 +202,7 @@ else
   abort "Run 'sudo fdesetup enable -user \"$USER\"' for full-disk encryption."
 fi
 
-# Set up Xcode Command Line Tools.
+# Set up Xcode Command Line Tools
 install_xcode_clt() {
   if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
     log "Installing the Xcode Command Line Tools:"
@@ -270,12 +264,7 @@ if [ -n "$STRAP_GITHUB_USER" ] &&
   git config --global github.user "$STRAP_GITHUB_USER"
 fi
 
-# Squelch git 2.x warning message when pushing
-if ! git config push.default >/dev/null; then
-  git config --global push.default simple
-fi
-
-# Setup GitHub HTTPS credentials.
+# Setup GitHub HTTPS credentials
 if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
   if [ "$(git config --global credential.helper)" != "osxkeychain" ]; then
     git config --global credential.helper osxkeychain
@@ -292,7 +281,7 @@ if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
   logk
 fi
 
-# Check for and install any remaining software updates.
+# Check for and install any remaining software updates
 logn "Checking for software updates:"
 if softwareupdate -l 2>&1 | grep $Q "No new software available."; then
   logk
@@ -402,5 +391,5 @@ fi
 
 run_dotfile_scripts script/strap-after-setup
 
-STRAP_SUCCESS="1"
+STRAP_SUCCESS=1
 log "Your system is now bootstrapped!"

@@ -174,7 +174,6 @@
     "SC1090", // can't follow non-constant source
     "SC1091", // not following source
     "SC2015", // A && B || C is not if-then-else
-    "SC2034", // variable appears unused
     "SC2046", // quote to prevent word splitting
     "SC2086", // quote to prevent word splitting
     "SC2206", // quote to prevent word splitting

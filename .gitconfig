@@ -19,7 +19,6 @@ logd = log --pretty=format:'- %s (%h)' --reverse develop..HEAD
 logdpr = log --pretty=format:'- %s (%h)%n  %b' --reverse develop..HEAD --grep 'pull request'
 logm = log --pretty=format:'- %s (%h)' --reverse main..HEAD
 logmpr = log --pretty=format:'- %s (%h)%n  %b' --reverse main..HEAD --grep 'pull request'
-lure = pull --rebase
 p = push
 pt = push --tags
 pso = push --set-upstream origin
@@ -50,6 +49,7 @@ user = br3ndonland
 program = gpg
 [pull]
 ff = only
+rebase = true
 [push]
 default = simple
 [sendemail]

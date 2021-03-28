@@ -20,6 +20,7 @@ logdpr = log --pretty=format:'- %s (%h)%n  %b' --reverse develop..HEAD --grep 'p
 logm = log --pretty=format:'- %s (%h)' --reverse main..HEAD
 logmpr = log --pretty=format:'- %s (%h)%n  %b' --reverse main..HEAD --grep 'pull request'
 p = push
+pf = push --force-with-lease
 pt = push --tags
 pso = push --set-upstream origin
 ra = remote add

@@ -45,14 +45,6 @@ export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 ### aliases
 alias python='python3'
 
-### prompt: https://github.com/sindresorhus/pure
-if ! command -v npm &>/dev/null || [[ $(uname) = 'Linux' ]]; then
-  [[ -d $HOME/.zsh/pure ]] && fpath+=$HOME/.zsh/pure
-fi
-autoload -U promptinit
-promptinit
-prompt pure
-
 ### homebrew
 case $(uname) in
 Darwin)
@@ -65,6 +57,14 @@ Darwin)
 Linux) BREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
 esac
 eval $($BREW_PREFIX/bin/brew shellenv)
+
+### prompt: https://github.com/sindresorhus/pure
+if ! type brew &>/dev/null || [[ $(uname) = 'Linux' ]]; then
+  [[ -d $HOME/.zsh/pure ]] && fpath+=$HOME/.zsh/pure
+fi
+autoload -U promptinit
+promptinit
+prompt pure
 
 ### completions
 if type brew &>/dev/null; then

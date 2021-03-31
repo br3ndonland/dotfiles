@@ -17,8 +17,6 @@ if command -v npm &>/dev/null; then
   sudo "$HOME"/.dotfiles/script/npm-globals.sh
 else
   echo "npm not found. Skipping npm-globals.sh."
-  mkdir -p "$HOME/.zsh"
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi
 
 ### Install user Python packages
@@ -51,4 +49,8 @@ if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
   sudo chsh -s "$(command -v zsh)" "$USER"
 else
   echo "-> Shell is already set to Zsh."
+fi
+if ! command -v brew &>/dev/null; then
+  mkdir -p "$HOME/.zsh"
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi

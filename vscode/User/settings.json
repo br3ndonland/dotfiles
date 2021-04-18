@@ -58,7 +58,12 @@
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.editorAssociations": [],
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter-notebook",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
   "workbench.enableExperiments": false,
   "workbench.fontAliasing": "auto",
   "workbench.panel.defaultLocation": "right",

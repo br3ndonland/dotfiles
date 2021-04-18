@@ -148,6 +148,7 @@
     "signingkey",
     "smallint",
     "smartsheet",
+    "sourcery",
     "sqlalchemy",
     "starlette",
     "starlette's",

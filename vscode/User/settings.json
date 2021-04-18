@@ -46,7 +46,6 @@
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.fontSize": 12,
-  "terminal.integrated.rendererType": "auto",
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shell.linux": "/home/linuxbrew/.linuxbrew/bin/zsh",
   "terminal.integrated.shell.osx": "/bin/zsh",

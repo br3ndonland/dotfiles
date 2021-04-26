@@ -1,5 +1,4 @@
 autopep8
-awscli
 black
 cookiecutter
 flake8

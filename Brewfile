@@ -4,11 +4,13 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "superfly/tap"
 
 ### packages for work and personal use
 brew "bash"
 # brew "cdktf" # no arm64_big_sur yet: https://formulae.brew.sh/formula/cdktf
 brew "deno" # macOS-only
+brew "flyctl"
 brew "gh"
 brew "git"
 brew "git-lfs"

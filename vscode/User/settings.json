@@ -47,7 +47,7 @@
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.showTabs": false,
+  "terminal.integrated.tabs.enabled": false,
   "update.mode": "manual",
   "update.showReleaseNotes": false,
   "window.newWindowDimensions": "maximized",

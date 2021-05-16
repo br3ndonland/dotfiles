@@ -46,7 +46,7 @@ brew "mp4v2"
 cask "1password"
 cask "alfred"
 cask "brave-browser"
-# cask "docker" # no arm64_big_sur yet: https://github.com/docker/for-mac/labels/area/m1
+cask "docker"
 cask "firefox"
 cask "karabiner-elements"
 # cask "kitty" # build from source on arm64_big_sur: https://github.com/kovidgoyal/kitty/issues/3126

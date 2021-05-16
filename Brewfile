@@ -73,7 +73,7 @@ cask "protonvpn" # no arm64_big_sur yet: https://github.com/ProtonVPN/mac-app/is
 mas "bear", id: 1091189122
 mas "cascadea", id: 1432182561
 mas "daisydisk", id: 411643860
-mas "duckduckgo privacy essentials", id: 1482920575 # no arm64_big_sur yet: https://github.com/duckduckgo/privacy-essentials-safari
+mas "duckduckgo privacy essentials", id: 1482920575
 mas "keynote", id: 409183694
 mas "numbers", id: 409203825
 mas "pages", id: 409201541

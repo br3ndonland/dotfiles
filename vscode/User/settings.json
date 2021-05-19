@@ -60,6 +60,7 @@
   "workbench.colorTheme": "Dracula Pro",
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editorAssociations": {
+    "git-rebase-todo": "default",
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.enableExperiments": false,

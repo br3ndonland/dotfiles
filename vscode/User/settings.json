@@ -41,6 +41,10 @@
   "files.watcherExclude": {
     "**/.venv/**": true
   },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "Terminal.app",
@@ -55,12 +59,9 @@
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter-notebook",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
   "workbench.enableExperiments": false,
   "workbench.fontAliasing": "auto",
   "workbench.panel.defaultLocation": "right",

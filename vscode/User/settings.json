@@ -98,16 +98,6 @@
   "gitlens.views.searchAndCompare.avatars": false,
   "gitlens.views.tags.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
-  // SSH
-  "ponyssh.hosts": {
-    "code-server": {
-      "host": "HostName value from SSH config",
-      "username": "brendon",
-      "agent": true,
-      "path": "~/dev",
-      "python": "python3"
-    }
-  },
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",

@@ -21,6 +21,9 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [Keybase](#keybase)
   - [ProtonMail](#protonmail)
 - [SSH](#ssh)
+  - [Key generation](#key-generation)
+  - [Connecting to GitHub](#connecting-to-github)
+  - [SSH agent forwarding](#ssh-agent-forwarding)
 - [General productivity](#general-productivity)
 - [Media](#media)
 - [Science](#science)
@@ -259,12 +262,17 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
   chmod 600 ~/.gnupg/gpg.conf
   ```
 - See the [GPG configuration docs](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html) for more.
+- See the [YubiKey Manager CLI (`ykman`) User Manual](https://support.yubico.com/hc/en-us/articles/360016614940-YubiKey-Manager-CLI-ykman-User-Manual) and the [Yubico support article Using Your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP) for information on how to manage GPG keys with YubiKeys.
 
 #### Key generation
 
 - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
 - View keys with `gpg --list-secret-keys`.
 - Run `gpg --send-keys <keynumber>` to share the public key with the GPG database. It takes about 10 minutes for the key to show up in the GPG database.
+
+#### Key import and export
+
+- Import a GPG key from a file: `gpg --import /path/to/privatekey.asc`
 - Export your GPG public key:
   - Copy to clipboard (for pasting into GitHub/GitLab): `gpg --armor --export | pbcopy`
   - Export to a file: `gpg --armor --export > public.gpg`
@@ -305,9 +313,9 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 - Trust GPG keys using the GPG TTY interface:
   - If you see `gpg: WARNING: This key is not certified with a trusted signature!` when examining signed Git commits with `git log --show-signature`, you may want to trust the keys.
   - Enter the GPG key editor from the command line with `gpg --edit-key <PGPkeyid>`.
-  - Set trust level for the key by typing `trust`, and entering a trust level.
+  - Set trust level for the key by typing `trust`, hitting enter, and entering a trust level.
   - See the [GPG docs](https://www.gnupg.org/gph/en/manual/x334.html) for more info.
-- [GitHub GPG instructions](https://help.github.com/articles/signing-commits-with-gpg/)
+- [GitHub GPG instructions](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
 - [GitLab GPG instructions](https://gitlab.com/help/user/project/repository/gpg_signed_commits/index.md)
 - If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.
 
@@ -447,27 +455,47 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 
 ## SSH
 
-- [Generate an SSH key and add it to the SSH agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/):
+### Key generation
 
-  ```sh
-  ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa_"$(whoami)"
-  eval "$(ssh-agent -s)"
-  ssh-add -K ~/.ssh/id_rsa_"$(whoami)"
-  ```
+To [generate an SSH key](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent):
 
-- [Connect to GitHub with SSH](https://help.github.com/articles/connecting-to-github-with-ssh/). This allows your computer to send information to GitHub over an SSH connection, so you can push changes without having to provide your username and password every time. These steps will allow your computer to connect to GitHub with SSH, and should only need to be performed once for each machine.
-  - [Add SSH key to GitHub account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/):
-    - `pbcopy < ~/.ssh/id_rsa_"$(whoami)".pub`
-    - Go to GitHub and paste the key.
-  - [Check SSH connection](https://help.github.com/articles/testing-your-ssh-connection/):
-    - `ssh -T git@github.com`
-    - Verify output looks similar to output provided in the linked GitHub article, type `yes`, verify username.
-- **If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.**
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(whoami)"
+```
 
-  ```
-  Host yourserver.com
-    ForwardAgent yes
-  ```
+If you have a FIDO2 security key that supports discoverable credentials (formerly known as resident keys), such as a YubiKey, you can [generate an SSH key that is stored directly on the FIDO2 hardware device](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key).
+
+You'll need `libfido2` and OpenSSH version 8.2 or later.
+
+```sh
+brew install libfido2 openssh
+```
+
+Next, generate a key with the `-O resident` option. You can additionally set a PIN on the YubiKey, which requires the YubiKey Manager [CLI](https://developers.yubico.com/yubikey-manager/) or [GUI](https://www.yubico.com/support/download/yubikey-manager/), and require PIN verification for use of the SSH key, with the `-O verify-required` option. In this scenario, the SSH key itself does not need a password. The password is replaced by the YubiKey and its PIN.
+
+```sh
+ssh-keygen -t ed25519-sk -O resident -O verify-required -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(whoami)"
+```
+
+### Connecting to GitHub
+
+See the [GitHub docs on connecting to GitHub with SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
+
+- [Add SSH key to GitHub account](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account):
+  - Use the [GitHub CLI](https://cli.github.com/manual/gh_ssh-key_add): `gh ssh-key add`
+  - Or, run `pbcopy < ~/.ssh/id_ed25519_"$(whoami)".pub`, and go to GitHub in a web browser and paste the key.
+- [Check SSH connection](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/testing-your-ssh-connection) with `ssh -T git@github.com`.
+
+GitHub supports use of SSH keys from FIDO2 security key hardware devices like YubiKeys. See the [GitHub docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key), [GitHub blog](https://github.blog/2021-05-10-security-keys-supported-ssh-git-operations/), and [Yubico blog](https://www.yubico.com/blog/github-now-supports-ssh-security-keys/).
+
+### SSH agent forwarding
+
+**If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.**
+
+```
+Host yourserver.com
+  ForwardAgent yes
+```
 
 ## General productivity
 

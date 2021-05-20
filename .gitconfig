@@ -64,5 +64,5 @@ suppresscc = author
 gpgsign = true
 [user]
 name = Brendon Smith
-email = br3ndonland@protonmail.com
-signingkey = F09A320454D3711156BD308FAC66384CFA8C69B0
+email = bws@bws.bio
+signingkey = 5439C6F63C0E8D0C17E534D7783DBAF23C1D6478

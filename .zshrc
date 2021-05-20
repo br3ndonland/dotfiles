@@ -69,16 +69,17 @@ prompt pure
 
 ### completions
 if type brew &>/dev/null; then
-  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh/site-functions
-  if [[ -d $(brew --prefix)/bin/terraform ]]; then
-    autoload -U +X bashcompinit && bashcompinit
-    complete -o nospace -C $(brew --prefix)/bin/terraform terraform
-  fi
+  # fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh/site-functions
+  # if [[ -d $(brew --prefix)/bin/terraform ]]; then
+  #   autoload -U +X bashcompinit && bashcompinit
+  #   complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+  # fi
+  PATH=$PATH:$(brew --prefix)/opt/mysql-client/bin
 fi
-zstyle :compinstall filename $HOME/.zshrc
-autoload -Uz compinit
+# zstyle :compinstall filename $HOME/.zshrc
+# autoload -Uz compinit
 # ignore insecure directories (perms issues for non-admin user)
-[[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
+# [[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
 
 ### syntax highlighting
 if [[ -d $(brew --prefix)/share/zsh-syntax-highlighting ]]; then

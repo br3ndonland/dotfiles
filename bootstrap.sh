@@ -21,7 +21,7 @@ STDIN_FILE_DESCRIPTOR=0
 [[ $1 = "--debug" || -o xtrace ]] && STRAP_DEBUG=1
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
 STRAP_GIT_NAME=${STRAP_GIT_NAME:="Brendon Smith"}
-STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:="br3ndonland@protonmail.com"}
+STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:="bws@bws.bio"}
 STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="br3ndonland"}
 STRAP_SUCCESS=""
 

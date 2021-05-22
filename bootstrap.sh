@@ -23,6 +23,9 @@ STDIN_FILE_DESCRIPTOR=0
 STRAP_GIT_NAME=${STRAP_GIT_NAME:="Brendon Smith"}
 STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:="bws@bws.bio"}
 STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="br3ndonland"}
+DEFAULT_DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
+STRAP_DOTFILES_URL=${STRAP_DOTFILES_URL:="$DEFAULT_DOTFILES_URL"}
+STRAP_DOTFILES_BRANCH=${STRAP_DOTFILES_BRANCH:="main"}
 STRAP_SUCCESS=""
 
 sudo_askpass() {
@@ -298,22 +301,23 @@ else
 fi
 
 # Set up dotfiles
-if [ -n "$STRAP_GITHUB_USER" ]; then
-  DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
-  if git ls-remote "$DOTFILES_URL" &>/dev/null; then
-    log "Fetching $STRAP_GITHUB_USER/dotfiles from GitHub:"
-    if [ ! -d "$HOME/.dotfiles" ]; then
-      log "Cloning to ~/.dotfiles:"
-      git clone $Q "$DOTFILES_URL" ~/.dotfiles
-    else
-      (
-        cd ~/.dotfiles
-        git pull $Q --rebase --autostash
-      )
-    fi
-    run_dotfile_scripts script/symlink.sh
-    logk
+if [ -n "$STRAP_DOTFILES_URL" ] && [ -n "$STRAP_DOTFILES_BRANCH" ]; then
+  log "Fetching $STRAP_DOTFILES_URL:"
+  if [ ! -d "$HOME/.dotfiles" ]; then
+    log "Cloning to ~/.dotfiles:"
+    git clone $Q "$STRAP_DOTFILES_URL" \
+      --branch "$STRAP_DOTFILES_BRANCH" ~/.dotfiles
+  else
+    log "Checking out $STRAP_DOTFILES_BRANCH in ~/.dotfiles:"
+    (
+      cd ~/.dotfiles
+      git stash
+      git checkout "$STRAP_DOTFILES_BRANCH"
+      git pull $Q --rebase --autostash
+    )
   fi
+  run_dotfile_scripts script/symlink.sh
+  logk
 fi
 
 install_homebrew() {

@@ -48,6 +48,8 @@ required = true
 user = br3ndonland
 [gpg]
 program = gpg
+[init]
+defaultbranch = main
 [pull]
 ff = only
 rebase = true

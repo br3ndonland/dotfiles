@@ -55,10 +55,10 @@ rebase = true
 default = simple
 [sendemail]
 confirm = auto
-from = "Brendon Smith <gitsmith@protonmail.com>"
-smtpServer = 127.0.0.1
-smtpServerPort = 1025
-smtpUser = gitsmith@protonmail.com
+from = 'Brendon Smith <gitsmith@protonmail.com>'
+smtpserver = 127.0.0.1
+smtpserverport = 1025
+smtpuser = gitsmith@protonmail.com
 suppresscc = author
 [tag]
 gpgsign = true

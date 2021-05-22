@@ -10,8 +10,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     env:
-      PRETTIER_VERSION: 2.2.1
-      SHFMT_VERSION: 3.2.4
+      PRETTIER_VERSION: 2.3.0
+      SHFMT_VERSION: 3.3.0
       SHELLCHECK_OPTS: --shell=bash -e SC1071 -e SC1090 -e SC1091 -e SC2015 -e SC2046 -e SC2086 -e SC2206 -e SC2207
     steps:
       - uses: actions/checkout@v2

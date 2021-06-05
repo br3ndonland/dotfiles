@@ -5,4 +5,5 @@ flake8
 httpie
 jupyterlab
 mypy
+pre-commit
 youtube-dl

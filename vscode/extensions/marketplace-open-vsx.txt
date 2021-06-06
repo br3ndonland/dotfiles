@@ -1,3 +1,4 @@
+bradlc.vscode-tailwindcss
 bungcip.better-toml
 denoland.vscode-deno
 eamodio.gitlens

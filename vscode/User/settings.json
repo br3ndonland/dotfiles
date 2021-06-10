@@ -152,6 +152,12 @@
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.local/bin/flake8",
+  "python.linting.mypyArgs": [
+    "--follow-imports=silent",
+    "--ignore-missing-imports",
+    "--show-column-numbers",
+    "--show-error-codes"
+  ],
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "~/.local/bin/mypy",
   "python.linting.pylintEnabled": false,

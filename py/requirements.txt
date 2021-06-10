@@ -6,4 +6,5 @@ httpie
 jupyterlab
 mypy
 pre-commit
+sqlfluff
 youtube-dl

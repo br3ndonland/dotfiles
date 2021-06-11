@@ -55,6 +55,7 @@ ff = only
 rebase = true
 [push]
 default = simple
+recursesubmodules = check
 [sendemail]
 confirm = auto
 from = 'Brendon Smith <gitsmith@protonmail.com>'

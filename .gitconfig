@@ -24,8 +24,7 @@ pf = push --force-with-lease
 pt = push --tags
 pso = push --set-upstream origin
 ra = remote add
-rei = rebase -i
-reia = rebase -i --autosquash
+re = rebase -i
 rv = remote -v
 sdiff = !git diff && git submodule foreach 'git diff'
 spush = push --recurse-submodules=on-demand
@@ -51,11 +50,15 @@ program = gpg
 [init]
 defaultbranch = main
 [pull]
+autostash = true
 ff = only
 rebase = true
 [push]
 default = simple
 recursesubmodules = check
+[rebase]
+autosquash = true
+autostash = true
 [sendemail]
 confirm = auto
 from = 'Brendon Smith <gitsmith@protonmail.com>'

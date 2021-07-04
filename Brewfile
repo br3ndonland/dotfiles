@@ -52,7 +52,7 @@ cask "brave-browser"
 cask "docker"
 cask "firefox"
 cask "karabiner-elements"
-# cask "kitty" # build from source on arm64_big_sur: https://github.com/kovidgoyal/kitty/issues/3126
+cask "kitty"
 cask "postico"
 cask "rstudio" # no arm64_big_sur yet: https://github.com/rstudio/rstudio/issues/8652
 cask "visual-studio-code-insiders"

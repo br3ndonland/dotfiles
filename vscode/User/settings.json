@@ -6,6 +6,7 @@
   "editor.autoIndent": "advanced",
   "editor.cursorBlinking": "phase",
   "editor.detectIndentation": false,
+  "editor.inlineSuggest.enabled": true,
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Dank Mono', 'Rec Mono Duotone', 'Fira Code', monospace",
   "editor.fontLigatures": true,
@@ -83,6 +84,14 @@
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "git-commit": false,
+    "ruby": false
+  },
   "gitlens.advanced.abbreviatedShaLength": 7,
   "gitlens.advanced.abbreviateShaOnCopy": true,
   "gitlens.blame.avatars": false,

@@ -39,7 +39,8 @@ else
 fi
 TTY=$(tty)
 export GPG_TTY=$TTY
-export PATH=$PATH:$HOME/.local/bin:$HOME/.poetry/bin
+export PATH=$HOME/.local/bin:$PATH
+export POETRY_HOME=$HOME/.local
 export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 
 ### aliases

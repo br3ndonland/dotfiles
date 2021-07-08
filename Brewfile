@@ -64,7 +64,7 @@ cask "zotero" # no arm64_big_sur yet
 # cask "postman"
 
 ### casks for personal use
-cask "backblaze" # no arm64_big_sur yet
+cask "backblaze"
 cask "handbrake-nightly" # arm64_big_sur in beta: https://github.com/HandBrake/HandBrake/releases
 cask "jellyfin" # no arm64_big_sur yet
 cask "keybase" # no arm64_big_sur yet: https://github.com/keybase/client/issues/24415

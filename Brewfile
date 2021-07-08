@@ -68,7 +68,7 @@ cask "backblaze"
 cask "handbrake-nightly" # arm64_big_sur in beta: https://github.com/HandBrake/HandBrake/releases
 cask "jellyfin" # no arm64_big_sur yet
 cask "keybase" # no arm64_big_sur yet: https://github.com/keybase/client/issues/24415
-cask "protonvpn" # no arm64_big_sur yet: https://github.com/ProtonVPN/mac-app/issues/9
+cask "protonvpn"
 # cask "vscodium" # no arm64_big_sur yet: https://github.com/VSCodium/vscodium/issues/597
 
 ### mac app store

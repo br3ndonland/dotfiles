@@ -28,7 +28,7 @@ brew "pure"
 brew "python"
 brew "r"
 brew "rust"
-# brew "shellcheck" # no arm64_big_sur yet: https://github.com/koalaman/shellcheck/issues/2109
+brew "shellcheck"
 brew "shfmt"
 # brew "terraform" # no arm64_big_sur yet: https://github.com/hashicorp/terraform/issues/27257
 brew "webp"

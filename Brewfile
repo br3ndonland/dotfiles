@@ -8,7 +8,7 @@ tap "superfly/tap"
 
 ### packages for work and personal use
 brew "bash"
-# brew "cdktf" # no arm64_big_sur yet: https://formulae.brew.sh/formula/cdktf
+brew "cdktf"
 brew "deno" # macOS-only
 brew "flyctl"
 brew "gh"
@@ -30,7 +30,7 @@ brew "r"
 brew "rust"
 brew "shellcheck"
 brew "shfmt"
-# brew "terraform" # no arm64_big_sur yet: https://github.com/hashicorp/terraform/issues/27257
+brew "terraform"
 brew "webp"
 brew "ykman"
 brew "zsh"

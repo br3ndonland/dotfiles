@@ -304,11 +304,11 @@ fi
 if [ -n "$STRAP_DOTFILES_URL" ] && [ -n "$STRAP_DOTFILES_BRANCH" ]; then
   log "Fetching $STRAP_DOTFILES_URL:"
   if [ ! -d "$HOME/.dotfiles" ]; then
-    log "Cloning to ~/.dotfiles:"
+    log "Cloning to ~/.dotfiles and checking out $STRAP_DOTFILES_BRANCH."
     git clone $Q "$STRAP_DOTFILES_URL" \
       --branch "$STRAP_DOTFILES_BRANCH" ~/.dotfiles
   else
-    log "Checking out $STRAP_DOTFILES_BRANCH in ~/.dotfiles:"
+    log "Checking out $STRAP_DOTFILES_BRANCH in ~/.dotfiles."
     (
       cd ~/.dotfiles
       git stash

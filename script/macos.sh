@@ -235,8 +235,10 @@ defaults write com.apple.mail DisableURLLoading -bool true
 # Networking                                                                  #
 ###############################################################################
 
-# Configure IP: networksetup -setmanualwithdhcprouter <networkservice> <ip>
-networksetup -setdhcp "Ethernet"
+# Configure network services
+if networksetup -listallnetworkservices | grep -q "Ethernet"; then
+  networksetup -setdhcp "Ethernet"
+fi
 
 ###############################################################################
 # TextEdit                                                                    #

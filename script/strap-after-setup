@@ -26,7 +26,10 @@ if command -v python3 &>/dev/null; then
     python3 -m pipx ensurepath
   fi
   if ! command -v poetry &>/dev/null; then
-    curl -fsSL $RAW/python-poetry/poetry/HEAD/install-poetry.py | python3 -
+    export POETRY_HOME="$HOME/.local"
+    curl -fsS -o "$HOME/install-poetry.py" \
+      $RAW/python-poetry/poetry/HEAD/install-poetry.py
+    python3 "$HOME/install-poetry.py"
   fi
   "$HOME"/.dotfiles/script/python-user-packages.sh
 else

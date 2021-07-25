@@ -272,15 +272,15 @@ fi
 
 # Setup GitHub HTTPS credentials
 if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
-  if [ "$(git config --global credential.helper)" != "osxkeychain" ]; then
+  if [[ "$(git config --global credential.helper)" != *"osxkeychain"* ]]; then
     git config --global credential.helper osxkeychain
   fi
   if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
     PROTOCOL="protocol=https\\nhost=github.com"
-    printf "%s\\n" "$PROTOCOL" | git credential-osxkeychain erase
+    printf "%s\\n" "$PROTOCOL" | git credential reject
     printf "%s\\nusername=%s\\npassword=%s\\n" \
       "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
-      git credential-osxkeychain store
+      git credential approve
   else
     log "Skipping Git credential setup."
   fi

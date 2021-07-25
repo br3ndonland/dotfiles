@@ -12,13 +12,6 @@ else
   echo "Not macOS. Skipping macos.sh."
 fi
 
-### Install global npm packages
-if command -v npm &>/dev/null; then
-  sudo "$HOME"/.dotfiles/script/npm-globals.sh
-else
-  echo "npm not found. Skipping npm-globals.sh."
-fi
-
 ### Install user Python packages
 if command -v python3 &>/dev/null; then
   if ! command -v pipx &>/dev/null; then

@@ -1,9 +1,0 @@
-@vue/cli
-fx
-gitmoji-cli
-json-server
-npm-check
-prettier
-trash-cli
-typescript
-webtorrent-cli

@@ -6,19 +6,22 @@ set -e
 
 case $(uname -s) in
 Darwin)
-  export MACOS=1 && export UNIX=1
+  export LINUX=0 && export MACOS=1 && export UNIX=1
   if [[ $(uname -m) == "arm64" ]]; then
     DEFAULT_HOMEBREW_PREFIX="/opt/homebrew"
   else
     DEFAULT_HOMEBREW_PREFIX="/usr/local"
   fi
   ;;
-Linux) export LINUX=1 && export UNIX=1 ;;
+Linux) export LINUX=1 && export MACOS=0 && export UNIX=1 ;;
 codespace) export CODESPACE=1 ;;
 esac
 
-STDIN_FILE_DESCRIPTOR=0
+STRAP_CI=${STRAP_CI:=0}
+STRAP_DEBUG=${STRAP_DEBUG:-0}
 [[ $1 = "--debug" || -o xtrace ]] && STRAP_DEBUG=1
+STRAP_INTERACTIVE=${STRAP_INTERACTIVE:-0}
+STDIN_FILE_DESCRIPTOR=0
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
 STRAP_GIT_NAME=${STRAP_GIT_NAME:="Brendon Smith"}
 STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:="bws@bws.bio"}
@@ -46,14 +49,14 @@ cleanup() {
     else
       echo "!!! FAILED" >&2
     fi
-    if [ -z "$STRAP_DEBUG" ]; then
+    if [ "$STRAP_DEBUG" -eq 0 ]; then
       echo "!!! Run '$0 --debug' for debugging output." >&2
     fi
   fi
 }
 trap "cleanup" EXIT
 
-if [ -n "$STRAP_DEBUG" ]; then
+if [ "$STRAP_DEBUG" -gt 0 ]; then
   set -x
 else
   STRAP_QUIET_FLAG="-q"
@@ -67,13 +70,13 @@ clear_debug() {
   set +x
 }
 reset_debug() {
-  if [ -n "$STRAP_DEBUG" ]; then
+  if [ "$STRAP_DEBUG" -gt 0 ]; then
     set -x
   fi
 }
 
 sudo_init() {
-  if [ -z "$STRAP_INTERACTIVE" ]; then
+  if [ "$STRAP_INTERACTIVE" -eq 0 ]; then
     return
   fi
   local SUDO_PASSWORD SUDO_PASSWORD_SCRIPT
@@ -146,7 +149,7 @@ run_dotfile_scripts() {
       for i in "$@"; do
         if [ -f "$i" ] && [ -x "$i" ]; then
           log "Running dotfiles $i:"
-          if [ -z "$STRAP_DEBUG" ]; then
+          if [ "$STRAP_DEBUG" -eq 0 ]; then
             "$i" 2>/dev/null
           else
             "$i"
@@ -161,7 +164,7 @@ run_dotfile_scripts() {
 [ "$USER" = "root" ] && abort "Run bootstrap.sh as yourself, not root."
 
 if [ "$MACOS" -gt 0 ]; then
-  [ -z "$STRAP_CI" ] && caffeinate -s -w $$ &
+  [ "$STRAP_CI" -eq 0 ] && caffeinate -s -w $$ &
   groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to admin."
   logn "Configuring security settings:"
   SAFARI="com.apple.Safari"
@@ -191,10 +194,10 @@ logn "Checking full-disk encryption status:"
 VAULT_MSG="FileVault is (On|Off, but will be enabled after the next restart)."
 if fdesetup status | grep $Q -E "$VAULT_MSG"; then
   logk
-elif [ ! $MACOS ] || [ -n "$STRAP_CI" ]; then
+elif [ "$MACOS" -eq 0 ] || [ "$STRAP_CI" -gt 0 ]; then
   echo
   logn "Skipping full-disk encryption."
-elif [ -n "$STRAP_INTERACTIVE" ]; then
+elif [ "$STRAP_INTERACTIVE" -gt 0 ]; then
   echo
   log "Enabling full-disk encryption on next reboot:"
   sudo_askpass fdesetup enable -user "$USER" |
@@ -221,7 +224,7 @@ install_xcode_clt() {
     sudo_askpass softwareupdate -i "$CLT_PACKAGE"
     sudo_askpass rm -f "$CLT_PLACEHOLDER"
     if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
-      if [ -n "$STRAP_INTERACTIVE" ]; then
+      if [ "$STRAP_INTERACTIVE" -gt 0 ]; then
         echo
         logn "Requesting user install of Xcode Command Line Tools:"
         xcode-select --install
@@ -236,7 +239,7 @@ install_xcode_clt() {
 
 check_xcode_license() {
   if /usr/bin/xcrun clang 2>&1 | grep $Q license; then
-    if [ -n "$STRAP_INTERACTIVE" ]; then
+    if [ "$STRAP_INTERACTIVE" -gt 0 ]; then
       logn "Asking for Xcode license confirmation:"
       sudo_askpass xcodebuild -license
       logk
@@ -289,7 +292,7 @@ logn "Checking for software updates:"
 if softwareupdate -l 2>&1 | grep $Q "No new software available."; then
   logk
 else
-  if [ "$MACOS" -gt 0 ] && [ -z "$STRAP_CI" ]; then
+  if [ "$MACOS" -gt 0 ] && [ "$STRAP_CI" -eq 0 ]; then
     echo
     log "Installing software updates:"
     sudo_askpass softwareupdate --install --all
@@ -336,7 +339,7 @@ install_homebrew() {
   [ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"
   [ -d "$HOMEBREW_REPOSITORY" ] || sudo_askpass mkdir -p "$HOMEBREW_REPOSITORY"
   sudo_askpass chown -R "$USER:admin" "$HOMEBREW_REPOSITORY"
-  if [ $HOMEBREW_PREFIX != $HOMEBREW_REPOSITORY ]; then
+  if [ "$HOMEBREW_PREFIX" != "$HOMEBREW_REPOSITORY" ]; then
     ln -sf "$HOMEBREW_REPOSITORY/bin/brew" "$HOMEBREW_PREFIX/bin/brew"
   fi
   export GIT_DIR="$HOMEBREW_REPOSITORY/.git" GIT_WORK_TREE="$HOMEBREW_REPOSITORY"

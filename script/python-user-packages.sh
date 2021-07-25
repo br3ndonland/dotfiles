@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ### --------------------- Install user Python packages --------------------- ###
-# Run by strap-after-setup
+# Accepts a path to a requirements.txt file.
 # Manage user Python packages after install: https://github.com/pipxproject/pipx
 
 pipx_install_requirements() {
@@ -24,13 +24,13 @@ pipx_install_requirements() {
     else
       pipx install "$P"
     fi
-  done <"$HOME/.dotfiles/py/requirements.txt"
+  done <"$1"
 }
 
 if ! command -v pipx &>/dev/null; then
   printf "\n-> Error: pipx must be installed and on PATH.\n\n"
   exit 1
-elif pipx_install_requirements; then
+elif pipx_install_requirements "$@"; then
   printf "\n-> Successful pipx package installation.\n\n"
 else
   printf "\n-> Unsuccessful pipx package installation.\n\n"

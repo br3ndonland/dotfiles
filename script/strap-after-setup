@@ -13,20 +13,13 @@ else
 fi
 
 ### Install user Python packages
-if command -v python3 &>/dev/null; then
-  if ! command -v pipx &>/dev/null; then
-    python3 -m pip install --user pipx
-    python3 -m pipx ensurepath
-  fi
-  if ! command -v poetry &>/dev/null; then
-    export POETRY_HOME="$HOME/.local"
-    curl -fsS -o "$HOME/install-poetry.py" \
-      $RAW/python-poetry/poetry/HEAD/install-poetry.py
-    python3 "$HOME/install-poetry.py"
-  fi
-  "$HOME"/.dotfiles/script/python-user-packages.sh
+if command -v python3 &>/dev/null && ! command -v poetry &>/dev/null; then
+  export POETRY_HOME="$HOME/.local"
+  curl -fsS -o "$HOME/install-poetry.py" \
+    $RAW/python-poetry/poetry/HEAD/install-poetry.py
+  python3 "$HOME/install-poetry.py"
 else
-  echo "Python 3 not found. Skipping pipx and Poetry installs."
+  echo "Skipping Poetry install."
 fi
 
 ### Install VSCode extensions

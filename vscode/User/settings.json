@@ -162,13 +162,10 @@
   },
   "python.disableInstallationCheck": true,
   "python.experiments.enabled": false,
-  "python.formatting.autopep8Path": "~/.local/bin/autopep8",
-  "python.formatting.blackPath": "~/.local/bin/black",
   "python.formatting.provider": "black",
   "python.languageServer": "Jedi",
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Path": "~/.local/bin/flake8",
   "python.linting.mypyArgs": [
     "--follow-imports=silent",
     "--ignore-missing-imports",
@@ -176,7 +173,6 @@
     "--show-error-codes"
   ],
   "python.linting.mypyEnabled": true,
-  "python.linting.mypyPath": "~/.local/bin/mypy",
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,

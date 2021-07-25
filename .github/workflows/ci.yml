@@ -8,19 +8,35 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
     env:
       PRETTIER_VERSION: 2.3.0
-      SHFMT_VERSION: 3.3.0
       SHELLCHECK_OPTS: --shell=bash -e SC1071 -e SC1090 -e SC1091 -e SC2015 -e SC2046 -e SC2086 -e SC2206 -e SC2207
+      SHELLCHECK_VERSION: 0.7.2
+      SHFMT_VERSION: 3.3.0
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm i -g prettier@~${PRETTIER_VERSION}
       - run: prettier --check .
-      - run: |
-          sudo curl -fsSL -o /usr/local/bin/shfmt \
-            "https://github.com/mvdan/sh/releases/download/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_linux_amd64"
-      - run: sudo chmod +x /usr/local/bin/shfmt
-      - run: shfmt -d -f -i 2 .
+      - name: Install shellcheck (https://github.com/koalaman/shellcheck) on macOS (pre-installed on Linux)
+        if: startsWith(runner.os, 'macOS')
+        run: |
+          sc_bin="/usr/local/bin/shellcheck"
+          sc_bin_download="shellcheck-v${SHELLCHECK_VERSION}/shellcheck"
+          sc_url="https://github.com/koalaman/shellcheck/releases/download"
+          curl -fsSL "${sc_url}/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.darwin.x86_64.tar.xz" | tar -xJv
+          sudo cp "$sc_bin_download" "$sc_bin"
+          sudo chmod +x "$sc_bin"
       - run: shellcheck *.sh script/* .zshrc
+      - name: Install shfmt (https://github.com/mvdan/sh)
+        run: |
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          sh_bin="/usr/local/bin/shfmt"
+          sh_url="https://github.com/mvdan/sh/releases/download"
+          sudo curl -fsSL -o "$sh_bin" "${sh_url}/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_${os}_amd64"
+          sudo chmod +x "$sh_bin"
+      - run: shfmt -d -f -i 2 .

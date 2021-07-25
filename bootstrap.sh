@@ -351,7 +351,7 @@ install_homebrew() {
   unset GIT_DIR GIT_WORK_TREE
   logk
   export PATH="$HOMEBREW_PREFIX/bin:$PATH"
-  log "Updating Homebrew:"
+  logn "Updating Homebrew:"
   brew update
   logk
 }

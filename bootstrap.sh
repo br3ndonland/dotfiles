@@ -331,9 +331,10 @@ install_homebrew() {
   sudo_askpass chown "root:wheel" "$HOMEBREW_PREFIX" 2>/dev/null || true
   (
     cd "$HOMEBREW_PREFIX"
-    sudo_askpass mkdir -p Cellar Frameworks bin etc include lib opt sbin share var
-    sudo_askpass chown -R "$USER:admin" \
-      Cellar Frameworks bin etc include lib opt sbin share var
+    sudo_askpass mkdir -p \
+      Cellar Caskroom Frameworks bin etc include lib opt sbin share var
+    sudo_askpass chown "$USER:admin" \
+      Cellar Caskroom Frameworks bin etc include lib opt sbin share var
   )
   HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"
   [ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"

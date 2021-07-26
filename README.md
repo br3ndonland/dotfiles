@@ -147,7 +147,7 @@ I previously configured VSCode and VSCodium using the [Settings Sync](https://ma
 - I set up code-server on a Linux cloud server. I prefer to use DigitalOcean, following their [recommended initial setup guide](https://www.digitalocean.com/docs/droplets/tutorials/recommended-setup/) for "droplets" (VMs):
   - Set up [SSH agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) on local machine to avoid having to deposit SSH private keys on droplet
   - Add SSH public key when creating droplet
-  - Add a user data script like _[linux-userdata-do.sh](script/linux-userdata-do.sh)_
+  - Add a user data script like _[linux-userdata.sh](script/linux-userdata.sh)_
 - [Installation](https://github.com/cdr/code-server/blob/v3.7.2/doc/install.md) and [setup](https://github.com/cdr/code-server/blob/v3.7.2/doc/guide.md) on the server:
 
   ```sh

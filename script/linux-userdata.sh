@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ### ------------- User data script for quick web server setup ------------- ###
-# https://www.digitalocean.com/docs/droplets/tutorials/recommended-setup/
-# https://www.digitalocean.com/docs/recommended-droplet-setup.sh
+# https://docs.digitalocean.com/droplets/tutorials/recommended-setup/
+# https://docs.digitalocean.com/recommended-droplet-setup.sh
 
 set -eou pipefail
 

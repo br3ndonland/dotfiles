@@ -2,6 +2,8 @@
 ### ----------------------------- Linux setup ----------------------------- ###
 # A simple Linux setup script for Homebrew, Brew Bundle, and apt-get.
 
+set -eo pipefail
+
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
 if command -v brew &>/dev/null; then
   printf "Homebrew detected."
@@ -12,16 +14,17 @@ else
   printf "\n" | /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)"
   if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  elif [ -d ~/.linuxbrew ]; then
-    eval "$(~/.linuxbrew/bin/brew shellenv)"
-  else
-    printf "Homebrew Linux directory not found."
+  elif [ -d "$HOME/.linuxbrew" ]; then
+    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
   fi
+  command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1
 fi
 
 # Install Homebrew dependencies from Brewfile with Brew Bundle
-if [ -f ~/.Brewfile ]; then
-  brew bundle check --global
+skips="awscli black deno macos-trash mas pure zsh-completions"
+export HOMEBREW_BUNDLE_BREW_SKIP="$skips"
+if [ -f "$HOME/.Brewfile" ]; then
+  brew bundle check --global || brew bundle --global
 else
   printf "\nDownloading Brewfile and installing with Brew Bundle.\n"
   BREWFILE="${STRAP_GITHUB_USER:-br3ndonland}/dotfiles/HEAD/Brewfile"
@@ -29,7 +32,7 @@ else
 fi
 
 # Install apt-get packages
-declare -a PACKAGES=(
+PACKAGES=(
   apt-transport-https
   build-essential
   ca-certificates
@@ -37,7 +40,7 @@ declare -a PACKAGES=(
   gnupg-agent
   software-properties-common
 )
-[ "$1" ] && PACKAGES+=("[@]")
+[ -n "$1" ] && PACKAGES+=("[@]")
 for PACKAGE in "${PACKAGES[@]}"; do
   sudo apt-get install -qy "$PACKAGE"
 done

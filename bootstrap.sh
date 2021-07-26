@@ -363,6 +363,17 @@ run_brew_installs() {
     eval "$($DEFAULT_HOMEBREW_PREFIX/bin/brew shellenv)"
     command -v brew &>/dev/null && logk || return 1
   fi
+  if [ "$STRAP_CI" -gt 0 ]; then
+    log "Setting up Homebrew Cask and Mac App Store installs to skip in CI."
+    casks="$(brew bundle list --cask --quiet | tr '\n' ' ')"
+    mas_ids=""
+    prefix='*mas*, id: '
+    while read -r brewfile_line; do
+      [[ $brewfile_line == *$prefix* ]] && mas_ids+="${brewfile_line##$prefix} "
+    done <"Brewfile"
+    export HOMEBREW_BUNDLE_CASK_SKIP="${casks%% }"
+    export HOMEBREW_BUNDLE_MAS_SKIP="${mas_ids%% }"
+  fi
   log "Running Homebrew installs."
   # Install from local Brewfile
   if [ -f "$HOME/.Brewfile" ]; then

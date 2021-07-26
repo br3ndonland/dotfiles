@@ -40,3 +40,33 @@ jobs:
           sudo curl -fsSL -o "$sh_bin" "${sh_url}/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_${os}_amd64"
           sudo chmod +x "$sh_bin"
       - run: shfmt -d -f -i 2 .
+  test:
+    if: ${{ github.event_name != 'push' }}
+    needs: [lint]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    timeout-minutes: 60
+    env:
+      STRAP_CI: 1
+      STRAP_DEBUG: 1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Clean up Homebrew
+        run: |
+          command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||
+            echo "Homebrew not found."
+      - name: Clean up macOS
+        if: startsWith(runner.os, 'macOS')
+        run: |
+          sudo rm -rf /usr/local/Caskroom /usr/local/Homebrew /usr/local/bin/brew \
+            /usr/local/.??* /Applications/Xcode.app /Library/Developer/CommandLineTools
+      - name: Run bootstrap.sh
+        run: bash bootstrap.sh
+      - name: Rerun bootstrap.sh to test idempotence
+        run: bash bootstrap.sh
+      - name: Check Homebrew configuration
+        run: brew config
+      - name: Check for potential problems with brew doctor
+        run: brew doctor || echo "Potential problems detected. See output for details."

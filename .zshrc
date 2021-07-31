@@ -47,17 +47,17 @@ export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 alias python='python3'
 
 ### homebrew
-case $(uname) in
+[[ -z $HOMEBREW_PREFIX ]] && case $(uname) in
 Darwin)
   if [[ $(uname -m) == 'arm64' ]]; then
-    BREW_PREFIX='/opt/homebrew'
+    HOMEBREW_PREFIX='/opt/homebrew'
   elif [[ $(uname -m) == 'x86_64' ]]; then
-    BREW_PREFIX='/usr/local'
+    HOMEBREW_PREFIX='/usr/local'
   fi
   ;;
-Linux) BREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
+Linux) HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
 esac
-eval $($BREW_PREFIX/bin/brew shellenv)
+eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 
 ### prompt: https://github.com/sindresorhus/pure
 if ! type brew &>/dev/null || [[ $(uname) = 'Linux' ]]; then
@@ -69,7 +69,7 @@ prompt pure
 
 ### completions
 if type brew &>/dev/null; then
-  fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh/site-functions
+  fpath+=$HOME/.zfunc:$HOMEBREW_PREFIX/share/zsh/site-functions
 fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
@@ -77,8 +77,8 @@ autoload -Uz compinit
 [[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
 
 ### syntax highlighting
-if [[ -d $(brew --prefix)/share/zsh-syntax-highlighting ]]; then
-  . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then
+  . $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
   . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

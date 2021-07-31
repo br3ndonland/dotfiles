@@ -70,10 +70,6 @@ prompt pure
 ### completions
 if type brew &>/dev/null; then
   fpath+=$HOME/.zfunc:$(brew --prefix)/share/zsh/site-functions
-  if [[ -d $(brew --prefix)/bin/terraform ]]; then
-    autoload -U +X bashcompinit && bashcompinit
-    complete -o nospace -C $(brew --prefix)/bin/terraform terraform
-  fi
 fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit

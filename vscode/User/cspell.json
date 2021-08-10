@@ -64,6 +64,7 @@
     "cryoboxes",
     "dependabot",
     "dois",
+    "dotenv",
     "dotfiles",
     "dockerfiles",
     "dygma",

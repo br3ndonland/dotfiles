@@ -31,7 +31,7 @@ spush = push --recurse-submodules=on-demand
 st = status
 stal = stash pop
 stap = stash push
-supdate = submodule update --remote --merge
+supdate = submodule update --init --recursive
 tag = tag -a -s
 [commit]
 gpgsign = true

@@ -73,8 +73,7 @@ if type brew &>/dev/null; then
 fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
-# ignore insecure directories (perms issues for non-admin user)
-[[ $(whoami) = 'brendon.smith' ]] && compinit -i || compinit
+compinit
 
 ### syntax highlighting
 if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then

@@ -25,6 +25,19 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;3~' kill-word
 bindkey '^N' kill-buffer
 
+### homebrew
+[[ -z $HOMEBREW_PREFIX ]] && case $(uname) in
+Darwin)
+  if [[ $(uname -m) == 'arm64' ]]; then
+    HOMEBREW_PREFIX='/opt/homebrew'
+  elif [[ $(uname -m) == 'x86_64' ]]; then
+    HOMEBREW_PREFIX='/usr/local'
+  fi
+  ;;
+Linux) HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
+esac
+eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+
 ### exports
 if command -v code &>/dev/null; then
   export EDITOR='code --wait'
@@ -44,19 +57,6 @@ export POETRY_HOME=$HOME/.local
 
 ### aliases
 alias python='python3'
-
-### homebrew
-[[ -z $HOMEBREW_PREFIX ]] && case $(uname) in
-Darwin)
-  if [[ $(uname -m) == 'arm64' ]]; then
-    HOMEBREW_PREFIX='/opt/homebrew'
-  elif [[ $(uname -m) == 'x86_64' ]]; then
-    HOMEBREW_PREFIX='/usr/local'
-  fi
-  ;;
-Linux) HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
-esac
-eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 
 ### prompt: https://github.com/sindresorhus/pure
 if ! type brew &>/dev/null || [[ $(uname) = 'Linux' ]]; then

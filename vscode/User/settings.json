@@ -4,6 +4,7 @@
   "debug.toolBarLocation": "docked",
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.autoIndent": "advanced",
+  "editor.bracketPairColorization.enabled": false,
   "editor.cursorBlinking": "phase",
   "editor.detectIndentation": false,
   "editor.inlineSuggest.enabled": true,

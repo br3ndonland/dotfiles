@@ -46,7 +46,7 @@ required = true
 [github]
 user = br3ndonland
 [gpg]
-program = gpg
+program = /opt/homebrew/bin/gpg
 [init]
 defaultbranch = main
 [pull]

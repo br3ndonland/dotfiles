@@ -60,6 +60,7 @@
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.fontSize": 12,
+  "terminal.integrated.inheritEnv": false,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.tabs.enabled": false,
   "update.mode": "manual",

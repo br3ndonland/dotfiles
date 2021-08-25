@@ -26,12 +26,12 @@ bindkey '^[[3;3~' kill-word
 bindkey '^N' kill-buffer
 
 ### exports
-if command -v code-exploration &>/dev/null; then
-  export EDITOR='code-exploration --wait'
+if command -v code &>/dev/null; then
+  export EDITOR='code --wait'
 elif command -v code-insiders &>/dev/null; then
   export EDITOR='code-insiders --wait'
-elif command -v code &>/dev/null; then
-  export EDITOR='code --wait'
+elif command -v code-exploration &>/dev/null; then
+  export EDITOR='code-exploration --wait'
 elif command -v codium &>/dev/null; then
   export EDITOR='codium --wait'
 else

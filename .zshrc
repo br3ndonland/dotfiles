@@ -41,7 +41,6 @@ TTY=$(tty)
 export GPG_TTY=$TTY
 export PATH=$HOME/.local/bin:$PATH
 export POETRY_HOME=$HOME/.local
-export SSH_KEY_PATH=$HOME/.ssh/id_rsa_$USER
 
 ### aliases
 alias python='python3'

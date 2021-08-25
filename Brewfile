@@ -69,6 +69,7 @@ cask "karabiner-elements"
 cask "kitty"
 cask "postico"
 cask "rstudio" # no arm64_big_sur yet: https://github.com/rstudio/rstudio/issues/8652
+cask "visual-studio-code"
 cask "visual-studio-code-insiders"
 cask "vlc"
 cask "zotero" # no arm64_big_sur yet

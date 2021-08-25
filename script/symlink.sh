@@ -10,7 +10,7 @@ symlink_dir_contents() {
 }
 
 symlink_file() {
-  ln -fns "$1" "$3/${1##$2/}"
+  ln -nsfF "$1" "$3/${1##$2/}"
 }
 
 symlink_repo_dotfiles() {

@@ -38,7 +38,7 @@ install_extensions() {
       $1 --install-extension "$EXT"
     fi
     if [ "$1" = "codium" ]; then check_open_vsx "$EXT_INFO"; else continue; fi
-  done <$EXTENSIONS
+  done <"$EXTENSIONS"
 }
 
 if [ -z "$1" ]; then

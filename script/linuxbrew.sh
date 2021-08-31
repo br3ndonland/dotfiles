@@ -15,7 +15,7 @@ else
   if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   elif [ -d "$HOME/.linuxbrew" ]; then
-    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+    eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
   fi
   command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1
 fi

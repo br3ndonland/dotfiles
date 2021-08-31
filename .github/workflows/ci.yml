@@ -14,7 +14,7 @@ jobs:
         os: [macos-latest, ubuntu-latest]
     env:
       PRETTIER_VERSION: 2.3.0
-      SHELLCHECK_OPTS: --shell=bash -e SC1071 -e SC1090 -e SC1091 -e SC2015 -e SC2046 -e SC2086 -e SC2206 -e SC2207
+      SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
       SHELLCHECK_VERSION: 0.7.2
       SHFMT_VERSION: 3.3.0
     steps:
@@ -31,7 +31,7 @@ jobs:
           curl -fsSL "${sc_url}/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.darwin.x86_64.tar.xz" | tar -xJv
           sudo cp "$sc_bin_download" "$sc_bin"
           sudo chmod +x "$sc_bin"
-      - run: shellcheck *.sh script/* .zshrc
+      - run: shellcheck script/* **/*.sh
       - name: Install shfmt (https://github.com/mvdan/sh)
         run: |
           os="$(uname -s | tr '[:upper:]' '[:lower:]')"

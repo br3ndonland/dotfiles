@@ -39,7 +39,7 @@ jobs:
           sh_url="https://github.com/mvdan/sh/releases/download"
           sudo curl -fsSL -o "$sh_bin" "${sh_url}/v${SHFMT_VERSION}/shfmt_v${SHFMT_VERSION}_${os}_amd64"
           sudo chmod +x "$sh_bin"
-      - run: shfmt -d -f -i 2 .
+      - run: shfmt -d -i 2 .
   test:
     if: ${{ github.event_name != 'push' }}
     needs: [lint]

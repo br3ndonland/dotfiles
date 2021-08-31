@@ -31,7 +31,7 @@ jobs:
           curl -fsSL "${sc_url}/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.darwin.x86_64.tar.xz" | tar -xJv
           sudo cp "$sc_bin_download" "$sc_bin"
           sudo chmod +x "$sc_bin"
-      - run: shellcheck script/* **/*.sh
+      - run: bash -c 'shopt -s globstar nullglob; shellcheck script/* **/*.{sh,ksh,bash}'
       - name: Install shfmt (https://github.com/mvdan/sh)
         run: |
           os="$(uname -s | tr '[:upper:]' '[:lower:]')"

@@ -81,6 +81,9 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
   // Git
+  "[git-commit]": {
+    "workbench.editor.languageDetection": false
+  },
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": true,
   "git.confirmSync": false,

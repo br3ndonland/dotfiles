@@ -6,7 +6,7 @@ echo "-> Running strap-after-setup. Some steps may require password entry."
 RAW="https://raw.githubusercontent.com"
 
 ### Configure macOS
-if [ "$(uname -s)" = "Darwin" ]; then
+if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
   "$HOME"/.dotfiles/script/macos.sh
 else
   echo "Not macOS. Skipping macos.sh."
@@ -24,7 +24,7 @@ fi
 
 ### Install VSCode extensions
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
-  if [ "$(whoami)" = "codespace" ]; then
+  if [ "${CODESPACE:-0}" -gt 0 ] || [ "$(whoami)" = "codespace" ]; then
     echo "Error: Codespaces VSCode CLI can't install extensions."
   else
     "$HOME"/.dotfiles/script/vscode-extensions.sh "$i"
@@ -33,13 +33,18 @@ done
 
 ### Set shell
 if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
-  echo "-> Changing shell to Zsh. Password entry required."
-  [ "$(uname)" = "Linux" ] && command -v zsh | sudo tee -a /etc/shells
+  echo "--> Changing shell to Zsh. Password entry required."
+  [ "${LINUX:-0}" -gt 0 ] || [ "$(uname)" = "Linux" ] &&
+    command -v zsh | sudo tee -a /etc/shells
   sudo chsh -s "$(command -v zsh)" "$USER"
 else
-  echo "-> Shell is already set to Zsh."
+  echo "Shell is already set to Zsh."
 fi
-if ! command -v brew &>/dev/null; then
+if [ "${LINUX:-0}" -gt 0 ] ||
+  [ "$(uname)" = "Linux" ] ||
+  ! type brew &>/dev/null &&
+  ! [ -d "$HOME/.zsh/pure" ]; then
+  echo "--> Manually installing pure prompt."
   mkdir -p "$HOME/.zsh"
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fi

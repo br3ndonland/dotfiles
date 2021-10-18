@@ -35,13 +35,14 @@ Dotfiles are application configuration and settings files. They frequently begin
 _bootstrap.sh_ is a shell script to automate setup of a new macOS development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a macOS development machine, simply open a terminal and run the following command:
 
 ```sh
-/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"
+STRAP_GIT_EMAIL="you@example.com" STRAP_GIT_NAME="Your Name" STRAP_GITHUB_USER="username" \
+  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"
 ```
 
 The following environment variables can be used to configure _bootstrap.sh_, and should be either set before with [`export`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export), or inline within the command to run the script:
 
-- `STRAP_GIT_EMAIL`: email address to use for Git configuration. Defaults to my email address, so you should set this if you're not me.
-- `STRAP_GIT_NAME`: name to use for Git configuration. Defaults to my name, so you should set this if you're not me.
+- `STRAP_GIT_EMAIL`: email address to use for Git configuration. Will error and exit if not set.
+- `STRAP_GIT_NAME`: name to use for Git configuration. Will error and exit if not set.
 - `STRAP_GITHUB_USER`: username on GitHub or other remote from which dotfiles repo will be cloned. Defaults to my GitHub username, so you should set this if you're not me.
 - `STRAP_DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$STRAP_GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
 - `STRAP_DOTFILES_BRANCH`: Git branch to check out after cloning dotfiles repo. Defaults to `main`.

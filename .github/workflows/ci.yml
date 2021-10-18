@@ -42,6 +42,9 @@ jobs:
     env:
       STRAP_CI: 1
       STRAP_DEBUG: 1
+      STRAP_GIT_EMAIL: 26674818+br3ndonland@users.noreply.github.com
+      STRAP_GIT_NAME: GitHub Actions
+      STRAP_GITHUB_USER: br3ndonland
     steps:
       - uses: actions/checkout@v2
       - name: Clean up Homebrew

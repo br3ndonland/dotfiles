@@ -55,8 +55,7 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.fontSize": 12,

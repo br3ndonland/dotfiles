@@ -3,7 +3,6 @@
 # Run by run_dotfile_scripts in bootstrap.sh
 # Scripts must be executable (chmod +x)
 echo "-> Running strap-after-setup. Some steps may require password entry."
-RAW="https://raw.githubusercontent.com"
 
 ### Configure macOS
 if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
@@ -12,12 +11,9 @@ else
   echo "Not macOS. Skipping macos.sh."
 fi
 
-### Install user Python packages
-if command -v python3 &>/dev/null && ! command -v poetry &>/dev/null; then
-  export POETRY_HOME="$HOME/.local"
-  curl -fsS -o "$HOME/install-poetry.py" \
-    $RAW/python-poetry/poetry/HEAD/install-poetry.py
-  python3 "$HOME/install-poetry.py"
+### Install Poetry
+if command -v pipx &>/dev/null && ! command -v poetry &>/dev/null; then
+  pipx install poetry
 else
   echo "Skipping Poetry install."
 fi

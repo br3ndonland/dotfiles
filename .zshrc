@@ -53,7 +53,6 @@ fi
 TTY=$(tty)
 export GPG_TTY=$TTY
 export PATH=$HOME/.local/bin:$PATH
-export POETRY_HOME=$HOME/.local
 
 ### aliases
 alias python='python3'

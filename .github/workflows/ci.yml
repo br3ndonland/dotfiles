@@ -32,7 +32,7 @@ jobs:
       - name: Check shell script formatting with shfmt
         run: shfmt -d -i 2 .
   test:
-    if: ${{ github.event_name != 'push' }}
+    if: github.event_name != 'push'
     needs: [lint]
     runs-on: ${{ matrix.os }}
     strategy:

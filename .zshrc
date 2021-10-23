@@ -7,7 +7,7 @@
 # See man zshoptions or http://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-setopt autocd extendedglob globdots histignorespace noautomenu nomatch
+setopt autocd extendedglob globdots histignorespace noautomenu nullglob
 
 ### keybindings: based on https://github.com/romkatv/zsh4humans
 bindkey -e

@@ -5,24 +5,26 @@
 
 pipx_install_requirements() {
   printf "\n-> Installing user Python packages with pipx...\n\n"
-  PY="$(python3 --version)"
-  PIPX_LIST="$(pipx list)"
-  while read -r P; do
-    case "$P" in
+  local package_command pipx_list py
+  py="$(python3 --version)"
+  pipx_list="$(pipx list)"
+  while read -r package; do
+    case "$package" in
     awscli) : "aws" ;;
     httpie) : "http" ;;
-    *) : "$P" ;;
+    *) : "$package" ;;
     esac
-    CMD="$_"
-    if [[ $(echo "$PIPX_LIST" | grep -ce "package $P .*, $PY") -gt 0 ]]; then
-      echo "$P already installed."
-    elif [[ $(echo "$PIPX_LIST" | grep -ce "package $P") -gt 0 ]]; then
-      echo "Reinstalling $P for $PY."
-      pipx uninstall "$P" && pipx install --python "$(command -v python3)" "$P"
-    elif command -v "$CMD" &>/dev/null; then
-      echo "$P already on PATH at $(command -v "$CMD")."
+    package_command="$_"
+    if [[ $(echo "$pipx_list" | grep -ce "package $package .*, $py") -gt 0 ]]; then
+      echo "$package already installed."
+    elif [[ $(echo "$pipx_list" | grep -ce "package $package") -gt 0 ]]; then
+      echo "Reinstalling $package for $py."
+      pipx uninstall "$package"
+      pipx install --python "$(command -v python3)" "$package"
+    elif command -v "$package_command" &>/dev/null; then
+      echo "$package already on PATH at $(command -v "$package_command")."
     else
-      pipx install "$P"
+      pipx install "$package"
     fi
   done <"$1"
 }

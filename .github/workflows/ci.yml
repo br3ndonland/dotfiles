@@ -12,25 +12,32 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest]
-    env:
-      SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
     steps:
       - uses: actions/checkout@v2
       - name: Install Prettier
         run: brew install prettier
       - name: Check web code formatting with Prettier
         run: prettier --check .
-      - name: >
-          Install shellcheck (https://github.com/koalaman/shellcheck)
-          on macOS (pre-installed on Linux)
-        if: startsWith(runner.os, 'macOS')
-        run: brew install shellcheck
-      - name: Check shell script formatting with ShellCheck
-        run: bash -c 'shopt -s globstar nullglob; shellcheck script/* **/*.{sh,ksh,bash}'
       - name: Install shfmt (https://github.com/mvdan/sh)
         run: brew install shfmt
       - name: Check shell script formatting with shfmt
         run: shfmt -d -i 2 .
+      - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
+        if: startsWith(runner.os, 'macOS')
+        run: brew install bash shellcheck
+      - name: Check shell script formatting with ShellCheck
+        run: |
+          shopt -s globstar nullglob
+          set -- script/* **/*.{sh,bash,ksh}
+          if [ -n "$1" ]; then
+            echo "Checking $@"
+            shellcheck "$@"
+          else
+            echo "No shell scripts for ShellCheck to check."
+          fi
+        shell: bash
+        env:
+          SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
   test:
     if: github.event_name != 'push'
     needs: [lint]

@@ -11,7 +11,6 @@ brew "autopep8"
 brew "awscli"
 brew "bash"
 brew "black"
-brew "cdktf"
 brew "cookiecutter"
 brew "deno" # macOS-only
 brew "flake8"

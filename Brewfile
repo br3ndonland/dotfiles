@@ -4,7 +4,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "superfly/tap"
 
 ### packages for work and personal use
 brew "autopep8"
@@ -14,7 +13,6 @@ brew "black"
 brew "cookiecutter"
 brew "deno" # macOS-only
 brew "flake8"
-brew "flyctl"
 brew "fx"
 brew "gh"
 brew "git"

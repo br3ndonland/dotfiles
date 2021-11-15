@@ -369,6 +369,7 @@ run_brew_installs() {
     mas_ids=""
     prefix='*mas*, id: '
     while read -r brewfile_line; do
+      # shellcheck disable=SC2295
       [[ $brewfile_line == *$prefix* ]] && mas_ids+="${brewfile_line##$prefix} "
     done <"Brewfile"
     export HOMEBREW_BUNDLE_CASK_SKIP="${casks%% }"

@@ -2,7 +2,7 @@
 ### ------------------------ symlink dotfiles repo ------------------------ ###
 
 symlink_dir_contents() {
-  TARGET_DIR=$3/${1##$2/}
+  TARGET_DIR=$3/${1##"$2"/}
   ! [ -d "$TARGET_DIR" ] && mkdir -p "$TARGET_DIR"
   for FILE in "$1/"*; do
     symlink_file "$FILE" "$2" "$3"
@@ -10,7 +10,7 @@ symlink_dir_contents() {
 }
 
 symlink_file() {
-  ln -nsfF "$1" "$3/${1##$2/}"
+  ln -nsfF "$1" "$3/${1##"$2"/}"
 }
 
 symlink_repo_dotfiles() {

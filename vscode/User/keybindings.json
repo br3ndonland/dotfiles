@@ -65,6 +65,13 @@
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
   },
+  // Fix terminal forward delete word
+  {
+    "key": "alt+delete",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u001bd" },
+    "when": "terminalFocus"
+  },
   // Go to definition
   {
     "key": "ctrl+cmd+g",

@@ -84,7 +84,7 @@
     "workbench.editor.languageDetection": false
   },
   "diffEditor.ignoreTrimWhitespace": false,
-  "git.autofetch": true,
+  "git.autofetch": false,
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,

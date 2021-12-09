@@ -1,0 +1,12 @@
+# starship configuration: https://starship.rs/config/
+
+[python]
+python_binary = "python3"
+
+[shell]
+bash_indicator = "bash "
+zsh_indicator = ""
+unknown_indicator = "??? "
+style = "cyan bold"
+format = "[$indicator]($style)"
+disabled = false

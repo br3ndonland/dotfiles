@@ -118,7 +118,7 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 - I use Zsh as my shell, which functions like Bash but offers more customization.
 - I install with Homebrew to maintain consistent versions across multiple machines. However, note that [Zsh is now the default shell for new macOS users starting with macOS Catalina](https://support.apple.com/en-us/HT208050).
 - See the [Wes Bos Command Line Power User course](https://commandlinepoweruser.com/) for an introduction to Zsh.
-- For my Zsh prompt, I use either [pure prompt](https://github.com/sindresorhus/pure) or [zsh4humans](https://github.com/romkatv/zsh4humans) with [powerlevel10k](https://github.com/romkatv/powerlevel10k).
+- I use [Starship](https://starship.rs/) for my shell prompt.
 - For my terminal application, I use [kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator.
 
 ## Text editors

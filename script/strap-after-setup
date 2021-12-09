@@ -36,11 +36,3 @@ if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
 else
   echo "Shell is already set to Zsh."
 fi
-if [ "${LINUX:-0}" -gt 0 ] ||
-  [ "$(uname)" = "Linux" ] ||
-  ! type brew &>/dev/null &&
-  ! [ -d "$HOME/.zsh/pure" ]; then
-  echo "--> Manually installing pure prompt."
-  mkdir -p "$HOME/.zsh"
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fi

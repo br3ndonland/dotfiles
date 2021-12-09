@@ -21,7 +21,7 @@ else
 fi
 
 # Install Homebrew dependencies from Brewfile with Brew Bundle
-skips="awscli black deno jupyterlab macos-trash mas pure zsh-completions"
+skips="awscli black deno jupyterlab macos-trash mas zsh-completions"
 export HOMEBREW_BUNDLE_BREW_SKIP="$skips"
 if [ -f "$HOME/.Brewfile" ]; then
   brew bundle check --global || brew bundle --global

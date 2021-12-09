@@ -57,13 +57,8 @@ export PATH=$HOME/.local/bin:$PATH
 ### aliases
 alias python='python3'
 
-### prompt: https://github.com/sindresorhus/pure
-if ! type brew &>/dev/null || [[ $(uname) = 'Linux' ]]; then
-  [[ -d $HOME/.zsh/pure ]] && fpath+=$HOME/.zsh/pure
-fi
-autoload -U promptinit
-promptinit
-prompt pure
+### prompt: https://starship.rs
+eval $(starship init zsh)
 
 ### completions
 if type brew &>/dev/null; then

@@ -168,13 +168,13 @@ if [ "$MACOS" -gt 0 ]; then
   groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to admin."
   logn "Configuring security settings:"
   SAFARI="com.apple.Safari"
-  defaults write $SAFARI $SAFARI.ContentPageGroupIdentifier.WebKit2JavaEnabled \
-    -bool false
-  defaults write $SAFARI \
+  sudo_askpass defaults write $SAFARI \
+    $SAFARI.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+  sudo_askpass defaults write $SAFARI \
     $SAFARI.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles \
     -bool false
-  defaults write com.apple.screensaver askForPassword -int 1
-  defaults write com.apple.screensaver askForPasswordDelay -int 0
+  sudo_askpass defaults write com.apple.screensaver askForPassword -int 1
+  sudo_askpass defaults write com.apple.screensaver askForPasswordDelay -int 0
   sudo_askpass defaults write \
     /Library/Preferences/com.apple.alf globalstate -int 1
   sudo_askpass launchctl load \

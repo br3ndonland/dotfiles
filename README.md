@@ -271,7 +271,34 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
   chmod 600 ~/.gnupg/gpg.conf
   ```
 - See the [GPG configuration docs](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html) for more.
-- See the [YubiKey Manager CLI (`ykman`) User Manual](https://support.yubico.com/hc/en-us/articles/360016614940-YubiKey-Manager-CLI-ykman-User-Manual) and the [Yubico support article Using Your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP) for information on how to manage GPG keys with YubiKeys.
+
+#### GPG and YubiKey
+
+Resources:
+
+- [Yubico support: using your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP)
+- [YubiKey Manager CLI (`ykman`) User Manual](https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html)
+- [Okta developer blog: Developers guide to GPG and YubiKey](https://developer.okta.com/blog/2021/07/07/developers-guide-to-gpg)
+
+To use a GPG key on a YubiKey with a new computer, plug in the YubiKey, check the status, and fetch the public keys.
+
+```text
+~
+❯ gpg --card-status
+
+~
+❯ gpg --card-edit
+
+gpg/card> admin
+Admin commands are allowed
+
+gpg/card> url
+URL to retrieve public key: https://github.com/<YOUR_GITHUB_USERNAME>.gpg
+
+gpg/card> fetch
+
+gpg/card> quit
+```
 
 #### Key generation
 

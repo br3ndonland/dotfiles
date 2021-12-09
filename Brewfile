@@ -80,7 +80,6 @@ cask "zotero" # no arm64_big_sur yet
 cask "backblaze"
 cask "handbrake"
 cask "jellyfin" # no arm64_big_sur yet
-cask "keybase" # no arm64_big_sur yet: https://github.com/keybase/client/issues/24415
 cask "protonvpn"
 # cask "vscodium" # no arm64_big_sur yet: https://github.com/VSCodium/vscodium/issues/597
 

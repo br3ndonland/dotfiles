@@ -270,9 +270,11 @@ if [ -n "$STRAP_GITHUB_USER" ] &&
   git config --global github.user "$STRAP_GITHUB_USER"
 fi
 
-# Setup GitHub HTTPS credentials
+# Set up GitHub HTTPS credentials
 if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
-  if [[ "$(git config --global credential.helper)" != *"osxkeychain"* ]]; then
+  # Execute credential in case it's a wrapper script for credential-osxkeychain
+  if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 |
+    grep -v $Q "git.credential-osxkeychain"; then
     git config --global credential.helper osxkeychain
   fi
   if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then

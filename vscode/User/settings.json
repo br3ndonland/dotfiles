@@ -169,6 +169,7 @@
   "python.formatting.autopep8Path": "${env:HOMEBREW_PREFIX}/bin/autopep8",
   "python.formatting.blackPath": "${env:HOMEBREW_PREFIX}/bin/black",
   "python.formatting.provider": "black",
+  "python.insidersChannel": "off",
   "python.languageServer": "Jedi",
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.flake8Enabled": true,

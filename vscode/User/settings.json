@@ -164,6 +164,9 @@
     "editor.rulers": [],
     "editor.tabSize": 4
   },
+  "pylance.insidersChannel": "off",
+  "python.analysis.completeFunctionParens": false,
+  "python.analysis.typeCheckingMode": "off",
   "python.disableInstallationCheck": true,
   "python.experiments.enabled": false,
   "python.formatting.autopep8Path": "${env:HOMEBREW_PREFIX}/bin/autopep8",

@@ -5,6 +5,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 ## Table of Contents <!-- omit in toc -->
 
 - [Installation](#installation)
+- [Why?](#why)
 - [Hardware](#hardware)
 - [macOS](#macos)
 - [Homebrew package management](#homebrew-package-management)
@@ -50,6 +51,12 @@ The following environment variables can be used to configure _bootstrap.sh_, and
 _bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _script/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_.
 
 A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+
+## Why?
+
+- **Make developer environments automated and disposable**. [Disposability](https://12factor.net/disposability) is an important concept in [infrastructure-as-code DevOps](https://www.terraform.io/intro/use-cases#disposable-environments), [serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/), [CI/CD](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), and more recently, [in-browser development environments](https://docs.github.com/en/codespaces/overview). Why aren't developers applying automation and disposability to their own computers? With an automated disposable developer environment, setup of a new machine is fast and easy. This approach is also liberating - I can purchase a new computer (or wipe an existing one), run _bootstrap.sh_, and be up and running again in no time.
+- **Know when and why settings change**. I not only know what tools and settings I'm using, but when and why I chose the tools and settings. This has been particularly important for VSCode, because settings change (and [break](https://github.com/microsoft/vscode/labels/bug)) frequently, and it helps to record troubleshooting info in the Git log.
+- **Learn new skills**. I learn skills, like shell scripting, that are useful and don't go out of date quickly. I wouldn't know shell as well if I didn't work on my developer environment. I learn these skills by tinkering a little bit at a time, in an unstructured way. It's time I might not otherwise be writing code.
 
 ## Hardware
 

@@ -27,23 +27,29 @@ check_open_vsx() {
 
 install_extensions() {
   printf "\nInstalling extensions for %s...\n\n" "$1"
-  PREFIX="$HOME/.dotfiles/vscode/extensions/marketplace"
-  if [[ "$1" == "code-exploration" ]] || [[ "$1" == "code-insiders" ]]; then
-    cat "$PREFIX-open-vsx.txt" "$PREFIX-proprietary.txt" >"$PREFIX-all.txt"
-    EXTENSIONS="$PREFIX-all.txt"
+  local extension_info extension_name extensions installed prefix
+  prefix="$HOME/.dotfiles/vscode/extensions/marketplace"
+  if [ "$1" = "code-exploration" ] || [ "$1" = "code-insiders" ]; then
+    cat "$prefix-open-vsx.txt" "$prefix-proprietary.txt" >"$prefix-all.txt"
+    extensions="$prefix-all.txt"
   else
-    EXTENSIONS="$PREFIX-open-vsx.txt"
+    extensions="$prefix-open-vsx.txt"
   fi
-  INSTALLED=("$($1 --list-extensions --show-versions)")
-  while read -r EXT; do
-    EXT_INFO=$(printf %s "${INSTALLED[@]}" | grep "$EXT@")
-    if [ "$EXT_INFO" ]; then
-      printf "Extension '%s' installed.\n" "$EXT_INFO"
+  installed=("$($1 --list-extensions --show-versions)")
+  while read -r extension; do
+    extension_name=$(printf %s "$extension" | cut -d @ -f 1)
+    if [ "$extension" = "$extension_name" ]; then
+      extension_info=$(printf %s "${installed[@]}" | grep "$extension_name@")
     else
-      $1 --install-extension "$EXT"
+      extension_info=$(printf %s "${installed[@]}" | grep "$extension")
     fi
-    if [ "$1" = "codium" ]; then check_open_vsx "$EXT_INFO"; else continue; fi
-  done <"$EXTENSIONS"
+    if [ -n "$extension_info" ]; then
+      printf "Extension '%s' installed.\n" "$extension_info"
+    else
+      $1 --install-extension "$extension"
+    fi
+    if [ "$1" = "codium" ]; then check_open_vsx "$extension_info"; fi
+  done <"$extensions"
 }
 
 if [ -z "$1" ]; then

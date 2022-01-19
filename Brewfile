@@ -22,6 +22,7 @@ brew "gnu-sed"
 brew "go"
 brew "grep"
 brew "httpie"
+brew "jq"
 brew "jupyterlab"
 brew "libfido2"
 brew "macos-trash" # macOS-only

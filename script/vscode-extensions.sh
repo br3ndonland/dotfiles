@@ -48,7 +48,7 @@ fi
 
 for i in "$@"; do
   case $i in
-  code) : "Code" ;;
+  code) : "Visual Studio Code" ;;
   code-exploration) : "Visual Studio Code - Exploration" ;;
   code-insiders) : "Visual Studio Code - Insiders" ;;
   codium) : "VSCodium" ;;

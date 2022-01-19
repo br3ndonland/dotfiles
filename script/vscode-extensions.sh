@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
 ### ---------------------- Install VSCode extensions ---------------------- ###
-# CLI: https://code.visualstudio.com/docs/editor/extension-gallery
+# CLI: https://code.visualstudio.com/docs/editor/extension-marketplace
 
 check_open_vsx() {
-  if ! (command -v curl &>/dev/null && command -v fx &>/dev/null); then
-    printf "curl and antonmedv/fx required to check extension version.\n"
+  if ! command -v curl &>/dev/null || ! (
+    command -v fx || command -v jq
+  ) &>/dev/null; then
+    printf "curl and jq or antonmedv/fx required to check extension version.\n"
     return
   fi
-  URL="https://open-vsx.org/api/$(printf %s "$1" | cut -d @ -f 1 | tr '.' '/')"
-  LOCAL_VERSION=$(printf %s "$1" | cut -d @ -f 2)
-  OPEN_VSX_VERSION=$(
-    curl -fs -X GET "$URL" -H "accept: application/json" |
-      fx .version
-  )
-  if [[ "$LOCAL_VERSION" == "$OPEN_VSX_VERSION" ]]; then
+  local local_version open_vsx_version response url
+  url="https://open-vsx.org/api/$(printf %s "$1" | cut -d @ -f 1 | tr '.' '/')"
+  local_version=$(printf %s "$1" | cut -d @ -f 2)
+  response=$(curl -fs "$url" -H "accept: application/json")
+  if command -v fx &>/dev/null; then
+    open_vsx_version=$(printf %s "$response" | fx .version)
+  elif command -v jq &>/dev/null; then
+    open_vsx_version=$(printf %s "$response" | jq -r .version)
+  fi
+  if [ "$local_version" = "$open_vsx_version" ]; then
     printf "Extension '%s' up-to-date with Open VSX.\n" "$1"
   else
     $EDITOR --install-extension "$(printf %s "$1" | cut -d @ -f 1)" --force

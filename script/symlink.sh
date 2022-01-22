@@ -16,7 +16,12 @@ symlink_file() {
 symlink_repo_dotfiles() {
   echo "-> Symlinking dotfiles into home directory."
   DOT_DIR=$HOME/.dotfiles
-  IGNORES=("$DOT_DIR/.git" "$DOT_DIR/.github" "$DOT_DIR/.gitignore")
+  IGNORES=(
+    "$DOT_DIR/.DS_Store"
+    "$DOT_DIR/.git"
+    "$DOT_DIR/.github"
+    "$DOT_DIR/.gitignore"
+  )
   for DOTFILE in "$DOT_DIR/."*; do
     if ! [[ ${IGNORES[*]} =~ $DOTFILE ]]; then
       [ -d "$DOTFILE" ] && symlink_dir_contents "$DOTFILE" "$DOT_DIR" "$HOME"

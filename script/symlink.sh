@@ -28,7 +28,7 @@ symlink_repo_dotfiles() {
       [ -f "$DOTFILE" ] && symlink_file "$DOTFILE" "$DOT_DIR" "$HOME"
     fi
   done
-  ln -fns "$DOT_DIR/Brewfile" "$HOME/.Brewfile"
+  ln -nsfF "$DOT_DIR/Brewfile" "$HOME/.Brewfile"
 }
 
 symlink_vscode_settings() {

@@ -411,7 +411,7 @@ else
   log "Skipping Homebrew installs."
 fi
 
-run_dotfile_scripts scripts/strap-after-setup
+run_dotfile_scripts scripts/strap-after-setup.sh
 
 STRAP_SUCCESS=1
 log "Your system is now bootstrapped!"

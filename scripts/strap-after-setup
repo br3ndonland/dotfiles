@@ -6,7 +6,7 @@ echo "-> Running strap-after-setup. Some steps may require password entry."
 
 ### Configure macOS
 if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
-  "$HOME"/.dotfiles/script/macos.sh
+  "$HOME"/.dotfiles/scripts/macos.sh
 else
   echo "Not macOS. Skipping macos.sh."
 fi
@@ -23,7 +23,7 @@ for i in {code,code-exploration,code-insiders,code-server,codium}; do
   if [ "${CODESPACE:-0}" -gt 0 ] || [ "$(whoami)" = "codespace" ]; then
     echo "Error: Codespaces VSCode CLI can't install extensions."
   else
-    "$HOME"/.dotfiles/script/vscode-extensions.sh "$i"
+    "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"
   fi
 done
 

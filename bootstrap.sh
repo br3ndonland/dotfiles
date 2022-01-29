@@ -321,7 +321,7 @@ if [ -n "$STRAP_DOTFILES_URL" ] && [ -n "$STRAP_DOTFILES_BRANCH" ]; then
       git pull $Q --rebase --autostash
     )
   fi
-  run_dotfile_scripts script/symlink.sh
+  run_dotfile_scripts scripts/symlink.sh
   logk
 fi
 
@@ -406,12 +406,12 @@ if [ "$MACOS" -gt 0 ]; then
   /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)" || install_homebrew
   run_brew_installs || abort "Unable to load Homebrew."
 elif [ "$LINUX" -gt 0 ]; then
-  run_dotfile_scripts script/linuxbrew.sh
+  run_dotfile_scripts scripts/linuxbrew.sh
 else
   log "Skipping Homebrew installs."
 fi
 
-run_dotfile_scripts script/strap-after-setup
+run_dotfile_scripts scripts/strap-after-setup
 
 STRAP_SUCCESS=1
 log "Your system is now bootstrapped!"

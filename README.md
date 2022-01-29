@@ -48,7 +48,7 @@ The following environment variables can be used to configure _bootstrap.sh_, and
 - `STRAP_DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$STRAP_GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
 - `STRAP_DOTFILES_BRANCH`: Git branch to check out after cloning dotfiles repo. Defaults to `main`.
 
-_bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _script/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_.
+_bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _scripts/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_.
 
 A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
 
@@ -86,7 +86,7 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 ## macOS
 
-- macOS setup is automated with _[macos.sh](script/macos.sh)_.
+- macOS setup is automated with _[macos.sh](scripts/macos.sh)_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) is used for keymapping.
 
   - Settings are stored in _.config/karabiner/karabiner.json_. Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, I added _karabiner.json_ to _.prettierignore_.
@@ -134,7 +134,7 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is free of proprietary features and telemetry. To work on servers via SSH, I use [Pony SSH](https://github.com/thingalon/pony-ssh).
 
-I previously configured VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[vscode-extensions.sh](script/vscode-extensions.sh)_ along with the name of the editor, like `vscode-extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm-globals.sh](script/npm-globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
+I previously configured VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[vscode-extensions.sh](scripts/vscode-extensions.sh)_ along with the name of the editor, like `vscode-extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm-globals.sh](scripts/npm-globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
 
 ### VSCode browser
 
@@ -155,7 +155,7 @@ I previously configured VSCode and VSCodium using the [Settings Sync](https://ma
 - I set up code-server on a Linux cloud server. I prefer to use DigitalOcean, following their [recommended initial setup guide](https://www.digitalocean.com/docs/droplets/tutorials/recommended-setup/) for "droplets" (VMs):
   - Set up [SSH agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) on local machine to avoid having to deposit SSH private keys on droplet
   - Add SSH public key when creating droplet
-  - Add a user data script like _[linux-userdata.sh](script/linux-userdata.sh)_
+  - Add a user data script like _[linux-userdata.sh](scripts/linux-userdata.sh)_
 - [Installation](https://github.com/cdr/code-server/blob/v3.7.2/doc/install.md) and [setup](https://github.com/cdr/code-server/blob/v3.7.2/doc/guide.md) on the server:
 
   ```sh
@@ -201,7 +201,7 @@ I previously configured VSCode and VSCodium using the [Settings Sync](https://ma
 - [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
   - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012,
     > Yeah, we're never going to do this.
-  - Instead, packages can be installed with Homebrew, or with _[npm-globals.sh](script/npm-globals.sh)_.
+  - Instead, packages can be installed with Homebrew, or with _[npm-globals.sh](scripts/npm-globals.sh)_.
   - [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -ug`. If not using npm-check, a list of global npm packages can be seen after installation with `npm list -g --depth=0`.
 - I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
 - ESLint notes:

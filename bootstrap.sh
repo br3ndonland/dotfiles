@@ -13,8 +13,10 @@ Darwin)
     DEFAULT_HOMEBREW_PREFIX="/usr/local"
   fi
   ;;
-Linux) export LINUX=1 MACOS=0 UNIX=1 ;;
-codespace) export CODESPACE=1 ;;
+Linux)
+  export LINUX=1 MACOS=0 UNIX=1
+  [[ $(whoami) == "codespace" ]] && export CODESPACE=1
+  ;;
 esac
 
 STRAP_CI=${STRAP_CI:=0}

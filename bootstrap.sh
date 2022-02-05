@@ -15,7 +15,7 @@ Darwin)
   ;;
 Linux)
   export LINUX=1 MACOS=0 UNIX=1
-  [[ $(whoami) == "codespace" ]] && export CODESPACE=1
+  [[ $(id -un) == "codespace" ]] && export CODESPACE=1
   ;;
 esac
 

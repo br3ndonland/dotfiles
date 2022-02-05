@@ -503,7 +503,7 @@ I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
 To [generate an SSH key](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent):
 
 ```sh
-ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(whoami)"
+ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(id -un)"
 ```
 
 If you have a FIDO2 security key that supports discoverable credentials (formerly known as resident keys), such as a YubiKey, you can [generate an SSH key that is stored directly on the FIDO2 hardware device](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key).
@@ -517,7 +517,7 @@ brew install libfido2 openssh
 Next, generate a key with the `-O resident` option. You can additionally set a PIN on the YubiKey, which requires the YubiKey Manager [CLI](https://developers.yubico.com/yubikey-manager/) or [GUI](https://www.yubico.com/support/download/yubikey-manager/), and require PIN verification for use of the SSH key, with the `-O verify-required` option. In this scenario, the SSH key itself does not need a password. The password is replaced by the YubiKey and its PIN.
 
 ```sh
-ssh-keygen -t ed25519-sk -O resident -O verify-required -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(whoami)"
+ssh-keygen -t ed25519-sk -O resident -O verify-required -C "your_email@example.com" -f ~/.ssh/id_ed25519_"$(id -un)"
 ```
 
 ### Connecting to GitHub
@@ -526,7 +526,7 @@ See the [GitHub docs on connecting to GitHub with SSH](https://docs.github.com/e
 
 - [Add SSH key to GitHub account](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account):
   - Use the [GitHub CLI](https://cli.github.com/manual/gh_ssh-key_add): `gh ssh-key add`
-  - Or, run `pbcopy < ~/.ssh/id_ed25519_"$(whoami)".pub`, and go to GitHub in a web browser and paste the key.
+  - Or, run `pbcopy < ~/.ssh/id_ed25519_"$(id -un)".pub`, and go to GitHub in a web browser and paste the key.
 - [Check SSH connection](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/testing-your-ssh-connection) with `ssh -T git@github.com`.
 
 GitHub supports use of SSH keys from FIDO2 security key hardware devices like YubiKeys. See the [GitHub docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key), [GitHub blog](https://github.blog/2021-05-10-security-keys-supported-ssh-git-operations/), and [Yubico blog](https://www.yubico.com/blog/github-now-supports-ssh-security-keys/).

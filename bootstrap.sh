@@ -6,14 +6,14 @@ set -e
 
 case $(uname -s) in
 Darwin)
-  export LINUX=0 && export MACOS=1 && export UNIX=1
+  export LINUX=0 MACOS=1 UNIX=1
   if [[ $(uname -m) == "arm64" ]]; then
     DEFAULT_HOMEBREW_PREFIX="/opt/homebrew"
   else
     DEFAULT_HOMEBREW_PREFIX="/usr/local"
   fi
   ;;
-Linux) export LINUX=1 && export MACOS=0 && export UNIX=1 ;;
+Linux) export LINUX=1 MACOS=0 UNIX=1 ;;
 codespace) export CODESPACE=1 ;;
 esac
 

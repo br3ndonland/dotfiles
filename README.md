@@ -140,14 +140,19 @@ I previously configured VSCode and VSCodium using the [Settings Sync](https://ma
 
 #### codespaces
 
-- I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces). So far, I don't like it because:
-  - After the beta, I will have to pay GitHub to use it.
-  - Keybindings conflict with browser keybindings. I can't open the command palette from the keyboard, because Cmd+shift+p is already in use by the browser.
-  - Changing the workbench theme doesn't seem to work. All I get is the blinding light theme. I'm blinded by the light.
-  - I don't know how I would approach [GPG](#gpg)-signing Git commits. I might be able to use [SSH agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding), but I'm not sure.
-  - I don't know if or how persistent file storage is available.
-  - I don't know how to install proprietary custom fonts (like [Dank Mono](https://gumroad.com/l/dank-mono))
-  - I don't know how to install proprietary extensions (like [Dracula Pro](https://draculatheme.com/pro))
+I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.github.com/en/codespaces). So far, I don't like it because:
+
+- Keybindings conflict with browser keybindings. The command palette may not be able to be opened with the usual keybindings, because Cmd+shift+p is already in use by the browser. This was partially addressed by the [VSCode extension](https://docs.github.com/en/codespaces/developing-in-codespaces/using-codespaces-in-visual-studio-code), which allows remote development from outside the browser.
+- Lag. There's lag between when a character is typed and when it appears. This can be very bothersome.
+- Files. It's unclear if or how persistent file storage is available. Local filesystem access is limited.
+- GPG commit signing has some limitations. GitHub offers [commit signing with GPG](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-gpg-verification-for-codespaces), but private keys must be in GitHub's custody.
+- Customization is complicated.
+  - Codespaces doesn't automatically clone or run these dotfiles. They claim that [codespaces will automatically clone your dotfiles and run `bootstrap.sh`](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles), but the repo is not cloned to `~/.dotfiles`, and `bootstrap.sh` is not running, even after enabling the "Automatically install dotfiles" setting in user preferences.
+  - Codespaces can't read VSCode settings from dotfiles. The [docs](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account) explain, "Currently, Codespaces does not support personalizing the _User_ settings for the Visual Studio Code editor with your `dotfiles` repository." The separate Settings Sync service is required to sync settings.
+  - Extensions have to be managed separately from VSCode desktop. There is a `"github.codespaces.defaultExtensions"` setting that requires its own list of extensions, and it's unclear if Codespaces can install extensions from VSIX (like [Dracula Pro](https://draculatheme.com/pro)).
+  - Codespaces may not be able to install and use custom fonts (like [Dank Mono](https://gumroad.com/l/dank-mono)). Font capabilities may be limited by the browser.
+  - For further customization, Codespaces supports "[dev containers](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/configuring-codespaces-for-your-project)," which are created with special Dockerfiles in each project. This adds further complication and maintenance overhead.
+- [Codespaces pricing](https://docs.github.com/en/codespaces/codespaces-reference/understanding-billing-for-codespaces) requires enterprises to set up separate spending limits, and is not specified for public repos on free plans. Do you want to pay for your text editor by the minute?
 
 #### code-server
 

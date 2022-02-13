@@ -20,11 +20,7 @@ fi
 
 ### Install VSCode extensions
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
-  if [ "${CODESPACE:-0}" -gt 0 ] || [ "$(id -un)" = "codespace" ]; then
-    echo "Error: Codespaces VSCode CLI can't install extensions."
-  else
-    "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"
-  fi
+  "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"
 done
 
 ### Set shell

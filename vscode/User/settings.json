@@ -200,6 +200,10 @@
     "editor.rulers": [],
     "files.eol": "\n"
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",

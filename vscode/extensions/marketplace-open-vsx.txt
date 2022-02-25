@@ -13,5 +13,6 @@ octref.vetur
 redhat.vscode-yaml
 sourcery.sourcery
 streetsidesoftware.code-spell-checker
+svelte.svelte-vscode
 timonwong.shellcheck
 yzhang.markdown-all-in-one

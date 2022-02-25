@@ -40,19 +40,18 @@ eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 
 ### exports
 if command -v code &>/dev/null; then
-  export EDITOR='code --wait'
+  editor='code --wait'
 elif command -v code-insiders &>/dev/null; then
-  export EDITOR='code-insiders --wait'
+  editor='code-insiders --wait'
 elif command -v code-exploration &>/dev/null; then
-  export EDITOR='code-exploration --wait'
+  editor='code-exploration --wait'
 elif command -v codium &>/dev/null; then
-  export EDITOR='codium --wait'
+  editor='codium --wait'
 else
-  export EDITOR='vim'
+  editor='vim'
 fi
 TTY=$(tty)
-export GPG_TTY=$TTY
-export PATH=$HOME/.local/bin:$PATH
+export EDITOR=$editor GIT_EDITOR=$editor GPG_TTY=$TTY PATH=$HOME/.local/bin:$PATH
 
 ### aliases
 alias python='python3'

@@ -36,6 +36,8 @@ tag = tag -a -s
 [commit]
 gpgsign = true
 template = ~/.gitmessage
+[core]
+editor = code --wait
 [credential]
 helper = osxkeychain
 [filter "lfs"]

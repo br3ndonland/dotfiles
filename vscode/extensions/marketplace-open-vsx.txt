@@ -3,6 +3,7 @@ bungcip.better-toml
 denoland.vscode-deno
 dracula-theme.theme-dracula
 eamodio.gitlens
+editorconfig.editorconfig
 esbenp.prettier-vscode
 foxundermoon.shell-format
 hashicorp.terraform

@@ -86,6 +86,7 @@
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": false,
+  "git.autoRepositoryDetection": "subFolders",
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,

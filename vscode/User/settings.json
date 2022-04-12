@@ -70,6 +70,8 @@
   "window.restoreWindows": "all",
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Dracula Pro",
+  "workbench.editor.historyBasedLanguageDetection": false,
+  "workbench.editor.languageDetection": false,
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editorAssociations": {
     "git-rebase-todo": "default",
@@ -86,8 +88,7 @@
       "comments": "off",
       "other": "off",
       "strings": "off"
-    },
-    "workbench.editor.languageDetection": false
+    }
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": false,
@@ -156,8 +157,7 @@
       "comments": "off",
       "other": "off",
       "strings": "off"
-    },
-    "workbench.editor.languageDetection": false
+    }
   },
   "[python]": {
     "editor.codeActionsOnSave": {

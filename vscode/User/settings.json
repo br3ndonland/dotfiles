@@ -183,6 +183,7 @@
   "python.linting.mypyArgs": [
     "--follow-imports=silent",
     "--ignore-missing-imports",
+    "--install-types",
     "--show-column-numbers",
     "--show-error-codes"
   ],

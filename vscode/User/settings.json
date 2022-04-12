@@ -81,7 +81,12 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "none",
   // Git
-  "[git-commit]": {
+  "[git-commit][git-rebase]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
     "workbench.editor.languageDetection": false
   },
   "diffEditor.ignoreTrimWhitespace": false,
@@ -146,6 +151,14 @@
   "markdown.extension.toc.slugifyMode": "github",
   "markdown.extension.toc.levels": "2..3",
   "markdown.extension.toc.updateOnSave": true,
+  "[plaintext]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
+    "workbench.editor.languageDetection": false
+  },
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true

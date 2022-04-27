@@ -1,5 +1,8 @@
 # starship configuration: https://starship.rs/config/
 
+[nodejs]
+format = "via [node.js ($version )]($style)"
+
 [python]
 python_binary = "python3"
 

@@ -84,6 +84,7 @@ cask "zotero" # no arm64_big_sur yet
 cask "backblaze"
 cask "handbrake"
 cask "jellyfin" # no arm64_big_sur yet
+cask "makemkv"
 cask "plex-media-server" # no arm64_big_sur yet
 cask "protonvpn"
 # cask "vscodium" # no arm64_big_sur yet: https://github.com/VSCodium/vscodium/issues/597

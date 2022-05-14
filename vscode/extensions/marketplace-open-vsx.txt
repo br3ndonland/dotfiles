@@ -9,10 +9,10 @@ foxundermoon.shell-format
 hashicorp.terraform
 mikestead.dotenv
 ms-python.python@2021.9.1246542782
-octref.vetur
 redhat.vscode-yaml
 sourcery.sourcery
 streetsidesoftware.code-spell-checker
 svelte.svelte-vscode
 timonwong.shellcheck
+Vue.volar
 yzhang.markdown-all-in-one

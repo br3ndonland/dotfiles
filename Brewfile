@@ -71,7 +71,6 @@ cask "kitty"
 cask "postico"
 cask "rstudio"
 cask "visual-studio-code"
-cask "visual-studio-code-insiders"
 cask "vlc"
 cask "zotero" # no arm64_big_sur yet
 

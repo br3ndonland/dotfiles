@@ -87,7 +87,7 @@ cask "jellyfin" # no arm64_big_sur yet
 cask "makemkv"
 cask "plex-media-server" # no arm64_big_sur yet
 cask "protonvpn"
-# cask "vscodium" # no arm64_big_sur yet: https://github.com/VSCodium/vscodium/issues/597
+cask "vscodium"
 
 ### mac app store
 # mas "1password", id: 1333542190

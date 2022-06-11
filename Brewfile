@@ -70,7 +70,6 @@ cask "karabiner-elements"
 cask "kitty"
 cask "postico"
 cask "rstudio"
-cask "visual-studio-code"
 cask "vlc"
 cask "zotero" # no arm64_big_sur yet
 
@@ -79,6 +78,7 @@ cask "zotero" # no arm64_big_sur yet
 # cask "docker"
 # cask "inkscape"
 # cask "postman"
+# cask "visual-studio-code"
 
 ### casks for personal use
 cask "backblaze"

@@ -10,8 +10,8 @@ check_open_vsx() {
     return
   fi
   local local_version open_vsx_version response url
-  url="https://open-vsx.org/api/$(printf %s "$1" | cut -d @ -f 1 | tr '.' '/')"
-  local_version=$(printf %s "$1" | cut -d @ -f 2)
+  url="https://open-vsx.org/api/$(printf %s "$2" | cut -d @ -f 1 | tr '.' '/')"
+  local_version=$(printf %s "$2" | cut -d @ -f 2)
   response=$(curl -fs "$url" -H "accept: application/json")
   if command -v fx &>/dev/null; then
     open_vsx_version=$(printf %s "$response" | fx .version)
@@ -19,9 +19,9 @@ check_open_vsx() {
     open_vsx_version=$(printf %s "$response" | jq -r .version)
   fi
   if [ "$local_version" = "$open_vsx_version" ]; then
-    printf "Extension '%s' up-to-date with Open VSX.\n" "$1"
+    printf "Extension '%s' up-to-date with Open VSX.\n" "$2"
   else
-    $EDITOR --install-extension "$(printf %s "$1" | cut -d @ -f 1)" --force
+    $1 --install-extension "$2" --force
   fi
 }
 
@@ -45,10 +45,10 @@ install_extensions() {
     fi
     if [ -n "$extension_info" ]; then
       printf "Extension '%s' installed.\n" "$extension_info"
+      if [ "$1" = "codium" ]; then check_open_vsx "$1" "$extension_info"; fi
     else
       $1 --install-extension "$extension"
     fi
-    if [ "$1" = "codium" ]; then check_open_vsx "$extension_info"; fi
   done <"$extensions"
 }
 

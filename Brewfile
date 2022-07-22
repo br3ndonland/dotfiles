@@ -83,7 +83,6 @@ cask "zotero" # no arm64_big_sur yet
 ### casks for personal use
 cask "backblaze"
 cask "handbrake"
-cask "jellyfin" # no arm64_big_sur yet
 cask "makemkv"
 cask "plex-media-server" # no arm64_big_sur yet
 cask "protonvpn"

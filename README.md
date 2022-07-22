@@ -568,7 +568,7 @@ Host yourserver.com
 
 - [Audacity](https://www.audacityteam.org/)
 - [HandBrake](https://handbrake.fr/)
-- [Jellyfin](https://jellyfin.org/) media server
+- [Plex](https://www.plex.tv/) media server
 - [VLC](https://www.videolan.org/vlc/) media player
 
 ## Science

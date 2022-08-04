@@ -85,7 +85,7 @@ cask "zotero" # no arm64_big_sur yet
 cask "backblaze"
 cask "handbrake"
 cask "makemkv"
-cask "plex-media-server" # no arm64_big_sur yet
+cask "plex-media-server"
 cask "protonvpn"
 cask "vscodium"
 

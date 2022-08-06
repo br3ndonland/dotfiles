@@ -5,13 +5,13 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
-### packages for work and personal use
 brew "autopep8"
 brew "awscli"
 brew "bash"
 brew "black"
 brew "cookiecutter"
 brew "deno" # macOS-only
+brew "ffmpeg"
 brew "flake8"
 brew "fx"
 brew "gh"
@@ -27,10 +27,15 @@ brew "jupyterlab"
 brew "libfido2"
 brew "macos-trash" # macOS-only
 brew "mas" # macOS-only
+brew "media-info"
+brew "mkvtoolnix"
+brew "mp4v2"
 brew "mypy"
+# brew "mysql-client"
 brew "node"
 brew "openssh"
 brew "pinentry"
+# brew "pinentry-mac"
 brew "pipx"
 brew "pnpm"
 brew "postgresql"
@@ -43,8 +48,8 @@ brew "shellcheck"
 brew "shfmt"
 brew "starship"
 brew "terraform"
+# brew "terraformer"
 brew "typescript"
-brew "webp"
 brew "webtorrent-cli"
 brew "wrangler"
 brew "ykman"
@@ -52,44 +57,28 @@ brew "zsh"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 
-### packages for work
-# brew "mysql-client"
-
-### packages for personal use
-brew "ffmpeg"
-brew "media-info"
-brew "mkvtoolnix"
-brew "mp4v2"
-
-### casks for work and personal use
 cask "1password"
 cask "alfred"
+cask "backblaze"
 cask "brave-browser"
+# cask "datagrip"
 cask "docker"
 cask "firefox"
+cask "handbrake"
+# cask "inkscape"
 cask "karabiner-elements"
 cask "kitty"
-cask "postico"
-cask "rstudio"
-cask "vlc"
-cask "zotero" # no arm64_big_sur yet
-
-### casks for work
-# cask "datagrip"
-# cask "docker"
-# cask "inkscape"
-# cask "postman"
-# cask "visual-studio-code"
-
-### casks for personal use
-cask "backblaze"
-cask "handbrake"
 cask "makemkv"
 cask "plex-media-server"
+# cask "postico"
+# cask "postman"
 cask "protonvpn"
+# cask "rstudio"
+# cask "visual-studio-code"
+cask "vlc"
 cask "vscodium"
+cask "zotero" # no arm64_big_sur yet
 
-### mac app store
 # mas "1password", id: 1333542190
 mas "bear", id: 1091189122
 mas "cascadea", id: 1432182561

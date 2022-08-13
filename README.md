@@ -263,6 +263,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 
 Resources:
 
+- [Yubico developers: PGP](https://developers.yubico.com/PGP/)
 - [Yubico support: using your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP)
 - [YubiKey Manager CLI (`ykman`) User Manual](https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html)
 - [Okta developer blog: Developers guide to GPG and YubiKey](https://developer.okta.com/blog/2021/07/07/developers-guide-to-gpg)
@@ -287,7 +288,7 @@ gpg/card> fetch
 gpg/card> quit
 ```
 
-#### Key generation
+#### GPG key generation
 
 - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.
 - View keys with `gpg --list-secret-keys`.

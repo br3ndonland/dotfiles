@@ -209,32 +209,7 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
   - Instead, packages can be installed with Homebrew, or with _[npm-globals.sh](scripts/npm-globals.sh)_.
   - [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -ug`. If not using npm-check, a list of global npm packages can be seen after installation with `npm list -g --depth=0`.
 - I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
-- ESLint notes:
-
-  - Compared with Prettier, ESLint formats less code languages, requires complicated setup, and doesn't work well when installed globally. I previously attempted to use a global ESLint installation with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), but was getting errors about plugins. As the ESLint docs explain:
-    > It is also possible to install ESLint globally rather than locally (using `npm install eslint --global`). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
-  - The errors persist even after specifying the path to global npm packages:
-
-    ```jsonc
-    // VSCode settings.json
-    {
-      "eslint.nodePath": "/usr/local/lib/node_modules"
-    }
-    ```
-
-  - If ESLint and plugins are installed in the project directory, the following settings can be added to the VSCode _settings.json_, for use with the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [eslint-plugin-vue](https://eslint.vuejs.org/user-guide/). I typically don't use ESLint to auto-fix files, because Pretter is preferred.
-
-    ```jsonc
-    // VSCode settings.json
-    {
-      "eslint.autoFixOnSave": false,
-      "eslint.enable": true,
-      "eslint.validate": ["javascript", "javascriptreact", "vue"]
-    }
-    ```
-
-  - I do still retain a global _.eslintrc_ in my dotfiles repo, because it is a useful template for sensible defaults.
-
+- Compared with Prettier, ESLint formats less code languages, requires complicated setup, and doesn't work well when installed globally.
 - In the past, I also used [JavaScript Standard Style](https://standardjs.com/) (aka StandardJS). Standard Style has also [reportedly](https://changelog.com/podcast/359) been favored by Brendan Eich (creator of JavaScript) and Sir Tim Berners-Lee (creator of the World Wide Web). Prettier provides a similar code style, but with more features, so I use Prettier instead.
 
 ### Python

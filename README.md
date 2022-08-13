@@ -156,12 +156,12 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 
 #### code-server
 
-- [code-server](https://github.com/cdr/code-server) is an open-source alternative to codespaces.
+- [code-server](https://github.com/coder/code-server) is an open-source alternative to codespaces.
 - I set up code-server on a Linux cloud server. I prefer to use DigitalOcean, following their [recommended initial setup guide](https://www.digitalocean.com/docs/droplets/tutorials/recommended-setup/) for "droplets" (VMs):
   - Set up [SSH agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) on local machine to avoid having to deposit SSH private keys on droplet
   - Add SSH public key when creating droplet
   - Add a user data script like _[linux-userdata.sh](scripts/linux-userdata.sh)_
-- [Installation](https://github.com/cdr/code-server/blob/v3.7.2/doc/install.md) and [setup](https://github.com/cdr/code-server/blob/v3.7.2/doc/guide.md) on the server:
+- [Installation](https://github.com/coder/code-server/blob/v3.7.2/doc/install.md) and [setup](https://github.com/coder/code-server/blob/v3.7.2/doc/guide.md) on the server:
 
   ```sh
   curl -fsSL https://code-server.dev/install.sh | sh
@@ -190,8 +190,8 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
   - If the shell doesn't look right: Command Palette -> Terminal: Select Default Shell
   - The browser may grab some VSCode keybindings. I prefer to use Safari, because it grabs the least shortcuts.
   - `code-server` can't be used as a Git editor, as far as I can tell. It can open text files from the command-line, but the `--wait` switch is not recognized.
-  - The clipboard doesn't completely work. See [cdr/code-server#1106](https://github.com/cdr/code-server/issues/1106).
-  - The font can't yet be customized directly. See [cdr/code-server#1374](https://github.com/cdr/code-server/issues/1374).
+  - The clipboard doesn't completely work. See [coder/code-server#1106](https://github.com/coder/code-server/issues/1106).
+  - The font can't yet be customized directly. See [coder/code-server#1374](https://github.com/coder/code-server/issues/1374).
   - You can change the color theme, but you may need to re-select the theme each time you open a browser tab.
 
 ## Fonts

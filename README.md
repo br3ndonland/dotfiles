@@ -25,6 +25,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
   - [Key generation](#key-generation)
   - [Connecting to GitHub](#connecting-to-github)
   - [SSH agent forwarding](#ssh-agent-forwarding)
+  - [1Password SSH features](#1password-ssh-features)
 - [General productivity](#general-productivity)
 - [Media](#media)
 - [Science](#science)
@@ -429,6 +430,16 @@ If working on a server, you can use [ssh agent forwarding](https://docs.github.c
 Host yourserver.com
   ForwardAgent yes
 ```
+
+### 1Password SSH features
+
+- [1Password includes features for managing SSH keys](https://developer.1password.com/docs/ssh). At this time, SSH features are limited to your Personal vault.
+- To [get started](https://developer.1password.com/docs/ssh/get-started):
+  - Generate or import an SSH key
+  - Upload the key to GitHub or any platform to which you connect with SSH
+  - Turn on the 1Password SSH agent
+  - Update the [SSH config](https://www.ssh.com/academy/ssh/config) to use the 1Password `IdentityAgent`
+  - Optionally, simplify the agent path by creating a symlink to `~/.1password/agent.sock`.
 
 ## General productivity
 

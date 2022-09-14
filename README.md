@@ -426,7 +426,7 @@ GitHub supports use of SSH keys from FIDO2 security key hardware devices like Yu
 
 If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.
 
-```
+```text
 Host yourserver.com
   ForwardAgent yes
 ```

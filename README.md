@@ -450,6 +450,7 @@ Host yourserver.com
   - Firefox account: sync preferences and add-ons
   - 1Password extension for desktop app
   - [DuckDuckGo Privacy Essentials](https://github.com/duckduckgo/duckduckgo-privacy-extension)
+  - [SimpleLogin email alias generator](https://addons.mozilla.org/en-US/firefox/addon/simplelogin/) ([SimpleLogin joined Proton](https://proton.me/blog/proton-and-simplelogin-join-forces) and now offers [sign in with Proton](https://proton.me/support/create-simplelogin-account-proton-account))
   - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
   - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
   - [Stylus](https://github.com/openstyles/stylus) (alternative to Dark Reader, also a [Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))

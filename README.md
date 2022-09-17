@@ -223,7 +223,7 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 
 ## PGP
 
-- I use [Gnu Privacy Guard](https://www.gnupg.org/) (GPG, the free implementation of Pretty Good Privacy (PGP)), [Keybase](https://keybase.io), and [ProtonMail](https://protonmail.com/) to encrypt and share messages, passwords, and other sensitive info.
+- I use [Gnu Privacy Guard](https://www.gnupg.org/) (GPG, the free implementation of Pretty Good Privacy (PGP)), [Keybase](https://keybase.io), and [Proton Mail](https://protonmail.com/) to encrypt and share messages, passwords, and other sensitive info.
 - PGP vs SSL: SSL/TLS/HTTPS encrypts data in transit, but the storage provider like Dropbox, Google, or Slack can still read it. Communications which are end-to-end PGP encrypted can only be read by the sender or recipient, never the provider.
 
 ### GPG
@@ -383,9 +383,9 @@ gpg/card> quit
   - Keybase can't be used to sign Git commits. The best method is to export your PGP key from Keybase to GPG, and then sign Git commits with GPG.
   - There has been some debate about the need to sign Git commits at all. Linus Torvalds has [recommended](http://git.661346.n2.nabble.com/GPG-signing-for-git-commit-td2582986.html) the use of `git tag -s` to sign with tags instead. The Keybase developers [sign releases with tags, but don't always sign commits](https://github.com/keybase/client/issues/3318) to the Keybase source code. However, in order to sign tags, you still need to set up commit signing, so why not just sign commits also? Whether you sign all commits or just tags, Keybase should improve this feature.
 
-### ProtonMail
+### Proton Mail
 
-I use [ProtonMail](https://protonmail.com/) for PGP-encrypted email.
+I use [Proton Mail](https://protonmail.com/) for PGP-encrypted email.
 
 ## SSH
 
@@ -458,7 +458,7 @@ Host yourserver.com
     - [GitLab Dark](https://gitlab.com/maxigaz/gitlab-dark)
     - [Wikipedia Dark](https://github.com/n0x-styles/wikipedia-dark)
 - macOS Keynote, Numbers, and Pages
-- [ProtonVPN](https://protonvpn.com/) (Homebrew Cask or direct download)
+- [Proton VPN](https://protonvpn.com/) (Homebrew Cask or direct download)
 
 ## Media
 

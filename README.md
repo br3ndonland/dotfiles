@@ -323,6 +323,8 @@ gpg/card> quit
 
 #### Signing Git commits with GPG
 
+Note that SSH can also be used to sign Git commits. See the [SSH section](#ssh) for further details.
+
 - See [Pro Git: Signing your work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work).
 - Install and configure `pinentry` as described above.
 - Configure Git to use GPG and your key for commits, using _.gitconfig_:
@@ -430,6 +432,8 @@ See the [GitHub docs on connecting to GitHub with SSH](https://docs.github.com/e
 
 GitHub supports use of SSH keys from FIDO2 security key hardware devices like YubiKeys. See the [GitHub docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key), [GitHub blog](https://github.blog/2021-05-10-security-keys-supported-ssh-git-operations/), and [Yubico blog](https://www.yubico.com/blog/github-now-supports-ssh-security-keys/).
 
+GitHub also supports use of SSH keys for signing Git commits. See the [GitHub changelog](https://github.blog/changelog/2022-08-23-ssh-commit-verification-now-supported/) and [GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification). See the [1Password section](#1password-ssh-features) for instructions.
+
 ### SSH agent forwarding
 
 If working on a server, you can use [ssh agent forwarding](https://docs.github.com/en/free-pro-team@latest/developers/overview/using-ssh-agent-forwarding) to access your SSH and GPG keys without having to copy them.
@@ -441,13 +445,32 @@ Host yourserver.com
 
 ### 1Password SSH features
 
-- [1Password includes features for managing SSH keys](https://developer.1password.com/docs/ssh). At this time, SSH features are limited to your Personal vault.
-- To [get started](https://developer.1password.com/docs/ssh/get-started):
-  - Generate or import an SSH key
-  - Upload the key to GitHub or any platform to which you connect with SSH
-  - Turn on the 1Password SSH agent
-  - Update the [SSH config](https://www.ssh.com/academy/ssh/config) to use the 1Password `IdentityAgent`
-  - Optionally, simplify the agent path by creating a symlink to `~/.1password/agent.sock`.
+[1Password includes features for managing SSH keys](https://developer.1password.com/docs/ssh). At this time, SSH features are limited to your Personal vault.
+
+To [get started](https://developer.1password.com/docs/ssh/get-started):
+
+- Generate or import an SSH key
+- Upload the key to GitHub or any platform to which you connect with SSH
+- Turn on the 1Password SSH agent
+- Update the [SSH config](https://www.ssh.com/academy/ssh/config) to use the 1Password `IdentityAgent`
+- Optionally, simplify the agent path by creating a symlink to `~/.1password/agent.sock`.
+
+1Password also supports Git commit signing with SSH keys. See the [1Password blog](https://blog.1password.com/git-commit-signing/) and [GitHub changelog](https://github.blog/changelog/2022-08-23-ssh-commit-verification-now-supported/).
+
+To [sign Git commits with SSH and 1Password](https://developer.1password.com/docs/ssh/git-commit-signing):
+
+- [Tell GitHub about the SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account):
+  - Go to https://github.com/settings/keys
+  - Click "New SSH key"
+  - Select the key type "signing key"
+  - Allow the 1Password browser extension to autofill the "key" input field with an SSH public key. Either generate a new SSH key with 1Password or use an existing one. The same SSH key can be used for both authentication and signing.
+- [Tell Git about the SSH key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key):
+  - Set `git config gpg.format = ssh`
+  - Set `git config gpg.ssh.allowedsignersfile=~/.ssh/allowed_signers`
+  - Set `git config gpg.ssh.program=/Applications/1Password.app/Contents/MacOS/op-ssh-sign`
+  - Set `git config user.signingkey` to the SSH public key
+  - Create the file `~/.ssh/allowed_signers` (when using this repo, will be symlinked from `~/.dotfiles/.ssh/allowed_signers`)
+  - For each signing key, add a single line to the `~/.ssh/allowed_signers` specifying the combination of `git config user.email` and `git config user.signingkey`, in that order
 
 ## General productivity
 

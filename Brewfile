@@ -4,9 +4,9 @@ tap "homebrew/services"
 
 brew "awscli"
 brew "bash"
-# brew "docker-credential-helper-ecr"
+brew "docker-credential-helper-ecr"
 brew "coreutils"
-brew "ffmpeg"
+# brew "ffmpeg"
 brew "findutils"
 brew "gh"
 brew "git"
@@ -16,26 +16,26 @@ brew "gnu-sed"
 brew "gnu-tar"
 brew "go"
 brew "grep"
-# brew "helm"
+brew "helm"
 brew "httpie"
 brew "jq"
 brew "jupyterlab"
-brew "libfido2"
+# brew "libfido2"
 brew "macos-trash" if OS.mac?
-brew "mas" if OS.mac?
-brew "media-info"
+# brew "mas" if OS.mac?
+# brew "media-info"
 brew "mise"
-brew "mkvtoolnix"
-brew "mp4v2"
+# brew "mkvtoolnix"
+# brew "mp4v2"
 brew "mypy"
-# brew "mysql-client"
+brew "mysql-client"
 brew "node"
 brew "openssh"
 brew "opentofu"
-brew "pinentry"
+# brew "pinentry"
 # brew "pinentry-mac"
 brew "pipx"
-brew "pnpm"
+# brew "pnpm"
 brew "postgresql@16"
 brew "prettier"
 brew "python"
@@ -49,10 +49,10 @@ brew "starship"
 brew "taplo"
 brew "terraform@1.5"
 brew "terragrunt"
-# brew "terraformer"
+brew "terraformer"
 brew "typescript"
-brew "wrangler"
-brew "ykman"
+# brew "wrangler"
+# brew "ykman"
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
@@ -66,28 +66,28 @@ cask "firefox"
 # cask "inkscape"
 cask "karabiner-elements"
 cask "kitty"
-# cask "microsoft-office-businesspro"
-# cask "notion"
+cask "microsoft-office-businesspro"
+cask "notion"
 cask "orbstack"
-# cask "postico"
+cask "postico"
 # cask "postman"
 cask "protonvpn"
 # cask "rstudio"
 # cask "session-manager-plugin"
-# cask "slack"
-cask "syncthing"
-# cask "visual-studio-code"
+cask "slack"
+# cask "syncthing"
+cask "visual-studio-code"
 cask "vlc"
 cask "vscodium"
-# cask "zoom"
+cask "zoom"
 cask "zotero" # no arm64_big_sur yet
 
 # mas "1password", id: 1333542190
-mas "1password for safari", id: 1569813296
-mas "bear", id: 1091189122
-mas "daisydisk", id: 411643860
-mas "duckduckgo privacy essentials", id: 1482920575
-mas "keynote", id: 409183694
-mas "numbers", id: 409203825
-mas "pages", id: 409201541
-mas "pdf expert", id: 1055273043
+# mas "1password for safari", id: 1569813296
+# mas "bear", id: 1091189122
+# mas "daisydisk", id: 411643860
+# mas "duckduckgo privacy essentials", id: 1482920575
+# mas "keynote", id: 409183694
+# mas "numbers", id: 409203825
+# mas "pages", id: 409201541
+# mas "pdf expert", id: 1055273043

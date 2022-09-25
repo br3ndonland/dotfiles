@@ -19,10 +19,10 @@ brew "opencode"
 brew "openssh"
 brew "pinentry"
 brew "postgresql@17"
-brew "r"
+# brew "r"
 brew "ripgrep"
 brew "starship"
-brew "syncthing"
+# brew "syncthing"
 brew "tmux"
 brew "tree"
 brew "vim"
@@ -32,14 +32,14 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "zsh"
 
-cask "1password"
+# cask "1password"
 cask "1password-cli"
-cask "block-goose"
+# cask "block-goose"
 cask "brave-browser"
 # cask "chatgpt"
 # cask "claude-code"
 # cask "claude"
-cask "codex-app"
+# cask "codex-app"
 cask "codex"
 # cask "datagrip"
 # cask "docker"
@@ -48,28 +48,28 @@ cask "font-recursive-code"
 cask "karabiner-elements"
 # cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
-cask "lm-studio"
+# cask "lm-studio"
 # cask "microsoft-office-businesspro"
 # cask "notion"
 cask "orbstack"
-# cask "postico"
+cask "postico"
 # cask "postman"
-cask "proton-drive"
+# cask "proton-drive"
 cask "protonvpn"
 # cask "rstudio"
-# cask "session-manager-plugin"
+cask "session-manager-plugin"
 # cask "slack"
 # cask "tableplus"
 # cask "visual-studio-code"
 cask "vlc"
 cask "vscodium"
-# cask "zoom"
-cask "zotero"
+cask "zoom"
+# cask "zotero"
 
 # mas "1password", id: 1333542190
-mas "1password for safari", id: 1569813296
-mas "bear", id: 1091189122
-mas "daisydisk", id: 411643860
-mas "keynote", id: 361285480
-mas "numbers", id: 361304891
-mas "pages", id: 361309726
+# mas "1password for safari", id: 1569813296
+# mas "bear", id: 1091189122
+# mas "daisydisk", id: 411643860
+# mas "keynote", id: 361285480
+# mas "numbers", id: 361304891
+# mas "pages", id: 361309726

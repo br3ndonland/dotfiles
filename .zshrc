@@ -53,10 +53,10 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 
 ### exports
-if type codium &>/dev/null; then
-  editor='codium --wait'
-elif type code &>/dev/null; then
+if type code &>/dev/null; then
   editor='code --wait'
+elif type codium &>/dev/null; then
+  editor='codium --wait'
 elif type code-insiders &>/dev/null; then
   editor='code-insiders --wait'
 elif type code-exploration &>/dev/null; then
@@ -102,7 +102,7 @@ if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
-compinit
+compinit -u
 
 ### syntax highlighting
 if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then

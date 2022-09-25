@@ -3,7 +3,7 @@ cask_args appdir: "/Applications", require_sha: true
 brew "bash"
 brew "coreutils"
 brew "curl"
-brew "ffmpeg"
+# brew "ffmpeg"
 brew "findutils"
 brew "gawk"
 brew "git-lfs"
@@ -15,14 +15,14 @@ brew "gnupg"
 brew "grep"
 brew "libfido2"
 brew "mas" if OS.mac?
-brew "media-info"
+# brew "media-info"
 brew "mise"
-brew "mkvtoolnix"
-brew "mp4v2"
+# brew "mkvtoolnix"
+# brew "mp4v2"
 brew "openssh"
 brew "pinentry"
 brew "postgresql@17"
-brew "r"
+# brew "r"
 brew "starship"
 brew "tmux"
 brew "tree"
@@ -33,11 +33,11 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "zsh"
 
-cask "1password"
+# cask "1password"
 cask "1password-cli"
 cask "brave-browser"
-# cask "chatgpt"
-# cask "cursor"
+cask "chatgpt"
+cask "cursor"
 # cask "datagrip"
 # cask "docker"
 cask "font-recursive-code"
@@ -47,24 +47,24 @@ cask "kitty"
 # cask "microsoft-office-businesspro"
 # cask "notion"
 cask "orbstack"
-# cask "postico"
+cask "postico"
 # cask "postman"
-cask "protonvpn"
+# cask "protonvpn"
 # cask "rstudio"
-# cask "session-manager-plugin"
+cask "session-manager-plugin"
 # cask "slack"
-cask "syncthing-app"
+# cask "syncthing-app"
 # cask "tableplus"
 # cask "visual-studio-code"
 cask "vlc"
 cask "vscodium"
-# cask "zoom"
+cask "zoom"
 cask "zotero"
 
 # mas "1password", id: 1333542190
-mas "1password for safari", id: 1569813296
-mas "bear", id: 1091189122
-mas "daisydisk", id: 411643860
-mas "keynote", id: 409183694
-mas "numbers", id: 409203825
-mas "pages", id: 409201541
+# mas "1password for safari", id: 1569813296
+# mas "bear", id: 1091189122
+# mas "daisydisk", id: 411643860
+# mas "keynote", id: 409183694
+# mas "numbers", id: 409203825
+# mas "pages", id: 409201541

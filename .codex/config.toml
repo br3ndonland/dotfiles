@@ -35,6 +35,35 @@ default_tools_approval_mode = "approve"
 [apps.connector_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_deploy_to_vercel]
 approval_mode = "prompt"
 
+# work plugins
+# don't currently work for API key users
+# https://github.com/openai/codex/issues/20621
+
+# Atlassian plugin
+# https://github.com/openai/plugins/tree/main/plugins/atlassian-rovo
+[apps.connector_692de805e3ec8191834719067174a384]
+default_tools_approval_mode = "approve"
+
+# Datadog plugin
+# https://github.com/openai/plugins/tree/main/plugins/datadog
+[apps.asdk_app_69e8c7f174a08191a28b6da96c8062c4]
+default_tools_approval_mode = "approve"
+
+# Google Drive plugin
+# https://github.com/openai/plugins/tree/main/plugins/google-drive
+[apps.connector_5f3c8c41a1e54ad7a76272c89e2554fa]
+default_tools_approval_mode = "approve"
+
+# Notion plugin
+# https://github.com/openai/plugins/tree/main/plugins/notion
+# [apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]
+# default_tools_approval_mode = "approve"
+
+# Slack plugin
+# https://github.com/openai/plugins/tree/main/plugins/slack
+[apps.asdk_app_69a1d78e929881919bba0dbda1f6436d]
+default_tools_approval_mode = "approve"
+
 [features]
 prevent_idle_sleep = true
 fast_mode = true
@@ -75,6 +104,12 @@ approval_mode = "prompt"
 [mcp_servers.openai_developer_docs]
 default_tools_approval_mode = "approve"
 url = "https://developers.openai.com/mcp"
+
+# work mcp servers
+
+[mcp_servers.spacelift]
+default_tools_approval_mode = "approve"
+url = "https://formation-bio.app.spacelift.io/mcp"
 
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]

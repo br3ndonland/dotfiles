@@ -112,10 +112,10 @@ fi
 () {
   local \
     context7_api_key=$(
-      op_cache read "context7_api_key" "op://AI/Context7/token"
+      op_cache read "context7_api_key" "op://Employee/Context7/token"
     ) \
     github_fgt=$(
-      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+      op_cache read "github_fgt" "op://Employee/GitHub FGT/token"
     )
   export \
     CONTEXT7_API_KEY="$context7_api_key" \

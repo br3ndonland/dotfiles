@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Prettier
         run: brew install prettier
       - name: Check web code formatting with Prettier
@@ -53,7 +53,7 @@ jobs:
       STRAP_GIT_NAME: GitHub Actions
       STRAP_GITHUB_USER: br3ndonland
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Clean up Homebrew
         run: |
           command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||

@@ -45,7 +45,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest]
-    timeout-minutes: 60
+    timeout-minutes: 100
     env:
       STRAP_CI: 1
       STRAP_DEBUG: 1

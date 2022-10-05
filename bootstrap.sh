@@ -4,7 +4,8 @@
 
 set -e
 
-case $(uname -s) in
+OS=$(uname -s)
+case $OS in
 Darwin)
   export LINUX=0 MACOS=1 UNIX=1
   if [[ $(uname -m) == "arm64" ]]; then
@@ -15,9 +16,16 @@ Darwin)
   ;;
 Linux)
   export LINUX=1 MACOS=0 UNIX=1
+  if [[ -d $HOME/.linuxbrew ]]; then
+    DEFAULT_HOMEBREW_PREFIX="$HOME/.linuxbrew"
+  else
+    DEFAULT_HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+  fi
   [[ $(id -un) == "codespace" ]] && export CODESPACE=1
   ;;
+*) echo "Unsupported operating system $OS" && exit 1 ;;
 esac
+[[ -z $HOMEBREW_PREFIX ]] && HOMEBREW_PREFIX="$DEFAULT_HOMEBREW_PREFIX"
 
 STRAP_CI=${STRAP_CI:=0}
 STRAP_DEBUG=${STRAP_DEBUG:-0}
@@ -361,29 +369,74 @@ install_homebrew() {
   logk
 }
 
+set_up_brew_skips() {
+  local brewfile_path casks ci_skips macos_only_formulae mas_ids mas_prefix
+  log "Setting up Homebrew Bundle formula installs to skip."
+  macos_only_formulae="deno macos-trash mas"
+  ci_skips="awscli black jupyterlab mkvtoolnix zsh-completions"
+  if [ "$LINUX" -gt 0 ] && [ "$STRAP_CI" -eq 0 ]; then
+    HOMEBREW_BUNDLE_BREW_SKIP="$macos_only_formulae"
+  elif [ "$LINUX" -gt 0 ] && [ "$STRAP_CI" -gt 0 ]; then
+    HOMEBREW_BUNDLE_BREW_SKIP="$macos_only_formulae $ci_skips"
+  else
+    HOMEBREW_BUNDLE_BREW_SKIP="$ci_skips"
+  fi
+  if [ -f "$HOME/.Brewfile" ]; then
+    brewfile_path="$HOME/.Brewfile"
+  elif [ -f "Brewfile" ]; then
+    brewfile_path="Brewfile"
+  else
+    abort "No Brewfile found"
+  fi
+  log "Setting up Homebrew Bundle cask installs to skip."
+  if [ "$MACOS" -gt 0 ] && [ "$brewfile_path" == "$HOME/.Brewfile" ]; then
+    casks="$(brew bundle list --global --cask --quiet | tr '\n' ' ')"
+  elif [ "$MACOS" -gt 0 ] && [ "$brewfile_path" == "Brewfile" ]; then
+    casks="$(brew bundle list --cask --quiet | tr '\n' ' ')"
+  else
+    log "Cask commands are only supported on macOS."
+  fi
+  HOMEBREW_BUNDLE_CASK_SKIP="${casks%% }"
+  log "Setting up Homebrew Bundle Mac App Store (mas) installs to skip."
+  mas_ids=""
+  mas_prefix='*mas*, id: '
+  while read -r brewfile_line; do
+    # shellcheck disable=SC2295
+    [[ $brewfile_line == *$mas_prefix* ]] && mas_ids+="${brewfile_line##$mas_prefix} "
+  done <"$brewfile_path"
+  HOMEBREW_BUNDLE_MAS_SKIP="${mas_ids%% }"
+  log "HOMEBREW_BUNDLE_BREW_SKIP='$HOMEBREW_BUNDLE_BREW_SKIP'"
+  log "HOMEBREW_BUNDLE_CASK_SKIP='$HOMEBREW_BUNDLE_CASK_SKIP'"
+  log "HOMEBREW_BUNDLE_MAS_SKIP='$HOMEBREW_BUNDLE_MAS_SKIP'"
+  export HOMEBREW_BUNDLE_BREW_SKIP="$HOMEBREW_BUNDLE_BREW_SKIP"
+  export HOMEBREW_BUNDLE_CASK_SKIP="$HOMEBREW_BUNDLE_CASK_SKIP"
+  export HOMEBREW_BUNDLE_MAS_SKIP="$HOMEBREW_BUNDLE_MAS_SKIP"
+}
+
 run_brew_installs() {
+  local brewfile_domain brewfile_path brewfile_url
   if ! command -v brew &>/dev/null; then
     log "brew command not in shell environment. Attempting to load."
-    eval "$($DEFAULT_HOMEBREW_PREFIX/bin/brew shellenv)"
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
     command -v brew &>/dev/null && logk || return 1
   fi
-  if [ "$STRAP_CI" -gt 0 ]; then
-    log "Setting up Homebrew Cask and Mac App Store installs to skip in CI."
-    casks="$(brew bundle list --cask --quiet | tr '\n' ' ')"
-    mas_ids=""
-    prefix='*mas*, id: '
-    while read -r brewfile_line; do
-      # shellcheck disable=SC2295
-      [[ $brewfile_line == *$prefix* ]] && mas_ids+="${brewfile_line##$prefix} "
-    done <"Brewfile"
-    export HOMEBREW_BUNDLE_CASK_SKIP="${casks%% }"
-    export HOMEBREW_BUNDLE_MAS_SKIP="${mas_ids%% }"
-  fi
+  [ "$STRAP_CI" -gt 0 ] || [ "$LINUX" -gt 0 ] && set_up_brew_skips
+  [ "$LINUX" -gt 0 ] && brew install gcc # "We recommend that you install GCC"
   log "Running Homebrew installs."
-  # Install from local Brewfile
   if [ -f "$HOME/.Brewfile" ]; then
-    log "Installing from user Brewfile:"
+    log "Installing from $HOME/.Brewfile with Brew Bundle."
     brew bundle check --global || brew bundle --global
+    logk
+  elif [ -f "Brewfile" ]; then
+    log "Installing from local Brewfile with Brew Bundle."
+    brew bundle check || brew bundle
+    logk
+  else
+    brewfile_domain="https://raw.githubusercontent.com"
+    brewfile_path="${STRAP_GITHUB_USER:-br3ndonland}/dotfiles/HEAD/Brewfile"
+    brewfile_url="$brewfile_domain/$brewfile_path"
+    log "Installing from $brewfile_url with Brew Bundle."
+    curl -fsSL "$brewfile_url" | brew bundle --file=-
     logk
   fi
   # Tap a custom Homebrew tap
@@ -402,16 +455,15 @@ run_brew_installs() {
   fi
 }
 
-if [ "$MACOS" -gt 0 ]; then
-  RAW="https://raw.githubusercontent.com"
-  BREW_SCRIPT="Homebrew/install/HEAD/install.sh"
-  /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)" || install_homebrew
-  run_brew_installs || abort "Unable to load Homebrew."
-elif [ "$LINUX" -gt 0 ]; then
-  run_dotfile_scripts scripts/linuxbrew.sh
-else
-  log "Skipping Homebrew installs."
-fi
+# Install Homebrew: https://docs.brew.sh/Installation
+script_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+NONINTERACTIVE=$STRAP_CI \
+  /usr/bin/env bash -c "$(curl -fsSL $script_url)" || install_homebrew
+
+# Set up Homebrew on Linux: https://docs.brew.sh/Homebrew-on-Linux
+[ "$LINUX" -gt 0 ] && run_dotfile_scripts scripts/linuxbrew.sh
+
+run_brew_installs || abort "Homebrew installs were not successful."
 
 run_dotfile_scripts scripts/strap-after-setup.sh
 

@@ -4,34 +4,6 @@
 
 set -eo pipefail
 
-# Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
-if command -v brew &>/dev/null; then
-  printf "\nHomebrew detected.\n"
-else
-  RAW="https://raw.githubusercontent.com"
-  BREW_SCRIPT="Homebrew/install/HEAD/install.sh"
-  printf "\nDownloading and installing Homebrew.\n"
-  printf "\n" | /usr/bin/env bash -c "$(curl -fsSL $RAW/$BREW_SCRIPT)"
-  if [ -d /home/linuxbrew/.linuxbrew ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  elif [ -d "$HOME/.linuxbrew" ]; then
-    eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
-  fi
-  command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1
-fi
-
-# Install Homebrew dependencies from Brewfile with Brew Bundle
-skips="awscli black deno jupyterlab macos-trash mas zsh-completions"
-export HOMEBREW_BUNDLE_BREW_SKIP="$skips"
-if [ -f "$HOME/.Brewfile" ]; then
-  printf "\nInstalling %s with Brew Bundle.\n" "$HOME/.Brewfile"
-  brew bundle check --global || brew bundle --global
-else
-  printf "\nDownloading Brewfile and installing with Brew Bundle.\n"
-  BREWFILE="${STRAP_GITHUB_USER:-br3ndonland}/dotfiles/HEAD/Brewfile"
-  curl -fsSL "$RAW/$BREWFILE" | brew bundle --file=-
-fi
-
 # Set up DEB packages
 # Proton VPN: https://protonvpn.com/support/linux-vpn-tool/
 if command -v xdg-user-dir &>/dev/null; then
@@ -55,7 +27,10 @@ PACKAGES=(
   build-essential
   ca-certificates
   curl
+  file
+  git
   gnupg-agent
+  procps
   protonvpn-cli
   software-properties-common
 )
@@ -63,3 +38,31 @@ PACKAGES=(
 for PACKAGE in "${PACKAGES[@]}"; do
   sudo apt-get install -qy "$PACKAGE"
 done
+
+detect_homebrew_prefix() {
+  if [ -n "$HOMEBREW_PREFIX" ] && [ -d "$HOMEBREW_PREFIX" ]; then
+    return
+  elif [ -d "$HOME/.linuxbrew" ]; then
+    HOMEBREW_PREFIX="$HOME/.linuxbrew"
+  else
+    HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+  fi
+}
+
+# Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
+if command -v brew &>/dev/null; then
+  printf "\nHomebrew detected.\n"
+else
+  printf "\nbrew command not in shell environment. Attempting to load."
+  detect_homebrew_prefix
+  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+  if ! command -v brew &>/dev/null; then
+    printf "\nHomebrew not found. Downloading and installing Homebrew.\n"
+    BREW_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+    NONINTERACTIVE=1 /usr/bin/env bash -c "$(curl -fsSL $BREW_SCRIPT)"
+  fi
+  detect_homebrew_prefix
+  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+  command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1
+fi
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile

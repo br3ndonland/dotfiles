@@ -34,9 +34,16 @@ Darwin)
     HOMEBREW_PREFIX='/usr/local'
   fi
   ;;
-Linux) HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew' ;;
+Linux)
+  if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
+    HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
+  elif [[ -d $HOME/.linuxbrew ]]; then
+    HOMEBREW_PREFIX=$HOME/.linuxbrew
+  fi
+  [[ -d $HOMEBREW_PREFIX ]] && PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
+  ;;
 esac
-eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+[[ -d $HOMEBREW_PREFIX ]] && eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 
 ### exports
 if command -v codium &>/dev/null; then
@@ -60,7 +67,7 @@ alias python='python3'
 eval $(starship init zsh)
 
 ### completions
-if type brew &>/dev/null; then
+if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=$HOME/.zfunc:$HOMEBREW_PREFIX/share/zsh/site-functions
 fi
 zstyle :compinstall filename $HOME/.zshrc

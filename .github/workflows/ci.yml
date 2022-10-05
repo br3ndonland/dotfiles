@@ -13,6 +13,11 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
     steps:
+      - name: Add Homebrew to $PATH
+        if: runner.os == 'Linux'
+        run: |
+          # mitigate https://github.com/actions/runner-images/issues/6283
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - uses: actions/checkout@v3
       - name: Install Prettier
         run: brew install prettier
@@ -54,6 +59,11 @@ jobs:
       STRAP_GIT_NAME: GitHub Actions
       STRAP_GITHUB_USER: br3ndonland
     steps:
+      - name: Add Homebrew to $PATH
+        if: runner.os == 'Linux'
+        run: |
+          # mitigate https://github.com/actions/runner-images/issues/6283
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - name: Clean up Homebrew
         run: |
           command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||

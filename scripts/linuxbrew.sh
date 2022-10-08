@@ -32,9 +32,17 @@ else
   curl -fsSL "$RAW/$BREWFILE" | brew bundle --file=-
 fi
 
-# Set up Proton VPN
+# Set up DEB packages
+# Proton VPN: https://protonvpn.com/support/linux-vpn-tool/
+if command -v xdg-user-dir &>/dev/null; then
+  download_dir=$(xdg-user-dir DOWNLOAD)
+else
+  mkdir -p "$HOME/Downloads"
+  download_dir="$HOME/Downloads"
+fi
+
 deb_file="protonvpn-stable-release_1.0.1-1_all.deb"
-deb_path="$HOME/Downloads/$deb_file"
+deb_path="$download_dir/$deb_file"
 printf "\nDownloading Proton VPN setup DEB to %s\n" "$deb_path"
 curl -fsSL -o "$deb_path" "https://protonvpn.com/download/$deb_file"
 printf "\nInstalling Proton VPN setup DEB from %s\n" "$deb_path"

@@ -308,24 +308,24 @@ else
 fi
 
 # Set up dotfiles
-if [ -n "$STRAP_DOTFILES_URL" ] && [ -n "$STRAP_DOTFILES_BRANCH" ]; then
-  log "Fetching $STRAP_DOTFILES_URL:"
-  if [ ! -d "$HOME/.dotfiles" ]; then
-    log "Cloning to ~/.dotfiles and checking out $STRAP_DOTFILES_BRANCH."
-    git clone $Q "$STRAP_DOTFILES_URL" \
-      --branch "$STRAP_DOTFILES_BRANCH" ~/.dotfiles
-  else
-    log "Checking out $STRAP_DOTFILES_BRANCH in ~/.dotfiles."
-    (
-      cd ~/.dotfiles
-      git stash
-      git checkout "$STRAP_DOTFILES_BRANCH"
-      git pull $Q --rebase --autostash
-    )
+if [ ! -d "$HOME/.dotfiles" ]; then
+  if [ -z "$STRAP_DOTFILES_URL" ] || [ -z "$STRAP_DOTFILES_BRANCH" ]; then
+    abort "Please set STRAP_DOTFILES_URL and STRAP_DOTFILES_BRANCH."
   fi
-  run_dotfile_scripts scripts/symlink.sh
-  logk
+  log "Cloning $STRAP_DOTFILES_URL to ~/.dotfiles."
+  git clone $Q "$STRAP_DOTFILES_URL" ~/.dotfiles
 fi
+strap_dotfiles_branch_name="${STRAP_DOTFILES_BRANCH##*/}"
+log "Checking out $strap_dotfiles_branch_name in ~/.dotfiles."
+(
+  cd ~/.dotfiles
+  git stash
+  git fetch $Q
+  git checkout "$strap_dotfiles_branch_name"
+  git pull $Q --rebase --autostash
+)
+run_dotfile_scripts scripts/symlink.sh
+logk
 
 install_homebrew() {
   logn "Installing Homebrew:"

@@ -54,7 +54,6 @@ jobs:
       STRAP_GIT_NAME: GitHub Actions
       STRAP_GITHUB_USER: br3ndonland
     steps:
-      - uses: actions/checkout@v3
       - name: Clean up Homebrew
         run: |
           command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||
@@ -65,9 +64,11 @@ jobs:
           sudo rm -rf /usr/local/Caskroom /usr/local/Homebrew /usr/local/bin/brew \
             /usr/local/.??* /Applications/Xcode.app /Library/Developer/CommandLineTools
       - name: Run bootstrap.sh
-        run: bash bootstrap.sh
+        run: |
+          bootstrap_script_url="https://raw.githubusercontent.com/$STRAP_GITHUB_USER/dotfiles/$STRAP_DOTFILES_BRANCH/bootstrap.sh"
+          /usr/bin/env bash -c "$(curl -fsSL $bootstrap_script_url)"
       - name: Rerun bootstrap.sh to test idempotence
-        run: bash bootstrap.sh
+        run: bash "$HOME/.dotfiles/bootstrap.sh"
       - name: Check Homebrew configuration
         run: brew config
       - name: Check for potential problems with brew doctor

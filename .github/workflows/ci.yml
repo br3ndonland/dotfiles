@@ -23,7 +23,7 @@ jobs:
       - name: Check shell script formatting with shfmt
         run: shfmt -d -i 2 .
       - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
-        if: startsWith(runner.os, 'macOS')
+        if: runner.os == 'macOS'
         run: brew install bash shellcheck
       - name: Check shell script formatting with ShellCheck
         run: |
@@ -59,7 +59,7 @@ jobs:
           command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||
             echo "Homebrew not found."
       - name: Clean up macOS
-        if: startsWith(runner.os, 'macOS')
+        if: runner.os == 'macOS'
         run: |
           sudo rm -rf /usr/local/Caskroom /usr/local/Homebrew /usr/local/bin/brew \
             /usr/local/.??* /Applications/Xcode.app /Library/Developer/CommandLineTools

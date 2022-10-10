@@ -463,6 +463,9 @@ NONINTERACTIVE=$STRAP_CI \
 # Set up Homebrew on Linux: https://docs.brew.sh/Homebrew-on-Linux
 [ "$LINUX" -gt 0 ] && run_dotfile_scripts scripts/linuxbrew.sh
 
+# Disable Homebrew Google Analytics: https://docs.brew.sh/Analytics
+brew analytics off
+
 run_brew_installs || abort "Homebrew installs were not successful."
 
 run_dotfile_scripts scripts/strap-after-setup.sh

@@ -18,7 +18,7 @@ fi
 
 ### Install Poetry
 if command -v pipx &>/dev/null && ! command -v poetry &>/dev/null; then
-  pipx install poetry
+  pipx install "poetry>=1.1,<1.2"
 else
   echo "Skipping Poetry install."
 fi

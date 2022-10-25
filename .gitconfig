@@ -59,6 +59,7 @@ autostash = true
 ff = only
 rebase = true
 [push]
+autosetupremote = true
 default = simple
 recursesubmodules = check
 [rebase]

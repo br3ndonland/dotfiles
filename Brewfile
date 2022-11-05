@@ -8,7 +8,7 @@ tap "homebrew/services"
 brew "autopep8"
 brew "awscli"
 brew "bash"
-brew "black"
+brew "black", restart_service: :changed
 brew "cookiecutter"
 brew "deno" # macOS-only
 brew "ffmpeg"
@@ -39,7 +39,7 @@ brew "pinentry"
 # brew "pinentry-mac"
 brew "pipx"
 brew "pnpm"
-brew "postgresql@14"
+brew "postgresql@14", restart_service: :changed
 brew "pre-commit"
 brew "prettier"
 brew "python"

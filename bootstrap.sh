@@ -370,17 +370,10 @@ install_homebrew() {
 }
 
 set_up_brew_skips() {
-  local brewfile_path casks ci_skips macos_only_formulae mas_ids mas_prefix
+  local brewfile_path casks ci_skips mas_ids mas_prefix
   log "Setting up Homebrew Bundle formula installs to skip."
-  macos_only_formulae="deno macos-trash mas"
   ci_skips="awscli black jupyterlab mkvtoolnix zsh-completions"
-  if [ "$LINUX" -gt 0 ] && [ "$STRAP_CI" -eq 0 ]; then
-    HOMEBREW_BUNDLE_BREW_SKIP="$macos_only_formulae"
-  elif [ "$LINUX" -gt 0 ] && [ "$STRAP_CI" -gt 0 ]; then
-    HOMEBREW_BUNDLE_BREW_SKIP="$macos_only_formulae $ci_skips"
-  else
-    HOMEBREW_BUNDLE_BREW_SKIP="$ci_skips"
-  fi
+  [ "$STRAP_CI" -gt 0 ] && HOMEBREW_BUNDLE_BREW_SKIP="$ci_skips"
   if [ -f "$HOME/.Brewfile" ]; then
     brewfile_path="$HOME/.Brewfile"
   elif [ -f "Brewfile" ]; then

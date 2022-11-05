@@ -10,7 +10,7 @@ brew "awscli"
 brew "bash"
 brew "black", restart_service: :changed
 brew "cookiecutter"
-brew "deno" # macOS-only
+brew "deno" if OS.mac?
 brew "ffmpeg"
 brew "flake8"
 brew "fx"
@@ -26,8 +26,8 @@ brew "httpie"
 brew "jq"
 brew "jupyterlab"
 brew "libfido2"
-brew "macos-trash" # macOS-only
-brew "mas" # macOS-only
+brew "macos-trash" if OS.mac?
+brew "mas" if OS.mac?
 brew "media-info"
 brew "mkvtoolnix"
 brew "mp4v2"

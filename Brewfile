@@ -60,7 +60,6 @@ brew "zsh-syntax-highlighting"
 
 cask "1password"
 cask "alfred"
-cask "backblaze"
 cask "brave-browser"
 # cask "datagrip"
 cask "docker"

@@ -407,7 +407,7 @@ set_up_brew_skips() {
 }
 
 run_brew_installs() {
-  local brewfile_domain brewfile_path brewfile_url
+  local brewfile_domain brewfile_path brewfile_url git_branch github_user
   if ! command -v brew &>/dev/null; then
     log "brew command not in shell environment. Attempting to load."
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
@@ -425,8 +425,11 @@ run_brew_installs() {
     brew bundle check || brew bundle
     logk
   else
+    [ -z "$STRAP_DOTFILES_BRANCH" ] && STRAP_DOTFILES_BRANCH=HEAD
+    git_branch="${STRAP_DOTFILES_BRANCH##*/}"
+    github_user="${STRAP_GITHUB_USER:-br3ndonland}"
     brewfile_domain="https://raw.githubusercontent.com"
-    brewfile_path="${STRAP_GITHUB_USER:-br3ndonland}/dotfiles/HEAD/Brewfile"
+    brewfile_path="$github_user/dotfiles/$git_branch/Brewfile"
     brewfile_url="$brewfile_domain/$brewfile_path"
     log "Installing from $brewfile_url with Brew Bundle."
     curl -fsSL "$brewfile_url" | brew bundle --file=-

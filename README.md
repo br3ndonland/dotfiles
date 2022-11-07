@@ -485,6 +485,7 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
   - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
   - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
   - [Stylus](https://github.com/openstyles/stylus) (alternative to Dark Reader, also a [Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
+    - [Wide GitHub](https://github.com/xthexder/wide-github)
     - [GitHub Custom Fonts](https://github.com/StylishThemes/GitHub-Dark)
     - ~~[GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)~~ _(GitHub [finally](https://github.blog/2020-12-08-new-from-universe-2020-dark-mode-github-sponsors-for-companies-and-more/) has a native dark mode!)_
     - [GitLab Dark](https://gitlab.com/maxigaz/gitlab-dark)

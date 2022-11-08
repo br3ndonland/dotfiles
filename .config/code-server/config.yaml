@@ -2,4 +2,4 @@ bind-addr: 127.0.0.1:8080
 auth: none
 password: false
 cert: false
-user-data-dir: /home/brendon/.dotfiles/vscode
+user-data-dir: /home/tegamckinney/.dotfiles/vscode

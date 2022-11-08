@@ -5,7 +5,7 @@
 
 set -eou pipefail
 
-USERNAME=${USERNAME:="brendon"} # Customize the sudo non-root username here
+USERNAME=${USERNAME:="tegamckinney"} # Customize the sudo non-root username here
 
 # Create user and immediately expire password to force a change on login
 useradd --create-home --shell "/bin/bash" --groups sudo "${USERNAME}"

@@ -55,9 +55,9 @@ jobs:
       STRAP_CI: 1
       STRAP_DEBUG: 1
       STRAP_DOTFILES_BRANCH: ${{ github.ref }}
-      STRAP_GIT_EMAIL: 26674818+br3ndonland@users.noreply.github.com
+      STRAP_GIT_EMAIL: tegamckinney@users.noreply.github.com
       STRAP_GIT_NAME: GitHub Actions
-      STRAP_GITHUB_USER: br3ndonland
+      STRAP_GITHUB_USER: tegamckinney
     steps:
       - name: Add Homebrew to $PATH
         if: runner.os == 'Linux'

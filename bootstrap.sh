@@ -35,7 +35,7 @@ STDIN_FILE_DESCRIPTOR=0
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
 STRAP_GIT_NAME=${STRAP_GIT_NAME:?Variable not set}
 STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:?Variable not set}
-STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="br3ndonland"}
+STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="tegamckinney"}
 DEFAULT_DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
 STRAP_DOTFILES_URL=${STRAP_DOTFILES_URL:="$DEFAULT_DOTFILES_URL"}
 STRAP_DOTFILES_BRANCH=${STRAP_DOTFILES_BRANCH:="main"}
@@ -444,7 +444,7 @@ run_brew_installs() {
   else
     [ -z "$STRAP_DOTFILES_BRANCH" ] && STRAP_DOTFILES_BRANCH=HEAD
     git_branch="${STRAP_DOTFILES_BRANCH##*/}"
-    github_user="${STRAP_GITHUB_USER:-br3ndonland}"
+    github_user="${STRAP_GITHUB_USER:-tegamckinney}"
     brewfile_domain="https://raw.githubusercontent.com"
     brewfile_path="$github_user/dotfiles/$git_branch/Brewfile"
     brewfile_url="$brewfile_domain/$brewfile_path"

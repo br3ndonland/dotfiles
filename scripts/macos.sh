@@ -4,7 +4,8 @@
 # Back up macOS default settings before changing
 now=$(date -u "+%Y-%m-%d-%H%M%s")
 printf "Backing up defaults to %s.
-macOS may request calendar or contacts permissions when reading defaults.\n" \
+macOS may request calendar or contacts permissions when reading defaults.
+Some changes may require a restart to take effect.\n" \
   "$HOME/Desktop/macos-defaults-$now.txt"
 defaults read >"$HOME/Desktop/macos-defaults-$now.txt"
 

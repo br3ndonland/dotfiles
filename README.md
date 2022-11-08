@@ -70,29 +70,10 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 ## Hardware
 
-- [Apple Silicon M1](https://www.apple.com/mac/m1/) Mac mini
-- [Dell S3221QS 32" curved 4K monitor](https://www.amazon.com/dp/B08G8WMRRP)
-- [Seagate external hard drives](https://www.amazon.com/dp/B07MY44VNM)
-- [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC) and [Dygma Raise](https://dygma.com/) keyboards
-- [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
-- [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
-- <details><summary><a href="https://www.fully.com/standing-desks/jarvis.html">Fully Jarvis standing desk</a></summary>
-
-  ![Fully Jarvis standing desk](https://user-images.githubusercontent.com/26674818/102920846-6b6cc280-4459-11eb-90c5-12e38abd16c1.jpeg)
-
-  </details>
-
-- <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen cabinet.</summary>
-
-  ![DIY standing desk](https://user-images.githubusercontent.com/26674818/102920844-6b6cc280-4459-11eb-9248-b16a7da7b5d0.jpg)
-
-  - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
-  - I ran an ethernet cable from my router into the cabinet.
-  - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
-
-  </details>
-
-- To improve my posture and endurance, I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), Gold Toe compression socks, [Altra](https://www.altrarunning.com/) zero-drop shoes, and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ).
+- [Apple Silicon M1](https://www.apple.com/mac/m1/) MacBook Pro 16"
+- [Samsung 49" CRG9](https://a.co/d/44vktbg)
+- [Vortex Race 3](https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=4370)
+- [Fully Jarvis standing desk](https://www.fully.com/standing-desks/jarvis.html)
 
 ## macOS
 

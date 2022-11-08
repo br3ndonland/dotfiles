@@ -3,7 +3,9 @@
 # https://github.com/mathiasbynens/dotfiles
 # Back up macOS default settings before changing
 now=$(date -u "+%Y-%m-%d-%H%M%s")
-printf "Backing up defaults to %s\n" "$HOME/Desktop/macos-defaults-$now.txt"
+printf "Backing up defaults to %s.
+macOS may request calendar or contacts permissions when reading defaults.\n" \
+  "$HOME/Desktop/macos-defaults-$now.txt"
 defaults read >"$HOME/Desktop/macos-defaults-$now.txt"
 
 ###############################################################################

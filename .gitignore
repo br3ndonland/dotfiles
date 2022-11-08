@@ -2,6 +2,7 @@
 .config/karabiner/automatic_backups
 .config/TabNine/*
 !.config/TabNine/tabnine_config.json
+.dccache
 *.gpg*
 *keys*
 vscode/*[Ee]xtension*

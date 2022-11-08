@@ -3,7 +3,9 @@
 # https://github.com/herrbischoff/awesome-macos-command-line
 # https://github.com/mathiasbynens/dotfiles
 # Back up macOS default settings before changing
-defaults read >~/Desktop/macos-defaults.txt
+now=$(date -u "+%Y-%m-%d-%H%M%s")
+printf "Backing up defaults to %s\n" "$HOME/Desktop/macos-defaults-$now.txt"
+defaults read >"$HOME/Desktop/macos-defaults-$now.txt"
 
 ###############################################################################
 # General UI/UX                                                               #

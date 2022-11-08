@@ -1,6 +1,5 @@
 #! /bin/sh
 ### -------------------------- Set macOS defaults -------------------------- ###
-# https://github.com/herrbischoff/awesome-macos-command-line
 # https://github.com/mathiasbynens/dotfiles
 # Back up macOS default settings before changing
 now=$(date -u "+%Y-%m-%d-%H%M%s")

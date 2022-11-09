@@ -287,23 +287,23 @@ configure_git() {
   fi
   # Set up GitHub HTTPS credentials
   # shellcheck disable=SC2086
-  if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
-    # Execute credential in case it's a wrapper script for credential-osxkeychain
-    if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 |
-      grep -v $Q "git.credential-osxkeychain"; then
-      git config --global credential.helper osxkeychain
-    fi
-    if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
-      PROTOCOL="protocol=https\\nhost=github.com"
-      printf "%s\\n" "$PROTOCOL" | git credential reject
-      printf "%s\\nusername=%s\\npassword=%s\\n" \
-        "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
-        git credential approve
-    else
-      log "Skipping Git credential setup."
-    fi
-    logk
-  fi
+  # if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
+  #   # Execute credential in case it's a wrapper script for credential-osxkeychain
+  #   if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 |
+  #     grep -v $Q "git.credential-osxkeychain"; then
+  #     git config --global credential.helper osxkeychain
+  #   fi
+  #   if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
+  #     PROTOCOL="protocol=https\\nhost=github.com"
+  #     printf "%s\\n" "$PROTOCOL" | git credential reject
+  #     printf "%s\\nusername=%s\\npassword=%s\\n" \
+  #       "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
+  #       git credential approve
+  #   else
+  #     log "Skipping Git credential setup."
+  #   fi
+  #   logk
+  # fi
 }
 
 configure_git

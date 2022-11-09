@@ -52,8 +52,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# Disable “natural” scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+# Enable “natural” scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 # Use keyboard navigation to move focus between controls (tab navigation)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3

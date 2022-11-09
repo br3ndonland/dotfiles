@@ -62,6 +62,7 @@ export NVM_NO_USE=true
 export NVM_AUTO_USE=true
 antigen bundle lukechilds/zsh-nvm
 antigen bundle lukechilds/zsh-better-npm-completion
+antigen apply
 
 ### exports
 if command -v codium &>/dev/null; then

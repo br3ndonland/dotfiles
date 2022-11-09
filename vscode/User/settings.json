@@ -68,7 +68,7 @@
   "update.showReleaseNotes": false,
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "all",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "workbench.colorTheme": "Dracula Pro",
   "workbench.editor.historyBasedLanguageDetection": false,
   "workbench.editor.languageDetection": false,

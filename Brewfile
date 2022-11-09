@@ -5,6 +5,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "microsoft/git"
 tap "stripe/stripe-cli"
 tap "versent/homebrew-taps"
 
@@ -90,6 +91,7 @@ cask "docker"
 cask "duckduckgo"
 # cask "firefox"
 cask "flipper"
+cask "git-credential-manager-core"
 # cask "handbrake",
 #   args: {
 #     appdir: "/Users/nonadmin/Applications"

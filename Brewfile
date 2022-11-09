@@ -1,4 +1,5 @@
 cask_args appdir: "/Applications", require_sha: true
+tap "aws/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -64,9 +65,10 @@ brew "shellcheck"
 brew "shfmt"
 brew "starship"
 brew "stern"
-brew "stripe"
+brew "stripe/stripe-cli/stripe"
 # brew "terraform"
 # brew "terraformer"
+brew "tilt"
 # brew "typescript"
 brew "watchman"
 # brew "webtorrent-cli"
@@ -84,6 +86,7 @@ cask "brave-browser"
 cask "contexts"
 # cask "datagrip"
 cask "docker"
+cask "duckduckgo"
 # cask "firefox"
 cask "flipper"
 # cask "handbrake",
@@ -113,7 +116,6 @@ cask "skitch"
 cask "studio-3t"
 cask "switchresx"
 cask "tailscale"
-cask "tilt"
 cask "transmit"
 # cask "visual-studio-code"
 # cask "vlc"
@@ -125,7 +127,7 @@ cask "zoom"
 # mas "bear", id: 1091189122
 # mas "cascadea", id: 1432182561
 # mas "daisydisk", id: 411643860
-mas "duckduckgo privacy essentials", id: 1482920575
+# mas "duckduckgo privacy essentials", id: 1482920575
 # mas "keynote", id: 409183694
 mas "magnet", id: 441258766
 # mas "numbers", id: 409203825

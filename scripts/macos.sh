@@ -129,7 +129,7 @@ chflags nohidden ~/Library
 ###############################################################################
 
 # Auto-hide menu bar
-defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write NSGlobalDomain _HIHideMenuBar -bool false
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "genie"

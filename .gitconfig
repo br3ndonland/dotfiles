@@ -72,3 +72,5 @@ sort = -taggerdate:iso
 name = Tega McKinney
 email = tega@hey.com
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkSBptAu3rqUIwAr/naIHu5FmIWC6/UanGHo2lMQJNM
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager-core

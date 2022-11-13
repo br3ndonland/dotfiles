@@ -24,6 +24,20 @@ else
   echo "Skipping Hatch install."
 fi
 
+### Install node
+if command -v nvm &>/dev/null && ! command -v node &>/dev/null; then
+  nvm install --lts
+else
+  echo "node version is already installed"
+fi
+
+### Symlink node for xcode use
+if command -v node &>/dev/null && ! [ -L /usr/local/bin/node ]; then
+  sudo ln -s "$(which node)" /usr/local/bin
+else
+  echo "node is already symlinked for xcode"
+fi
+
 ### Install VSCode extensions
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
   "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"

@@ -108,8 +108,6 @@
   "gitlens.advanced.abbreviatedShaLength": 7,
   "gitlens.advanced.abbreviateShaOnCopy": true,
   "gitlens.blame.avatars": false,
-  "gitlens.codeLens.enabled": false,
-  "gitlens.currentLine.enabled": false,
   "gitlens.defaultDateFormat": "YYYY-MM-DD",
   "gitlens.defaultDateShortFormat": "YYYYMMDD",
   "gitlens.defaultDateStyle": "absolute",

@@ -83,6 +83,7 @@ cask "tailscale"
 cask "transmit"
 cask "vscodium"
 cask "zoom"
+cask "zulu11"
 
 mas "magnet", id: 441258766
 mas "xcode", id: 497799835

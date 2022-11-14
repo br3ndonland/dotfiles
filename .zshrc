@@ -86,7 +86,7 @@ export \
 if command -v gsed &>/dev/null; then alias sed='gsed'; fi
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
-export ANDROID_HOME=~/Library/Android/Sdk
+export ANDROID_HOME=$HOME/Library/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin

@@ -38,6 +38,10 @@ else
   echo "node is already symlinked for xcode"
 fi
 
+### TODO: Ensure correct ruby version is installed and symlinked via rbenv
+### TODO: Install IDB application using pip; idb-companion already installed via homebrew -- ensure symlinked
+### TODO: symlink watchman to /usr/local/bin
+
 ### Install VSCode extensions
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
   "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"

@@ -9,7 +9,6 @@ brew "autopep8"
 brew "awscli"
 brew "bash"
 brew "black", restart_service: :changed
-brew "cookiecutter"
 brew "deno" if OS.mac?
 brew "ffmpeg"
 brew "flake8"

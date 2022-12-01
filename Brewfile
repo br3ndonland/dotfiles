@@ -13,7 +13,6 @@ brew "cookiecutter"
 brew "deno" if OS.mac?
 brew "ffmpeg"
 brew "flake8"
-brew "fx"
 brew "gh"
 brew "git"
 brew "git-lfs"

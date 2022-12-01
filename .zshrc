@@ -58,7 +58,12 @@ else
   editor='vim'
 fi
 TTY=$(tty)
-export EDITOR=$editor GIT_EDITOR=$editor GPG_TTY=$TTY HOMEBREW_NO_ANALYTICS=1 PATH=$HOME/.local/bin:$PATH
+export \
+  EDITOR=$editor \
+  GIT_EDITOR=$editor \
+  GPG_TTY=$TTY \
+  HOMEBREW_NO_ANALYTICS=1 \
+  PATH=$HOME/.local/bin:$PATH
 
 ### aliases
 alias python='python3'

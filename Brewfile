@@ -5,7 +5,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
-brew "autopep8"
 brew "awscli"
 brew "bash"
 brew "black", restart_service: :changed

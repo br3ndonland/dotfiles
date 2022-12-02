@@ -274,3 +274,38 @@ defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+###############################################################################
+# Transmission                                                                #
+###############################################################################
+
+defaults write org.m0k.transmission AutoSize -bool false
+defaults write org.m0k.transmission AutoStartDownload -bool true
+defaults write org.m0k.transmission AutoUpdateBeta -bool true
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+defaults write org.m0k.transmission BlocklistURL -string \
+  "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz"
+defaults write org.m0k.transmission CheckQuit -bool false
+defaults write org.m0k.transmission CheckRemove -bool true
+defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool false
+defaults write org.m0k.transmission DisplayProgressBarAvailable -bool true
+defaults write org.m0k.transmission DownloadAsk -bool true
+defaults write org.m0k.transmission DownloadAskManual -bool false
+defaults write org.m0k.transmission DownloadAskMulti -bool false
+defaults write org.m0k.transmission DownloadLimit -int 10000
+defaults write org.m0k.transmission DownloadLocationConstant -bool false
+defaults write org.m0k.transmission MagnetOpenAsk -bool false
+defaults write org.m0k.transmission PeersTorrent -int 10
+defaults write org.m0k.transmission PeersTotal -int 200
+defaults write org.m0k.transmission PlayDownloadSound -bool false
+defaults write org.m0k.transmission RandomPort -bool true
+defaults write org.m0k.transmission SleepPrevent -bool true
+defaults write org.m0k.transmission SmallView -bool true
+defaults write org.m0k.transmission SpeedLimitDownloadLimit -int 2000
+defaults write org.m0k.transmission SpeedLimitUploadLimit -int 1000
+defaults write org.m0k.transmission SUEnableAutomaticChecks -bool false
+defaults write org.m0k.transmission UploadLimit -int 5000
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool false
+defaults write org.m0k.transmission WarningDonate -bool false
+defaults write org.m0k.transmission WarningLegal -bool false

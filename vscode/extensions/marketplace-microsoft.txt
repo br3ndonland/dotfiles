@@ -1,3 +1,4 @@
+github.codespaces
 ms-toolsai.jupyter
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit

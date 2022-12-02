@@ -29,12 +29,15 @@ install_extensions() {
   printf "\nInstalling extensions for %s...\n\n" "$1"
   local extension_info extension_name extensions installed prefix
   prefix="$HOME/.dotfiles/vscode/extensions/marketplace"
-  if [ "$1" = "code-exploration" ] || [ "$1" = "code-insiders" ]; then
-    cat "$prefix-open-vsx.txt" "$prefix-proprietary.txt" >"$prefix-all.txt"
+  case $1 in
+  code*)
+    cat "$prefix-open-vsx.txt" "$prefix-microsoft.txt" >"$prefix-all.txt"
     extensions="$prefix-all.txt"
-  else
+    ;;
+  *)
     extensions="$prefix-open-vsx.txt"
-  fi
+    ;;
+  esac
   installed=("$($1 --list-extensions --show-versions)")
   while read -r extension; do
     extension_name=$(printf %s "$extension" | cut -d @ -f 1)

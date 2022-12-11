@@ -133,6 +133,7 @@
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
   "aws.telemetry": false,
+  "black-formatter.importStrategy": "fromEnvironment",
   "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],
@@ -147,6 +148,8 @@
   "[html][javascript][json][jsonc][markdown][typescript][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "isort.args": ["--profile", "black"],
+  "isort.importStrategy": "fromEnvironment",
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",
   "markdown.extension.print.absoluteImgPath": false,
@@ -164,7 +167,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [],
     "editor.tabSize": 4
   },
@@ -173,9 +176,7 @@
   "python.analysis.typeCheckingMode": "off",
   "python.disableInstallationCheck": true,
   "python.experiments.enabled": false,
-  "python.formatting.autopep8Path": "${env:HOMEBREW_PREFIX}/bin/autopep8",
-  "python.formatting.blackPath": "${env:HOMEBREW_PREFIX}/bin/black",
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.insidersChannel": "off",
   "python.languageServer": "Jedi",
   "python.linting.flake8Args": ["--max-line-length", "88"],
@@ -193,7 +194,6 @@
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,
-  "python.sortImports.args": ["--profile", "black"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "redhat.telemetry.enabled": false,

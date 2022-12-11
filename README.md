@@ -223,10 +223,11 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 
 ### Python
 
-- **I format Python code with [Black](https://black.readthedocs.io/en/stable/).**
-  - VSCode provides built-in support for Black. I set VSCode to autoformat on save.
-  - Black is still considered a pre-release.
-  - If you prefer the less-decisive PEP 8 format, I recommend [autopep8](https://pypi.org/project/autopep8/) for autoformatting. VSCode also has built-in [Python formatting](https://code.visualstudio.com/docs/python/editing#_formatting) support for autopep8.
+- I format Python code with [Black](https://black.readthedocs.io/en/stable/).
+  - The [Black VSCode extension](https://github.com/microsoft/vscode-black-formatter) provides support for Black. I set VSCode to autoformat on save.
+  - If you prefer the less-decisive PEP 8 format, I recommend [autopep8](https://pypi.org/project/autopep8/) for autoformatting.
+- I format Python imports with [isort](https://pycqa.github.io/isort/).
+  - The [isort VSCode extension](https://github.com/microsoft/vscode-isort) provides support for isort.
 - See my [template-python](https://github.com/br3ndonland/template-python) repo for useful tooling and additional sensible defaults.
 
 ## PGP

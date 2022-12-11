@@ -8,6 +8,8 @@ esbenp.prettier-vscode
 foxundermoon.shell-format
 hashicorp.terraform
 mikestead.dotenv
+ms-python.black-formatter
+ms-python.isort
 ms-python.python@2021.9.1246542782
 redhat.vscode-yaml
 sourcery.sourcery

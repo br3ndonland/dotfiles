@@ -114,14 +114,12 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 ## Homebrew package management
 
-- [Homebrew](https://brew.sh/) is a package manager that includes [Homebrew-Cask](https://caskroom.github.io/) to manage other macOS applications.
-- See the Homebrew [docs](https://docs.brew.sh) for further info.
-- My list of Homebrew packages and casks is available in my [homebrew-brewfile repo](https://github.com/br3ndonland/homebrew-brewfile), and engineered for use with [strap](https://github.com/MikeMcQuaid/strap).
-- The Brewfile works with [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) to manage all Homebrew packages and casks together.
+- [Homebrew](https://brew.sh/) is a package manager that includes [Homebrew-Cask](https://github.com/homebrew/homebrew-cask) to manage other macOS applications. See the Homebrew [docs](https://docs.brew.sh) for further info.
+- The list of "formulae" (packages), "casks" (apps), and `mas` apps (Mac App Store apps) is stored in _[Brewfile](Brewfile)_. The Brewfile works with [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) to manage all Homebrew packages and casks together.
 - Key Brew Bundle commands:
 
   ```sh
-  # Install everything in the Brewfile
+  # Install or update everything in the Brewfile
   brew bundle install --global
   # Check for programs listed in Brewfile
   brew bundle check --global

@@ -15,10 +15,10 @@ com = checkout main
 f = fetch
 l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
-logd = log --pretty=format:'- %s (%h)' --reverse develop..HEAD
-logdpr = log --pretty=format:'- %s (%h)%n  %b' --reverse develop..HEAD --grep 'pull request'
-logm = log --pretty=format:'- %s (%h)' --reverse main..HEAD
-logmpr = log --pretty=format:'- %s (%h)%n  %b' --reverse main..HEAD --grep 'pull request'
+logd = log --pretty=format:"- %s (%h)" --reverse develop..HEAD
+logdpr = log --pretty=format:"- %s (%h)%n  %b" --reverse develop..HEAD --grep "pull request"
+logm = log --pretty=format:"- %s (%h)" --reverse main..HEAD
+logmpr = log --pretty=format:"- %s (%h)%n  %b" --reverse main..HEAD --grep "pull request"
 p = push
 pf = push --force-with-lease
 pt = push --tags
@@ -26,7 +26,7 @@ pso = push --set-upstream origin
 ra = remote add
 re = rebase -i
 rv = remote -v
-sdiff = !git diff && git submodule foreach 'git diff'
+sdiff = !git diff && git submodule foreach "git diff"
 spush = push --recurse-submodules=on-demand
 st = status
 stal = stash pop
@@ -53,7 +53,7 @@ user = br3ndonland
 format = ssh
 [gpg "ssh"]
 allowedsignersfile = ~/.ssh/allowed_signers
-program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [init]
 defaultbranch = main
 [pull]
@@ -68,7 +68,7 @@ autosquash = true
 autostash = true
 [sendemail]
 confirm = auto
-from = 'Brendon Smith <gitsmith@protonmail.com>'
+from = Brendon Smith <gitsmith@protonmail.com>
 smtpserver = 127.0.0.1
 smtpserverport = 1025
 smtpuser = gitsmith@protonmail.com
@@ -79,4 +79,4 @@ sort = -taggerdate:iso
 [user]
 name = Brendon Smith
 email = bws@bws.bio
-signingkey = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCwzZoq3tQx2P4PRgtaxhq/pqxJCdxQvel7MqBSs5ui'
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCwzZoq3tQx2P4PRgtaxhq/pqxJCdxQvel7MqBSs5ui

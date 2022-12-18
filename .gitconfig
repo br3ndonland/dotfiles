@@ -33,6 +33,8 @@ stal = stash pop
 stap = stash push
 supdate = submodule update --init --recursive
 tag = tag -a -s
+[branch]
+autosetuprebase = always
 [commit]
 gpgsign = true
 template = ~/.gitmessage
@@ -56,7 +58,6 @@ program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 defaultbranch = main
 [pull]
 autostash = true
-ff = only
 rebase = true
 [push]
 autosetupremote = true

@@ -2,7 +2,8 @@
 ### Zsh configuration
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
-### initial setup configured by zsh-newuser-install
+### options
+# initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
 # See man zshoptions or http://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
@@ -67,6 +68,7 @@ export \
 
 ### aliases
 alias python='python3'
+if command -v gsed &>/dev/null; then alias sed='gsed'; fi
 
 ### prompt: https://starship.rs
 eval $(starship init zsh)

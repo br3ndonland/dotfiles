@@ -27,24 +27,30 @@ bindkey '^[[3;3~' kill-word
 bindkey '^N' kill-buffer
 
 ### homebrew
-[[ -z $HOMEBREW_PREFIX ]] && case $(uname) in
-Darwin)
-  if [[ $(uname -m) == 'arm64' ]]; then
-    HOMEBREW_PREFIX='/opt/homebrew'
-  elif [[ $(uname -m) == 'x86_64' ]]; then
-    HOMEBREW_PREFIX='/usr/local'
-  fi
-  ;;
-Linux)
-  if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
-    HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
-  elif [[ -d $HOME/.linuxbrew ]]; then
-    HOMEBREW_PREFIX=$HOME/.linuxbrew
-  fi
-  [[ -d $HOMEBREW_PREFIX ]] && PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
-  ;;
-esac
-[[ -d $HOMEBREW_PREFIX ]] && eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+if [[ -z $HOMEBREW_PREFIX ]]; then
+  case $(uname) in
+  Darwin)
+    if [[ $(uname -m) == 'arm64' ]]; then
+      HOMEBREW_PREFIX='/opt/homebrew'
+    elif [[ $(uname -m) == 'x86_64' ]]; then
+      HOMEBREW_PREFIX='/usr/local'
+    fi
+    ;;
+  Linux)
+    if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
+      HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
+    elif [[ -d $HOME/.linuxbrew ]]; then
+      HOMEBREW_PREFIX=$HOME/.linuxbrew
+    fi
+    if [[ -d $HOMEBREW_PREFIX ]]; then
+      PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
+    fi
+    ;;
+  esac
+fi
+if [[ -d $HOMEBREW_PREFIX ]]; then
+  eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+fi
 
 ### exports
 if command -v codium &>/dev/null; then

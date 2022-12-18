@@ -11,6 +11,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 - [Hardware](#hardware)
 - [macOS](#macos)
 - [Homebrew package management](#homebrew-package-management)
+- [Git](#git)
 - [Shell](#shell)
 - [Text editors](#text-editors)
   - [VSCode desktop](#vscode-desktop)
@@ -126,6 +127,18 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
   # Remove any Homebrew packages and casks not in Brewfile
   brew bundle cleanup --force --global
   ```
+
+## Git
+
+- [Git](https://www.git-scm.com/) is the version control system used on GitHub. _[Why use Git?](https://www.git-scm.com/about)_ Git enables creation of multiple versions of a code repository called branches, with the ability to track and undo changes in detail. If you're new to Git, the [Git Book](https://www.git-scm.com/book/en/v2) is helpful.
+- I install Git with Homebrew.
+- I [configure Git to connect to GitHub with SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
+- I store Git configuration in _[.gitconfig](.gitconfig)_.
+- I sign Git commits and tags with [1Password and SSH](#1password-ssh-features). In the past, I have also signed with [GPG](#gpg).
+- _Why sign Git commits and tags?_
+  - **Signing verifies user identity**. In case you haven't heard, [anyone can use Git to impersonate you](https://blog.1password.com/git-commit-signing/). Signing helps avoid impersonation attacks. The simplest form of signing can be seen when performing Git operations through the GitHub UI with valid credentials (making a commit, merging a PR, etc). As the [GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) explain, these operations are signed with GitHub's key (signature `4AEE18F83AFDEB23`). Operations signed with this key indicate valid GitHub credentials, so signing with GitHub's key is somewhat like one-factor authentication. To make this more secure, users can use their own keys, which involves generating and maintaining custody of a key, setting up Git to sign commits and tags with the key, and adding the public key to the GitHub account. This can be even more secure, somewhat like two-factor authentication, because it indicates that the user has both valid GitHub credentials and the valid private key used for signing. Signing with a user-generated key also allows attestation. If you navigate to [my GitHub profile](https://github.com/br3ndonland), you can see several SSH and PGP key signatures that I have associated with my identity on GitHub. This means, "I attest that I possess the corresponding private keys and use them for signing." Commits and tags signed with those keys show up as "verified" on GitHub.
+  - **Signing verifies changes**. This is especially important for tags because tags are often used to perform releases. Signed tags indicate that the release comes from a trusted source, because the user possessing the signing key has verified the contents of the release.
+- See the [GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification) for further info on signing.
 
 ## Shell
 

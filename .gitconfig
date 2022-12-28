@@ -39,6 +39,7 @@ autosetuprebase = always
 gpgsign = true
 template = ~/.gitmessage
 [core]
+commentchar = ";"
 editor = code --wait
 [credential]
 helper = osxkeychain

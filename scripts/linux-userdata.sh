@@ -13,7 +13,7 @@ passwd --delete "${USERNAME}"
 chage --lastday 0 "${USERNAME}"
 
 # Create SSH directory for sudo user and move keys over
-HOME_DIR="$(eval echo ~${USERNAME})"
+HOME_DIR="$(eval echo ~"${USERNAME}")"
 mkdir --parents "${HOME_DIR}/.ssh"
 cp /root/.ssh/authorized_keys "${HOME_DIR}/.ssh"
 chmod 0700 "${HOME_DIR}/.ssh"

@@ -173,6 +173,7 @@ run_dotfile_scripts() {
 
 [ "$USER" = "root" ] && abort "Run bootstrap.sh as yourself, not root."
 
+# shellcheck disable=SC2086
 if [ "$MACOS" -gt 0 ]; then
   [ "$STRAP_CI" -eq 0 ] && caffeinate -s -w $$ &
   groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to admin."
@@ -202,6 +203,7 @@ fi
 # Check for and enable full-disk encryption
 logn "Checking full-disk encryption status:"
 VAULT_MSG="FileVault is (On|Off, but will be enabled after the next restart)."
+# shellcheck disable=SC2086
 if fdesetup status | grep $Q -E "$VAULT_MSG"; then
   logk
 elif [ "$MACOS" -eq 0 ] || [ "$STRAP_CI" -gt 0 ]; then
@@ -247,6 +249,7 @@ install_xcode_clt() {
   fi
 }
 
+# shellcheck disable=SC2086
 check_xcode_license() {
   if /usr/bin/xcrun clang 2>&1 | grep $Q license; then
     if [ "$STRAP_INTERACTIVE" -gt 0 ]; then
@@ -281,6 +284,7 @@ if [ -n "$STRAP_GITHUB_USER" ] &&
 fi
 
 # Set up GitHub HTTPS credentials
+# shellcheck disable=SC2086
 if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
   # Execute credential in case it's a wrapper script for credential-osxkeychain
   if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 |
@@ -301,6 +305,7 @@ fi
 
 # Check for and install any remaining software updates
 logn "Checking for software updates:"
+# shellcheck disable=SC2086
 if softwareupdate -l 2>&1 | grep $Q "No new software available."; then
   logk
 else
@@ -316,6 +321,7 @@ else
 fi
 
 # Set up dotfiles
+# shellcheck disable=SC2086
 if [ ! -d "$HOME/.dotfiles" ]; then
   if [ -z "$STRAP_DOTFILES_URL" ] || [ -z "$STRAP_DOTFILES_BRANCH" ]; then
     abort "Please set STRAP_DOTFILES_URL and STRAP_DOTFILES_BRANCH."
@@ -325,6 +331,7 @@ if [ ! -d "$HOME/.dotfiles" ]; then
 fi
 strap_dotfiles_branch_name="${STRAP_DOTFILES_BRANCH##*/}"
 log "Checking out $strap_dotfiles_branch_name in ~/.dotfiles."
+# shellcheck disable=SC2086
 (
   cd ~/.dotfiles
   git stash
@@ -335,6 +342,7 @@ log "Checking out $strap_dotfiles_branch_name in ~/.dotfiles."
 run_dotfile_scripts scripts/symlink.sh
 logk
 
+# shellcheck disable=SC2086
 install_homebrew() {
   logn "Installing Homebrew:"
   HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
@@ -410,7 +418,7 @@ run_brew_installs() {
   local brewfile_domain brewfile_path brewfile_url git_branch github_user
   if ! command -v brew &>/dev/null; then
     log "brew command not in shell environment. Attempting to load."
-    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+    eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
     command -v brew &>/dev/null && logk || return 1
   fi
   # Disable Homebrew Google Analytics: https://docs.brew.sh/Analytics

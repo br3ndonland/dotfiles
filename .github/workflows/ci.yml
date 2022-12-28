@@ -20,7 +20,7 @@ jobs:
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - uses: actions/checkout@v3
       - name: Install Prettier
-        run: brew install prettier
+        run: npm i -g prettier@'^2'
       - name: Check web code formatting with Prettier
         run: prettier --check .
       - name: Install shfmt (https://github.com/mvdan/sh)

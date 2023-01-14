@@ -37,7 +37,7 @@ tag = tag -a -s
 autosetuprebase = always
 [commit]
 gpgsign = true
-template = ~/.gitmessage
+status = false
 [core]
 commentchar = ";"
 editor = code --wait

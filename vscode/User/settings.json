@@ -23,6 +23,7 @@
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
+  "editor.unicodeHighlight.nonBasicASCII": true,
   "editor.wordWrap": "off",
   "emmet.triggerExpansionOnTab": true,
   "explorer.confirmDelete": false,

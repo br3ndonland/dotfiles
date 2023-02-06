@@ -65,16 +65,18 @@ else
   editor='vim'
 fi
 TTY=$(tty)
+GNU_FINDUTILS_BIN=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
+GNU_SED_BIN=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
+PIPX_BIN=$HOME/.local/bin
 export \
   EDITOR=$editor \
   GIT_EDITOR=$editor \
   GPG_TTY=$TTY \
   HOMEBREW_NO_ANALYTICS=1 \
-  PATH=$HOME/.local/bin:$PATH
+  PATH=$PIPX_BIN:$GNU_FINDUTILS_BIN:$GNU_SED_BIN:$PATH
 
 ### aliases
 alias python='python3'
-if command -v gsed &>/dev/null; then alias sed='gsed'; fi
 
 ### prompt: https://starship.rs
 eval $(starship init zsh)

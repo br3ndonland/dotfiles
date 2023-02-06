@@ -10,6 +10,7 @@ brew "bash"
 brew "black", restart_service: :changed
 brew "deno" if OS.mac?
 brew "ffmpeg"
+brew "findutils"
 brew "flake8"
 brew "gh"
 brew "git"

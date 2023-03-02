@@ -295,6 +295,7 @@ defaults write org.m0k.transmission DownloadAskManual -bool false
 defaults write org.m0k.transmission DownloadAskMulti -bool false
 defaults write org.m0k.transmission DownloadLimit -int 10000
 defaults write org.m0k.transmission DownloadLocationConstant -bool false
+defaults write org.m0k.transmission EncryptionRequire -bool true
 defaults write org.m0k.transmission MagnetOpenAsk -bool false
 defaults write org.m0k.transmission PeersTorrent -int 10
 defaults write org.m0k.transmission PeersTotal -int 200

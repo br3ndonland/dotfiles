@@ -1,7 +1,7 @@
 {
   "Markdown HTML img": {
     "prefix": "mimg",
-    "body": "<img src=\"$1\" alt=\"$2\" width=\"${3:600px}\" height=\"$4\" />",
+    "body": "<img src=\"$1\" alt=\"$2\" width=\"${3:75%}\" />",
     "description": "HTML image tag for Markdown files"
   }
 }

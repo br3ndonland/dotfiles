@@ -162,6 +162,13 @@ VSCode offers other options for managing settings. The [`Shan.code-settings-sync
 - Where does VSCode settings sync actually store the data? The `Shan.code-settings-sync` extension stored data in a GitHub Gist, so it was possible to view the synced settings directly. VSCode only allows the synced settings to be viewed from within VSCode. There's no Git repo or Gist where you can go to see line-by-line changes.
 - VSCode settings sync uses a "Merge or Replace" dialog box and a pseudo-Git merge conflict resolver. It can be complicated and confusing to use.
 
+[VSCode profiles](https://code.visualstudio.com/docs/editor/profiles) ([introduced in VSCode 1.76 February 2023](https://code.visualstudio.com/updates/v1_76)) assist with switching among different editor environments, like personal and work computers. This repo does not use VSCode profiles, but uses a simple Git branching strategy for managing these environments. _Why not use VSCode profiles?_
+
+- Most settings are the same across all profiles, but VSCode profiles store separate JSON settings for every profile
+- Exporting a profile to a file exports the settings as an inline dumped JSON string, making version control and reading difficult
+- Exporting a profile to a file includes metadata like `snippets.usageTimestamps`, which is apparently tracking every time snippets are used. Why? Why would you need to track this in a profile? This also makes version control more difficult because it creates a Git diff every time a snippet is used.
+- The [VSCode profiles docs describe the use case](https://code.visualstudio.com/docs/editor/profiles#_uses-for-profiles) as, "Since profiles are remembered per workspace, they are a great way to customize VS Code for a specific programming language... Using this approach, you can easily switch between workspaces and always have VS Code configured the right way." There are already workspace and repo settings available that do the same thing.
+
 ### VSCode browser
 
 #### codespaces

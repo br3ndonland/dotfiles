@@ -154,7 +154,13 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is free of proprietary features and telemetry.
 
-I previously configured VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[vscode-extensions.sh](scripts/vscode-extensions.sh)_ along with the name of the editor, like `vscode-extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm-globals.sh](scripts/npm-globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
+VSCode settings, keybindings, and extension lists are stored in this repo. Extensions can be installed by running _[vscode-extensions.sh](scripts/vscode-extensions.sh)_ along with the editor command name, like `vscode-extensions.sh codium` for VSCodium. The script uses the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
+
+VSCode offers other options for managing settings. The [`Shan.code-settings-sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension was popular in the past, and stored settings in a GitHub Gist. [VSCode now offers a built-in settings sync feature](https://code.visualstudio.com/docs/editor/settings-sync) ([introduced in VSCode 1.48 July 2020](https://code.visualstudio.com/updates/v1_48)). This repo uses Git for settings sync instead of VSCode's settings sync feature. _Why not use VSCode settings sync?_
+
+- VSCode settings sync requires a Microsoft or GitHub login. What if you use GitLab?
+- Where does VSCode settings sync actually store the data? The `Shan.code-settings-sync` extension stored data in a GitHub Gist, so it was possible to view the synced settings directly. VSCode only allows the synced settings to be viewed from within VSCode. There's no Git repo or Gist where you can go to see line-by-line changes.
+- VSCode settings sync uses a "Merge or Replace" dialog box and a pseudo-Git merge conflict resolver. It can be complicated and confusing to use.
 
 ### VSCode browser
 

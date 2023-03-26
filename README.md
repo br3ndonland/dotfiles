@@ -152,7 +152,7 @@ A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applica
 
 ### VSCode desktop
 
-I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is free of proprietary features and telemetry. To work on servers via SSH, I use [Pony SSH](https://github.com/thingalon/pony-ssh).
+I write code with [VSCodium](https://github.com/VSCodium/vscodium), an alternate build of [Microsoft Visual Studio Code](https://code.visualstudio.com/) (VSCode) that is free of proprietary features and telemetry.
 
 I previously configured VSCode and VSCodium using the [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension. I now have my settings, keybindings, and extensions stored here in my dotfiles repo. Extensions can be installed by running _[vscode-extensions.sh](scripts/vscode-extensions.sh)_ along with the name of the editor, like `vscode-extensions.sh codium`. The shell script was quite easy to write. I based it on _[npm-globals.sh](scripts/npm-globals.sh)_, and used the [VSCode extension CLI](https://code.visualstudio.com/docs/editor/extension-gallery).
 

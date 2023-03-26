@@ -68,6 +68,8 @@ _bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _scripts/_ dir
 
 A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
 
+Users with more complex needs for multi-environment dotfiles management might consider a tool like [`chezmoi`](https://www.chezmoi.io/).
+
 ## Hardware
 
 - [Apple Silicon M1](https://www.apple.com/mac/m1/) Mac mini

@@ -67,13 +67,14 @@ fi
 TTY=$(tty)
 GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
 GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
-PIPX_BIN=$HOME/.local/bin
+PIPX_BIN_DIR=$HOME/.local/bin
 export \
   EDITOR=$editor \
   GIT_EDITOR=$editor \
   GPG_TTY=$TTY \
   HOMEBREW_NO_ANALYTICS=1 \
-  PATH=$PIPX_BIN:$GNU_FINDUTILS_BIN_DIR:$GNU_SED_BIN_DIR:$PATH
+  PATH=$PIPX_BIN_DIR:$GNU_FINDUTILS_BIN_DIR:$GNU_SED_BIN_DIR:$PATH \
+  PIPX_BIN_DIR=$PIPX_BIN_DIR
 
 ### aliases
 alias python='python3'

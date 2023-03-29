@@ -65,15 +65,15 @@ else
   editor='vim'
 fi
 TTY=$(tty)
-GNU_FINDUTILS_BIN=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
-GNU_SED_BIN=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
+GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
+GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
 PIPX_BIN=$HOME/.local/bin
 export \
   EDITOR=$editor \
   GIT_EDITOR=$editor \
   GPG_TTY=$TTY \
   HOMEBREW_NO_ANALYTICS=1 \
-  PATH=$PIPX_BIN:$GNU_FINDUTILS_BIN:$GNU_SED_BIN:$PATH
+  PATH=$PIPX_BIN:$GNU_FINDUTILS_BIN_DIR:$GNU_SED_BIN_DIR:$PATH
 
 ### aliases
 alias python='python3'

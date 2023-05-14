@@ -293,7 +293,6 @@ defaults write org.m0k.transmission DisplayProgressBarAvailable -bool true
 defaults write org.m0k.transmission DownloadAsk -bool true
 defaults write org.m0k.transmission DownloadAskManual -bool false
 defaults write org.m0k.transmission DownloadAskMulti -bool false
-defaults write org.m0k.transmission DownloadLimit -int 10000
 defaults write org.m0k.transmission DownloadLocationConstant -bool false
 defaults write org.m0k.transmission EncryptionRequire -bool true
 defaults write org.m0k.transmission MagnetOpenAsk -bool false
@@ -306,7 +305,6 @@ defaults write org.m0k.transmission SmallView -bool true
 defaults write org.m0k.transmission SpeedLimitDownloadLimit -int 2000
 defaults write org.m0k.transmission SpeedLimitUploadLimit -int 1000
 defaults write org.m0k.transmission SUEnableAutomaticChecks -bool false
-defaults write org.m0k.transmission UploadLimit -int 5000
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool false
 defaults write org.m0k.transmission WarningDonate -bool false
 defaults write org.m0k.transmission WarningLegal -bool false

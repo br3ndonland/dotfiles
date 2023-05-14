@@ -281,7 +281,6 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 defaults write org.m0k.transmission AutoSize -bool false
 defaults write org.m0k.transmission AutoStartDownload -bool true
-defaults write org.m0k.transmission AutoUpdateBeta -bool true
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 defaults write org.m0k.transmission BlocklistURL -string \
   "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz"

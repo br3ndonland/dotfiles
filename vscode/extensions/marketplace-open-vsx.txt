@@ -1,6 +1,5 @@
 bradlc.vscode-tailwindcss
 bungcip.better-toml
-denoland.vscode-deno
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig

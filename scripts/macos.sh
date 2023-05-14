@@ -298,7 +298,7 @@ defaults write org.m0k.transmission MagnetOpenAsk -bool false
 defaults write org.m0k.transmission PeersTorrent -int 10
 defaults write org.m0k.transmission PeersTotal -int 200
 defaults write org.m0k.transmission PlayDownloadSound -bool false
-defaults write org.m0k.transmission RandomPort -bool true
+defaults write org.m0k.transmission RandomPort -bool false
 defaults write org.m0k.transmission SleepPrevent -bool true
 defaults write org.m0k.transmission SmallView -bool true
 defaults write org.m0k.transmission SpeedLimitDownloadLimit -int 2000

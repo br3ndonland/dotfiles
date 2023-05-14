@@ -264,6 +264,12 @@ if networksetup -listallnetworkservices | grep -q "Ethernet"; then
   networksetup -setdhcp "Ethernet"
 fi
 
+# Configure Proton VPN
+defaults write ch.protonvpn.mac AutoConnect -bool true
+defaults write ch.protonvpn.mac StartMinimized -bool true
+defaults write ch.protonvpn.mac StartOnBoot -bool true
+defaults write ch.protonvpn.mac VpnAcceleratorEnabled -bool true
+
 ###############################################################################
 # TextEdit                                                                    #
 ###############################################################################

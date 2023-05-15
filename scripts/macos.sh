@@ -284,9 +284,11 @@ defaults write org.m0k.transmission AutoStartDownload -bool true
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 defaults write org.m0k.transmission BlocklistURL -string \
   "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz"
+defaults write org.m0k.transmission CheckDownload -bool false
 defaults write org.m0k.transmission CheckQuit -bool false
 defaults write org.m0k.transmission CheckRemove -bool true
 defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+defaults write org.m0k.transmission CheckUpload -bool false
 defaults write org.m0k.transmission DeleteOriginalTorrent -bool false
 defaults write org.m0k.transmission DisplayProgressBarAvailable -bool true
 defaults write org.m0k.transmission DownloadAsk -bool true

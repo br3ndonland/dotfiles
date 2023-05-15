@@ -5,6 +5,16 @@
     "command": "markdown.extension.editing.toggleList",
     "when": "editorTextFocus && editorLangId == 'markdown'"
   },
+  // Markdown details
+  {
+    "key": "ctrl+alt+d",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "langId": "markdown",
+      "name": "Markdown HTML details"
+    },
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
   // Markdown images
   {
     "key": "ctrl+alt+i",

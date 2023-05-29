@@ -146,6 +146,10 @@
     "editor.formatOnSave": false
   },
   "eslint.enable": false,
+  "go.survey.prompt": false,
+  "go.toolsManagement.autoUpdate": false,
+  "go.toolsManagement.checkForUpdates": "local",
+  "gopls": { "ui.semanticTokens": true },
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
   "[html][javascript][json][jsonc][markdown][typescript][vue][yaml]": {

@@ -1,6 +1,9 @@
 # starship configuration: https://starship.rs/config/
 command_timeout = 5000
 
+[battery]
+disabled = true
+
 [nodejs]
 format = "via [node.js ($version )]($style)"
 

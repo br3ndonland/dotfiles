@@ -371,7 +371,9 @@ Note that SSH can also be used to sign Git commits. See the [SSH section](#ssh) 
 
 #### General
 
-- Restart the agent: `gpgconf --kill gpg-agent` or `gpgconf --kill all`. See the [GPG docs on invoking `gpg-agent`](https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html).
+- Start the agent: `gpg-connect-agent /bye`
+- Reload the agent configuration: `gpg-connect-agent reloadagent /bye`
+- Stop the agent: `gpgconf --kill gpg-agent` or `gpgconf --kill all`. See the [GPG docs on invoking `gpg-agent`](https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html).
 - Verify GPG signing capabilities: `echo "test" | gpg --clearsign`
 - Trust GPG keys using the GPG TTY interface:
   - If you see `gpg: WARNING: This key is not certified with a trusted signature!` when examining signed Git commits with `git log --show-signature`, you may want to trust the keys.

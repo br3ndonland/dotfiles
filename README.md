@@ -300,6 +300,7 @@ GPG is an implementation of [OpenPGP](https://www.openpgp.org).
 
 Resources:
 
+- [`gpg-card` docs](https://gnupg.org/documentation/manuals/gnupg/gpg_002dcard.html)
 - [Yubico developers: PGP](https://developers.yubico.com/PGP/)
 - [Yubico support: using your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP)
 - [YubiKey Manager CLI (`ykman`) User Manual](https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html)

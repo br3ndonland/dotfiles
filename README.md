@@ -332,6 +332,80 @@ gpg/card> fetch
 gpg/card> quit
 ```
 
+To move a GPG key from a computer to a YubiKey, use `gpg --edit-key` followed by `keytocard`. The `keytocard` command is repeated for each "where to store the key" option. After the two `keytocard` commands, there may be confusing output regarding whether or not to "save" your changes, including `Note: the local copy of the secret key will only be deleted with "save".` As recommended in [Yubico support: using your YubiKey with OpenPGP](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP), entering "no" at these prompts will avoid deleting the GPG key from the computer (but will still save it to the YubiKey).
+
+```text
+~
+❯ gpg --edit-key <KEY_ID>
+
+gpg> keytocard
+Really move the primary key? (y/N) y
+Please select where to store the key:
+   (1) Signature key
+   (3) Authentication key
+Your selection? 1
+gpg: pinentry launched (11284 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter your passphrase, so that the secret key can be unlocked for this session
+Passphrase:
+gpg: pinentry launched (11285 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter the Admin PIN
+
+Number: 12 345 678
+Holder:
+Admin PIN:
+gpg: pinentry launched (11287 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter the Admin PIN
+
+Number: 12 345 678
+Holder:
+Admin PIN:
+
+sec  ed25519/16digit_PGPkeyid
+     created: 1900-01-01  expires: never       usage: SC
+     trust: unknown       validity: unknown
+ssb  cv25519/16digit_PGPkeyid
+     created: 1900-01-01  expires: never       usage: E
+[ unknown] (1). you <you@example.com>
+
+Note: the local copy of the secret key will only be deleted with "save".
+
+gpg> keytocard
+Really move the primary key? (y/N) y
+Please select where to store the key:
+   (1) Signature key
+   (3) Authentication key
+Your selection? 3
+
+gpg: pinentry launched (11284 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter your passphrase, so that the secret key can be unlocked for this session
+Passphrase:
+gpg: pinentry launched (11285 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter the Admin PIN
+
+Number: 12 345 678
+Holder:
+Admin PIN:
+gpg: pinentry launched (11287 tty 1.2.1 /dev/ttys004 xterm-kitty - 20620/501/4 501/20 0)
+Please enter the Admin PIN
+
+Number: 12 345 678
+Holder:
+Admin PIN:
+
+sec  ed25519/16digit_PGPkeyid
+     created: 1900-01-01  expires: never       usage: SC
+     trust: unknown       validity: unknown
+ssb  cv25519/16digit_PGPkeyid
+     created: 1900-01-01  expires: never       usage: E
+[ unknown] (1). you <you@example.com>
+
+Note: the local copy of the secret key will only be deleted with "save".
+
+gpg> Q
+Save changes? (y/N) N
+Quit without saving? (y/N) y
+```
+
 #### GPG key generation
 
 - Run `gpg --full-generate-key` from the command line to generate a key. Respond to the command-line prompts. The maximum key size of `4096` is recommended.

@@ -306,6 +306,12 @@ Resources:
 - [YubiKey Manager CLI (`ykman`) User Manual](https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html)
 - [Okta developer blog: Developers guide to GPG and YubiKey](https://developer.okta.com/blog/2021/07/07/developers-guide-to-gpg)
 
+A YubiKey has admin and non-admin OpenPGP PINs.
+
+- Default OpenPGP admin PIN is 12345678.
+- Default OpenPGP non-admin PIN is 123456.
+- Change OpenPGP PINs with `gpg --change-pin` or `ykman openpgp access change-admin-pin`/`ykman openpgp access change-pin`.
+
 To use a GPG key on a YubiKey with a new computer, plug in the YubiKey, check the status, and fetch the public keys.
 
 ```text

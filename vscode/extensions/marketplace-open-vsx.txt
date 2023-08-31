@@ -6,6 +6,7 @@ editorconfig.editorconfig
 esbenp.prettier-vscode
 foxundermoon.shell-format
 golang.go
+hashicorp.hcl
 hashicorp.terraform
 mikestead.dotenv
 ms-python.black-formatter

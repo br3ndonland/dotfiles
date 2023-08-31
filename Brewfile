@@ -53,6 +53,7 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 
 cask "1password"
+cask "1password-cli"
 cask "brave-browser"
 # cask "datagrip"
 cask "docker"

@@ -72,10 +72,9 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 ## Hardware
 
-- [Apple Silicon M1](https://www.apple.com/mac/m1/) Mac mini
-- [Dell S3221QS 32" curved 4K monitor](https://www.amazon.com/dp/B08G8WMRRP)
-- [Seagate external hard drives](https://www.amazon.com/dp/B07MY44VNM)
-- [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC) and [Dygma Raise](https://dygma.com/) keyboards
+- Apple Silicon [Mac mini](https://www.apple.com/mac-mini/)
+- [Samsung ViewFinity S9 monitor](https://www.amazon.com/dp/B0CB71BY87)
+- [Microsoft Sculpt keyboard](https://www.amazon.com/dp/B00CYX26BC)
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
 - <details><summary><a href="https://www.fully.com/standing-desks/jarvis.html">Fully Jarvis standing desk</a></summary>

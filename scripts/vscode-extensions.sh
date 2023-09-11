@@ -10,8 +10,9 @@ check_open_vsx() {
     return
   fi
   local local_version open_vsx_version response url
-  url="https://open-vsx.org/api/$(printf %s "$2" | cut -d @ -f 1 | tr '.' '/')"
+  extension_name=$(printf %s "$2" | cut -d @ -f 1)
   local_version=$(printf %s "$2" | cut -d @ -f 2)
+  url="https://open-vsx.org/api/$(echo "$extension_name" | tr '.' '/')"
   response=$(curl -fs "$url" -H "accept: application/json")
   if command -v fx &>/dev/null; then
     open_vsx_version=$(printf %s "$response" | fx .version)
@@ -21,7 +22,8 @@ check_open_vsx() {
   if [ "$local_version" = "$open_vsx_version" ]; then
     printf "Extension '%s' up-to-date with Open VSX.\n" "$2"
   else
-    $1 --install-extension "$2" --force
+    printf "Updating to %s\n" "$extension_name@$open_vsx_version"
+    $1 --install-extension "$extension_name@$open_vsx_version" --force
   fi
 }
 

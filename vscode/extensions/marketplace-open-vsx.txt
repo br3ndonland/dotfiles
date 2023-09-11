@@ -11,7 +11,7 @@ hashicorp.terraform
 mikestead.dotenv
 ms-python.black-formatter
 ms-python.isort
-ms-python.python@2021.9.1246542782
+ms-python.python
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 svelte.svelte-vscode

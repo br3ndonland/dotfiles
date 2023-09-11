@@ -135,8 +135,6 @@
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
   "aws.telemetry": false,
-  // TODO: when ms-python.black-formatter actually works
-  // "black-formatter.importStrategy": "fromEnvironment",
   "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],
@@ -155,9 +153,6 @@
   "[html][javascript][json][jsonc][markdown][typescript][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // TODO: when ms-python.isort actually works
-  // "isort.args": ["--profile", "black"],
-  // "isort.importStrategy": "fromEnvironment",
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",
   "markdown.extension.print.absoluteImgPath": false,
@@ -175,21 +170,17 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    // TODO: when ms-python.black-formatter actually works
-    // "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.defaultFormatter": "ms-python.python",
     "editor.rulers": [],
     "editor.tabSize": 4
   },
+  "black-formatter.importStrategy": "fromEnvironment",
+  "isort.args": ["--profile", "black"],
+  "isort.importStrategy": "fromEnvironment",
   "pylance.insidersChannel": "off",
   "python.analysis.completeFunctionParens": false,
   "python.analysis.typeCheckingMode": "off",
   "python.disableInstallationCheck": true,
   "python.experiments.enabled": false,
-  "python.formatting.blackPath": "${env:HOMEBREW_PREFIX}/bin/black",
-  // TODO: when ms-python.black-formatter actually works
-  // "python.formatting.provider": "none",
-  "python.formatting.provider": "black",
   "python.insidersChannel": "off",
   "python.languageServer": "Jedi",
   "python.linting.flake8Args": ["--max-line-length", "88"],
@@ -207,7 +198,6 @@
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,
-  "python.sortImports.args": ["--profile", "black"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "redhat.telemetry.enabled": false,

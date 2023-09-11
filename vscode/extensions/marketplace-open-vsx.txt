@@ -10,7 +10,9 @@ hashicorp.hcl
 hashicorp.terraform
 mikestead.dotenv
 ms-python.black-formatter
+ms-python.flake8
 ms-python.isort
+ms-python.mypy-type-checker
 ms-python.python
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker

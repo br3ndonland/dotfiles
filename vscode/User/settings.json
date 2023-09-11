@@ -174,8 +174,18 @@
     "editor.tabSize": 4
   },
   "black-formatter.importStrategy": "fromEnvironment",
+  "flake8.args": ["--max-line-length", "88"],
+  "flake8.importStrategy": "fromEnvironment",
   "isort.args": ["--profile", "black"],
   "isort.importStrategy": "fromEnvironment",
+  "mypy-type-checker.args": [
+    "--follow-imports=silent",
+    "--ignore-missing-imports",
+    "--install-types",
+    "--show-column-numbers",
+    "--show-error-codes"
+  ],
+  "mypy-type-checker.importStrategy": "fromEnvironment",
   "pylance.insidersChannel": "off",
   "python.analysis.completeFunctionParens": false,
   "python.analysis.typeCheckingMode": "off",
@@ -183,19 +193,6 @@
   "python.experiments.enabled": false,
   "python.insidersChannel": "off",
   "python.languageServer": "Jedi",
-  "python.linting.flake8Args": ["--max-line-length", "88"],
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Path": "${env:HOMEBREW_PREFIX}/bin/flake8",
-  "python.linting.mypyArgs": [
-    "--follow-imports=silent",
-    "--ignore-missing-imports",
-    "--install-types",
-    "--show-column-numbers",
-    "--show-error-codes"
-  ],
-  "python.linting.mypyEnabled": true,
-  "python.linting.mypyPath": "${env:HOMEBREW_PREFIX}/bin/mypy",
-  "python.linting.pylintEnabled": false,
   "python.pythonPath": "python3",
   "python.showStartPage": false,
   "python.testing.autoTestDiscoverOnSaveEnabled": false,

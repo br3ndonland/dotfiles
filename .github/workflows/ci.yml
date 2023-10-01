@@ -23,8 +23,8 @@ jobs:
         run: npm i -g prettier@'^2'
       - name: Check web code formatting with Prettier
         run: prettier --check .
-      - name: Install shfmt (https://github.com/mvdan/sh)
-        run: brew install shfmt
+      - name: Install formatters with Homebrew
+        run: brew install shfmt taplo
       - name: Check shell script formatting with shfmt
         run: shfmt -d -i 2 .
       - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
@@ -43,6 +43,11 @@ jobs:
         shell: bash
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
+      - name: Check TOML formatting with Taplo
+        run: |
+          taplo check .taplo.toml
+          taplo check --schema https://starship.rs/config-schema.json .config/starship.toml
+          taplo fmt --check **/*.toml
   test:
     if: github.event_name != 'push'
     needs: [lint]

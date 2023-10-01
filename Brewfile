@@ -58,20 +58,9 @@ cask "brave-browser"
 # cask "datagrip"
 cask "docker"
 cask "firefox"
-cask "handbrake",
-  args: {
-    appdir: "/Users/nonadmin/Applications"
-  },
-  binaries: false if system "command -v dscl &>/dev/null && dscl . list /Users | grep -q 'nonadmin'"
 # cask "inkscape"
 cask "karabiner-elements"
 cask "kitty"
-cask "makemkv",
-  args: {
-    appdir: "/Users/nonadmin/Applications"
-  },
-  binaries: false if system "command -v dscl &>/dev/null && dscl . list /Users | grep -q 'nonadmin'"
-cask "plex-media-server"
 # cask "postico"
 # cask "postman"
 cask "protonvpn"

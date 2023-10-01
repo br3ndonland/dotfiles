@@ -221,6 +221,14 @@
     "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "svelte.enable-ts-plugin": true,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.arrayAutoCollapse": false,
+  "evenBetterToml.formatter.reorderArrays": true,
+  "evenBetterToml.formatter.reorderKeys": true,
+  "evenBetterToml.formatter.trailingNewline": true,
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",

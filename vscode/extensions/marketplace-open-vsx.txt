@@ -1,5 +1,4 @@
 bradlc.vscode-tailwindcss
-bungcip.better-toml
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig
@@ -17,6 +16,7 @@ ms-python.python
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 svelte.svelte-vscode
+tamasfe.even-better-toml
 timonwong.shellcheck
 Vue.volar
 yzhang.markdown-all-in-one

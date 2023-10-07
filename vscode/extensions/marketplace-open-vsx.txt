@@ -12,7 +12,7 @@ ms-python.black-formatter
 ms-python.flake8
 ms-python.isort
 ms-python.mypy-type-checker
-ms-python.python
+ms-python.python@2023.16.0
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 tamasfe.even-better-toml

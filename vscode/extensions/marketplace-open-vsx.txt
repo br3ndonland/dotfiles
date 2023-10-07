@@ -1,4 +1,3 @@
-bradlc.vscode-tailwindcss
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig

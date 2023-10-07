@@ -170,6 +170,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [],
     "editor.tabSize": 4
   },

@@ -15,7 +15,6 @@ ms-python.mypy-type-checker
 ms-python.python
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
-svelte.svelte-vscode
 tamasfe.even-better-toml
 timonwong.shellcheck
 Vue.volar

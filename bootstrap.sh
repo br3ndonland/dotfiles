@@ -85,10 +85,44 @@ reset_debug() {
   fi
 }
 
+logskip() {
+  STRAP_STEP=""
+  echo "SKIPPED"
+  echo "$*"
+}
+
 sudo_init() {
   if [ "$STRAP_INTERACTIVE" -eq 0 ]; then return; fi
-  # If TouchID for sudo is setup: use that instead.
-  if grep -q pam_tid /etc/pam.d/sudo; then return; fi
+  # Check and, if necessary, enable sudo authentication using TouchID.
+  # Don't care about non-alphanumeric filenames when doing a specific match
+  # shellcheck disable=SC2010,SC2086
+  if ls /usr/lib/pam | grep $Q "pam_tid.so"; then
+    STRAP_STEP="Configuring sudo authentication using TouchID:"
+    echo "--> $STRAP_STEP"
+    if [[ -f /etc/pam.d/sudo_local || -f /etc/pam.d/sudo_local.template ]]; then
+      # New in macOS Sonoma, survives updates.
+      PAM_FILE="/etc/pam.d/sudo_local"
+      FIRST_LINE="# sudo_local: local config file which survives system update and is included for sudo"
+      if [[ ! -f "/etc/pam.d/sudo_local" ]]; then
+        echo "$FIRST_LINE" | sudo_askpass tee "$PAM_FILE" >/dev/null
+      fi
+    else
+      PAM_FILE="/etc/pam.d/sudo"
+      FIRST_LINE="# sudo: auth account password session"
+    fi
+    if grep $Q pam_tid.so "$PAM_FILE"; then
+      logk
+    elif ! head -n1 "$PAM_FILE" | grep $Q "$FIRST_LINE"; then
+      logskip "$PAM_FILE is not in the expected format!"
+    else
+      TOUCHID_LINE="auth       sufficient     pam_tid.so"
+      sudo_askpass sed -i .bak -e \
+        "s/$FIRST_LINE/$FIRST_LINE\n$TOUCHID_LINE/" \
+        "$PAM_FILE"
+      sudo_askpass rm "$PAM_FILE.bak"
+      logk
+    fi
+  fi
   local SUDO_PASSWORD SUDO_PASSWORD_SCRIPT
   if ! sudo --validate --non-interactive &>/dev/null; then
     while true; do

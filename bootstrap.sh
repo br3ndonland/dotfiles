@@ -306,6 +306,7 @@ configure_git() {
   fi
 }
 
+# The first call to `configure_git` is needed for cloning the dotfiles repo.
 configure_git
 
 # Check for and install any remaining software updates
@@ -347,6 +348,9 @@ log "Checking out $strap_dotfiles_branch_name in ~/.dotfiles."
 run_dotfile_scripts scripts/symlink.sh
 logk
 
+# The second call to `configure_git` is needed for CI use cases when certain
+# aspects of the `.gitconfig` cannot be used (like signing commits with SSH).
+# See commit c0542397e817fc1bd711984619eb73a6fdc937b2.
 configure_git
 
 # shellcheck disable=SC2086

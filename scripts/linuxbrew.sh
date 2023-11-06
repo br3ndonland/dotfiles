@@ -2,7 +2,7 @@
 ### ----------------------------- Linux setup ----------------------------- ###
 # A simple Linux setup script for Homebrew, Brew Bundle, and apt-get.
 
-set -eo pipefail
+set -e
 
 # Set up DEB packages
 # Proton VPN: https://protonvpn.com/support/linux-vpn-tool/
@@ -48,20 +48,16 @@ detect_homebrew_prefix() {
   else
     HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
   fi
+  printf "\nHOMEBREW_PREFIX set to %s\n" "$HOMEBREW_PREFIX"
 }
 
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
 if command -v brew &>/dev/null; then
   printf "\nHomebrew detected.\n"
 else
-  printf "\nbrew command not in shell environment. Attempting to load."
-  detect_homebrew_prefix
-  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
-  if ! command -v brew &>/dev/null; then
-    printf "\nHomebrew not found. Downloading and installing Homebrew.\n"
-    BREW_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
-    NONINTERACTIVE=1 /usr/bin/env bash -c "$(curl -fsSL $BREW_SCRIPT)"
-  fi
+  printf "\nHomebrew not found. Downloading and installing Homebrew.\n"
+  BREW_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+  NONINTERACTIVE=${STRAP_CI:-1} /usr/bin/env bash -c "$(curl -fsSL $BREW_SCRIPT)"
   detect_homebrew_prefix
   eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
   command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1

@@ -64,9 +64,16 @@ The following environment variables can be used to configure _bootstrap.sh_, and
 - `STRAP_DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$STRAP_GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
 - `STRAP_DOTFILES_BRANCH`: Git branch to check out after cloning dotfiles repo. Defaults to `main`.
 
-_bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _scripts/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_.
+There are some additional variables for advanced usage. Consult the _[bootstrap.sh](bootstrap.sh)_ script to see all supported variables.
 
-A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+_bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _scripts/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_. A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+
+The following list is a brief summary of permissions related to _bootstrap.sh_.
+
+- Initial setup of Homebrew itself does not require an admin user account, but does require `sudo`. See the [Homebrew installation docs](https://docs.brew.sh/Installation), [Homebrew/install#312](https://github.com/Homebrew/install/issues/312), and [Homebrew/install#315](https://github.com/Homebrew/install/pull/315/files).
+- [After Homebrew setup, use of `sudo` with `brew` commands is discouraged](https://docs.brew.sh/FAQ#why-does-homebrew-say-sudo-is-bad).
+- After Homebrew setup, commands such as `brew bundle install --global` should be run from the same user account used for setup. Attempts to run `brew` commands from another user account will result in errors, because directories that need to be updated are owned by the setup account. If access to the setup account is not routinely available, an alternative approach could be to change ownership of Homebrew directories to a group that includes the user account used for Homebrew setup as well as other users that need to run Homebrew commands.
+- _bootstrap.sh_ can run with limited functionality on non-admin and non-`sudo` user accounts. A plausible use case could exist in which an admin runs `bootstrap.sh` to configure the system initially, then a non-admin runs `bootstrap.sh` to configure their own account. In this use case, the non-admin user should not need admin or `sudo` privileges, because all the pertinent setup (FileVault disk encryption, XCode developer tools, Homebrew, etc) is already complete.
 
 Users with more complex needs for multi-environment dotfiles management might consider a tool like [`chezmoi`](https://www.chezmoi.io/).
 

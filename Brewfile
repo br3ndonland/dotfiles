@@ -64,14 +64,17 @@ cask "firefox"
 # cask "inkscape"
 cask "karabiner-elements"
 cask "kitty"
+# cask "notion"
 # cask "postico"
 # cask "postman"
 cask "protonvpn"
 # cask "rstudio"
 # cask "session-manager-plugin"
+# cask "slack"
 # cask "visual-studio-code"
 cask "vlc"
 cask "vscodium"
+# cask "zoom"
 cask "zotero" # no arm64_big_sur yet
 
 # mas "1password", id: 1333542190

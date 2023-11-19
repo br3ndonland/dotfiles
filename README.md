@@ -73,7 +73,7 @@ Users with more complex needs for multi-environment dotfiles management might co
 ## Hardware
 
 - Apple Silicon [Mac mini](https://www.apple.com/mac-mini/)
-- [Samsung ViewFinity S9 monitor](https://www.amazon.com/dp/B0CB71BY87)
+- 4K@60 Hz monitor
 - [Microsoft Sculpt keyboard](https://www.amazon.com/dp/B00CYX26BC)
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone

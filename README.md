@@ -587,6 +587,10 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
 - [1Password](https://1password.com/) (Mac App Store)
 - [Backblaze](https://www.backblaze.com/) (Homebrew Cask or direct download)
 - [Bear](https://bear.app) (Mac App Store)
+- [Brave](https://brave.com/)
+  - Brave profiles for each context (personal/work, different AWS accounts, etc)
+  - [Brave sync](https://support.brave.com/hc/en-us/articles/360059793111-Understanding-Brave-Sync)
+  - Same extensions as Firefox
 - [Firefox](https://www.mozilla.org/en-US/firefox/) (Homebrew Cask)
   - Firefox account: sync preferences and add-ons
   - 1Password extension for desktop app

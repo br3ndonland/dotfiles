@@ -41,7 +41,8 @@
     }
   },
   "files.associations": {
-    ".env*": "dotenv"
+    "**/.env*": "dotenv",
+    "**/env*": "dotenv"
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {

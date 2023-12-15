@@ -80,6 +80,7 @@ cask "vscodium"
 cask "zotero" # no arm64_big_sur yet
 
 # mas "1password", id: 1333542190
+mas "1password for safari", id: 1569813296
 mas "bear", id: 1091189122
 mas "daisydisk", id: 411643860
 mas "duckduckgo privacy essentials", id: 1482920575

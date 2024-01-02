@@ -4,7 +4,7 @@ tap "homebrew/services"
 
 brew "awscli"
 brew "bash"
-brew "black", restart_service: :changed
+brew "black", restart_service: false, start_service: false
 brew "ffmpeg"
 brew "findutils"
 brew "flake8"
@@ -35,7 +35,7 @@ brew "pinentry"
 # brew "pinentry-mac"
 brew "pipx"
 brew "pnpm"
-brew "postgresql@16", restart_service: :changed
+brew "postgresql@16", restart_service: false, start_service: false
 brew "pre-commit"
 brew "prettier"
 brew "python"

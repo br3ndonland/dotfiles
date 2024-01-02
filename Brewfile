@@ -35,7 +35,7 @@ brew "pinentry"
 # brew "pinentry-mac"
 brew "pipx"
 brew "pnpm"
-brew "postgresql@15", restart_service: :changed
+brew "postgresql@16", restart_service: :changed
 brew "pre-commit"
 brew "prettier"
 brew "python"

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  check:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -50,7 +50,7 @@ jobs:
           taplo fmt --check **/*.toml
   test:
     if: github.event_name != 'push'
-    needs: [lint]
+    needs: [check]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

@@ -1,3 +1,4 @@
+charliermarsh.ruff
 codeium.codeium
 dracula-theme.theme-dracula
 eamodio.gitlens
@@ -8,9 +9,6 @@ golang.go
 hashicorp.hcl
 hashicorp.terraform
 mikestead.dotenv
-ms-python.black-formatter
-ms-python.flake8
-ms-python.isort
 ms-python.mypy-type-checker
 ms-python.python@2023.22.1
 redhat.vscode-yaml

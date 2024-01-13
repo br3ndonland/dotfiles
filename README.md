@@ -248,11 +248,9 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 
 ### Python
 
-- I format Python code with [Black](https://black.readthedocs.io/en/stable/).
-  - The [Black VSCode extension](https://github.com/microsoft/vscode-black-formatter) provides support for Black. I set VSCode to autoformat on save.
-  - If you prefer the less-decisive PEP 8 format, I recommend [autopep8](https://pypi.org/project/autopep8/) for autoformatting.
-- I format Python imports with [isort](https://pycqa.github.io/isort/).
-  - The [isort VSCode extension](https://github.com/microsoft/vscode-isort) provides support for isort.
+- I lint and format Python code with [Ruff](https://docs.astral.sh/ruff/).
+  - The [Ruff VSCode extension](https://open-vsx.org/extension/charliermarsh/ruff) provides support for Ruff in VSCode. I set VSCode to autoformat on save.
+  - Ruff is available as a [Homebrew formula](https://formulae.brew.sh/formula/ruff).
 - See my [template-python](https://github.com/br3ndonland/template-python) repo for useful tooling and additional sensible defaults.
 
 ## PGP

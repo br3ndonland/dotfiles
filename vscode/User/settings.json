@@ -169,9 +169,10 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.fixAll": "always",
+      "source.organizeImports": "always"
     },
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.rulers": [],
     "editor.tabSize": 4
   },
@@ -199,6 +200,7 @@
   "python.showStartPage": false,
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
+  "ruff.lint.args": ["--extend-select=I"],
   "redhat.telemetry.enabled": false,
   "shellcheck.enable": true,
   "shellcheck.run": "onSave",

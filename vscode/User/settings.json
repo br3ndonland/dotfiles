@@ -60,7 +60,7 @@
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "block",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.inheritEnv": false,

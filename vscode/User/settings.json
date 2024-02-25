@@ -108,6 +108,7 @@
     "git-commit": false,
     "ruby": false
   },
+  "github.gitProtocol": "ssh",
   "gitlens.advanced.abbreviatedShaLength": 7,
   "gitlens.advanced.abbreviateShaOnCopy": true,
   "gitlens.blame.avatars": false,

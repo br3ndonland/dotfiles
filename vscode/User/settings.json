@@ -99,6 +99,7 @@
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,
+  "git.inputValidation": "warn",
   "git.mergeEditor": false,
   "github.copilot.enable": {
     "*": true,

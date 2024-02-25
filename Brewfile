@@ -4,6 +4,7 @@ tap "homebrew/services"
 
 brew "awscli"
 brew "bash"
+brew "coreutils"
 brew "ffmpeg"
 brew "findutils"
 brew "gh"

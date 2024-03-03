@@ -18,7 +18,7 @@ jobs:
         run: |
           # mitigate https://github.com/actions/runner-images/issues/6283
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Prettier
         run: npm i -g prettier@'^2'
       - name: Check web code formatting with Prettier

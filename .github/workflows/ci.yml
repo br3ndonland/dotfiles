@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-14, ubuntu-latest]
     steps:
       - name: Add Homebrew to $PATH
         if: runner.os == 'Linux'
@@ -54,7 +54,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-14, ubuntu-latest]
     timeout-minutes: 100
     env:
       STRAP_CI: 1

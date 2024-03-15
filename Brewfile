@@ -4,6 +4,7 @@ tap "homebrew/services"
 
 brew "awscli"
 brew "bash"
+# brew "docker-credential-helper-ecr"
 brew "coreutils"
 brew "ffmpeg"
 brew "findutils"

@@ -94,6 +94,8 @@
     }
   },
   "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.renderSideBySideInlineBreakpoint": 0,
   "git.autofetch": false,
   "git.autoRepositoryDetection": "subFolders",
   "git.confirmSync": false,

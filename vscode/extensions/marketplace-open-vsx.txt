@@ -10,7 +10,7 @@ hashicorp.hcl
 hashicorp.terraform
 mikestead.dotenv
 ms-python.mypy-type-checker
-ms-python.python@2024.0.1
+ms-python.python@2024.4.0
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 tamasfe.even-better-toml

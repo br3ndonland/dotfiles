@@ -101,7 +101,7 @@
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,
-  "git.inputValidation": "warn",
+  "git.inputValidation": true,
   "git.mergeEditor": false,
   "github.copilot.enable": {
     "*": true,

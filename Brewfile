@@ -24,6 +24,7 @@ brew "libfido2"
 brew "macos-trash" if OS.mac?
 brew "mas" if OS.mac?
 brew "media-info"
+brew "mise"
 brew "mkvtoolnix"
 brew "mp4v2"
 brew "mypy"

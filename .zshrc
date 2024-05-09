@@ -82,6 +82,7 @@ export \
 
 ### aliases
 alias python='python3'
+alias tg='terragrunt'
 
 ### prompt: https://starship.rs
 source <(starship init zsh)

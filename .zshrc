@@ -87,6 +87,9 @@ alias tg='terragrunt'
 ### prompt: https://starship.rs
 source <(starship init zsh)
 
+### mise: https://mise.jdx.dev/
+eval "$(mise activate zsh)"
+
 ### completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=$HOME/.zfunc:$HOMEBREW_PREFIX/share/zsh/site-functions

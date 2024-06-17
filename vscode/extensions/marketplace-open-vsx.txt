@@ -17,5 +17,6 @@ redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 tamasfe.even-better-toml
 timonwong.shellcheck
+unifiedjs.vscode-mdx
 Vue.volar
 yzhang.markdown-all-in-one

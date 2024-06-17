@@ -15,10 +15,10 @@ com = checkout main
 f = fetch
 l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
-logd = log --pretty=format:"- %s (%h)" --reverse develop..HEAD
-logdpr = log --pretty=format:"- %s (%h)%n  %b" --reverse develop..HEAD --grep "pull request"
-logm = log --pretty=format:"- %s (%h)" --reverse main..HEAD
-logmpr = log --pretty=format:"- %s (%h)%n  %b" --reverse main..HEAD --grep "pull request"
+logd = log --pretty='format:- %s (%h)' --reverse develop..HEAD
+logdpr = log --pretty='format:- %s (%h)%n  %b' --reverse develop..HEAD --grep 'pull request'
+logm = log --pretty='format:- %s (%h)' --reverse main..HEAD
+logmpr = log --pretty='format:- %s (%h)%n  %b' --reverse main..HEAD --grep 'pull request'
 p = push
 pf = push --force-with-lease
 pt = push --tags
@@ -26,7 +26,7 @@ pso = push --set-upstream origin
 ra = remote add
 re = rebase -i
 rv = remote -v
-sdiff = !git diff && git submodule foreach "git diff"
+sdiff = !git diff && git submodule foreach 'git diff'
 spush = push --recurse-submodules=on-demand
 st = status
 stal = stash pop

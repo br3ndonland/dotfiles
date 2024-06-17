@@ -13,6 +13,7 @@ cob = checkout -b
 cod = checkout develop
 com = checkout main
 f = fetch
+first = rev-list --max-parents=0 --pretty='format:%as %s' HEAD
 l = pull
 last = log --graph --show-signature --pretty=short --max-count=10
 logd = log --pretty='format:- %s (%h)' --reverse develop..HEAD

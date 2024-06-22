@@ -1,3 +1,5 @@
 *cache*
 *venv*
 karabiner.json
+**/package-lock.json
+**/pnpm-lock.yaml

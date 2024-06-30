@@ -1,4 +1,9 @@
 {
+  "Markdown HTML anchor link": {
+    "prefix": "malink",
+    "body": "<a href=\"$1\" rel=\"external\" target=\"_blank\">$TM_SELECTED_TEXT</a>",
+    "description": "HTML anchor element for Markdown files"
+  },
   "Markdown HTML img": {
     "prefix": "mimg",
     "body": "<img src=\"$1\" alt=\"$2\" width=\"${3:75%}\" />",

@@ -13,7 +13,7 @@
       "langId": "markdown",
       "name": "Markdown HTML details"
     },
-    "when": "editorTextFocus && editorLangId == 'markdown'"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
   },
   // Markdown images
   {
@@ -23,13 +23,13 @@
       "langId": "markdown",
       "name": "Markdown HTML img"
     },
-    "when": "editorTextFocus && editorLangId == 'markdown'"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
   },
   // Fix outdent issue with Markdown files
   {
     "key": "shift+tab",
     "command": "outdent",
-    "when": "editorTextFocus && editorLangId == 'markdown'"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
   },
   // Open links
   {

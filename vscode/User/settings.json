@@ -155,7 +155,7 @@
   "gopls": { "ui.semanticTokens": true },
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
-  "[html][javascript][json][jsonc][markdown][typescript][vue][yaml]": {
+  "[html][javascript][json][jsonc][markdown][mdx][typescript][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "markdown.extension.italic.indicator": "_",

@@ -198,6 +198,7 @@
   "python.analysis.typeCheckingMode": "off",
   "python.disableInstallationCheck": true,
   "python.experiments.enabled": false,
+  "python.experiments.optOutFrom": ["All"],
   "python.insidersChannel": "off",
   "python.languageServer": "Jedi",
   "python.pythonPath": "python3",

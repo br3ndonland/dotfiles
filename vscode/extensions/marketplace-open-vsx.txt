@@ -19,5 +19,6 @@ streetsidesoftware.code-spell-checker
 tamasfe.even-better-toml
 timonwong.shellcheck
 unifiedjs.vscode-mdx
+vitest.explorer
 Vue.volar
 yzhang.markdown-all-in-one

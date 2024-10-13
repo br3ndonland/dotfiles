@@ -230,7 +230,48 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 
 ## Fonts
 
-[Dank Mono](https://gumroad.com/l/dank-mono) is my programming font of choice. The rounded characters are eminently readable, the italics are elegant, and the ligatures are intuitive. [Recursive Mono](https://www.recursive.design/), [Fira Code](https://github.com/tonsky/FiraCode), and [Ubuntu Mono](https://design.ubuntu.com/font/) are decent free alternatives.
+I use [Recursive Mono](https://www.recursive.design/). It's available for download [from Homebrew](https://formulae.brew.sh/cask/font-recursive-code) (`brew install --cask font-recursive-code`) or [GitHub](https://github.com/arrowtype/recursive). [Fira Code](https://github.com/tonsky/FiraCode) and [Ubuntu Mono](https://design.ubuntu.com/font/) are decent free alternatives.
+
+I previously used [Dank Mono](https://gumroad.com/l/dank-mono). The rounded characters are eminently readable, the italics are elegant, and the ligatures are intuitive. Unfortunately, it's not correctly monospaced. I reached out to the Dank Mono creator Phil Pluckthun after it stopped working in kitty 0.36:
+
+> Hi Phil,
+>
+> I've been using Dank Mono for years and love it, but I'm having an issue in which the font is not detected as monospaced on macOS. I can still use Dank Mono in VSCode, but some other terminal applications and text editors only accept monospaced fonts. I've tried modifying the macOS Font Book "Fixed Width" smart collection so it includes Dank Mono, but it's still not picked up as monospaced. Is there something I can do about this?
+>
+> It may have to do with the ligatures. If I load Dank Mono into a font editor, I can see that the ligatures are not the same width as the other characters. See the attached screenshot.
+>
+> It may also have to do with spacing. The italic variant lacks a spacing property.
+>
+> ```sh
+> ~
+> ❯ fc-list : family style spacing outline scalable | grep Dank
+> Dank Mono:style=Bold:spacing=100:outline=True:scalable=True
+> Dank Mono:style=Italic:outline=True:scalable=True
+> Dank Mono:style=Regular:spacing=100:outline=True:scalable=True
+> ```
+>
+> Related:
+>
+> - https://github.com/eigilnikolajsen/commit-mono/issues/15
+> - https://github.com/IdreesInc/Monocraft/issues/26
+> - https://github.com/IdreesInc/Monocraft/issues/77
+> - https://github.com/tonsky/FiraCode/issues/1325
+> - https://github.com/vercel/geist-font/issues/33
+> - https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font
+>
+> Thanks for your help,
+>
+> Brendon Smith
+
+Phil's reply:
+
+> Hiya,
+>
+> Some terminal applications require a specific monospace flag to be set in the font file that was only gaining traction after the font was released. Some also just don't support fonts with ligatures. In Dank Mono's case the specific flag that some applications require to select the font as a monospaced one simply isn't set, and a different, older one is set instead.
+>
+> Cheers & Best,
+>
+> Phil
 
 ## Language-specific setup
 

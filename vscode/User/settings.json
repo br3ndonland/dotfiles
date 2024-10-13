@@ -9,7 +9,7 @@
   "editor.detectIndentation": false,
   "editor.inlineSuggest.enabled": true,
   "editor.insertSpaces": true,
-  "editor.fontFamily": "'Dank Mono', 'Rec Mono Duotone', 'Fira Code', monospace",
+  "editor.fontFamily": "'Rec Mono Duotone', 'Dank Mono', 'Fira Code', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.formatOnSave": true,

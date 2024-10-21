@@ -14,13 +14,13 @@ else
 fi
 
 deb_url="https://repo.protonvpn.com/debian/dists/stable/main/binary-all"
-deb_file="protonvpn-stable-release_1.0.3_all.deb"
+deb_file="protonvpn-stable-release_1.0.4_all.deb"
 deb_path="$download_dir/$deb_file"
 printf "\nDownloading Proton VPN setup DEB to %s\n" "$deb_path"
 curl -fsSL -o "$deb_path" "$deb_url/$deb_file"
 printf "\nInstalling Proton VPN setup DEB from %s\n" "$deb_path"
-sudo apt-get install -qy "$deb_path"
-sudo apt-get update
+sudo dpkg -i "$deb_path"
+sudo apt update
 
 # Install apt-get packages
 PACKAGES=(

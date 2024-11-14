@@ -12,7 +12,6 @@ else
   mkdir -p "$HOME/Downloads"
   download_dir="$HOME/Downloads"
 fi
-
 deb_url="https://repo.protonvpn.com/debian/dists/stable/main/binary-all"
 deb_file="protonvpn-stable-release_1.0.4_all.deb"
 deb_path="$download_dir/$deb_file"

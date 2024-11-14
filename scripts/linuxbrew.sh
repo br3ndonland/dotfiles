@@ -34,7 +34,7 @@ PACKAGES=(
   protonvpn-cli
   software-properties-common
 )
-[ -n "$1" ] && PACKAGES+=("[@]")
+[ "$1" ] && PACKAGES+=("$@")
 for PACKAGE in "${PACKAGES[@]}"; do
   sudo apt-get install -qy "$PACKAGE"
 done

@@ -466,7 +466,7 @@ run_brew_installs() {
     eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
     command -v brew &>/dev/null && logk || return 1
   fi
-  # Disable Homebrew Google Analytics: https://docs.brew.sh/Analytics
+  # Disable Homebrew Analytics: https://docs.brew.sh/Analytics
   brew analytics off
   [ "$STRAP_CI" -gt 0 ] || [ "$LINUX" -gt 0 ] && set_up_brew_skips
   [ "$LINUX" -gt 0 ] && brew install gcc # "We recommend that you install GCC"

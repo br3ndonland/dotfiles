@@ -47,6 +47,7 @@ detect_homebrew_prefix() {
   else
     HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
   fi
+  printf "\nHOMEBREW_PREFIX set to %s\n" "$HOMEBREW_PREFIX"
 }
 
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux

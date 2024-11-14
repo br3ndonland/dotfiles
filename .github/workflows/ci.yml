@@ -53,6 +53,7 @@ jobs:
     needs: [check]
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-14, ubuntu-latest]
     timeout-minutes: 100
@@ -69,6 +70,12 @@ jobs:
         run: |
           # mitigate https://github.com/actions/runner-images/issues/6283
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
+      - name: Enable passwordless sudo commands on macOS runners
+        if: runner.os == 'macOS'
+        run: |
+          # mitigate https://github.com/actions/runner-images/issues/10484
+          sudo sed -i '' 's/%admin		ALL = (ALL) ALL/%admin		ALL = (ALL) NOPASSWD: ALL/g' /etc/sudoers
+          sudo -v
       - name: Clean up Homebrew
         run: |
           type brew &>/dev/null && brew test-bot --only-cleanup-before ||
@@ -78,12 +85,61 @@ jobs:
         run: |
           sudo rm -rf /usr/local/Caskroom /usr/local/Homebrew /usr/local/bin/brew \
             /usr/local/.??* /Applications/Xcode.app /Library/Developer/CommandLineTools
-      - name: Run bootstrap.sh
+      - name: Create a non-admin user account
         run: |
-          bootstrap_script_url="https://raw.githubusercontent.com/$STRAP_GITHUB_USER/dotfiles/$STRAP_DOTFILES_BRANCH/bootstrap.sh"
-          /usr/bin/env bash -c "$(curl -fsSL $bootstrap_script_url)"
+          username=standard-user
+          if ${{ runner.os == 'Linux' }}; then
+            sudo adduser --disabled-password --gecos "" "$username"
+            home_prefix=/home
+          elif ${{ runner.os == 'macOS' }}; then
+            sudo sysadminctl -addUser "$username"
+            sudo passwd -u "$username"
+            sudo dseditgroup -o edit -d "$username" -t user admin
+            home_prefix=/Users
+            sudo dscl . -create "$home_prefix/$username" NFSHomeDirectory "$home_prefix/$username"
+          fi
+          echo "NON_ADMIN_USER=$username" >>"$GITHUB_ENV"
+          echo "NON_ADMIN_USER_HOME=$home_prefix/$username" >>"$GITHUB_ENV"
+      - name: Set bootstrap script URL
+        run: |
+          STRAP_SCRIPT_URL="https://raw.githubusercontent.com/$STRAP_GITHUB_USER/dotfiles/$STRAP_DOTFILES_BRANCH/bootstrap.sh"
+          echo "STRAP_SCRIPT_URL=$STRAP_SCRIPT_URL"
+          echo "STRAP_SCRIPT_URL=$STRAP_SCRIPT_URL" >>"$GITHUB_ENV"
+      - name: >
+          Run bootstrap.sh with a non-admin non-sudo user without Homebrew installed
+          (Homebrew installation requires sudo)
+        id: bootstrap-non-admin-non-sudo
+        run: |
+          HOME="$NON_ADMIN_USER_HOME"
+          sudo \
+            --preserve-env=HOME,STRAP_CI,STRAP_DEBUG,STRAP_DOTFILES_BRANCH,STRAP_GIT_EMAIL,STRAP_GIT_NAME,STRAP_GITHUB_USER,STRAP_SCRIPT_URL \
+            -u "$NON_ADMIN_USER" bash -c '/usr/bin/env bash -c "$(curl -fsSL ${{ env.STRAP_SCRIPT_URL }})"'
+        working-directory: ${{ env.NON_ADMIN_USER_HOME }}
+      - name: Update non-admin user account with sudo permissions
+        run: |
+          SUDOERS_FILE="/etc/sudoers.d/$NON_ADMIN_USER"
+          echo "$NON_ADMIN_USER ALL=(ALL) NOPASSWD:ALL" | sudo tee "$SUDOERS_FILE"
+          sudo chmod 0440 "$SUDOERS_FILE"
+      - name: Run bootstrap.sh with a non-admin sudo user without Homebrew installed
+        run: |
+          HOME="$NON_ADMIN_USER_HOME"
+          sudo \
+            --preserve-env=HOME,STRAP_CI,STRAP_DEBUG,STRAP_DOTFILES_BRANCH,STRAP_GIT_EMAIL,STRAP_GIT_NAME,STRAP_GITHUB_USER,STRAP_SCRIPT_URL \
+            -u "$NON_ADMIN_USER" bash -c '/usr/bin/env bash -c "$(curl -fsSL ${{ env.STRAP_SCRIPT_URL }})"'
+        working-directory: ${{ env.NON_ADMIN_USER_HOME }}
+      - name: Rerun bootstrap.sh with a non-admin sudo user after Homebrew has been installed
+        run: |
+          HOME="$NON_ADMIN_USER_HOME"
+          sudo \
+            --preserve-env=HOME,STRAP_CI,STRAP_DEBUG,STRAP_DOTFILES_BRANCH,STRAP_GIT_EMAIL,STRAP_GIT_NAME,STRAP_GITHUB_USER,STRAP_SCRIPT_URL \
+            -u "$NON_ADMIN_USER" bash -c '/usr/bin/env bash "${{ env.NON_ADMIN_USER_HOME }}/.dotfiles/bootstrap.sh"'
+        working-directory: ${{ env.NON_ADMIN_USER_HOME }}
+      - name: Run bootstrap.sh
+        run: /usr/bin/env bash -c "$(curl -fsSL $STRAP_SCRIPT_URL)"
       - name: Rerun bootstrap.sh to test idempotence
         run: bash "$HOME/.dotfiles/bootstrap.sh"
+      - name: Check Homebrew formulae
+        run: brew list | grep -qE "\b(bash|grep|sed)\b"
       - name: Check Homebrew configuration
         run: brew config
       - name: Check for potential problems with brew doctor

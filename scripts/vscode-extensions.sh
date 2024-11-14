@@ -3,8 +3,8 @@
 # CLI: https://code.visualstudio.com/docs/editor/extension-marketplace
 
 check_open_vsx() {
-  if ! command -v curl &>/dev/null || ! (
-    command -v fx || command -v jq
+  if ! type curl &>/dev/null || ! (
+    type fx || type jq
   ) &>/dev/null; then
     printf "curl and jq or antonmedv/fx required to check extension version.\n"
     return
@@ -14,9 +14,9 @@ check_open_vsx() {
   local_version=$(printf %s "$2" | cut -d @ -f 2)
   url="https://open-vsx.org/api/$(echo "$extension_name" | tr '.' '/')"
   response=$(curl -fs "$url" -H "accept: application/json")
-  if command -v fx &>/dev/null; then
+  if type fx &>/dev/null; then
     open_vsx_version=$(printf %s "$response" | fx .version)
-  elif command -v jq &>/dev/null; then
+  elif type jq &>/dev/null; then
     open_vsx_version=$(printf %s "$response" | jq -r .version)
   fi
   if [ "$local_version" = "$open_vsx_version" ]; then
@@ -70,13 +70,13 @@ for i in "$@"; do
   codium) : "VSCodium" ;;
   esac
   MACOS_BIN="/Applications/$_.app/Contents/Resources/app/bin"
-  if command -v "$i" &>/dev/null; then
+  if type "$i" &>/dev/null; then
     printf "\n%s command on PATH.\n" "$i"
   elif [ "$(uname -s)" = "Darwin" ] && [ -d "$MACOS_BIN" ]; then
     export PATH="$MACOS_BIN:$PATH"
     printf "\n%s command loaded onto PATH.\n" "$i"
   fi
-  if ! command -v "$i" &>/dev/null; then
+  if ! type "$i" &>/dev/null; then
     printf "\nError: %s command not on PATH.\n" "$i" >&2
     exit 1
   elif install_extensions "$i"; then

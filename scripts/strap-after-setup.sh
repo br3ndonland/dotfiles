@@ -17,7 +17,7 @@ else
 fi
 
 ### Install Hatch
-if command -v pipx &>/dev/null && ! command -v hatch &>/dev/null; then
+if type pipx &>/dev/null && ! type hatch &>/dev/null; then
   echo "Installing Hatch with pipx."
   pipx install "hatch>=1,<2"
 else
@@ -30,11 +30,11 @@ for i in {code,code-exploration,code-insiders,code-server,codium}; do
 done
 
 ### Set shell
-if ! [[ $SHELL =~ "zsh" ]] && command -v zsh &>/dev/null; then
+if ! [[ $SHELL =~ "zsh" ]] && type zsh &>/dev/null; then
   echo "--> Changing shell to Zsh. Password entry required."
   [ "${LINUX:-0}" -gt 0 ] || [ "$(uname)" = "Linux" ] &&
-    command -v zsh | sudo tee -a /etc/shells
-  sudo chsh -s "$(command -v zsh)" "$USER"
+    type -P zsh | sudo tee -a /etc/shells
+  sudo chsh -s "$(type -P zsh)" "$USER"
 else
   echo "Shell is already set to Zsh."
 fi

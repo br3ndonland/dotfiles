@@ -461,10 +461,10 @@ set_up_brew_skips() {
 
 run_brew_installs() {
   local brewfile_domain brewfile_path brewfile_url git_branch github_user
-  if ! command -v brew &>/dev/null; then
+  if ! type brew &>/dev/null; then
     log "brew command not in shell environment. Attempting to load."
     eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
-    command -v brew &>/dev/null && logk || return 1
+    type brew &>/dev/null && logk || return 1
   fi
   # Disable Homebrew Analytics: https://docs.brew.sh/Analytics
   brew analytics off

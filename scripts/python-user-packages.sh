@@ -20,16 +20,16 @@ pipx_install_requirements() {
     elif [[ $(echo "$pipx_list" | grep -ce "package $package") -gt 0 ]]; then
       echo "Reinstalling $package for $py."
       pipx uninstall "$package"
-      pipx install --python "$(command -v python3)" "$package"
-    elif command -v "$package_command" &>/dev/null; then
-      echo "$package already on PATH at $(command -v "$package_command")."
+      pipx install --python "$py" "$package"
+    elif type "$package_command"; then
+      echo "$package already on \$PATH."
     else
       pipx install "$package"
     fi
   done <"$1"
 }
 
-if ! command -v pipx &>/dev/null; then
+if ! type pipx &>/dev/null; then
   printf "\n-> Error: pipx must be installed and on PATH.\n\n"
   exit 1
 elif pipx_install_requirements "$@"; then

@@ -53,13 +53,13 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 
 ### exports
-if command -v codium &>/dev/null; then
+if type codium &>/dev/null; then
   editor='codium --wait'
-elif command -v code &>/dev/null; then
+elif type code &>/dev/null; then
   editor='code --wait'
-elif command -v code-insiders &>/dev/null; then
+elif type code-insiders &>/dev/null; then
   editor='code-insiders --wait'
-elif command -v code-exploration &>/dev/null; then
+elif type code-exploration &>/dev/null; then
   editor='code-exploration --wait'
 else
   editor='vim'

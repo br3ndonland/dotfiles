@@ -6,7 +6,7 @@ set -eo pipefail
 
 # Set up DEB packages
 # Proton VPN: https://protonvpn.com/support/linux-vpn-tool/
-if command -v xdg-user-dir &>/dev/null; then
+if type xdg-user-dir &>/dev/null; then
   download_dir=$(xdg-user-dir DOWNLOAD)
 else
   mkdir -p "$HOME/Downloads"
@@ -51,19 +51,13 @@ detect_homebrew_prefix() {
 }
 
 # Download and install Homebrew: https://docs.brew.sh/Homebrew-on-Linux
-if command -v brew &>/dev/null; then
-  printf "\nHomebrew detected.\n"
-else
-  printf "\nbrew command not in shell environment. Attempting to load."
+if ! type brew &>/dev/null; then
+  printf "\nHomebrew not found. Downloading and installing Homebrew.\n"
+  BREW_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+  NONINTERACTIVE=${STRAP_CI:-1} /usr/bin/env bash -c "$(curl -fsSL $BREW_SCRIPT)"
   detect_homebrew_prefix
   eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
-  if ! command -v brew &>/dev/null; then
-    printf "\nHomebrew not found. Downloading and installing Homebrew.\n"
-    BREW_SCRIPT="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
-    NONINTERACTIVE=1 /usr/bin/env bash -c "$(curl -fsSL $BREW_SCRIPT)"
-  fi
-  detect_homebrew_prefix
-  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
-  command -v brew &>/dev/null || printf "\nError: Homebrew not found" && exit 1
+  type brew
+  printf "\nAdding Homebrew to ~/.profile\n"
+  printf %s "eval \"$("$HOMEBREW_PREFIX"/bin/brew shellenv)\"" >>~/.profile
 fi
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile

@@ -71,7 +71,7 @@ jobs:
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - name: Clean up Homebrew
         run: |
-          command -v brew &>/dev/null && brew test-bot --only-cleanup-before ||
+          type brew &>/dev/null && brew test-bot --only-cleanup-before ||
             echo "Homebrew not found."
       - name: Clean up macOS
         if: runner.os == 'macOS'

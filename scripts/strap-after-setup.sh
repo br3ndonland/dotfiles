@@ -6,14 +6,16 @@ echo "-> Running strap-after-setup. Some steps may require password entry."
 
 ### Configure macOS
 if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
-  "$HOME"/.dotfiles/scripts/macos.sh
+  if [ "$STRAP_ADMIN" -gt 0 ]; then
+    "$HOME"/.dotfiles/scripts/macos.sh
+  else
+    echo "Not admin. Skipping macos.sh. Set \$STRAP_ADMIN to run macos.sh."
+  fi
   # Configure 1Password SSH agent path for consistency with Linux
   # https://developer.1password.com/docs/ssh/get-started
   mkdir -p ~/.1password && ln -s \
     ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \
     ~/.1password/agent.sock
-else
-  echo "Not macOS. Skipping macos.sh."
 fi
 
 ### Install Hatch

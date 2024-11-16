@@ -29,6 +29,7 @@ esac
 
 STRAP_ADMIN=${STRAP_ADMIN:-0}
 if groups | grep -qE "\b(admin)\b"; then STRAP_ADMIN=1; else STRAP_ADMIN=0; fi
+export STRAP_ADMIN
 STRAP_CI=${STRAP_CI:=0}
 STRAP_DEBUG=${STRAP_DEBUG:-0}
 [[ $1 = "--debug" || -o xtrace ]] && STRAP_DEBUG=1

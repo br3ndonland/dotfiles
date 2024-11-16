@@ -42,7 +42,8 @@
   },
   "files.associations": {
     "**/.env*": "dotenv",
-    "**/env*": "dotenv"
+    "**/env*": "dotenv",
+    "**/*.hujson": "jsonc"
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {
@@ -155,6 +156,14 @@
   "gopls": { "ui.semanticTokens": true },
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
+  "json.schemas": [
+    {
+      "fileMatch": ["*.hujson"],
+      "schema": {
+        "allowTrailingCommas": true
+      }
+    }
+  ],
   "[astro][css][html][javascript][json][jsonc][markdown][mdx][typescript][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

@@ -19,6 +19,7 @@ symlink_repo_dotfiles() {
   IGNORES=(
     "$DOT_DIR/.DS_Store"
     "$DOT_DIR/.git"
+    "$DOT_DIR/.gitattributes"
     "$DOT_DIR/.github"
     "$DOT_DIR/.gitignore"
   )

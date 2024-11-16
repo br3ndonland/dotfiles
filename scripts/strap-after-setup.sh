@@ -32,11 +32,20 @@ for i in {code,code-exploration,code-insiders,code-server,codium}; do
 done
 
 ### Set shell
-if ! [[ $SHELL =~ "zsh" ]] && type zsh &>/dev/null; then
-  echo "--> Changing shell to Zsh. Password entry required."
-  [ "${LINUX:-0}" -gt 0 ] || [ "$(uname)" = "Linux" ] &&
-    type -P zsh | sudo tee -a /etc/shells
-  sudo chsh -s "$(type -P zsh)" "$USER"
+if [ "$STRAP_SUDO" -gt 0 ]; then
+  case $SHELL in
+  *zsh) echo "Shell is already set to Zsh." ;;
+  *)
+    if type zsh &>/dev/null; then
+      echo "--> Changing shell to Zsh. Sudo required."
+      [ "${LINUX:-0}" -gt 0 ] || [ "$(uname)" = "Linux" ] &&
+        type -P zsh | sudo tee -a /etc/shells
+      sudo chsh -s "$(type -P zsh)" "$USER"
+    else
+      echo "Zsh not found."
+    fi
+    ;;
+  esac
 else
-  echo "Shell is already set to Zsh."
+  echo "Not sudo. Shell not changed. Set \$STRAP_SUDO to change shell."
 fi

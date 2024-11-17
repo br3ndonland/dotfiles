@@ -90,9 +90,15 @@ source <(starship init zsh)
 ### mise: https://mise.jdx.dev/
 eval "$(mise activate zsh)"
 
+### functions
+# ensure .zfunc is symlinked to $HOME/.zfunc
+typeset -U fpath
+fpath+=($HOME/.zfunc)
+autoload -Uz $HOME/.zfunc/*(:tX)
+
 ### completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
-  fpath+=$HOME/.zfunc:$HOMEBREW_PREFIX/share/zsh/site-functions
+  fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 fi
 zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit

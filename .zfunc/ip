@@ -1,0 +1,16 @@
+# shellcheck shell=sh
+
+curl_version="8.11.0"
+if type http >/dev/null 2>&1; then
+  http ip.me User-Agent:curl/$curl_version -b
+elif type curl >/dev/null 2>&1; then
+  curl ip.me
+elif type wget >/dev/null 2>&1; then
+  wget -qO - -U curl/$curl_version ip.me
+else
+  echo "Error in ip function." \
+    "Please install a command-line HTTP client" \
+    "and update the function to use that client."
+  return 1
+fi
+unset curl_version

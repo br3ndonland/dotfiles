@@ -43,7 +43,8 @@
   "files.associations": {
     "**/.env*": "dotenv",
     "**/env*": "dotenv",
-    "**/*.hujson": "jsonc"
+    "**/*.hujson": "jsonc",
+    "**/.zfunc/*": "shellscript"
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {

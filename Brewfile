@@ -81,7 +81,7 @@ cask "syncthing"
 cask "vlc"
 cask "vscodium"
 # cask "zoom"
-cask "zotero" # no arm64_big_sur yet
+cask "zotero"
 
 # mas "1password", id: 1333542190
 mas "1password for safari", id: 1569813296

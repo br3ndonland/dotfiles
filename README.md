@@ -134,6 +134,8 @@ Users with more complex needs for multi-environment dotfiles management might co
   brew bundle check --global
   # Remove any Homebrew packages and casks not in Brewfile
   brew bundle cleanup --force --global
+  # Show cache dir: https://docs.brew.sh/FAQ#where-does-stuff-get-downloaded
+  brew --cache
   ```
 
 ## Git

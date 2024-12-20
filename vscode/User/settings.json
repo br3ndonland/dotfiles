@@ -41,8 +41,7 @@
     }
   },
   "files.associations": {
-    "**/.env*": "dotenv",
-    "**/env*": "dotenv",
+    "{**/*.env,**/env}": "dotenv",
     "**/*.hujson": "jsonc",
     "**/.zfunc/*": "shellscript"
   },

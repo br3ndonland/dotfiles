@@ -129,7 +129,7 @@ sudo_init() {
   # Don't care about non-alphanumeric filenames when doing a specific match
   # shellcheck disable=SC2010,SC2086
   if ls /usr/lib/pam | grep $Q "pam_tid.so"; then
-    logn_no_sudo "Configuring sudo authentication using TouchID:"
+    logn "Configuring sudo authentication using TouchID:"
     if [[ -f /etc/pam.d/sudo_local || -f /etc/pam.d/sudo_local.template ]]; then
       # New in macOS Sonoma, survives updates.
       PAM_FILE="/etc/pam.d/sudo_local"

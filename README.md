@@ -638,15 +638,12 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
 - [Brave](https://brave.com/)
   - Brave profiles for each context (personal/work, different AWS accounts, etc)
   - [Brave sync](https://support.brave.com/hc/en-us/articles/360059793111-Understanding-Brave-Sync)
-  - Same extensions as Firefox
-- [Firefox](https://www.mozilla.org/en-US/firefox/) (Homebrew Cask)
-  - Firefox account: sync preferences and add-ons
   - 1Password extension for desktop app
   - [DuckDuckGo Privacy Essentials](https://github.com/duckduckgo/duckduckgo-privacy-extension)
-  - [SimpleLogin email alias generator](https://addons.mozilla.org/en-US/firefox/addon/simplelogin/) ([SimpleLogin joined Proton](https://proton.me/blog/proton-and-simplelogin-join-forces) and now offers [sign in with Proton](https://proton.me/support/create-simplelogin-account-proton-account))
+  - [SimpleLogin](https://simplelogin.io/) email alias generator ([SimpleLogin joined Proton](https://proton.me/blog/proton-and-simplelogin-join-forces) and now offers [sign in with Proton](https://proton.me/support/create-simplelogin-account-proton-account))
   - [Vue.js DevTools](https://github.com/vuejs/vue-devtools)
-  - [Dark Reader](https://darkreader.org) ([Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
-  - [Stylus](https://github.com/openstyles/stylus) (alternative to Dark Reader, also a [Mozilla recommended extension](https://support.mozilla.org/en-US/kb/recommended-extensions-program))
+  - [Dark Reader](https://darkreader.org)
+  - [Stylus](https://github.com/openstyles/stylus)
     - [Wide GitHub](https://github.com/xthexder/wide-github)
     - [GitHub Custom Fonts](https://github.com/StylishThemes/GitHub-Dark)
     - ~~[GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)~~ _(GitHub [finally](https://github.blog/2020-12-08-new-from-universe-2020-dark-mode-github-sponsors-for-companies-and-more/) has a native dark mode!)_

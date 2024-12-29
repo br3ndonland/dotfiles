@@ -182,6 +182,7 @@ sudo_init() {
     reset_debug
     export STRAP_SUDO SUDO_ASKPASS
   fi
+  echo "STRAP_SUDO=$STRAP_SUDO"
 }
 
 sudo_refresh() {
@@ -191,7 +192,6 @@ sudo_refresh() {
   else
     sudo_init
   fi
-  echo "STRAP_SUDO=$STRAP_SUDO"
   reset_debug
 }
 

@@ -1,6 +1,21 @@
 {
+  "enabledFileTypes": {
+    "ruby": false
+  },
   "ignoreRegExpList": ["/(`{3})[\\s\\S]+?\\1/g", "/`([\\s\\S]+?)`/g"],
   "languageSettings": [
+    {
+      "languageId": "css",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "go",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "hcl",
+      "includeRegExpList": ["/#.*/", "CStyleComment"]
+    },
     {
       "languageId": "python",
       "includeRegExpList": ["/#.*/", "/('''|\"\"\")[^\\1]+?\\1/g"]
@@ -10,12 +25,40 @@
       "includeRegExpList": ["CStyleComment"]
     },
     {
+      "languageId": "javascriptreact",
+      "includeRegExpList": ["(<!--).*(-->)", "CStyleComment"]
+    },
+    {
       "languageId": "json",
       "includeRegExpList": ["CStyleComment"]
     },
     {
+      "languageId": "jsonc",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "r",
+      "includeRegExpList": ["/#.*/"]
+    },
+    {
+      "languageId": "rust",
+      "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "shellscript",
+      "includeRegExpList": ["/[^{]#.*/"]
+    },
+    {
+      "languageId": "terraform",
+      "includeRegExpList": ["/#.*/", "CStyleComment"]
+    },
+    {
       "languageId": "typescript",
       "includeRegExpList": ["CStyleComment"]
+    },
+    {
+      "languageId": "vue",
+      "includeRegExpList": ["(<!--).*(-->)", "CStyleComment"]
     }
   ],
   "words": [

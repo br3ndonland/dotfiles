@@ -145,7 +145,6 @@
   "aws.telemetry": false,
   "cSpell.autoFormatConfigFile": false,
   "cSpell.diagnosticLevel": "Information",
-  "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],
   "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,

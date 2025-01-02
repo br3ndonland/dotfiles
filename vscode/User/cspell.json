@@ -18,7 +18,7 @@
       "includeRegExpList": ["CStyleComment"]
     }
   ],
-  "userWords": [
+  "words": [
     "alb",
     "albs",
     "altra",
@@ -76,8 +76,8 @@
     "elbs",
     "entrypoint",
     "fargate",
-    "fastapi's",
     "fastapi",
+    "fastapi's",
     "fastenv",
     "fira",
     "foss",
@@ -97,8 +97,8 @@
     "isort",
     "isp",
     "isps",
-    "jira's",
     "jira",
+    "jira's",
     "jupyter",
     "karabiner",
     "kbfs",
@@ -164,8 +164,8 @@
     "smartsheet",
     "sourcery",
     "sqlalchemy",
-    "starlette's",
     "starlette",
+    "starlette's",
     "strptime",
     "submodule",
     "submodules",

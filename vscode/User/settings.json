@@ -1,6 +1,7 @@
 {
   // General settings
   "breadcrumbs.enabled": true,
+  "chat.commandCenter.enabled": false,
   "debug.toolBarLocation": "docked",
   "editor.autoClosingQuotes": "beforeWhitespace",
   "editor.autoIndent": "advanced",

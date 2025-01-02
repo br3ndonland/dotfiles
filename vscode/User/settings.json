@@ -143,6 +143,7 @@
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
   "aws.telemetry": false,
+  "cSpell.autoFormatConfigFile": false,
   "cSpell.diagnosticLevel": "Information",
   "cSpell.enableFiletypes": ["!jsonc"],
   "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],

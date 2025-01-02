@@ -123,6 +123,7 @@
   "gitlens.defaultDateShortFormat": "YYYYMMDD",
   "gitlens.defaultDateStyle": "absolute",
   "gitlens.hovers.avatars": false,
+  "gitlens.launchpad.indicator.enabled": false,
   "gitlens.menus": {
     "editorGroup": false
   },

@@ -63,6 +63,10 @@
     {
       "languageId": "vue",
       "includeRegExpList": ["(<!--).*(-->)", "CStyleComment"]
+    },
+    {
+      "languageId": "yaml",
+      "includeRegExpList": ["/#.*/"]
     }
   ],
   "words": [

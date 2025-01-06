@@ -53,6 +53,10 @@
       "includeRegExpList": ["/#.*/", "CStyleComment"]
     },
     {
+      "languageId": "toml",
+      "includeRegExpList": ["/#.*/"]
+    },
+    {
       "languageId": "typescript",
       "includeRegExpList": ["CStyleComment"]
     },

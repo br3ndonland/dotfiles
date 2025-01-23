@@ -136,6 +136,7 @@
   "gitlens.views.formats.stashes.description": "${date}",
   "gitlens.views.remotes.avatars": false,
   "gitlens.views.repositories.avatars": false,
+  "gitlens.views.repositories.showStashes": true,
   "gitlens.views.searchAndCompare.avatars": false,
   "gitlens.views.tags.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,

@@ -90,4 +90,3 @@ mas "duckduckgo privacy essentials", id: 1482920575
 mas "keynote", id: 409183694
 mas "numbers", id: 409203825
 mas "pages", id: 409201541
-mas "pdf expert", id: 1055273043

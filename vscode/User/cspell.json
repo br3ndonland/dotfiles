@@ -9,6 +9,10 @@
       "includeRegExpList": ["CStyleComment"]
     },
     {
+      "languageId": "dockerfile",
+      "includeRegExpList": ["/#.*/"]
+    },
+    {
       "languageId": "go",
       "includeRegExpList": ["CStyleComment"]
     },

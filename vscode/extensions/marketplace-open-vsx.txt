@@ -1,6 +1,5 @@
 astro-build.astro-vscode
 charliermarsh.ruff
-codeium.codeium
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig

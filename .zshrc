@@ -69,6 +69,7 @@ CURL_BIN_DIR=$HOMEBREW_PREFIX/opt/curl/bin
 CURL_CPPFLAGS=-I$HOMEBREW_PREFIX/opt/curl/include
 CURL_LDFLAGS=-L$HOMEBREW_PREFIX/opt/curl/lib
 CURL_PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig
+GNU_AWK_BIN_DIR=$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin
 GNU_COREUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
 GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
 GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin

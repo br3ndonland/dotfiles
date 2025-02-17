@@ -27,6 +27,7 @@ else
 fi
 
 ### Install VSCode extensions
+# TODO: Cursor extension installs not working
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
   "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"
 done

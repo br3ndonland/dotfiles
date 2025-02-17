@@ -118,5 +118,21 @@
   {
     "key": "ctrl+alt+cmd+f",
     "command": "gitlens.showCommitSearch"
+  },
+  /*
+    Prevent AI tools from co-opting keybindings
+    -------------------------------------------
+
+    The Cursor VSCode fork co-opts cmd+l to show the chat panel. This action
+    was previously `cursor.showChatPanel` but is apparently not configurable
+    anymore. After restoring VSCode's default cmd+l behavior, Cursor still
+    shows the "Cmd+L to chat, Cmd+K to generate" code lens (tooltip). This
+    behavior is also not configurable. The `"editor.codeLens": false` VSCode
+    setting does not remove the Cursor code lens.
+  */
+  {
+    "key": "cmd+l",
+    "command": "expandLineSelection",
+    "when": "textInputFocus"
   }
 ]

@@ -5,7 +5,7 @@
 ### options
 # initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
-# See man zshoptions or http://zsh.sourceforge.net/Doc/Release/Options.html
+# See man zshoptions or https://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 setopt autocd extendedglob globdots histignorespace noautomenu nullglob

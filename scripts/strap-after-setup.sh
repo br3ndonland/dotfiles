@@ -27,7 +27,7 @@ else
 fi
 
 ### Install VSCode extensions
-for i in {code,code-exploration,code-insiders,code-server,codium}; do
+for i in {code,code-exploration,code-insiders,code-server,codium,cursor}; do
   "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"
 done
 

@@ -68,6 +68,7 @@ for i in "$@"; do
   code-exploration) : "Visual Studio Code - Exploration" ;;
   code-insiders) : "Visual Studio Code - Insiders" ;;
   codium) : "VSCodium" ;;
+  # cursor) : "Cursor" ;;
   esac
   MACOS_BIN="/Applications/$_.app/Contents/Resources/app/bin"
   if type "$i" &>/dev/null; then
@@ -78,6 +79,10 @@ for i in "$@"; do
   fi
   if ! type "$i" &>/dev/null; then
     printf "\nError: %s command not on PATH.\n" "$i" >&2
+    # TODO: Cursor extension installs not working
+    # if [ "$i" = "cursor" ]; then
+    #   printf "\nHomebrew Cask should symlink %s to %s.\n" "$MACOS_BIN/code" "$i" >&2
+    # fi
     exit 1
   elif install_extensions "$i"; then
     printf "\nExtensions successfully installed for %s.\n" "$i"

@@ -222,6 +222,7 @@
     "smallint",
     "smartsheet",
     "sourcery",
+    "spacelift",
     "sqlalchemy",
     "starlette",
     "starlette's",

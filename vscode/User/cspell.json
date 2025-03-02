@@ -45,6 +45,10 @@
       "includeRegExpList": ["/#.*/"]
     },
     {
+      "languageId": "rego",
+      "includeRegExpList": ["/#.*/", "CStyleComment"]
+    },
+    {
       "languageId": "rust",
       "includeRegExpList": ["CStyleComment"]
     },

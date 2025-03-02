@@ -11,4 +11,7 @@ export PATH=$HOME/.zfunc:$PATH
 alias python='python3'
 
 ### prompt: https://starship.rs
-eval "$(starship init bash)"
+source <(starship init bash)
+
+### mise: https://mise.jdx.dev/
+source <(mise activate bash)

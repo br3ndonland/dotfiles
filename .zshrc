@@ -108,7 +108,7 @@ alias tg='terragrunt'
 source <(starship init zsh)
 
 ### mise: https://mise.jdx.dev/
-eval "$(mise activate zsh)"
+source <(mise activate zsh)
 
 ### functions
 # ensure .zfunc is symlinked to $HOME/.zfunc

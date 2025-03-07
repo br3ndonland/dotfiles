@@ -43,9 +43,10 @@
   },
   "files.associations": {
     "{**/*.env,**/env}": "dotenv",
+    "**/.zfunc/*": "shellscript",
     "**/*.hujson": "jsonc",
     "**/*.rego": "rego",
-    "**/.zfunc/*": "shellscript"
+    "**/*.tofu": "terraform"
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {

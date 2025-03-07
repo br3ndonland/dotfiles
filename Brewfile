@@ -1,6 +1,7 @@
 cask_args appdir: "/Applications", require_sha: true
 tap "homebrew/bundle"
 tap "homebrew/services"
+# tap "spacelift-io/spacelift"
 
 brew "awscli"
 brew "bash"
@@ -49,6 +50,7 @@ brew "ruff"
 brew "rust"
 brew "shellcheck"
 brew "shfmt"
+# brew "spacelift-io/spacelift/spacectl"
 brew "starship"
 brew "taplo"
 # brew "terraformer"

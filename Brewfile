@@ -1,6 +1,7 @@
 cask_args appdir: "/Applications", require_sha: true
 tap "homebrew/bundle"
 tap "homebrew/services"
+# tap "hashicorp/tap"
 # tap "spacelift-io/spacelift"
 
 brew "awscli"
@@ -20,6 +21,7 @@ brew "gnu-tar"
 brew "gnupg"
 brew "go"
 brew "grep"
+# brew "hashicorp/tap/vault"
 # brew "helm"
 brew "httpie"
 brew "jq"

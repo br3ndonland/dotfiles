@@ -75,7 +75,7 @@ GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
 GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin
 GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
 GNU_TAR_BIN_DIR=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-PIPX_BIN_DIR=$HOME/.local/bin
+LOCAL_BIN_DIR=$HOME/.local/bin
 RUST_CARGO_BIN_DIR=$HOME/.cargo/bin
 path_array=(
   $CURL_BIN_DIR
@@ -85,7 +85,7 @@ path_array=(
   $GNU_GREP_BIN_DIR
   $GNU_SED_BIN_DIR
   $GNU_TAR_BIN_DIR
-  $PIPX_BIN_DIR
+  $LOCAL_BIN_DIR
   $RUST_CARGO_BIN_DIR
   $PATH
 )
@@ -97,7 +97,7 @@ export \
   HOMEBREW_NO_ANALYTICS=1 \
   LDFLAGS=$CURL_LDFLAGS \
   PATH=${(j.:.)path_array} \
-  PIPX_BIN_DIR=$PIPX_BIN_DIR \
+  PIPX_BIN_DIR=$LOCAL_BIN_DIR \
   PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
 
 ### aliases

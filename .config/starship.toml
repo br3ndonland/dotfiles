@@ -11,9 +11,9 @@ format = "via [node.js ($version )]($style)"
 python_binary = "python3"
 
 [shell]
-bash_indicator = "bash "
-disabled = false
-format = "[$indicator]($style)"
-style = "cyan bold"
+bash_indicator    = "bash "
+disabled          = false
+format            = "[$indicator]($style)"
+style             = "cyan bold"
 unknown_indicator = "??? "
-zsh_indicator = ""
+zsh_indicator     = ""

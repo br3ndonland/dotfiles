@@ -248,6 +248,8 @@
     "editor.defaultFormatter": "tamasfe.even-better-toml",
     "editor.formatOnSave": false
   },
+  "evenBetterToml.formatter.alignComments": true,
+  "evenBetterToml.formatter.alignEntries": true,
   "evenBetterToml.formatter.allowedBlankLines": 1,
   "evenBetterToml.formatter.arrayAutoCollapse": false,
   "evenBetterToml.formatter.reorderArrays": true,

@@ -4,6 +4,7 @@ tap "homebrew/services"
 # tap "hashicorp/tap"
 # tap "spacelift-io/spacelift"
 
+# brew "aws-iam-authenticator"
 brew "awscli"
 brew "bash"
 brew "coreutils"

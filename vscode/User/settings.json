@@ -178,6 +178,8 @@
   "markdown.extension.toc.slugifyMode": "github",
   "markdown.extension.toc.levels": "2..3",
   "markdown.extension.toc.updateOnSave": true,
+  "opa.dependency_paths.regal": "regal",
+  "opa.languageServers": ["regal"],
   "[plaintext]": {
     "editor.quickSuggestions": {
       "comments": "off",

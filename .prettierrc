@@ -1,3 +1,13 @@
 {
-  "semi": false
+  "semi": false,
+  "overrides": [
+    {
+      "files": ["COMMIT_EDITMSG"],
+      "options": {
+        "parser": "markdown",
+        "printWidth": 72,
+        "proseWrap": "always"
+      }
+    }
+  ]
 }

@@ -1,16 +1,10 @@
 .DS_Store
 .config/karabiner/automatic_backups
-.config/TabNine/*
-!.config/TabNine/tabnine_config.json
 *.gpg*
 *keys*
-vscode/*[Ee]xtension*
-!vscode/extensions/*.txt
 vscode/languagepacks.json
 vscode/logs
 vscode/machineid
-vscode/User
-!vscode/User/*.json
 id_rsa*
 known_hosts
 marketplace-all.txt

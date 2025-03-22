@@ -41,6 +41,15 @@
     "command": "outdent",
     "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
   },
+  // Insert Prettier ignore comment
+  {
+    "key": "ctrl+alt+p",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "name": "Prettier ignore comment"
+    },
+    "when": "editorTextFocus"
+  },
   // Open links
   {
     "key": "ctrl+alt+cmd+enter",

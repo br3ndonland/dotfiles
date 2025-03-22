@@ -1,0 +1,8 @@
+{
+  "Prettier ignore comment": {
+    "scope": "astro,css,html,javascript,javascriptreact,json,jsonc,markdown,mdx,snippets,typescript,typescriptreact,vue,yaml",
+    "prefix": "pi",
+    "body": "$BLOCK_COMMENT_START prettier-ignore $BLOCK_COMMENT_END",
+    "description": "Language-specific Prettier ignore comment",
+  },
+}

@@ -178,7 +178,7 @@
       }
     }
   ],
-  "[astro][css][html][javascript][json][jsonc][markdown][mdx][typescript][vue][yaml]": {
+  "[astro][css][html][javascript][javascriptreact][json][jsonc][markdown][mdx][typescript][typescriptreact][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "markdown.extension.italic.indicator": "_",

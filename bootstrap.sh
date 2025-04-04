@@ -525,16 +525,11 @@ if [ "$STRAP_SUDO" -gt 0 ]; then
   sudo_askpass chmod -R 775 "$HOMEBREW_PREFIX/"{Caskroom,Cellar,Frameworks}
   sudo_askpass chown -R "$USER" "$HOMEBREW_PREFIX" 2>/dev/null || true
   logk
-  if [ "$MACOS" -gt 0 ]; then
-    log "Installing Homebrew on macOS"
+  if [ "$LINUX" -gt 0 ] || [ "$MACOS" -gt 0 ]; then
+    log "Installing Homebrew"
     script_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
     NONINTERACTIVE=$STRAP_CI \
       /usr/bin/env bash -c "$(curl -fsSL $script_url)" || install_homebrew
-    logk
-  elif [ "$LINUX" -gt 0 ]; then
-    # https://docs.brew.sh/Homebrew-on-Linux
-    log "Installing Homebrew on Linux"
-    run_dotfile_scripts scripts/linuxbrew.sh
     logk
   else
     abort "Unsupported operating system $OS"

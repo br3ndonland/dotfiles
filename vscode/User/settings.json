@@ -189,6 +189,10 @@
   "markdown.extension.toc.updateOnSave": true,
   "opa.dependency_paths.regal": "regal",
   "opa.languageServers": ["regal"],
+  "[rego]": {
+    "editor.codeLens": false,
+    "editor.inlayHints.enabled": "offUnlessPressed"
+  },
   "[plaintext]": {
     "editor.quickSuggestions": {
       "comments": "off",

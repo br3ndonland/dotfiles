@@ -230,7 +230,7 @@
   "python.showStartPage": false,
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
-  "ruff.lint.extendSelect": ["I"],
+  "ruff.lint.extendSelect": ["I", "UP"],
   "redhat.telemetry.enabled": false,
   "shellcheck.enable": true,
   "shellcheck.run": "onSave",

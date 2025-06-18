@@ -45,7 +45,7 @@
     "{**/*.env,**/env}": "dotenv",
     "**/.zfunc/*": "shellscript",
     "**/*.hujson": "jsonc",
-    "**/*.rego": "rego",
+    "**/*.rego*": "rego",
     "**/*.tofu": "terraform"
   },
   "files.autoSave": "onWindowChange",

@@ -191,7 +191,8 @@
   "opa.languageServers": ["regal"],
   "[rego]": {
     "editor.codeLens": false,
-    "editor.inlayHints.enabled": "offUnlessPressed"
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.insertSpaces": false
   },
   "[plaintext]": {
     "editor.quickSuggestions": {

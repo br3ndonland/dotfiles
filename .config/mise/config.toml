@@ -1,0 +1,39 @@
+[settings]
+# https://mise.jdx.dev/configuration/settings.html
+activate_aggressive = true
+# https://mise.jdx.dev/mise-cookbook/python.html#mise-uv
+# might be making mise hang
+# https://github.com/jdx/mise/issues/4302, https://github.com/jdx/mise/pull/4609
+# python.uv_venv_auto = true
+
+[tools]
+# https://mise.jdx.dev/configuration.html#scopes
+# https://mise.jdx.dev/dev-tools/
+# registry tools from core backend
+go     = "prefix:1.23"
+node   = "prefix:23"
+python = "prefix:3.13"
+ruby   = "prefix:3.4"
+rust   = "latest"
+# registry tools from other backends
+dprint         = "prefix:0.49"
+helm           = "latest"
+opentofu       = "prefix:1.9"
+pnpm           = "latest"
+ruff           = "prefix:0.6"
+shellcheck     = "prefix:0.10"
+shfmt          = "prefix:3.11"
+spacectl       = "latest"
+terraform      = "1.5.7"
+terraform-docs = "latest"
+terragrunt     = "latest"
+trivy          = "latest"
+uv             = "prefix:0.6"
+yt-dlp         = "latest"
+# non-registry tools from specific backends
+"gem:terraspace" = "TODO"
+"npm:prettier"   = "prefix:3"
+"npm:typescript" = "TODO"
+"pipx:hatch"     = "prefix:1.14"
+"pipx:mypy"      = "TODO"
+# "pipx:tombi"     = "prefix:0.2"

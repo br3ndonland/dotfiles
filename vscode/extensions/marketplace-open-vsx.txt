@@ -9,6 +9,7 @@ github.vscode-github-actions
 golang.go
 hashicorp.hcl
 hashicorp.terraform
+hverlin.mise-vscode
 mikestead.dotenv
 ms-python.mypy-type-checker
 ms-python.python@2025.4.0

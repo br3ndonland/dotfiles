@@ -25,7 +25,6 @@ brew "grep"
 brew "httpie"
 # brew "iam-policy-json-to-terraform"
 brew "jq"
-brew "jupyterlab"
 brew "libfido2"
 brew "macos-trash" if OS.mac?
 brew "mas" if OS.mac?

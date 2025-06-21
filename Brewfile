@@ -3,7 +3,7 @@ cask_args appdir: "/Applications", require_sha: true
 # tap "spacelift-io/spacelift"
 
 # brew "aws-iam-authenticator"
-brew "awscli"
+# brew "awscli"
 brew "bash"
 brew "coreutils"
 brew "curl"

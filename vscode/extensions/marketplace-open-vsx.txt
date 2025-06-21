@@ -11,7 +11,7 @@ hashicorp.hcl
 hashicorp.terraform
 mikestead.dotenv
 ms-python.mypy-type-checker
-ms-python.python@2025.8.0
+ms-python.python@2025.0.0
 nuxt.mdc
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker

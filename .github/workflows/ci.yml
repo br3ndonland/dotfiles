@@ -143,4 +143,7 @@ jobs:
       - name: Check Homebrew configuration
         run: brew config
       - name: Check for potential problems with brew doctor
-        run: brew doctor || echo "Potential problems detected. See output for details."
+        if: runner.os == 'macOS'
+        run: |
+          # `brew doctor` does not work on Linux: https://github.com/Homebrew/brew/issues/20148
+          brew doctor || echo "Potential problems detected. See output for details."

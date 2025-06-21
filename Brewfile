@@ -1,5 +1,4 @@
 cask_args appdir: "/Applications", require_sha: true
-tap "homebrew/services"
 # tap "hashicorp/tap"
 # tap "spacelift-io/spacelift"
 

@@ -427,7 +427,7 @@ install_homebrew() {
 set_up_brew_skips() {
   local brewfile_path casks ci_skips mas_ids mas_prefix
   log_no_sudo "Setting up Homebrew Bundle formula installs to skip."
-  ci_skips="awscli black jupyterlab mkvtoolnix zsh-completions"
+  ci_skips="mkvtoolnix zsh-completions"
   [ "$STRAP_CI" -gt 0 ] && HOMEBREW_BUNDLE_BREW_SKIP="$ci_skips"
   if [ -f "$HOME/.Brewfile" ]; then
     brewfile_path="$HOME/.Brewfile"

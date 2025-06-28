@@ -20,7 +20,7 @@ jobs:
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - uses: actions/checkout@v4
       - name: Install Prettier
-        run: npm i -g prettier@'^3'
+        run: npm i -g "prettier@${{ vars.PRETTIER_VERSION }}"
       - name: Check web code formatting with Prettier
         run: prettier --check .
       - name: Install formatters with Homebrew

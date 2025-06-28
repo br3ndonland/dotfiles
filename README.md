@@ -93,7 +93,6 @@ Users with more complex needs for multi-environment dotfiles management might co
 - <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen cabinet.</summary>
 
   ![DIY standing desk](https://user-images.githubusercontent.com/26674818/102920844-6b6cc280-4459-11eb-9248-b16a7da7b5d0.jpg)
-
   - I used my [Kensington SafeDock](https://www.amazon.com/dp/B008M11X0U) to elevate my MacBook in my kitchen cabinet, and wrapped the cable lock around a pipe near the ceiling.
   - I ran an ethernet cable from my router into the cabinet.
   - I added an [LED light](https://www.amazon.com/dp/B06Y3NWN8R) to the cabinet door.
@@ -106,7 +105,6 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 - macOS setup is automated with _[macos.sh](scripts/macos.sh)_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) is used for keymapping.
-
   - Settings are stored in _.config/karabiner/karabiner.json_. Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, I added _karabiner.json_ to _.prettierignore_.
   - Simple modifications:
 

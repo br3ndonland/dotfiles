@@ -21,6 +21,7 @@
     "strings": false
   },
   "editor.renderWhitespace": "none",
+  "editor.suggest.preview": true,
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
@@ -45,8 +46,7 @@
     "{**/*.env,**/env}": "dotenv",
     "**/.zfunc/*": "shellscript",
     "**/*.hujson": "jsonc",
-    "**/*.rego*": "rego",
-    "**/*.tofu": "terraform"
+    "**/*.rego*": "rego"
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {
@@ -189,6 +189,11 @@
   "markdown.extension.toc.updateOnSave": true,
   "opa.dependency_paths.regal": "regal",
   "opa.languageServers": ["regal"],
+  "opentofu.experimentalFeatures.prefillRequiredFields": true,
+  "opentofu.experimentalFeatures.validateOnSave": true,
+  "[opentofu][opentofu-vars]": {
+    "editor.defaultFormatter": "opentofu.vscode-opentofu"
+  },
   "[rego]": {
     "editor.codeLens": false,
     "editor.inlayHints.enabled": "offUnlessPressed",

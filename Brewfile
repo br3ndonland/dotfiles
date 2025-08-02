@@ -102,7 +102,6 @@ cask "zotero"
 mas "1password for safari", id: 1569813296
 mas "bear", id: 1091189122
 mas "daisydisk", id: 411643860
-mas "duckduckgo privacy essentials", id: 1482920575
 mas "keynote", id: 409183694
 mas "numbers", id: 409203825
 mas "pages", id: 409201541

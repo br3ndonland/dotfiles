@@ -1,11 +1,11 @@
-.DS_Store
 .config/karabiner/automatic_backups
+.DS_Store
 *.gpg*
 *keys*
-vscode/languagepacks.json
-vscode/logs
-vscode/machineid
 id_rsa*
 known_hosts
 marketplace-all.txt
 pub*
+vscode/languagepacks.json
+vscode/logs
+vscode/machineid

@@ -1,5 +1,6 @@
 .config/karabiner/automatic_backups
 .DS_Store
+[Tt][Oo][Dd][Oo]*
 *.gpg*
 *keys*
 id_rsa*

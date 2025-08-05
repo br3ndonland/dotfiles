@@ -257,6 +257,7 @@
   },
   "shellformat.effectLanguages": ["shellscript"],
   "shellformat.path": "/opt/homebrew/bin/shfmt",
+  "shellformat.useEditorConfig": true,
   "[shellscript]": {
     "editor.rulers": [],
     "files.eol": "\n"

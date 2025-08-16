@@ -1,0 +1,18 @@
+# https://spec.editorconfig.org/
+root = true
+
+[*]
+# general options
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+# shfmt options - https://github.com/mvdan/sh/blob/HEAD/cmd/shfmt/shfmt.1.scd
+apply_ignore = true
+
+[*.py]
+indent_size = 4
+
+[*zsh*]
+# shfmt doesn't support zsh - https://github.com/mvdan/sh/issues/120
+ignore = true

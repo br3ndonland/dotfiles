@@ -26,7 +26,7 @@ jobs:
       - name: Install formatters with Homebrew
         run: brew install shfmt taplo
       - name: Check shell script formatting with shfmt
-        run: shfmt -d -i 2 .
+        run: shfmt -d .
       - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
         if: runner.os == 'macOS'
         run: brew install bash shellcheck

@@ -4,10 +4,10 @@ dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig
 esbenp.prettier-vscode
-foxundermoon.shell-format
 github.vscode-github-actions
 golang.go
 mikestead.dotenv
+mkhl.shfmt
 ms-python.mypy-type-checker
 ms-python.python@2025.4.0
 nuxt.mdc

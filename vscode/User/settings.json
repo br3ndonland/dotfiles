@@ -268,8 +268,7 @@
   },
   "svelte.enable-ts-plugin": true,
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "tombi-toml.tombi"
   },
   "evenBetterToml.formatter.alignComments": true,
   "evenBetterToml.formatter.alignEntries": true,

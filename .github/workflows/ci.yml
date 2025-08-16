@@ -24,7 +24,7 @@ jobs:
       - name: Check web code formatting with Prettier
         run: prettier --check .
       - name: Install formatters with Homebrew
-        run: brew install shfmt taplo
+        run: brew install shfmt
       - name: Check shell script formatting with shfmt
         run: shfmt -d .
       - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
@@ -43,11 +43,18 @@ jobs:
         shell: bash
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
-      - name: Check TOML formatting with Taplo
-        run: |
-          taplo check .taplo.toml
-          taplo check --schema https://starship.rs/config-schema.json .config/starship.toml
-          taplo fmt --check **/*.toml
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ vars.PYTHON_VERSION }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          cache-dependency-glob: ""
+          cache-suffix: python${{ vars.PYTHON_VERSION }}
+          version: ${{ vars.UV_VERSION }}
+      - name: Check TOML formatting with Tombi
+        run: uvx --from "tombi${{ vars.TOMBI_VERSION }}" tombi lint --verbose .config
   test:
     if: github.event_name != 'push'
     needs: [check]

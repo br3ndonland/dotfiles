@@ -14,8 +14,8 @@ nuxt.mdc
 opentofu.vscode-opentofu
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
-tamasfe.even-better-toml
 timonwong.shellcheck
+tombi-toml.tombi
 unifiedjs.vscode-mdx
 vitest.explorer
 Vue.volar

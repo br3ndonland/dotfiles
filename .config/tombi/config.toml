@@ -1,0 +1,5 @@
+# https://tombi-toml.github.io/tombi/docs/configuration
+[lint.rules]
+dotted-keys-out-of-order = "error"
+key-empty = "error"
+tables-out-of-order = "warn"

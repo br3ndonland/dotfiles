@@ -32,7 +32,7 @@ jobs:
         run: brew install bash shellcheck
       - name: Check shell script formatting with ShellCheck
         run: |
-          shopt -s globstar nullglob
+          shopt -s dotglob globstar nullglob
           set -- **/*.{sh,bash}
           if [ -n "$1" ]; then
             echo "Checking $@"
@@ -54,7 +54,10 @@ jobs:
           cache-suffix: python${{ vars.PYTHON_VERSION }}
           version: ${{ vars.UV_VERSION }}
       - name: Check TOML formatting with Tombi
-        run: uvx --from "tombi${{ vars.TOMBI_VERSION }}" tombi lint --verbose .config
+        run: |
+          # Check TOML formatting with Tombi
+          shopt -s dotglob globstar nullglob
+          uvx --from "tombi${{ vars.TOMBI_VERSION }}" tombi lint --verbose **/*.toml
   test:
     if: github.event_name != 'push'
     needs: [check]

@@ -2,7 +2,7 @@
 
 ### options
 HISTCONTROL=ignoreboth
-shopt -s globstar histappend nullglob
+shopt -s dotglob globstar histappend nullglob
 
 ### exports
 export PATH=$HOME/.zfunc:$PATH

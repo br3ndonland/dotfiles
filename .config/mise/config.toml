@@ -1,0 +1,59 @@
+[settings]
+# https://mise.jdx.dev/configuration/settings.html
+activate_aggressive = true
+idiomatic_version_file_enable_tools = [
+  "go",
+  "node",
+  "opentofu",
+  "python",
+  "ruby",
+  "terraform",
+  "terragrunt",
+]
+
+[settings.pipx]
+# https://mise.jdx.dev/dev-tools/backends/pipx.html
+# use uvx instead of pipx
+uvx = true
+
+[tools]
+# https://mise.jdx.dev/configuration.html#scopes
+# https://mise.jdx.dev/dev-tools/
+# registry tools from core backend
+go = "prefix:1.23"
+node = [
+  "22",
+  "23",
+]
+python = [
+  "3.12",
+  "3.13",
+]
+ruby = "3"
+rust = "latest"
+# registry tools from other backends
+# awscli = "prefix:2"
+gh = "latest"
+jq = "latest"
+helm = "latest"
+# opa = "prefix:1"
+opentofu = "prefix:1.10"
+pnpm = "latest"
+rclone = "latest"
+# regal = "latest"
+ruff = "prefix:0.12"
+shellcheck = "prefix:0.11"
+shfmt = "prefix:3.12"
+# spacectl = "latest"
+terraform-docs = "latest"
+terragrunt = "latest"
+uv = "prefix:0.8"
+# vault = "prefix:1.20"
+yt-dlp = "latest"
+# non-registry tools from specific backends
+"npm:prettier" = "prefix:3"
+"npm:typescript" = "prefix:5"
+"pipx:hatch" = "prefix:1.14"
+"pipx:httpie" = "prefix:3"
+"pipx:mypy" = "prefix:1"
+"pipx:tombi" = "prefix:0.5"

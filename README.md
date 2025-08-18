@@ -286,10 +286,8 @@ Phil's reply:
 
 - [node](https://nodejs.org/en/) is a JavaScript runtime used to run JavaScript outside of a web browser.
 - [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
-  - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012,
-    > Yeah, we're never going to do this.
-  - Instead, packages can be installed with Homebrew, or with _[npm-globals.sh](scripts/npm-globals.sh)_.
-  - [npm-check](https://www.npmjs.com/package/npm-check) can be used to manage global packages after install, with `npm-check -ug`. If not using npm-check, a list of global npm packages can be seen after installation with `npm list -g --depth=0`.
+  - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012, "Yeah, we're never going to do this."
+  - Instead, packages can be installed with Homebrew or [mise](https://mise.jdx.dev/). See [`config.toml`](./.config/mise/config.toml).
 - I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
 - Compared with Prettier, ESLint formats less code languages, requires complicated setup, and doesn't work well when installed globally.
 - In the past, I also used [JavaScript Standard Style](https://standardjs.com/) (aka StandardJS). Standard Style has also [reportedly](https://changelog.com/podcast/359) been favored by Brendan Eich (creator of JavaScript) and Sir Tim Berners-Lee (creator of the World Wide Web). Prettier provides a similar code style, but with more features, so I use Prettier instead.
@@ -298,7 +296,7 @@ Phil's reply:
 
 - I lint and format Python code with [Ruff](https://docs.astral.sh/ruff/).
   - The [Ruff VSCode extension](https://open-vsx.org/extension/charliermarsh/ruff) provides support for Ruff in VSCode. I set VSCode to autoformat on save.
-  - Ruff is available as a [Homebrew formula](https://formulae.brew.sh/formula/ruff).
+  - Ruff is available as a [Homebrew formula](https://formulae.brew.sh/formula/ruff), or as a Python package through `pipx`, `uv`, and [mise](https://mise.jdx.dev/). See [`config.toml`](./.config/mise/config.toml).
 - See my [template-python](https://github.com/br3ndonland/template-python) repo for useful tooling and additional sensible defaults.
 
 ## PGP

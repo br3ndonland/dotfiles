@@ -33,6 +33,7 @@ ruby = "3"
 rust = "latest"
 # registry tools from other backends
 # awscli = "prefix:2"
+cosign = "latest"
 gh = "latest"
 jq = "latest"
 helm = "latest"

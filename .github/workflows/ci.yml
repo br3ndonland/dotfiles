@@ -10,26 +10,20 @@ jobs:
   check:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-14, ubuntu-latest]
     steps:
-      - name: Add Homebrew to $PATH
-        if: runner.os == 'Linux'
-        run: |
-          # mitigate https://github.com/actions/runner-images/issues/6283
-          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - uses: actions/checkout@v4
-      - name: Install Prettier
-        run: npm i -g "prettier@${{ vars.PRETTIER_VERSION }}"
+      - name: Install an up-to-date Bash on macOS
+        if: runner.os == 'macOS'
+        run: brew install bash
+      - name: Install mise-en-place
+        uses: jdx/mise-action@v3
       - name: Check web code formatting with Prettier
         run: prettier --check .
-      - name: Install formatters with Homebrew
-        run: brew install shfmt
       - name: Check shell script formatting with shfmt
         run: shfmt -d .
-      - name: Install ShellCheck (https://github.com/koalaman/shellcheck) on macOS
-        if: runner.os == 'macOS'
-        run: brew install bash shellcheck
       - name: Check shell script formatting with ShellCheck
         run: |
           shopt -s dotglob globstar nullglob
@@ -40,24 +34,13 @@ jobs:
           else
             echo "No shell scripts for ShellCheck to check."
           fi
-        shell: bash
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ vars.PYTHON_VERSION }}
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
-        with:
-          cache-dependency-glob: ""
-          cache-suffix: python${{ vars.PYTHON_VERSION }}
-          version: ${{ vars.UV_VERSION }}
       - name: Check TOML formatting with Tombi
         run: |
           # Check TOML formatting with Tombi
           shopt -s dotglob globstar nullglob
-          uvx --from "tombi${{ vars.TOMBI_VERSION }}" tombi lint --verbose **/*.toml
+          tombi lint --verbose **/*.toml
   test:
     if: github.event_name != 'push'
     needs: [check]
@@ -157,3 +140,20 @@ jobs:
         run: |
           # `brew doctor` does not work on Linux: https://github.com/Homebrew/brew/issues/20148
           brew doctor || echo "Potential problems detected. See output for details."
+      - name: Check mise tools (installed via scripts/strap-after-setup)
+        run: |
+          source <(mise activate bash --shims)
+          mise_list=$(mise list)
+          not_installed=0
+          for tool in opentofu prettier shfmt shellcheck tombi; do
+            if echo "$mise_list" | grep -qE "$tool"; then
+              echo "$tool installed with mise."
+            else
+              echo "$tool not installed with mise."
+              ((not_installed++))
+            fi
+          done
+          if [[ $not_installed -gt 0 ]]; then
+            echo "ERROR: Expected tools not installed with mise."
+            exit 1
+          fi

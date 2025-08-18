@@ -16,6 +16,13 @@ idiomatic_version_file_enable_tools = [
 # use uvx instead of pipx
 uvx = true
 
+[settings.python]
+# use precompiled binaries instead of building Python from source
+# precompiled binaries are supported by Astral
+# https://github.com/astral-sh/python-build-standalone
+# https://mise.jdx.dev/lang/python.html#precompiled-python-binaries
+compile = false
+
 [tools]
 # https://mise.jdx.dev/configuration.html#scopes
 # https://mise.jdx.dev/dev-tools/

@@ -18,12 +18,12 @@ if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
     ~/.1password/agent.sock
 fi
 
-### Install Hatch
-if type pipx &>/dev/null && ! type hatch &>/dev/null; then
-  echo "Installing Hatch with pipx."
-  pipx install "hatch>=1,<2"
+### Run mise install
+if type mise &>/dev/null; then
+  echo "Running mise install."
+  mise install
 else
-  echo "Skipping Hatch install."
+  echo "mise not on \$PATH. Skipping mise install."
 fi
 
 ### Install VSCode extensions

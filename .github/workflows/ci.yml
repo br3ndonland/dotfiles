@@ -27,7 +27,7 @@ jobs:
       - name: Check shell script formatting with ShellCheck
         run: |
           shopt -s dotglob globstar nullglob
-          set -- **/*.{sh,bash}
+          set -- **/*.{sh,bash}*
           if [ -n "$1" ]; then
             echo "Checking $@"
             shellcheck "$@"

@@ -1,10 +1,8 @@
 cask_args appdir: "/Applications", require_sha: true
 
-# brew "aws-iam-authenticator"
 brew "bash"
 brew "coreutils"
 brew "curl"
-# brew "docker-credential-helper-ecr"
 brew "ffmpeg"
 brew "findutils"
 brew "gawk"

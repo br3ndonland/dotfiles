@@ -32,6 +32,8 @@ python = [
 ruby = "3"
 rust = "latest"
 # registry tools from other backends
+# amazon-ecr-credential-helper = "latest"
+# aws-iam-authenticator = "latest"
 # awscli = "prefix:2"
 cosign = "latest"
 gh = "latest"

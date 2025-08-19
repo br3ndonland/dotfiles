@@ -11,6 +11,7 @@ Brendon Smith ([br3ndonland](https://github.com/br3ndonland))
 - [Hardware](#hardware)
 - [macOS](#macos)
 - [Homebrew package management](#homebrew-package-management)
+- [mise-en-place](#mise-en-place)
 - [Git](#git)
 - [Shell](#shell)
 - [Text editors](#text-editors)
@@ -135,6 +136,23 @@ Users with more complex needs for multi-environment dotfiles management might co
   # Show cache dir: https://docs.brew.sh/FAQ#where-does-stuff-get-downloaded
   brew --cache
   ```
+
+## mise-en-place
+
+[mise-en-place](https://mise.jdx.dev/) is a tool manager. It can replace many other tool managers like `pyenv`, `rbenv`, `tenv`, and others, and also some aspects of Homebrew. See the [mise walkthrough](https://mise.jdx.dev/walkthrough.html) for some help getting started.
+
+mise itself is installed via the _[Brewfile](Brewfile)_. mise settings and tools are configured with [`config.toml`](.config/mise/config.toml). Additional tools can be found in the [mise registry](https://mise.jdx.dev/registry.html).
+
+The [`.bashrc`](.bashrc) and [`.zshrc`](.zshrc) files contain the appropriate `mise activate` command (`source <(mise activate bash)`/`source <(mise activate zsh)`, using [process substitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html) instead of `eval`) to load mise tools onto `$PATH`, but `.bashrc` and `.zshrc` are only for interactive shell login sessions. Non-interactive shell login sessions such as those called from scripts do not automatically load these files. See the [Bash docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) and [Zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html) for more details on startup files.
+
+This means mise tools will not be on `$PATH` in non-interactive shells. To accommodate non-interactive shells, mise provides a "shims" directory (`~/.local/share/mise/shims`) in which it places symlinks to binaries, and a `mise activate --shims` command that will load shims onto `$PATH`. The recommendation is to add `mise activate --shims` to non-interactive shell configuration files like `.bash_profile` and `.zprofile`. The [docs](https://mise.jdx.dev/dev-tools/shims.html) explain:
+
+> we use `mise activate --shims` in the non-interactive shell
+> configuration file (like `.bash_profile` or `.zprofile`) and
+> `mise activate` in the interactive shell configuration file (like
+> `.bashrc` or `.zshrc`).
+
+For this reason, the [`.bash_profile`](.bash_profile) and [`.zprofile`](.zprofile) files contain the `mise activate --shims` command to load mise tools onto `$PATH` for non-interactive shell logins. mise is installed with Homebrew, so the appropriate `$HOMEBREW_PREFIX` will be set and Homebrew will be loaded into the shell environment as well.
 
 ## Git
 

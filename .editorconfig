@@ -13,6 +13,6 @@ apply_ignore = true
 [*.py]
 indent_size = 4
 
-[*zsh*]
+[*{zprofile,zsh}*]
 # shfmt doesn't support zsh - https://github.com/mvdan/sh/issues/120
 ignore = true

@@ -33,7 +33,7 @@ compile = false
 cosign = "prefix:2"
 slsa-verifier = "prefix:2"
 # registry tools from core backend
-go = "prefix:1.23"
+go = "1"
 node = [
   "22",
   "23",

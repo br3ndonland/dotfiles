@@ -1,3 +1,5 @@
+#:tombi schema.strict = false
+
 [settings]
 # https://mise.jdx.dev/configuration/settings.html
 activate_aggressive = true

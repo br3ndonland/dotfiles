@@ -8,6 +8,7 @@ github.vscode-github-actions
 golang.go
 mikestead.dotenv
 mkhl.shfmt
+ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.mypy-type-checker
 ms-python.python@2025.4.0
 nuxt.mdc

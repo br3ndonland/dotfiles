@@ -28,6 +28,10 @@ compile = false
 [tools]
 # https://mise.jdx.dev/configuration.html#scopes
 # https://mise.jdx.dev/dev-tools/
+#
+# signature verification tools
+cosign = "prefix:2"
+slsa-verifier = "prefix:2"
 # registry tools from core backend
 go = "prefix:1.23"
 node = [
@@ -44,7 +48,6 @@ rust = "latest"
 # amazon-ecr-credential-helper = "latest"
 # aws-iam-authenticator = "latest"
 # awscli = "prefix:2"
-cosign = "latest"
 gh = "latest"
 jq = "latest"
 k9s = "latest"

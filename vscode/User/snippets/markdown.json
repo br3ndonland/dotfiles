@@ -1,4 +1,38 @@
 {
+  "GitHub Issue": {
+    "prefix": "ghi",
+    "body": [
+      "# $1\n",
+      "\n---\n",
+      "## Description\n\n$2\n",
+      "## Suggestions\n\n$3\n",
+      "## Related\n\n$4\n",
+      "\n---\n",
+      "## Comments\n",
+      "\n---\n",
+      "## Notes\n"
+    ],
+    "description": "GitHub Issue template",
+    "isFileTemplate": true
+  },
+  "GitHub Pull Request": {
+    "prefix": "ghp",
+    "body": [
+      "# $1\n",
+      "\n---\n",
+      "## Description\n\n$2\n",
+      "## Changes\n\n$3\n",
+      "## Related\n\n$4\n",
+      "\n---\n",
+      "## Squash message\n",
+      "\n---\n",
+      "## Comments\n",
+      "\n---\n",
+      "## Notes\n"
+    ],
+    "description": "GitHub Pull Request template",
+    "isFileTemplate": true
+  },
   "Markdown HTML anchor link": {
     "prefix": "malink",
     "body": "<a href=\"$1\" rel=\"external\" target=\"_blank\">$TM_SELECTED_TEXT</a>",

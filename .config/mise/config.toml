@@ -25,6 +25,72 @@ uvx = true
 # https://mise.jdx.dev/lang/python.html#precompiled-python-binaries
 compile = false
 
+[tasks.check]
+depends = ["prettier:check", "shellcheck", "shfmt:check", "tombi:check"]
+description = "Run code quality checks"
+
+[tasks.format]
+depends = ["prettier:format", "shfmt:format", "tombi:format"]
+description = "Run code formatters"
+
+[tasks."prettier:check"]
+description = "Check web code formatting with Prettier"
+run = "prettier --check ."
+
+[tasks."prettier:format"]
+description = "Format web code with Prettier"
+run = "prettier --write ."
+
+[tasks.shellcheck]
+description = "Check shell scripts with ShellCheck"
+run = """
+#!/usr/bin/env bash
+
+shopt -s dotglob globstar nullglob
+set -- **/*.{bash,sh}*
+if [ -n "$1" ]; then
+  printf "Found the following files:\n"
+  printf "%s\n" "$@"
+  shellcheck "$@"
+else
+  echo "No shell scripts for ShellCheck to check."
+fi
+"""
+
+[tasks.shellcheck.env]
+SHELLCHECK_OPTS = "-e SC1071 -e SC1090 -e SC1091"
+
+[tasks."shfmt:check"]
+description = "Check shell script formatting with shfmt"
+run = """
+# Checking shell script formatting with shfmt.
+echo "Found the following files:
+$(shfmt -f .)"
+shfmt -d .
+"""
+
+[tasks."shfmt:format"]
+description = "Format shell scripts with shfmt"
+run = "shfmt -w ."
+
+[tasks."tombi:check"]
+description = "Check TOML formatting with Tombi"
+run = """
+#!/usr/bin/env bash
+
+shopt -s dotglob globstar nullglob
+tombi lint **/*.toml
+"""
+
+[tasks."tombi:format"]
+description = "Format TOML files with Tombi"
+run = """
+#!/usr/bin/env bash
+
+shopt -s dotglob globstar nullglob
+tombi format **/*.toml
+"""
+
 [tools]
 # https://mise.jdx.dev/configuration.html#scopes
 # https://mise.jdx.dev/dev-tools/

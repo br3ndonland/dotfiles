@@ -20,27 +20,8 @@ jobs:
         run: brew install bash
       - name: Install mise-en-place
         uses: jdx/mise-action@v3
-      - name: Check web code formatting with Prettier
-        run: prettier --check .
-      - name: Check shell script formatting with shfmt
-        run: shfmt -d .
-      - name: Check shell script formatting with ShellCheck
-        run: |
-          shopt -s dotglob globstar nullglob
-          set -- **/*.{sh,bash}*
-          if [ -n "$1" ]; then
-            echo "Checking $@"
-            shellcheck "$@"
-          else
-            echo "No shell scripts for ShellCheck to check."
-          fi
-        env:
-          SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
-      - name: Check TOML formatting with Tombi
-        run: |
-          # Check TOML formatting with Tombi
-          shopt -s dotglob globstar nullglob
-          tombi lint --verbose **/*.toml
+      - name: Run code quality checks
+        run: mise run check
   test:
     if: github.event_name != 'push'
     needs: [check]

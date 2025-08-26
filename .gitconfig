@@ -5,6 +5,7 @@ bra = branch --all
 brd = branch -d
 brD = branch -D
 brm = branch -m
+brp = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
 ci = commit
 cia = commit --amend
 cis = commit --squash

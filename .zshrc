@@ -96,6 +96,7 @@ export \
   EDITOR=$editor \
   GIT_EDITOR=$editor \
   GPG_TTY=$TTY \
+  HATCH_ENV_TYPE_VIRTUAL_PATH=.venv \
   HOMEBREW_NO_ANALYTICS=1 \
   LDFLAGS=$CURL_LDFLAGS \
   PATH=${(j.:.)path_array} \

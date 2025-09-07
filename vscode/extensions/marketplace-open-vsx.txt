@@ -1,5 +1,6 @@
 astro-build.astro-vscode
 charliermarsh.ruff
+detachhead.basedpyright
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig
@@ -9,7 +10,6 @@ golang.go
 mikestead.dotenv
 mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools
-ms-python.mypy-type-checker
 ms-python.python@2025.12.0
 nuxt.mdc
 opentofu.vscode-opentofu

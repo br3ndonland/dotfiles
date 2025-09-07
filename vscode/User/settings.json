@@ -220,7 +220,7 @@
   },
   "python.experiments.enabled": false,
   "python.experiments.optOutFrom": ["All"],
-  "python.languageServer": "Jedi",
+  "python.languageServer": "None", // set to "None" for BasedPyright
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
   "ruff.lint.extendSelect": ["I", "UP"],

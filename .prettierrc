@@ -2,7 +2,7 @@
   "semi": false,
   "overrides": [
     {
-      "files": ["COMMIT_EDITMSG"],
+      "files": ["COMMIT_EDITMSG", "TAG_EDITMSG"],
       "options": {
         "parser": "markdown",
         "printWidth": 72,

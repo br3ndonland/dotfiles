@@ -140,6 +140,7 @@ yt-dlp = "latest"
 # non-registry tools from specific backends
 "npm:prettier" = "prefix:3"
 "npm:typescript" = "prefix:5"
+"pipx:crp" = "latest"
 "pipx:hatch" = "prefix:1.14"
 "pipx:httpie" = "prefix:3"
 "pipx:mypy" = "prefix:1"

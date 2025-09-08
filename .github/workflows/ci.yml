@@ -21,7 +21,7 @@ jobs:
       - name: Install mise-en-place
         uses: jdx/mise-action@v3
       - name: Run code quality checks
-        run: mise run check
+        run: mise run check --jobs 1
   test:
     if: github.event_name != 'push'
     needs: [check]

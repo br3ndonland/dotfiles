@@ -64,8 +64,8 @@ SHELLCHECK_OPTS = "-e SC1071 -e SC1090 -e SC1091"
 description = "Check shell script formatting with shfmt"
 run = """
 # Checking shell script formatting with shfmt.
-echo "Found the following files:
-$(shfmt -f .)"
+echo "Found the following files:"
+shfmt -f .
 shfmt -d .
 """
 

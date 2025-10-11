@@ -1,4 +1,6 @@
 astro-build.astro-vscode
+catppuccin.catppuccin-vsc
+catppuccin.catppuccin-vsc-icons
 charliermarsh.ruff
 detachhead.basedpyright
 dracula-theme.theme-dracula

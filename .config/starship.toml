@@ -1,4 +1,4 @@
-#:schema https://raw.githubusercontent.com/starship/starship/547336a5/.github/config-schema.json
+#:schema https://raw.githubusercontent.com/starship/starship/d85ee0a/.github/config-schema.json
 # Starship configuration: https://starship.rs/config/
 # Note that the hosted schema in the docs (https://starship.rs/config-schema.json) is often out of date.
 # The Starship docs appear to be deployed manually with `workflow_dispatch` only after releases.

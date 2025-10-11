@@ -4,6 +4,7 @@
 # The Starship docs appear to be deployed manually with `workflow_dispatch` only after releases.
 
 command_timeout = 5000
+palette = "dracula"
 
 [battery]
 disabled = true
@@ -21,3 +22,16 @@ format = "[$indicator]($style)"
 style = "cyan bold"
 unknown_indicator = "??? "
 zsh_indicator = ""
+
+[palettes.dracula]
+foreground = "#F8F8F2"
+background = "#22212C"
+comment = "#7970A9"
+current_line = "#454158"
+cyan = "#80FFEA"
+green = "#8AFF80"
+orange = "#FFCA80"
+pink = "#FF80BF"
+purple = "#9580FF"
+red = "#FF9580"
+yellow = "#FFFF80"

@@ -71,6 +71,7 @@
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.minimumContrastRatio": 1,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.tabs.enabled": false,

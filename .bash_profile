@@ -29,4 +29,4 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 
 ### mise: https://mise.jdx.dev/dev-tools/shims.html
-source <(mise activate bash --shims)
+if [[ $- != *i* ]]; then source <(mise activate bash --shims); fi

@@ -17,21 +17,71 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 setopt autocd extendedglob globdots histignorespace noautomenu nullglob
 
-### keybindings: based on https://github.com/romkatv/zsh4humans
+# keybindings
+#
+# https://zsh.sourceforge.io/Guide/zshguide04.html
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html
+# https://github.com/romkatv/zsh4humans/blob/v5/z4h.zsh
+
+# activate Emacs mode for greater consistency with Bash and Readline
+bindkey -d
 bindkey -e
-bindkey -s '^[[1~' '^[[H'
-bindkey -s '^[[4~' '^[[F'
-bindkey -s '^[[5~' ''
-bindkey -s '^[[6~' ''
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-bindkey '^?' backward-delete-char
-bindkey '^[[3~' delete-char
-bindkey '^[[1;3C' forward-word
-bindkey '^[[1;3D' backward-word
-bindkey '^H' backward-kill-word
-bindkey '^[[3;3~' kill-word
-bindkey '^N' kill-buffer
+
+# string replacement bindings
+
+bindkey '-s' '^[OM'    '^M'        # Enter -> Carriage Return
+bindkey '-s' '^[Ok'    '+'         # + on numeric keypad -> plain +
+bindkey '-s' '^[Om'    '-'         # - on numeric keypad -> plain -
+bindkey '-s' '^[Oj'    '*'         # * on numeric keypad -> plain *
+bindkey '-s' '^[Oo'    '/'         # / on numeric keypad -> plain /
+bindkey '-s' '^[OX'    '='         # = on numeric keypad -> plain =
+bindkey '-s' '^[OH'    '^[[H'
+bindkey '-s' '^[OF'    '^[[F'
+bindkey '-s' '^[OA'    '^[[A'
+bindkey '-s' '^[OB'    '^[[B'
+bindkey '-s' '^[OD'    '^[[D'
+bindkey '-s' '^[OC'    '^[[C'
+bindkey '-s' '^[[1~'   '^[[H'
+bindkey '-s' '^[[4~'   '^[[F'
+bindkey '-s' '^[Od'    '^[[1;5D'
+bindkey '-s' '^[Oc'    '^[[1;5C'
+bindkey '-s' '^[^[[D'  '^[[1;3D'
+bindkey '-s' '^[^[[C'  '^[[1;3C'
+bindkey '-s' '^[[7~'   '^[[H'
+bindkey '-s' '^[[8~'   '^[[F'
+bindkey '-s' '^[[3\^'  '^[[3;5~'
+bindkey '-s' '^[^[[3~' '^[[3;3~'
+# bindkey '-s' '^[[1;9D' '^[[1;3D' # conflicts with beginning-of-line
+# bindkey '-s' '^[[1;9C' '^[[1;3C' # conflicts with end-of-line
+
+# command bindings
+
+bindkey '^[[1;9D' 'beginning-of-line'  # Command-Left (⌘ ←)
+bindkey '^[[H'    'beginning-of-line'  # Home key
+bindkey '^[[1;9C' 'end-of-line'        # Command-Right (⌘ →)
+bindkey '^[[F'    'end-of-line'        # End key
+
+bindkey '^[[1;3D' 'backward-word'
+bindkey '^[[1;5D' 'backward-word'
+bindkey '^[[1;3C' 'forward-word'
+bindkey '^[[1;5C' 'forward-word'
+
+# TODO backward-delete-char
+bindkey '^[[3~'   'delete-char'
+
+# TODO backward-kill-word
+bindkey '^[[3;5~' 'kill-word'
+bindkey '^[[3;3~' 'kill-word'
+
+bindkey '^[k'     'backward-kill-line'
+bindkey '^[K'     'backward-kill-line'
+bindkey '^[[3;9~' 'kill-line'          # Command-Delete (⌘ ⌦)
+# TODO 'backward-kill-line' # Command-Backspace (⌘ ⌫) TODO not working
+
+bindkey '^[j'     'kill-buffer'
+bindkey '^[J'     'kill-buffer'
+
+bindkey '^[/'     'redo'
 
 ### homebrew
 if [[ -z $HOMEBREW_PREFIX ]]; then

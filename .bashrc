@@ -10,6 +10,7 @@
 ### options
 HISTCONTROL=ignoreboth
 shopt -s dotglob globstar histappend nullglob
+set -o emacs # keybindings - also see `~/.inputrc`
 
 ### exports
 export PATH=$HOME/.zfunc:$PATH

@@ -60,55 +60,64 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 
 ### exports
-if type codium &>/dev/null; then
-  editor='codium --wait'
-elif type cursor &>/dev/null; then
-  editor='cursor --wait'
-elif type code &>/dev/null; then
-  editor='code --wait'
-elif type code-insiders &>/dev/null; then
-  editor='code-insiders --wait'
-elif type code-exploration &>/dev/null; then
-  editor='code-exploration --wait'
-else
-  editor='vim'
-fi
-TTY=$(tty)
-CURL_BIN_DIR=$HOMEBREW_PREFIX/opt/curl/bin
-CURL_CPPFLAGS=-I$HOMEBREW_PREFIX/opt/curl/include
-CURL_LDFLAGS=-L$HOMEBREW_PREFIX/opt/curl/lib
-CURL_PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig
-GNU_AWK_BIN_DIR=$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin
-GNU_COREUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
-GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin
-GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
-GNU_TAR_BIN_DIR=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-LOCAL_BIN_DIR=$HOME/.local/bin
-RUST_CARGO_BIN_DIR=$HOME/.cargo/bin
-path_array=(
-  $CURL_BIN_DIR
-  $GNU_AWK_BIN_DIR
-  $GNU_COREUTILS_BIN_DIR
-  $GNU_FINDUTILS_BIN_DIR
-  $GNU_GREP_BIN_DIR
-  $GNU_SED_BIN_DIR
-  $GNU_TAR_BIN_DIR
-  $LOCAL_BIN_DIR
-  $RUST_CARGO_BIN_DIR
-  $PATH
-)
-export \
-  CPPFLAGS=$CURL_CPPFLAGS \
-  EDITOR=$editor \
-  GIT_EDITOR=$editor \
-  GPG_TTY=$TTY \
-  HATCH_ENV_TYPE_VIRTUAL_PATH=.venv \
-  HOMEBREW_NO_ANALYTICS=1 \
-  LDFLAGS=$CURL_LDFLAGS \
-  PATH=${(j.:.)path_array} \
-  PIPX_BIN_DIR=$LOCAL_BIN_DIR \
-  PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
+# exports are set up with locals inside an anonymous function so that only the
+# exported variables persist in the shell session and not the local variables.
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Anonymous-Functions
+() {
+  local editor
+  if type codium &>/dev/null; then
+    editor='codium --wait'
+  elif type cursor &>/dev/null; then
+    editor='cursor --wait'
+  elif type code &>/dev/null; then
+    editor='code --wait'
+  elif type code-insiders &>/dev/null; then
+    editor='code-insiders --wait'
+  elif type code-exploration &>/dev/null; then
+    editor='code-exploration --wait'
+  else
+    editor='vim'
+  fi
+
+  local CURL_BIN_DIR=$HOMEBREW_PREFIX/opt/curl/bin
+  local CURL_CPPFLAGS=-I$HOMEBREW_PREFIX/opt/curl/include
+  local CURL_LDFLAGS=-L$HOMEBREW_PREFIX/opt/curl/lib
+  local CURL_PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig
+  local GNU_AWK_BIN_DIR=$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin
+  local GNU_COREUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+  local GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
+  local GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin
+  local GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
+  local GNU_TAR_BIN_DIR=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+  local LOCAL_BIN_DIR=$HOME/.local/bin
+  local RUST_CARGO_BIN_DIR=$HOME/.cargo/bin
+  local TTY=$(tty)
+
+  local path_array=(
+    $CURL_BIN_DIR
+    $GNU_AWK_BIN_DIR
+    $GNU_COREUTILS_BIN_DIR
+    $GNU_FINDUTILS_BIN_DIR
+    $GNU_GREP_BIN_DIR
+    $GNU_SED_BIN_DIR
+    $GNU_TAR_BIN_DIR
+    $LOCAL_BIN_DIR
+    $RUST_CARGO_BIN_DIR
+    $PATH
+  )
+
+  export \
+    CPPFLAGS=$CURL_CPPFLAGS \
+    EDITOR=$editor \
+    GIT_EDITOR=$editor \
+    GPG_TTY=$TTY \
+    HATCH_ENV_TYPE_VIRTUAL_PATH=.venv \
+    HOMEBREW_NO_ANALYTICS=1 \
+    LDFLAGS=$CURL_LDFLAGS \
+    PATH=${(j.:.)path_array} \
+    PIPX_BIN_DIR=$LOCAL_BIN_DIR \
+    PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
+}
 
 ### aliases
 alias python='python3'

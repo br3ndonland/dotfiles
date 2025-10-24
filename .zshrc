@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
-### Zsh configuration
+### Zsh configuration for interactive shells
+# in interactive shells, both `~/.zprofile` and `~/.zshrc` are loaded.
+# to avoid activating tools twice, a conditional can be used that checks the
+# `$-` special parameter. `$-` will contain `i` if the shell is interactive.
+# https://zsh.sourceforge.io/Doc/Release/Files.html
+# https://zsh.sourceforge.io/Doc/Release/Parameters.html
+[[ $- != *i* ]] && return
+
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
 ### options

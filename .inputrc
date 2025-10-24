@@ -1,0 +1,43 @@
+# Readline init file
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
+#
+# Zsh does not read this file.
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html
+
+# include system-wide bindings
+$include /etc/inputrc
+
+# settings
+set bell-style none
+set colored-stats on
+set completion-ignore-case on
+set convert-meta off
+set editing-mode emacs
+set input-meta on
+set mark-symlinked-directories on
+set match-hidden-files off
+set meta-flag on
+set output-meta on
+set page-completions off
+set skip-completed-text on
+set visible-stats on
+
+# emacs mode bindings
+$if mode=emacs
+
+"\e[1;9D": beginning-of-line          # Command-Left (⌘ ←)
+"\e[1~": beginning-of-line            # Home key
+"\e[1;9C": end-of-line                # Command-Right (⌘ →)
+"\e[4~": end-of-line                  # End key
+
+"\e[1;3D": backward-word              # Alt-Left/Option-Left
+"\e[1;3C": forward-word               # Alt-Right/Option-Right
+
+"\C-?": backward-delete-char          # Backspace (Delete)
+"\e[3~": delete-char                  # Delete (Del)
+
+"\e[3;3~": kill-word                  # Alt-Delete
+
+"\e[3;9~": kill-line                  # Command-Delete (⌘ ⌦)
+
+$endif

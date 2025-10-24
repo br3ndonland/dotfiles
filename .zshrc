@@ -17,21 +17,59 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 setopt autocd extendedglob globdots histignorespace noautomenu nullglob
 
-### keybindings: based on https://github.com/romkatv/zsh4humans
+# keybindings
+#
+# https://github.com/romkatv/zsh4humans/blob/v5/z4h.zsh
+# https://zsh.sourceforge.io/Guide/zshguide04.html
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html
+
+# activate Emacs mode for greater consistency with Bash and Readline
+bindkey -d
 bindkey -e
-bindkey -s '^[[1~' '^[[H'
-bindkey -s '^[[4~' '^[[F'
-bindkey -s '^[[5~' ''
-bindkey -s '^[[6~' ''
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-bindkey '^?' backward-delete-char
-bindkey '^[[3~' delete-char
-bindkey '^[[1;3C' forward-word
-bindkey '^[[1;3D' backward-word
-bindkey '^H' backward-kill-word
-bindkey '^[[3;3~' kill-word
-bindkey '^N' kill-buffer
+
+# string replacement bindings
+
+bindkey -s '^[OM'    '^M'                  # Enter -> Carriage Return
+bindkey -s '^[Ok'    '+'                   # + on numeric keypad -> plain +
+bindkey -s '^[Om'    '-'                   # - on numeric keypad -> plain -
+bindkey -s '^[Oj'    '*'                   # * on numeric keypad -> plain *
+bindkey -s '^[Oo'    '/'                   # / on numeric keypad -> plain /
+bindkey -s '^[OX'    '='                   # = on numeric keypad -> plain =
+bindkey -s '^[OH'    '^[[H'                # Home key
+bindkey -s '^[OF'    '^[[F'                # End key
+bindkey -s '^[OA'    '^[[A'                # Up arrow key
+bindkey -s '^[OB'    '^[[B'                # Down arrow
+bindkey -s '^[OD'    '^[[D'                # Left arrow
+bindkey -s '^[OC'    '^[[C'                # Right arrow
+bindkey -s '^[[1~'   '^[[H'                # Home key (alternative key code)
+bindkey -s '^[[4~'   '^[[F'                # End key (alternative key code)
+bindkey -s '^[Od'    '^[[1;5D'             # Alt‑Left
+bindkey -s '^[Oc'    '^[[1;5C'             # Alt-Right
+bindkey -s '^[^[[D'  '^[[1;3D'             # Alt‑Left (alternative key code)
+bindkey -s '^[^[[C'  '^[[1;3C'             # Alt-Right (alternative key code)
+bindkey -s '^[[7~'   '^[[H'                # 7 on numeric keypad -> Home key
+bindkey -s '^[[8~'   '^[[F'                # 8 on numeric keypad -> End key
+bindkey -s '^[[3\^'  '^[[3;5~'             # Shift-Delete (alternative key code)
+bindkey -s '^[^[[3~' '^[[3;3~'             # Alt-Delete (alternative key code)
+
+# command bindings
+
+bindkey '^[[1;3D'    'backward-word'       # Alt-Left
+bindkey '^[[1;5D'    'backward-word'       # Alt-Left
+bindkey '^[[1;3C'    'forward-word'        # Alt-Right
+bindkey '^[[1;5C'    'forward-word'        # Alt-Right
+
+bindkey '^[[1;9D'    'beginning-of-line'   # Command-Left (⌘ ←)
+bindkey '^[[H'       'beginning-of-line'   # Home key
+bindkey '^[[1;9C'    'end-of-line'         # Command-Right (⌘ →)
+bindkey '^[[F'       'end-of-line'         # End key
+
+bindkey '^[[3~'      'delete-char'         # Delete
+
+bindkey '^[[3;5~'    'kill-word'           # Alt-Delete
+bindkey '^[[3;3~'    'kill-word'           # Shift-Delete
+
+bindkey '^[[3;9~'    'kill-line'           # Command-Delete (⌘ ⌦)
 
 ### homebrew
 if [[ -z $HOMEBREW_PREFIX ]]; then

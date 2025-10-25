@@ -39,5 +39,13 @@ $if mode=emacs
 "\e[3;3~": kill-word                  # Alt-Delete
 
 "\e[3;9~": kill-line                  # Command-Delete (⌘ ⌦)
+# in the kitty terminal emulator when running `kitten show-key -m kitty`,
+# Command-Backspace (⌘ ⌫) shows as 'CSI 127 ; 9 u' ('^[[127;9u'),
+# but mapping this sequence to 'backward-kill-line' does not work.
+# Instead, `kitty.conf` maps Command-Backspace to a text sequence ('\x15'),
+# and this will automatically bind Command-Backspace to 'backward-kill-line'.
+# https://sw.kovidgoyal.net/kitty/faq/
+# https://sw.kovidgoyal.net/kitty/keyboard-protocol/
+# https://github.com/kovidgoyal/kitty/issues/264
 
 $endif

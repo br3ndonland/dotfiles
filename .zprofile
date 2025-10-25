@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-### Zsh configuration for non-interactive shells
+# Zsh configuration for non-interactive shells
 # in interactive shells, both `~/.zprofile` and `~/.zshrc` are loaded.
 # to avoid activating tools twice, a conditional can be used that checks the
 # `$-` special parameter. `$-` will contain `i` if the shell is interactive.
@@ -7,7 +7,7 @@
 # https://zsh.sourceforge.io/Doc/Release/Parameters.html
 [[ $- == *i* ]] && return
 
-### homebrew
+# homebrew
 if [[ -z $HOMEBREW_PREFIX ]]; then
   case $(uname) in
   Darwin)
@@ -33,5 +33,5 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
   eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 fi
 
-### mise: https://mise.jdx.dev/dev-tools/shims.html
+# mise: https://mise.jdx.dev/dev-tools/shims.html
 source <(mise activate zsh --shims)

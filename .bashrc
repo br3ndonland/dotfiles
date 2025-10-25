@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### Bash configuration for interactive shells
+# Bash configuration for interactive shells
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
 #
 # to avoid activating tools twice, a conditional can be used that checks the
@@ -7,19 +7,19 @@
 # https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html
 [[ $- != *i* ]] && return
 
-### options
+# options
 HISTCONTROL=ignoreboth
 shopt -s dotglob globstar histappend nullglob
 set -o emacs # keybindings - also see .inputrc
 
-### exports
+# exports
 export PATH=$HOME/.zfunc:$PATH
 
-### aliases
+# aliases
 alias python='python3'
 
-### prompt: https://starship.rs
+# prompt: https://starship.rs
 source <(starship init bash)
 
-### mise: https://mise.jdx.dev/
+# mise: https://mise.jdx.dev/
 source <(mise activate bash)

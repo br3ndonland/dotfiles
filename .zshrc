@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-### Zsh configuration for interactive shells
+# Zsh configuration for interactive shells
 # in interactive shells, both `~/.zprofile` and `~/.zshrc` are loaded.
 # to avoid activating tools twice, a conditional can be used that checks the
 # `$-` special parameter. `$-` will contain `i` if the shell is interactive.
@@ -9,7 +9,8 @@
 
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
-### options
+# options
+#
 # initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
 # See man zshoptions or https://zsh.sourceforge.net/Doc/Release/Options.html
@@ -71,7 +72,7 @@ bindkey '^[[3;3~'    'kill-word'           # Shift-Delete
 
 bindkey '^[[3;9~'    'kill-line'           # Command-Delete (⌘ ⌦)
 
-### homebrew
+# homebrew
 if [[ -z $HOMEBREW_PREFIX ]]; then
   case $(uname) in
   Darwin)
@@ -97,7 +98,8 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
   eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 fi
 
-### exports
+# exports
+#
 # exports are set up with locals inside an anonymous function so that only the
 # exported variables persist in the shell session and not the local variables.
 # https://zsh.sourceforge.io/Doc/Release/Functions.html#Anonymous-Functions
@@ -157,23 +159,22 @@ fi
     PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
 }
 
-### aliases
+# aliases
 alias python='python3'
 alias tg='terragrunt'
 
-### prompt: https://starship.rs
+# prompt: https://starship.rs
 source <(starship init zsh)
 
-### mise: https://mise.jdx.dev/
+# mise: https://mise.jdx.dev/
 source <(mise activate zsh)
 
-### functions
-# ensure .zfunc is symlinked to $HOME/.zfunc
+# functions
 typeset -U fpath
-fpath+=($HOME/.zfunc)
+fpath+=($HOME/.zfunc) # ensure .zfunc is symlinked to $HOME/.zfunc
 autoload -Uz $HOME/.zfunc/*(:tX)
 
-### completions
+# completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 fi
@@ -181,7 +182,7 @@ zstyle :compinstall filename $HOME/.zshrc
 autoload -Uz compinit
 compinit
 
-### syntax highlighting
+# syntax highlighting
 if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then
   . $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then

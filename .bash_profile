@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### Bash configuration for non-interactive shells
+# Bash configuration for non-interactive shells
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
 #
 # to avoid activating tools twice, a conditional can be used that checks the

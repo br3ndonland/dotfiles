@@ -10,7 +10,17 @@ palette = "dracula"
 disabled = true
 
 [git_branch]
+style = "bold purple"
 symbol = ""
+
+[git_commit]
+style = "bold purple"
+
+[git_state]
+style = "bold purple"
+
+[git_status]
+style = "bold purple"
 
 [nodejs]
 format = "[($version )]($style)"

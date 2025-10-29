@@ -6,6 +6,12 @@
 command_timeout = 5000
 palette = "dracula"
 
+[aws]
+format = '[($symbol )($region )(\[$profile\] )(\[🔑$duration\] )]($style)'
+style = "bold #FF9900"
+symbol = "☁️"
+expiration_symbol = "❌"
+
 [battery]
 disabled = true
 

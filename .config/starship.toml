@@ -38,7 +38,7 @@ python_binary = "python3"
 bash_indicator = "bash "
 disabled = false
 format = "[$indicator]($style)"
-style = "cyan bold"
+style = "green bold"
 unknown_indicator = "??? "
 zsh_indicator = ""
 

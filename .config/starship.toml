@@ -10,7 +10,7 @@ palette = "dracula"
 disabled = true
 
 [nodejs]
-format = "via [node.js ($version )]($style)"
+format = "[($version )]($style)"
 
 [python]
 python_binary = "python3"

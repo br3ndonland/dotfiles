@@ -21,6 +21,12 @@ style = "bold purple"
 
 [git_status]
 style = "bold purple"
+deleted = ""
+modified = ""
+renamed = ""
+staged = ""
+stashed = ""
+untracked = ""
 
 [nodejs]
 format = "[($version )]($style)"

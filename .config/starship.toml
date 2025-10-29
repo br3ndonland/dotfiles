@@ -2,6 +2,9 @@
 # Starship configuration: https://starship.rs/config/
 # Note that the hosted schema in the docs (https://starship.rs/config-schema.json) is often out of date.
 # The Starship docs appear to be deployed manually with `workflow_dispatch` only after releases.
+#
+# Colors are based on GitHub's Linguist colors when available.
+# https://github.com/github-linguist/linguist/blob/main/lib/linguist/languages.yml
 
 command_timeout = 5000
 palette = "dracula"
@@ -12,8 +15,157 @@ style = "bold #FF9900"
 symbol = "☁️"
 expiration_symbol = "❌"
 
+[azure]
+disabled = false
+format = "[($symbol )($subscription )]($style)"
+style = "bold #00A4EF"
+symbol = "Azure"
+
 [battery]
 disabled = true
+
+[buf]
+disabled = true
+format = "[($symbol )($version )]($style)"
+style = "bold cyan"
+symbol = "Buf"
+version_format = "$major.$minor"
+
+[bun]
+format = "[($symbol )($version )]($style)"
+style = "bold yellow"
+symbol = "🍔"
+version_format = "$major.$minor"
+
+[c]
+format = "[($symbol )($version(-$name) )]($style)"
+style = "bold #555555"  # GitHub Linguist color
+symbol = "C"
+version_format = "$major.$minor"
+
+[cpp]
+format = "[($symbol )($version(-$name) )]($style)"
+style = "bold #F34B7D"  # GitHub Linguist color
+symbol = "C++"
+version_format = "$major.$minor"
+
+[cmake]
+format = "[($symbol )($version )]($style)"
+style = "bold #DA3434"  # GitHub Linguist color
+symbol = "CMake"
+version_format = "$major.$minor"
+
+[cobol]
+disabled = true
+format = "[($symbol )($version )]($style)"
+style = "bold white"
+symbol = "COBOL"
+version_format = "$major.$minor"
+
+[cmd_duration]
+format = "took [($duration )]($style)"
+style = "bold white"
+
+[conda]
+format = "[($symbol )($environment )]($style)"
+style = "bold #3572A5"  # GitHub Linguist color (Python)
+symbol = "🅒"
+
+[container]
+format = '[($symbol )(\[$name\] )]($style)'
+style = "bold dimmed red"
+symbol = "⬢"
+
+[crystal]
+format = "[($symbol )($version )]($style)"
+style = "bold #000100"  # GitHub Linguist color
+symbol = "🔮"
+version_format = "$major.$minor"
+
+[daml]
+disabled = true
+format = "[($symbol )($version )]($style)"
+style = "bold cyan"
+symbol = "DAML"
+version_format = "$major.$minor"
+
+[dart]
+disabled = true
+format = "[($symbol )($version )]($style)"
+style = "bold #00B4AB"  # GitHub Linguist color
+symbol = "🎯"
+version_format = "$major.$minor"
+
+[deno]
+format = "[($symbol )($version )]($style)"
+style = "bold #3178c6"  # GitHub Linguist color (TypeScript)
+symbol = "🦕"
+version_format = "$major.$minor"
+
+[direnv]
+disabled = true
+format = "[($symbol )($loaded/$allowed )]($style)"
+style = "bold bright-yellow"
+symbol = "direnv"
+
+[docker_context]
+format = "[($symbol )($context )]($style)"
+style = "bold #384d54"  # GitHub Linguist color (Dockerfile)
+symbol = "🐳"
+
+[dotnet]
+format = "[($symbol )($version )(🎯 $tfm )]($style)"
+style = "bold #178600"  # GitHub Linguist color (C#)
+symbol = ".NET"
+version_format = "$major.$minor"
+
+[elixir]
+format = '[($symbol )($version \(OTP $otp_version\) )]($style)'
+style = "bold #6E4A7E"  # GitHub Linguist color
+symbol = "💧"
+version_format = "$major.$minor"
+
+[elm]
+format = "[($symbol )($version )]($style)"
+style = "bold #60B5CC"  # GitHub Linguist color
+symbol = "🌳"
+version_format = "$major.$minor"
+
+[erlang]
+format = "[($symbol )($version )]($style)"
+style = "bold #B83998"  # GitHub Linguist color
+symbol = "Erlang"
+version_format = "$major.$minor"
+
+[fennel]
+format = "[($symbol )($version )]($style)"
+style = "bold #FFF3D7"  # GitHub Linguist color
+symbol = "🧅"
+version_format = "$major.$minor"
+
+[fill]
+style = "bold black"
+
+[fortran]
+disabled = true
+format = "[($symbol )($version(-$name) )]($style)"
+style = "bold #4D41B1"  # GitHub Linguist color
+symbol = "🅵"
+version_format = "$major.$minor"
+
+[fossil_branch]
+disabled = true
+format = "on [($symbol )($branch )]($style)"
+style = "bold purple"
+symbol = ""
+
+[fossil_metrics]
+disabled = true
+
+[gcloud]
+format = '[($symbol )($account)(@$domain)(\($region\) )]($style)'
+style = "bold blue"
+symbol = "GCP"
 
 [git_branch]
 style = "bold purple"
@@ -21,6 +173,9 @@ symbol = ""
 
 [git_commit]
 style = "bold purple"
+
+[git_metrics]
+disabled = true
 
 [git_state]
 style = "bold purple"
@@ -34,11 +189,275 @@ staged = ""
 stashed = ""
 untracked = ""
 
+[gleam]
+format = "[($symbol )($version )]($style)"
+style = "bold #FFAFF3"  # GitHub Linguist color
+symbol = "⭐"
+version_format = "$major.$minor"
+
+[golang]
+format = "[($symbol )($version )]($style)"
+style = "bold #00ADD8"  # GitHub Linguist color
+symbol = "🐹"
+version_format = "$major.$minor"
+
+[guix_shell]
+format = "[($symbol )]($style)"
+style = "bold yellow"
+symbol = "Guix"
+
+[gradle]
+format = "[($symbol )($version )]($style)"
+style = "bold #02303A"  # GitHub Linguist color
+symbol = "🅶"
+version_format = "$major.$minor"
+
+[haskell]
+format = "[($symbol )($version )]($style)"
+style = "bold #5E5086"  # GitHub Linguist color
+symbol = "λ"
+version_format = "$major.$minor"
+
+[haxe]
+disabled = true
+format = "[($symbol )($version )]($style)"
+style = "bold #DF7900"  # GitHub Linguist color
+symbol = "Haxe"
+version_format = "$major.$minor"
+
+[helm]
+format = "[($symbol )($version )]($style)"
+style = "bold #CB171E"  # GitHub Linguist color (YAML)
+symbol = "⎈"
+version_format = "$major.$minor"
+
+[hg_branch]  # Hg = Mercurial
+disabled = true
+format = "on [($symbol )($branch)(:$topic )]($style)"
+style = "bold purple"
+symbol = ""
+
+[hg_state]
+disabled = true
+
+[hostname]
+disabled = true
+format = "[($ssh_symbol )($hostname )]($style)"
+ssh_symbol = "🌐"
+style = "bold dimmed green"
+trim_at = ""
+
+[java]
+format = "[($symbol )($version )]($style)"
+style = "bold #B07219"  # GitHub Linguist color
+symbol = "☕"
+version_format = "$major.$minor"
+
+[jobs]
+format = "[($symbol )($number )]($style)"
+style = "bold dimmed blue"
+symbol = "✦"
+
+[julia]
+format = "[($symbol )($version )]($style)"
+style = "bold #A270BA"  # GitHub Linguist color
+symbol = "ஃ"
+version_format = "$major.$minor"
+
+[kotlin]
+format = "[($symbol )($version )]($style)"
+style = "bold #A97BFF"  # GitHub Linguist color
+symbol = "🅺"
+version_format = "$major.$minor"
+
+[kubernetes]
+disabled = false
+format = '[($symbol )($context )(\($namespace\) )]($style)'
+style = "bold #326CE5"
+symbol = "☸"
+
+[line_break]
+disabled = false
+
+[localip]
+disabled = true
+
+[lua]
+format = "[($symbol )($version )]($style)"
+style = "bold #000080"  # GitHub Linguist color
+symbol = "🌙"
+version_format = "$major.$minor"
+
+[memory_usage]
+disabled = false
+format = "[RAM $ram( | $swap)]($style) "
+style = "bold dimmed white"
+symbol = ""
+threshold = 75
+
+[meson]
+format = "[($symbol )($project )]($style)"
+style = "bold #007800"  # GitHub Linguist color
+symbol = "meson"
+
+[mise]
+disabled = false
+format = "[($symbol )($health )]($style)"
+style = "bold dimmed orange"
+symbol = "mise"
+healthy_symbol = "✓"
+unhealthy_symbol = "✘"
+
+[mojo]
+format = "[($symbol )($version )]($style)"
+style = "bold #FF4C1F"  # GitHub Linguist color
+symbol = "🔥"
+
+[nats]
+disabled = true
+format = "[($symbol )($name )]($style)"
+style = "bold dimmed blue"
+symbol = "NATS"
+
+[netns]
+disabled = true
+format = '[($symbol )(\[$name\]] )($style)'
+style = "bold dimmed blue"
+symbol = "🛜"
+
+[nim]
+format = "[($symbol )($version )]($style)"
+style = "bold #FFC200"  # GitHub Linguist color
+symbol = "👑"
+version_format = "$major.$minor"
+
+[nix_shell]
+format = '[($symbol )($state )( \($name\) )]($style)'
+style = "bold #7E7EFF"  # GitHub Linguist color (Nix)
+symbol = "❄️"
+
 [nodejs]
-format = "[($version )]($style)"
+format = "[($symbol )($version )]($style)"
+style = "bold #F1E05A"  # GitHub Linguist color (JavaScript)
+symbol = "node"
+version_format = "$major.$minor"
+
+[ocaml]
+format = "[($symbol )($version )]($style)"
+style = "bold #EF7A08"  # GitHub Linguist color
+symbol = "🐫"
+version_format = "$major.$minor"
+
+[odin]
+format = "[($symbol )($version )]($style)"
+style = "bold #60AFFE"  # GitHub Linguist color
+symbol = "Ø"
+
+[opa]
+format = "[($symbol )($version )]($style)"
+style = "bold #7d9199"  # GitHub Linguist color
+symbol = "OPA"
+version_format = "$major.$minor"
+
+[openstack]
+format = '[($symbol )($cloud )(\($project\) )]($style)'
+style = "bold #CB171E"  # GitHub Linguist color (YAML)
+symbol = "OpenStack"
+
+[os]
+disabled = true
+
+[package]
+format = "[($symbol )($version )]($style)"
+style = "bold brown"
+symbol = "📦"
+version_format = "v$raw"
+
+[perl]
+format = "[($symbol )($version )]($style)"
+style = "bold #0298C3"  # GitHub Linguist color
+symbol = "Perl"
+version_format = "$major.$minor"
+
+[php]
+format = "[($symbol )($version )]($style)"
+style = "bold #4F5D95"  # GitHub Linguist color
+symbol = "PHP"
+version_format = "$major.$minor"
+
+[pijul_channel]
+disabled = true
+format = "on [($symbol )($channel )]($style)"
+style = "bold purple"
+symbol = ""
+
+[pixi]
+format = '[($symbol )($version )(\($environment\) )]($style)'
+style = "bold yellow"
+symbol = "🧚"
+version_format = "$major.$minor"
+
+[pulumi]
+format = "[($symbol )($username@)($stack )]($style)"
+style = "bold #8A3391"
+symbol = "Pulumi"
+version_format = "$major.$minor"
+
+[purescript]
+format = "[($symbol )($version )]($style)"
+style = "bold #1D222D"  # GitHub Linguist color
+symbol = "<=>"
+version_format = "$major.$minor"
 
 [python]
+format = '[($symbol )($version )(\($virtualenv\) )]($style)'
+pyenv_version_name = false
 python_binary = "python3"
+style = "bold #3572A5"  # GitHub Linguist color
+symbol = "🐍"
+version_format = "$major.$minor"
+
+[quarto]
+format = "[($symbol )($version )]($style)"
+style = "bold #75AADB"
+symbol = "Quarto"
+version_format = "$major.$minor"
+
+[raku]
+format = "[($symbol )($version )]($style)"
+style = "bold #0000FB"  # GitHub Linguist color
+symbol = "🦋"
+version_format = "$major.$minor"
+
+[red]
+format = "[($symbol )($version )]($style)"
+style = "bold #f50000"  # GitHub Linguist color
+symbol = "🔺"
+version_format = "$major.$minor"
+
+[rlang]
+format = "[($symbol )($version )]($style)"
+style = "bold #198CE7"  # GitHub Linguist color
+symbol = "R"
+version_format = "$major.$minor"
+
+[ruby]
+format = "[($symbol )($version )]($style)"
+style = "bold #701516"  # GitHub Linguist color
+symbol = "💎"
+version_format = "$major.$minor"
+
+[rust]
+format = "[($symbol )($version )]($style)"
+style = "bold #DEA584"  # GitHub Linguist color
+symbol = "🦀"
+version_format = "$major.$minor"
+
+[scala]
+format = "[($symbol )($version )]($style)"
+style = "bold #C22D40"  # GitHub Linguist color
+symbol = "🆂"
+version_format = "$major.$minor"
 
 [shell]
 bash_indicator = "bash "
@@ -47,6 +466,103 @@ format = "[$indicator]($style)"
 style = "green bold"
 unknown_indicator = "??? "
 zsh_indicator = ""
+
+[shlvl]
+disabled = true
+format = "[($symbol )($shlvl )]($style)"
+style = "bold dimmed yellow"
+symbol = "↕️"
+threshold = 3
+
+[singularity]
+format = '[($symbol )(\[$env\] )]($style)'
+style = "bold dimmed blue"
+symbol = ""
+
+[solidity]
+format = "[($symbol )($version )]($style)"
+style = "bold #AA6746"  # GitHub Linguist color
+symbol = "S"
+version_format = "$major.$minor"
+
+[spack]
+format = "[($symbol )($environment )]($style)"
+style = "bold blue"
+symbol = "🅢"
+
+[status]
+disabled = false
+format = "[($symbol )($status )]($style)"
+map_symbol = false
+style = "bold red"
+symbol = '\$?'
+
+[sudo]
+disabled = false
+format = "[as $symbol]($style)"
+style = "bold white"
+symbol = "sudo"
+
+[swift]
+format = "[($symbol )($version )]($style)"
+style = "bold #F05138"  # GitHub Linguist color
+symbol = "🐦"
+version_format = "$major.$minor"
+
+[time]
+disabled = true
+format = "[($time )]($style)"
+style = "dimmed white"
+time_format = "%Y-%m-%dT%TZ"
+utc_time_offset = "0"
+
+[typst]
+format = "[($symbol )($version )]($style)"
+style = "bold #239DAD"  # GitHub Linguist color
+symbol = "t"
+version_format = "$major.$minor"
+
+[terraform]
+commands = [["tofu", "version"]]
+detect_extensions = ["tf", "tfplan", "tfstate", "tofu"]
+format = "[TF]($style) "
+style = "bold #FFDA18"  # OpenTofu color (GitHub Linguist color for HCL is #844FBA)
+symbol = "💠"
+version_format = "$major.$minor"
+
+[username]
+format = "[($user )]($style)"
+show_always = false
+
+[vagrant]
+format = "[($symbol )($version )]($style)"
+style = "bold #701516"  # GitHub Linguist color (Ruby)
+symbol = "Vagrant"
+version_format = "$major.$minor"
+
+[vcsh]
+disabled = true
+format = "[($symbol )($repo )]($style)"
+style = "bold purple"
+symbol = "vcsh"
+
+[vlang]
+format = "[($symbol )($version )]($style)"
+style = "bold #4F87C4"  # GitHub Linguist color
+symbol = "V"
+version_format = "$major.$minor"
+
+[xmake]
+format = "[($symbol )($version )]($style)"
+style = "bold #22A079"  # GitHub Linguist color
+symbol = "Xmake"
+version_format = "$major.$minor"
+
+[zig]
+format = "[($symbol )($version )]($style)"
+style = "bold #EC915C"  # GitHub Linguist color
+symbol = "↯"
+version_format = "$major.$minor"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

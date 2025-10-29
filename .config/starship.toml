@@ -9,6 +9,9 @@ palette = "dracula"
 [battery]
 disabled = true
 
+[git_branch]
+symbol = ""
+
 [nodejs]
 format = "[($version )]($style)"
 

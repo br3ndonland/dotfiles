@@ -168,6 +168,7 @@ fi
 }
 
 # aliases
+alias kc='kubectl'
 alias python='python3'
 alias tg='terragrunt'
 

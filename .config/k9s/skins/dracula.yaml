@@ -1,0 +1,99 @@
+# -----------------------------------------------------------------------------
+# Dracula theme for k9s
+# adapted from https://github.com/derailed/k9s/blob/00fbf6c/skins/dracula.yaml
+# -----------------------------------------------------------------------------
+
+foreground: &foreground "#f8f8f2"
+background: &background "#282a36"
+current_line: &current_line "#44475a"
+selection: &selection "#44475a"
+comment: &comment "#6272a4"
+cyan: &cyan "#8be9fd"
+green: &green "#50fa7b"
+orange: &orange "#ffb86c"
+pink: &pink "#ff79c6"
+purple: &purple "#bd93f9"
+red: &red "#ff5555"
+yellow: &yellow "#f1fa8c"
+
+k9s:
+  body:
+    bgColor: *background
+    fgColor: *foreground
+    logoColor: *purple
+  dialog:
+    bgColor: *background
+    buttonBgColor: *purple
+    buttonFgColor: *foreground
+    buttonFocusBgColor: *pink
+    buttonFocusFgColor: *yellow
+    fgColor: *foreground
+    fieldFgColor: *foreground
+    labelFgColor: *orange
+  prompt:
+    bgColor: *background
+    fgColor: *foreground
+    suggestColor: *purple
+  frame:
+    border:
+      fgColor: *selection
+      focusColor: *current_line
+    crumbs:
+      activeColor: *current_line
+      bgColor: *current_line
+      fgColor: *foreground
+    menu:
+      fgColor: *foreground
+      keyColor: *pink
+      numKeyColor: *pink
+    status:
+      addColor: *green
+      completedColor: *comment
+      errorColor: *red
+      highlightColor: *orange
+      killColor: *comment
+      modifyColor: *purple
+      newColor: *cyan
+    title:
+      bgColor: *current_line
+      counterColor: *purple
+      fgColor: *foreground
+      filterColor: *pink
+      highlightColor: *orange
+  info:
+    fgColor: *pink
+    sectionColor: *foreground
+  views:
+    charts:
+      bgColor: default
+      defaultChartColors:
+        - *purple
+        - *red
+      defaultDialColors:
+        - *purple
+        - *red
+    table:
+      bgColor: *background
+      fgColor: *foreground
+      header:
+        bgColor: *background
+        fgColor: *foreground
+        sorterColor: *cyan
+    xray:
+      bgColor: *background
+      cursorColor: *current_line
+      fgColor: *foreground
+      graphicColor: *purple
+      showIcons: false
+    yaml:
+      colonColor: *purple
+      keyColor: *pink
+      valueColor: *foreground
+    logs:
+      bgColor: *background
+      fgColor: *foreground
+      indicator:
+        bgColor: *purple
+        fgColor: *foreground
+        toggleOffColor: *cyan
+        toggleOnColor: *green

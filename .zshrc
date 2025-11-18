@@ -164,7 +164,8 @@ fi
     LDFLAGS=$CURL_LDFLAGS \
     PATH=${(j.:.)path_array} \
     PIPX_BIN_DIR=$LOCAL_BIN_DIR \
-    PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
+    PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH \
+    XDG_CONFIG_HOME=$HOME/.config
 }
 
 # aliases

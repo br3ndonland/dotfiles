@@ -111,6 +111,7 @@ node = [
 python = [
   "3.12",
   "3.13",
+  "3.14",
 ]
 ruby = "3"
 rust = "latest"

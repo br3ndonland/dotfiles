@@ -71,6 +71,14 @@
                             "to": [{ "key_code": "up_arrow" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 6519,
+                        "vendor_id": 12951
+                    },
+                    "ignore": true
                 }
             ],
             "fn_function_keys": [

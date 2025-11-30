@@ -40,6 +40,7 @@ cask "brave-browser"
 cask "font-recursive-code"
 # cask "inkscape"
 cask "karabiner-elements"
+cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
 # cask "microsoft-office-businesspro"
 # cask "notion"

@@ -12,7 +12,7 @@ golang.go
 mikestead.dotenv
 mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools
-ms-python.python@2025.16.0
+ms-python.python
 nuxt.mdc
 opentofu.vscode-opentofu
 redhat.vscode-yaml

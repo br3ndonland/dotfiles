@@ -135,6 +135,7 @@
     "editorGroup": false
   },
   "gitlens.statusBar.reduceFlicker": true,
+  "gitlens.telemetry.enabled": false,
   "gitlens.views.branches.avatars": false,
   "gitlens.views.commits.avatars": false,
   "gitlens.views.contributors.avatars": false,

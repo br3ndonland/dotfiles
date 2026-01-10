@@ -16,6 +16,7 @@ ms-python.python
 nuxt.mdc
 opentofu.vscode-opentofu
 redhat.vscode-yaml
+rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck
 tombi-toml.tombi

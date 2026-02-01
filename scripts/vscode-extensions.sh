@@ -42,6 +42,10 @@ install_extensions() {
   esac
   installed=("$($1 --list-extensions --show-versions)")
   while read -r extension; do
+    case $extension in
+    '#'*) printf "Skipping commented extension '%s'\n" "$extension" && continue ;;
+    *) printf "Checking extension '%s'\n" "$extension" ;;
+    esac
     extension_name=$(printf %s "$extension" | cut -d @ -f 1)
     if [ "$extension" = "$extension_name" ]; then
       extension_info=$(printf %s "${installed[@]}" | grep "$extension_name@")

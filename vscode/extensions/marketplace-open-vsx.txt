@@ -14,6 +14,7 @@ mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 nuxt.mdc
+# openai.chatgpt
 opentofu.vscode-opentofu
 redhat.vscode-yaml
 rust-lang.rust-analyzer

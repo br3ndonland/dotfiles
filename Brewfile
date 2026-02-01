@@ -15,6 +15,7 @@ brew "grep"
 brew "libfido2"
 brew "mas" if OS.mac?
 brew "mise"
+# brew "opencode"
 brew "openssh"
 brew "pinentry"
 brew "postgresql@17"

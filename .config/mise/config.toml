@@ -25,6 +25,10 @@ uvx = true
 # https://mise.jdx.dev/lang/python.html#precompiled-python-binaries
 compile = false
 
+[settings.ruby]
+# https://mise.jdx.dev/lang/ruby.html
+compile = false
+
 [tasks.check]
 depends = ["prettier:check", "shellcheck", "shfmt:check", "tombi:check"]
 description = "Run code quality checks"

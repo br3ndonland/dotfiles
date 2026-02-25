@@ -1,0 +1,201 @@
+# shellcheck shell=sh
+
+USAGE="
+Cache 1Password secrets in the system keyring.
+
+Requires 1Password CLI (op) for reads. Uses macOS Keychain or libsecret
+(secret-tool) for caching. A registry of cached keys is stored in
+\${XDG_CACHE_HOME:-\$HOME/.cache}/codex/op_cache_keys.
+
+Usage: op_cache COMMAND [ARGS]
+
+Commands:
+  read CACHE_KEY OP_PATH  Read 1Password item at OP_PATH, cache under CACHE_KEY,
+                          and print value.
+  clear [CACHE_KEY...]    Clear specific cache keys or clear all if no key given.
+  list                    List tracked cache keys.
+  help | -h | --help      Show this help text.
+
+Examples:
+  op_cache read github_fgt \"op://Private/GitHub Fine-Grained Token/password\"
+  op_cache list
+  op_cache clear github_fgt
+  op_cache clear
+"
+
+subcommand=$1
+[ -z "$subcommand" ] && printf '%s' "$USAGE" && return 1
+if [ "$subcommand" = "read" ] && ! command -v op >/dev/null 2>&1; then
+  printf '[ERROR] op CLI not found\n' >&2
+  return 1
+fi
+shift 1 2>/dev/null || true
+platform=$(uname 2>/dev/null)
+
+case "$subcommand" in
+read)
+  if [ "$#" -ne 2 ]; then
+    printf 'usage: op_cache read CACHE_KEY OP_PATH\n' >&2
+    return 1
+  fi
+
+  cache_key=$1
+  op_path=$2
+  registry_dir=${XDG_CACHE_HOME:-$HOME/.cache}/codex
+  registry_file=$registry_dir/op_cache_keys
+  if [ ! -d "$registry_dir" ]; then
+    mkdir -p "$registry_dir" 2>/dev/null
+  fi
+  if [ -d "$registry_dir" ]; then
+    if [ -f "$registry_file" ]; then
+      if ! grep -Fx "$cache_key" "$registry_file" >/dev/null 2>&1; then
+        printf '%s\n' "$cache_key" >>"$registry_file" 2>/dev/null
+      fi
+    else
+      printf '%s\n' "$cache_key" >>"$registry_file" 2>/dev/null
+    fi
+  fi
+
+  cached=
+  if [ "$platform" = "Darwin" ]; then
+    cached=$(
+      security find-generic-password \
+        -a "$USER" \
+        -s "codex/1password/$cache_key" \
+        -w \
+        2>/dev/null
+    )
+  elif command -v secret-tool >/dev/null 2>&1; then
+    cached=$(secret-tool lookup app codex key "$cache_key" 2>/dev/null)
+  fi
+
+  if [ -n "$cached" ]; then
+    printf '%s' "$cached"
+    return 0
+  fi
+
+  fresh=$(op read "$op_path" 2>/dev/null)
+  if [ -n "$fresh" ]; then
+    if [ "$platform" = "Darwin" ]; then
+      security add-generic-password \
+        -a "$USER" \
+        -s "codex/1password/$cache_key" \
+        -w "$fresh" \
+        -U \
+        >/dev/null 2>&1
+    elif command -v secret-tool >/dev/null 2>&1; then
+      printf '%s' "$fresh" | secret-tool store \
+        --label="codex/1password/$cache_key" \
+        app codex \
+        key "$cache_key" \
+        >/dev/null 2>&1
+    fi
+    printf '%s' "$fresh"
+    return 0
+  fi
+
+  return 1
+  ;;
+clear)
+  registry_dir=${XDG_CACHE_HOME:-$HOME/.cache}/codex
+  registry_file=$registry_dir/op_cache_keys
+  return_code=0
+
+  if [ "$#" -eq 0 ]; then
+    if [ ! -f "$registry_file" ]; then
+      return 0
+    fi
+
+    while IFS= read -r cache_key; do
+      if [ -z "$cache_key" ]; then
+        continue
+      fi
+      if [ "$platform" = "Darwin" ]; then
+        security delete-generic-password \
+          -a "$USER" \
+          -s "codex/1password/$cache_key" \
+          >/dev/null 2>&1 || return_code=1
+      elif command -v secret-tool >/dev/null 2>&1; then
+        secret-tool clear \
+          app codex \
+          key "$cache_key" \
+          >/dev/null 2>&1 || return_code=1
+      else
+        printf '[ERROR] no keyring tool available\n' >&2
+        return 1
+      fi
+    done <"$registry_file"
+
+    if [ "$return_code" -eq 0 ]; then
+      rm -f "$registry_file" >/dev/null 2>&1
+    fi
+    return "$return_code"
+  fi
+
+  cleared_keys_file=
+  if [ -f "$registry_file" ]; then
+    cleared_keys_file=$registry_dir/op_cache_keys.cleared.$$
+    : >"$cleared_keys_file" 2>/dev/null
+  fi
+
+  for cache_key in "$@"; do
+    if [ "$platform" = "Darwin" ]; then
+      security delete-generic-password \
+        -a "$USER" \
+        -s "codex/1password/$cache_key" \
+        >/dev/null 2>&1
+    elif command -v secret-tool >/dev/null 2>&1; then
+      secret-tool clear \
+        app codex \
+        key "$cache_key" \
+        >/dev/null 2>&1
+    else
+      printf '[ERROR] no keyring tool available\n' >&2
+      return 1
+    fi
+    cmd_return_code=$?
+    if [ "$cmd_return_code" -ne 0 ]; then
+      printf '[ERROR] failed to delete cache key %s\n' "$cache_key" >&2
+      return_code=1
+    fi
+    if [ -n "$cleared_keys_file" ]; then
+      printf '%s\n' "$cache_key" >>"$cleared_keys_file" 2>/dev/null
+    fi
+  done
+
+  if [ -n "$cleared_keys_file" ] && [ -s "$cleared_keys_file" ]; then
+    registry_tmp=$registry_dir/op_cache_keys.$$
+    awk 'NR==FNR{a[$0]=1;next} !a[$0]' \
+      "$cleared_keys_file" \
+      "$registry_file" \
+      >"$registry_tmp" 2>/dev/null && mv "$registry_tmp" "$registry_file"
+    rm -f "$registry_tmp" >/dev/null 2>&1
+  fi
+  if [ -n "$cleared_keys_file" ]; then
+    rm -f "$cleared_keys_file" >/dev/null 2>&1
+  fi
+
+  return "$return_code"
+  ;;
+list)
+  if [ "$#" -ne 0 ]; then
+    printf 'usage: op_cache list\n' >&2
+    return 1
+  fi
+
+  registry_file=${XDG_CACHE_HOME:-$HOME/.cache}/codex/op_cache_keys
+  if [ -f "$registry_file" ]; then
+    cat "$registry_file"
+  fi
+  return 0
+  ;;
+help | -h | --help)
+  printf '%s' "$USAGE"
+  return 0
+  ;;
+*)
+  printf '[ERROR] unknown subcommand: %s\n' "$subcommand" >&2
+  printf '%s' "$USAGE"
+  return 1
+  ;;
+esac

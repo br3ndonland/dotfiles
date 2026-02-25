@@ -1,2 +1,3 @@
 keybindings.json linguist-language=JSON-with-Comments
 settings.json linguist-language=JSON-with-Comments
+.zfunc/* linguist-language=Shell

@@ -149,13 +149,6 @@
   "gitlens.views.tags.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // Editor-specific settings
-  "cursor.cpp.disabledLanguages": [
-    "git-commit",
-    "markdown",
-    "plaintext",
-    "ruby",
-    "yaml"
-  ],
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",

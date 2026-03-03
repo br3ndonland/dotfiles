@@ -44,7 +44,6 @@ symlink_vscode_settings() {
     "$_/Code"
     "$_/Code - Exploration"
     "$_/Code - Insiders"
-    "$_/Cursor"
     "$_/VSCodium"
   )
   for DIR in "${DIRS[@]}"; do

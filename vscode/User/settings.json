@@ -141,6 +141,7 @@
   "gitlens.views.tags.avatars": false,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // Editor-specific settings
+  "claudeCode.disableLoginPrompt": true,
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",

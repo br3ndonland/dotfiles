@@ -112,14 +112,6 @@
   "git.enableSmartCommit": true,
   "git.inputValidation": true,
   "git.mergeEditor": false,
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": false,
-    "git-commit": false,
-    "ruby": false
-  },
   "github.gitProtocol": "ssh",
   "gitlens.advanced.abbreviatedShaLength": 7,
   "gitlens.advanced.abbreviateShaOnCopy": true,

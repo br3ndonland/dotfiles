@@ -82,7 +82,9 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 - Apple Silicon [Mac mini](https://www.apple.com/mac-mini/)
 - 4K@60 Hz monitor
-- [Microsoft Sculpt keyboard](https://www.amazon.com/dp/B00CYX26BC)
+- Keyboards:
+  - [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC)
+  - [Kinesis mWave for Mac](https://kinesis-ergo.com/shop/mwave-mac/) with quiet linear switches (KB150M-LIN) and [blank keycaps](https://kinesis-ergo.com/shop/kc150b/)
 - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
 - [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
 - <details><summary><a href="https://www.fully.com/standing-desks/jarvis.html">Fully Jarvis standing desk</a></summary>

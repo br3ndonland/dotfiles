@@ -79,6 +79,17 @@
                         "vendor_id": 12951
                     },
                     "ignore": true
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 4097,
+                        "vendor_id": 10730
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true
                 }
             ],
             "fn_function_keys": [

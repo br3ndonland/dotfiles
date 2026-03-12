@@ -108,7 +108,7 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 - macOS setup is automated with _[macos.sh](scripts/macos.sh)_.
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) is used for keymapping.
-  - Settings are stored in _.config/karabiner/karabiner.json_. Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, I added _karabiner.json_ to _.prettierignore_.
+  - Settings are stored in [`.config/karabiner/karabiner.json`](.config/karabiner/karabiner.json). Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, add `karabiner.json` to `.prettierignore`.
   - Simple modifications:
 
     | From key  | To key    |
@@ -118,9 +118,16 @@ Users with more complex needs for multi-environment dotfiles management might co
 
   - Complex modifications:
     - Launch Terminal with Cmd+Escape
-    - See _karabiner.json_ for more.
   - Devices
     - Disable built-in keyboard when external keyboard is connected
+
+The `karabiner.json` also includes [Karabiner profiles](https://karabiner-elements.pqrs.org/docs/manual/configuration/configure-simple-modifications/) for Tarmak transitional Colemak. [Tarmak](https://dreymar.colemak.org/tarmak-intro.html) is a program for transitioning to the [Colemak](https://colemak.org/) keyboard layout. Tarmak involves five steps, the fifth of which is simply Colemak.
+
+[Erez Zukerman](https://blog.zsa.io/zsa-loves-colemak/):
+
+> With Tarmak, you change just a few keys over, four at first. Now you've got an almost-QWERTY layout. You use it like that for your work, making some typos along the way, but not feeling completely lost. And you let that bake. Use it for a month or so. Then take the next step, changing a few more keys. Another month passes, etc. By the end, you find yourself fluent in a new keyboard layout, without ever having to "hit a wall". It just brings you over very gently.
+
+The fifth layout is simply Colemak, so the built-in Colemak layouts on macOS or Linux can be used. Karabiner is not necessarily needed.
 
 ## Homebrew package management
 

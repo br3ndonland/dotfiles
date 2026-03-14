@@ -19,7 +19,7 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install bash
       - name: Install mise-en-place
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@v4
       - name: Run code quality checks
         run: mise run check --jobs 1
   test:

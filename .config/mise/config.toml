@@ -104,7 +104,7 @@ tombi format **/*.toml
 # https://mise.jdx.dev/dev-tools/
 #
 # signature verification tools
-cosign = "prefix:2"
+cosign = "prefix:3"
 slsa-verifier = "prefix:2"
 # registry tools from core backend
 go = "1"

@@ -12,6 +12,12 @@ idiomatic_version_file_enable_tools = [
   "terraform",
   "terragrunt",
 ]
+# disable telemetry
+# https://mise.jdx.dev/configuration/settings.html#use_versions_host_track
+# https://github.com/jdx/mise/pull/7289
+# https://github.com/jdx/mise/discussions/8107
+use_versions_host = false
+use_versions_host_track = false
 
 [settings.pipx]
 # https://mise.jdx.dev/dev-tools/backends/pipx.html

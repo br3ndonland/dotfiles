@@ -26,6 +26,7 @@
                         "product_id": 1957,
                         "vendor_id": 1118
                     },
+                    "ignore_vendor_events": true,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": [
                         {

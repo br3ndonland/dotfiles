@@ -98,7 +98,8 @@
                         "vendor_id": 10730
                     },
                     "ignore": false,
-                    "ignore_vendor_events": true
+                    "ignore_vendor_events": true,
+                    "manipulate_caps_lock_led": false
                 }
             ],
             "fn_function_keys": [

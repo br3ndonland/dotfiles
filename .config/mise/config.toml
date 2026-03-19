@@ -85,7 +85,9 @@ slsa-verifier = "prefix:2"
 go = "1"
 node = [
   "22",
-  "24",
+  # pin Node.js 24 to avoid GPG issue on GitHub Actions runners
+  # https://github.com/nodejs/node/issues/61022
+  "24.11.1",
 ]
 python = [
   "3.13",

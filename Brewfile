@@ -34,6 +34,7 @@ brew "zsh"
 
 cask "1password"
 cask "1password-cli"
+# cask "block-goose"
 cask "brave-browser"
 # cask "chatgpt"
 # cask "codex-app"

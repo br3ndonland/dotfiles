@@ -128,6 +128,12 @@
     "key": "ctrl+alt+cmd+f",
     "command": "gitlens.showCommitSearch",
   },
+  // open and focus codex panel
+  // hide panel with cmd+j
+  {
+    "key": "cmd+k cmd+p",
+    "command": "chatgpt.openSidebar"
+  },
   // Prevent AI tools from co-opting keybindings
   {
     "key": "cmd+l",

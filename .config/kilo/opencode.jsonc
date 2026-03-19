@@ -1,0 +1,54 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "autoupdate": false,
+  "model": "kilo/kilo-auto/frontier",
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}",
+      },
+    },
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp",
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_TOKEN}",
+      },
+    },
+    "openai_developer_docs": {
+      "type": "remote",
+      "url": "https://developers.openai.com/mcp",
+    },
+  },
+  "permission": {
+    // https://opencode.ai/docs/permissions/
+    "bash": {
+      "*": "allow",
+      "git *": "ask",
+      "git branch *": "allow",
+      "git log *": "allow",
+      "rm *": "deny",
+    },
+    "doom_loop": "deny",
+    "edit": "allow",
+    "external_directory": {
+      "*": "ask",
+      "~/.dotfiles": "allow",
+      "~/code": "allow",
+      "~/dev": "allow",
+    },
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "read": "allow",
+    "task": "allow",
+    "todoread": "allow",
+    "todowrite": "allow",
+    "webfetch": "ask",
+    "websearch": "ask",
+  },
+}

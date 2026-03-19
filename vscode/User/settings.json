@@ -144,7 +144,14 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // AI
   "chat.commandCenter.enabled": false,
+  "chatgpt.followUpQueueMode": "steer",
   "claudeCode.disableLoginPrompt": true,
+  "kilo-code.allowedCommands": ["git log", "git diff", "git show"],
+  "kilo-code.debug": false,
+  "kilo-code.deniedCommands": [],
+  "kilo-code.enableCodeActions": false,
+  "kilo-code.enableSettingsSync": false,
+  "kilo-code.telemetry": false,
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
@@ -165,9 +172,13 @@
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
   "json.schemaDownload.trustedDomains": {
+    "https://app.kilo.ai/config.json": true,
     "https://developer.microsoft.com/json-schemas/": true,
     "https://json-schema.org/": true,
     "https://json.schemastore.org/": true,
+    "https://models.dev/model-schema.json": true,
+    "https://opencode.ai/config.json": true,
+    "https://opencode.ai/tui.json": true,
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,

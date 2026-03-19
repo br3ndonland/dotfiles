@@ -9,13 +9,15 @@ editorconfig.editorconfig
 esbenp.prettier-vscode
 github.vscode-github-actions
 golang.go
+# Kilo Code out of date on Open VSX
+# https://github.com/Kilo-Org/kilocode/issues/7401
 # kilocode.kilo-code
 mikestead.dotenv
 mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 nuxt.mdc
-# openai.chatgpt
+openai.chatgpt
 opentofu.vscode-opentofu
 redhat.vscode-yaml
 rust-lang.rust-analyzer

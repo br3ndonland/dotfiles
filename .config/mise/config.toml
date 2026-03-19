@@ -57,7 +57,7 @@ run = """
 #!/usr/bin/env bash
 
 shopt -s dotglob globstar nullglob
-set -- **/*.{bash,sh}*
+set -- **/*.{bash,sh,zfunc/}*
 if [ -n "$1" ]; then
   printf "Found the following files:\n"
   printf "%s\n" "$@"

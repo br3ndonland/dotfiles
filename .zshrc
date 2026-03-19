@@ -30,47 +30,47 @@ bindkey -e
 
 # string replacement bindings
 
-bindkey -s '^[OM'    '^M'                  # Enter -> Carriage Return
-bindkey -s '^[Ok'    '+'                   # + on numeric keypad -> plain +
-bindkey -s '^[Om'    '-'                   # - on numeric keypad -> plain -
-bindkey -s '^[Oj'    '*'                   # * on numeric keypad -> plain *
-bindkey -s '^[Oo'    '/'                   # / on numeric keypad -> plain /
-bindkey -s '^[OX'    '='                   # = on numeric keypad -> plain =
-bindkey -s '^[OH'    '^[[H'                # Home key
-bindkey -s '^[OF'    '^[[F'                # End key
-bindkey -s '^[OA'    '^[[A'                # Up arrow key
-bindkey -s '^[OB'    '^[[B'                # Down arrow
-bindkey -s '^[OD'    '^[[D'                # Left arrow
-bindkey -s '^[OC'    '^[[C'                # Right arrow
-bindkey -s '^[[1~'   '^[[H'                # Home key (alternative key code)
-bindkey -s '^[[4~'   '^[[F'                # End key (alternative key code)
-bindkey -s '^[Od'    '^[[1;5D'             # Alt‑Left
-bindkey -s '^[Oc'    '^[[1;5C'             # Alt-Right
-bindkey -s '^[^[[D'  '^[[1;3D'             # Alt‑Left (alternative key code)
-bindkey -s '^[^[[C'  '^[[1;3C'             # Alt-Right (alternative key code)
-bindkey -s '^[[7~'   '^[[H'                # 7 on numeric keypad -> Home key
-bindkey -s '^[[8~'   '^[[F'                # 8 on numeric keypad -> End key
-bindkey -s '^[[3\^'  '^[[3;5~'             # Shift-Delete (alternative key code)
-bindkey -s '^[^[[3~' '^[[3;3~'             # Alt-Delete (alternative key code)
+bindkey -s '^[OM' '^M'         # Enter -> Carriage Return
+bindkey -s '^[Ok' '+'          # + on numeric keypad -> plain +
+bindkey -s '^[Om' '-'          # - on numeric keypad -> plain -
+bindkey -s '^[Oj' '*'          # * on numeric keypad -> plain *
+bindkey -s '^[Oo' '/'          # / on numeric keypad -> plain /
+bindkey -s '^[OX' '='          # = on numeric keypad -> plain =
+bindkey -s '^[OH' '^[[H'       # Home key
+bindkey -s '^[OF' '^[[F'       # End key
+bindkey -s '^[OA' '^[[A'       # Up arrow key
+bindkey -s '^[OB' '^[[B'       # Down arrow
+bindkey -s '^[OD' '^[[D'       # Left arrow
+bindkey -s '^[OC' '^[[C'       # Right arrow
+bindkey -s '^[[1~' '^[[H'      # Home key (alternative key code)
+bindkey -s '^[[4~' '^[[F'      # End key (alternative key code)
+bindkey -s '^[Od' '^[[1;5D'    # Alt‑Left
+bindkey -s '^[Oc' '^[[1;5C'    # Alt-Right
+bindkey -s '^[^[[D' '^[[1;3D'  # Alt‑Left (alternative key code)
+bindkey -s '^[^[[C' '^[[1;3C'  # Alt-Right (alternative key code)
+bindkey -s '^[[7~' '^[[H'      # 7 on numeric keypad -> Home key
+bindkey -s '^[[8~' '^[[F'      # 8 on numeric keypad -> End key
+bindkey -s '^[[3\^' '^[[3;5~'  # Shift-Delete (alternative key code)
+bindkey -s '^[^[[3~' '^[[3;3~' # Alt-Delete (alternative key code)
 
 # command bindings
 
-bindkey '^[[1;3D'    'backward-word'       # Alt-Left
-bindkey '^[[1;5D'    'backward-word'       # Alt-Left
-bindkey '^[[1;3C'    'forward-word'        # Alt-Right
-bindkey '^[[1;5C'    'forward-word'        # Alt-Right
+bindkey '^[[1;3D' 'backward-word' # Alt-Left
+bindkey '^[[1;5D' 'backward-word' # Alt-Left
+bindkey '^[[1;3C' 'forward-word'  # Alt-Right
+bindkey '^[[1;5C' 'forward-word'  # Alt-Right
 
-bindkey '^[[1;9D'    'beginning-of-line'   # Command-Left (⌘ ←)
-bindkey '^[[H'       'beginning-of-line'   # Home key
-bindkey '^[[1;9C'    'end-of-line'         # Command-Right (⌘ →)
-bindkey '^[[F'       'end-of-line'         # End key
+bindkey '^[[1;9D' 'beginning-of-line' # Command-Left (⌘ ←)
+bindkey '^[[H' 'beginning-of-line'    # Home key
+bindkey '^[[1;9C' 'end-of-line'       # Command-Right (⌘ →)
+bindkey '^[[F' 'end-of-line'          # End key
 
-bindkey '^[[3~'      'delete-char'         # Delete
+bindkey '^[[3~' 'delete-char' # Delete
 
-bindkey '^[[3;5~'    'kill-word'           # Alt-Delete
-bindkey '^[[3;3~'    'kill-word'           # Shift-Delete
+bindkey '^[[3;5~' 'kill-word' # Alt-Delete
+bindkey '^[[3;3~' 'kill-word' # Shift-Delete
 
-bindkey '^[[3;9~'    'kill-line'           # Command-Delete (⌘ ⌦)
+bindkey '^[[3;9~' 'kill-line' # Command-Delete (⌘ ⌦)
 # in the kitty terminal emulator when running `kitten show-key -m kitty`,
 # Command-Backspace (⌘ ⌫) shows as 'CSI 127 ; 9 u' ('^[[127;9u'),
 # but mapping this sequence to 'backward-kill-line' does not work.

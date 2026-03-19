@@ -77,7 +77,7 @@ run = """
 files=$(shfmt -f .)
 if [ -n "$files" ]; then
   printf "Found the following files:\n%s\n" "$files"
-  shfmt -d .
+  shfmt -d . .{bash,z,zfunc/}*
 else
   echo "No shell scripts for shfmt to check."
 fi
@@ -85,7 +85,7 @@ fi
 
 [tasks."shfmt:format"]
 description = "Format shell scripts with shfmt"
-run = "shfmt -w ."
+run = "shfmt -w . .{bash,z,zfunc/}*"
 
 [tasks."tombi:check"]
 description = "Check TOML formatting with Tombi"

@@ -73,7 +73,9 @@ SHELLCHECK_OPTS = "-e SC1071 -e SC1090 -e SC1091"
 [tasks."shfmt:check"]
 description = "Check shell script formatting with shfmt"
 run = """
-# Checking shell script formatting with shfmt.
+#!/usr/bin/env bash
+
+shopt -s dotglob globstar nullglob
 files=$(shfmt -f .)
 if [ -n "$files" ]; then
   printf "Found the following files:\n%s\n" "$files"
@@ -85,7 +87,12 @@ fi
 
 [tasks."shfmt:format"]
 description = "Format shell scripts with shfmt"
-run = "shfmt -w . .{bash,z,zfunc/}*"
+run = """
+#!/usr/bin/env bash
+
+shopt -s dotglob globstar nullglob
+shfmt -w . .{bash,z,zfunc/}*"
+"""
 
 [tasks."tombi:check"]
 description = "Check TOML formatting with Tombi"

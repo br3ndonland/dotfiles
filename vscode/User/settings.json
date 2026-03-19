@@ -64,6 +64,7 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
+  "task.allowAutomaticTasks": "off",
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "Terminal.app",
   "terminal.integrated.cursorStyle": "line",

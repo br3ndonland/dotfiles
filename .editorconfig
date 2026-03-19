@@ -14,5 +14,7 @@ apply_ignore = true
 indent_size = 4
 
 [*{zprofile,zsh}*]
-# shfmt doesn't support zsh - https://github.com/mvdan/sh/issues/120
-ignore = true
+# shfmt now supports zsh
+# https://github.com/mvdan/sh/issues/120
+# https://github.com/mvdan/sh/releases/tag/v3.13.0
+ignore = false

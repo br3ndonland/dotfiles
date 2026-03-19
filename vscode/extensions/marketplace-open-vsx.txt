@@ -9,6 +9,7 @@ editorconfig.editorconfig
 esbenp.prettier-vscode
 github.vscode-github-actions
 golang.go
+# kilocode.kilo-code
 mikestead.dotenv
 mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools

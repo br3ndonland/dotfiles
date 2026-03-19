@@ -46,6 +46,7 @@ cask "font-recursive-code"
 cask "karabiner-elements"
 # cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
+# cask "lm-studio"
 # cask "microsoft-office-businesspro"
 # cask "notion"
 cask "orbstack"

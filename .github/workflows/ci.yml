@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, ubuntu-latest]
+        os: [macos-26, ubuntu-latest]
     steps:
       - uses: actions/checkout@v6
       - name: Install an up-to-date Bash on macOS
@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, ubuntu-latest]
+        os: [macos-26, ubuntu-latest]
     timeout-minutes: 100
     env:
       STRAP_CI: 1

@@ -57,7 +57,7 @@ if symlink_repo_dotfiles && symlink_vscode_settings; then
   chmod 600 "$HOME"/.gnupg/gpg.conf
   # Restart Karabiner after symlinking config
   # https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/
-  KARABINER=gui/"$(id -u)"/org.pqrs.karabiner.karabiner_console_user_server
+  KARABINER=gui/"$(id -u)"/org.pqrs.service.agent.karabiner_console_user_server
   if launchctl kickstart "$KARABINER" &>/dev/null; then
     launchctl kickstart -k "$KARABINER"
   else

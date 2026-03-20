@@ -250,12 +250,11 @@
   "[toml]": {
     "editor.defaultFormatter": "tombi-toml.tombi"
   },
-  "javascript.referencesCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.showOnInterfaceMethods": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.referencesCodeLens.enabled": true,
+  "js/ts.implementationsCodeLens.enabled": true,
+  "js/ts.implementationsCodeLens.showOnInterfaceMethods": true,
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.parameterNames.enabled": "all",
+  "js/ts.referencesCodeLens.enabled": true,
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.html": "prettier",

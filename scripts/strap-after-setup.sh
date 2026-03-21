@@ -21,6 +21,7 @@ fi
 ### Run mise install
 if type mise &>/dev/null; then
   echo "Running mise install."
+  source <(mise activate bash --shims)
   mise install
 else
   echo "mise not on \$PATH. Skipping mise install."

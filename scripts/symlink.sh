@@ -10,7 +10,15 @@ symlink_dir_contents() {
 }
 
 symlink_file() {
-  ln -nsfF "$1" "$3/${1##"$2"/}"
+  TARGET="$3/${1##"$2"/}"
+  if [ -d "$TARGET" ] && ! [ -L "$TARGET" ]; then
+    if command -v trash >/dev/null 2>&1; then
+      trash "$TARGET"
+    else
+      rm -rf "$TARGET"
+    fi
+  fi
+  ln -nsfF "$1" "$TARGET"
 }
 
 symlink_repo_dotfiles() {

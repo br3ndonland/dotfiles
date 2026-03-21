@@ -18,7 +18,7 @@
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
-    "strings": false
+    "strings": false,
   },
   "editor.renderWhitespace": "none",
   "editor.suggest.preview": true,
@@ -36,11 +36,11 @@
   "extensions.ignoreRecommendations": true,
   "extensions.supportUntrustedWorkspaces": {
     "streetsidesoftware.code-spell-checker": {
-      "supported": "limited"
+      "supported": "limited",
     },
     "yzhang.markdown-all-in-one": {
-      "supported": "limited"
-    }
+      "supported": "limited",
+    },
   },
   "files.associations": {
     "{**/*.env,**/env}": "dotenv",
@@ -49,20 +49,20 @@
     "**/*.rego*": "rego",
     "**/*.renovate.json": "jsonc",
     "**/*.renovaterc.json": "jsonc",
-    "**/*.renovaterc": "jsonc"
+    "**/*.renovaterc": "jsonc",
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {
-    "**/._*": true
+    "**/._*": true,
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
-    "**/.venv/**": true
+    "**/.venv/**": true,
   },
   "notebook.cellToolbarLocation": {
     "default": "right",
-    "jupyter-notebook": "left"
+    "jupyter-notebook": "left",
   },
   "task.allowAutomaticTasks": "off",
   "telemetry.telemetryLevel": "off",
@@ -88,7 +88,7 @@
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editorAssociations": {
     "git-rebase-todo": "default",
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
   },
   "workbench.enableExperiments": false,
   "workbench.fontAliasing": "auto",
@@ -100,8 +100,8 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",
-      "strings": "off"
-    }
+      "strings": "off",
+    },
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
@@ -127,7 +127,7 @@
   "gitlens.hovers.avatars": false,
   "gitlens.launchpad.indicator.enabled": false,
   "gitlens.menus": {
-    "editorGroup": false
+    "editorGroup": false,
   },
   "gitlens.statusBar.reduceFlicker": true,
   "gitlens.telemetry.enabled": false,
@@ -155,7 +155,7 @@
   "cSpell.spellCheckDelayMs": 5000,
   "deno.unstable": false,
   "[dockerfile]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
   },
   "eslint.enable": false,
   "go.survey.prompt": false,
@@ -171,18 +171,18 @@
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
-    "https://www.schemastore.org/": true
+    "https://www.schemastore.org/": true,
   },
   "json.schemas": [
     {
       "fileMatch": ["*.hujson"],
       "schema": {
-        "allowTrailingCommas": true
-      }
-    }
+        "allowTrailingCommas": true,
+      },
+    },
   ],
   "[astro][css][dockercompose][github-actions-workflow][html][javascript][javascriptreact][json][jsonc][markdown][mdx][snippets][typescript][typescriptreact][vue][yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",
@@ -195,28 +195,28 @@
   "opentofu.experimentalFeatures.prefillRequiredFields": true,
   "opentofu.experimentalFeatures.validateOnSave": true,
   "[opentofu][opentofu-vars]": {
-    "editor.defaultFormatter": "opentofu.vscode-opentofu"
+    "editor.defaultFormatter": "opentofu.vscode-opentofu",
   },
   "[rego]": {
     "editor.codeLens": false,
     "editor.inlayHints.enabled": "offUnlessPressed",
-    "editor.insertSpaces": false
+    "editor.insertSpaces": false,
   },
   "[plaintext]": {
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",
-      "strings": "off"
-    }
+      "strings": "off",
+    },
   },
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "always",
-      "source.organizeImports": "always"
+      "source.organizeImports": "always",
     },
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.rulers": [],
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "python.experiments.enabled": false,
   "python.experiments.optOutFrom": ["All"],
@@ -230,25 +230,25 @@
   "shellcheck.exclude": [
     "SC1071", // only supports sh/bash/dash/ksh
     "SC1090", // can't follow non-constant source
-    "SC1091" // not following source
+    "SC1091", // not following source
   ],
   "shellcheck.ignoreFileSchemes": ["git", "gitfs"],
   "shellcheck.ignorePatterns": {
     "**/*.zsh": false,
     "**/*.zshrc": false,
-    "**/zshrc": false
+    "**/zshrc": false,
   },
   "shfmt.formatIgnored": false,
   "[shellscript]": {
     "editor.rulers": [],
-    "files.eol": "\n"
+    "files.eol": "\n",
   },
   "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
+    "editor.defaultFormatter": "svelte.svelte-vscode",
   },
   "svelte.enable-ts-plugin": true,
   "[toml]": {
-    "editor.defaultFormatter": "tombi-toml.tombi"
+    "editor.defaultFormatter": "tombi-toml.tombi",
   },
   "js/ts.implementationsCodeLens.enabled": true,
   "js/ts.implementationsCodeLens.showOnInterfaceMethods": true,
@@ -263,5 +263,5 @@
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
   "vetur.ignoreProjectWarning": true,
-  "yaml.format.enable": false
+  "yaml.format.enable": false,
 }

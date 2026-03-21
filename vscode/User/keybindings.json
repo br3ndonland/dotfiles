@@ -3,7 +3,7 @@
   {
     "key": "ctrl+alt+l",
     "command": "markdown.extension.editing.toggleList",
-    "when": "editorTextFocus && editorLangId == 'markdown'"
+    "when": "editorTextFocus && editorLangId == 'markdown'",
   },
   // Markdown anchor link
   {
@@ -11,9 +11,9 @@
     "command": "editor.action.insertSnippet",
     "args": {
       "langId": "markdown",
-      "name": "Markdown HTML anchor link"
+      "name": "Markdown HTML anchor link",
     },
-    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)",
   },
   // Markdown details
   {
@@ -21,9 +21,9 @@
     "command": "editor.action.insertSnippet",
     "args": {
       "langId": "markdown",
-      "name": "Markdown HTML details"
+      "name": "Markdown HTML details",
     },
-    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)",
   },
   // Markdown images
   {
@@ -31,107 +31,107 @@
     "command": "editor.action.insertSnippet",
     "args": {
       "langId": "markdown",
-      "name": "Markdown HTML img"
+      "name": "Markdown HTML img",
     },
-    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)",
   },
   // Fix outdent issue with Markdown files
   {
     "key": "shift+tab",
     "command": "outdent",
-    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)"
+    "when": "editorTextFocus && ['markdown', 'mdx'].includes(editorLangId)",
   },
   // Insert Prettier ignore comment
   {
     "key": "ctrl+alt+p",
     "command": "editor.action.insertSnippet",
     "args": {
-      "name": "Prettier ignore comment"
+      "name": "Prettier ignore comment",
     },
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   // Open links
   {
     "key": "ctrl+alt+cmd+enter",
-    "command": "editor.action.openLink"
+    "command": "editor.action.openLink",
   },
   // Alternative command palette keybinding
   {
     "key": "alt+cmd+p",
-    "command": "workbench.action.showCommands"
+    "command": "workbench.action.showCommands",
   },
   // Toggle side bar
   {
     "key": "alt+cmd+b",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "editorTextFocus && editorLangId == 'markdown'"
+    "when": "editorTextFocus && editorLangId == 'markdown'",
   },
   {
     "key": "alt+cmd+m",
-    "command": "editor.emmet.action.matchTag"
+    "command": "editor.emmet.action.matchTag",
   },
   // Switch to next editor
   {
     "key": "alt+cmd+right",
     "command": "workbench.action.nextEditor",
-    "when": "editorFocus"
+    "when": "editorFocus",
   },
   // Switch to previous editor
   {
     "key": "alt+cmd+left",
     "command": "workbench.action.previousEditor",
-    "when": "editorFocus"
+    "when": "editorFocus",
   },
   // Switch to next terminal
   {
     "key": "alt+cmd+right",
     "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   // Switch to previous terminal
   {
     "key": "alt+cmd+left",
     "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   // Fix terminal forward delete word
   {
     "key": "alt+delete",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "\u001bd" },
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   // Go to definition
   {
     "key": "ctrl+cmd+g",
     "command": "editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor",
   },
   {
     "key": "f12",
     "command": "-editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor",
   },
   // Go to references
   {
     "key": "ctrl+alt+cmd+g",
     "command": "editor.action.goToReferences",
-    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor",
   },
   {
     "key": "shift+f12",
     "command": "-editor.action.goToReferences",
-    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor",
   },
   // Search commits with GitLens
   {
     "key": "ctrl+alt+cmd+f",
-    "command": "gitlens.showCommitSearch"
+    "command": "gitlens.showCommitSearch",
   },
   // Prevent AI tools from co-opting keybindings
   {
     "key": "cmd+l",
     "command": "expandLineSelection",
-    "when": "textInputFocus"
-  }
+    "when": "textInputFocus",
+  },
 ]

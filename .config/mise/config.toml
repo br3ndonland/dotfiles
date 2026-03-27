@@ -65,7 +65,7 @@ run = "scripts/shfmt.sh check"
 
 [tasks."shfmt:format"]
 description = "Format shell scripts with shfmt"
-run = "scripts/shmt.sh format"
+run = "scripts/shfmt.sh format"
 
 [tasks."tombi:check"]
 description = "Check TOML formatting with Tombi"

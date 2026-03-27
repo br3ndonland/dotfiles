@@ -32,6 +32,92 @@ fi
 shift 1 2>/dev/null || true
 platform=$(uname 2>/dev/null)
 
+_op_cache_track_key() {
+  _op_cache_registry_dir=${XDG_CACHE_HOME:-$HOME/.cache}/codex
+  _op_cache_registry_file=$_op_cache_registry_dir/op_cache_keys
+  _op_cache_cache_key=$1
+
+  if [ ! -d "$_op_cache_registry_dir" ]; then
+    mkdir -p "$_op_cache_registry_dir" 2>/dev/null || return 0
+  fi
+
+  if [ -f "$_op_cache_registry_file" ] &&
+    grep -Fx "$_op_cache_cache_key" "$_op_cache_registry_file" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  printf '%s\n' "$_op_cache_cache_key" >>"$_op_cache_registry_file" 2>/dev/null
+}
+
+_op_cache_delete_key() {
+  _op_cache_cache_key=$1
+
+  if [ "$platform" = "Darwin" ]; then
+    security find-generic-password \
+      -a "$USER" \
+      -s "codex/1password/$_op_cache_cache_key" \
+      -w \
+      >/dev/null 2>&1
+    _op_cache_status=$?
+    if [ "$_op_cache_status" -eq 44 ]; then
+      return 0
+    fi
+    if [ "$_op_cache_status" -ne 0 ]; then
+      return "$_op_cache_status"
+    fi
+
+    security delete-generic-password \
+      -a "$USER" \
+      -s "codex/1password/$_op_cache_cache_key" \
+      >/dev/null 2>&1
+    _op_cache_status=$?
+    if [ "$_op_cache_status" -eq 44 ]; then
+      return 0
+    fi
+    return "$_op_cache_status"
+  fi
+
+  if command -v secret-tool >/dev/null 2>&1; then
+    secret-tool lookup app codex key "$_op_cache_cache_key" >/dev/null 2>&1
+    _op_cache_status=$?
+    if [ "$_op_cache_status" -ne 0 ]; then
+      return 0
+    fi
+
+    secret-tool clear \
+      app codex \
+      key "$_op_cache_cache_key" \
+      >/dev/null 2>&1
+    return $?
+  fi
+
+  printf '[ERROR] no keyring tool available\n' >&2
+  return 1
+}
+
+_op_cache_prune_registry_keys() {
+  _op_cache_registry_file=$1
+  _op_cache_removed_keys_file=$2
+  _op_cache_registry_tmp=$registry_dir/op_cache_keys.$$
+
+  if [ ! -f "$_op_cache_registry_file" ] || [ ! -s "$_op_cache_removed_keys_file" ]; then
+    return 0
+  fi
+
+  if awk 'NR==FNR{a[$0]=1;next} !a[$0]' \
+    "$_op_cache_removed_keys_file" \
+    "$_op_cache_registry_file" \
+    >"$_op_cache_registry_tmp" 2>/dev/null; then
+    if [ -s "$_op_cache_registry_tmp" ]; then
+      mv "$_op_cache_registry_tmp" "$_op_cache_registry_file"
+    else
+      rm -f "$_op_cache_registry_file" "$_op_cache_registry_tmp" >/dev/null 2>&1
+    fi
+  fi
+
+  rm -f "$_op_cache_registry_tmp" >/dev/null 2>&1
+}
+
 case "$subcommand" in
 read)
   if [ "$#" -ne 2 ]; then
@@ -41,20 +127,6 @@ read)
 
   cache_key=$1
   op_path=$2
-  registry_dir=${XDG_CACHE_HOME:-$HOME/.cache}/codex
-  registry_file=$registry_dir/op_cache_keys
-  if [ ! -d "$registry_dir" ]; then
-    mkdir -p "$registry_dir" 2>/dev/null
-  fi
-  if [ -d "$registry_dir" ]; then
-    if [ -f "$registry_file" ]; then
-      if ! grep -Fx "$cache_key" "$registry_file" >/dev/null 2>&1; then
-        printf '%s\n' "$cache_key" >>"$registry_file" 2>/dev/null
-      fi
-    else
-      printf '%s\n' "$cache_key" >>"$registry_file" 2>/dev/null
-    fi
-  fi
 
   cached=
   if [ "$platform" = "Darwin" ]; then
@@ -70,12 +142,14 @@ read)
   fi
 
   if [ -n "$cached" ]; then
+    _op_cache_track_key "$cache_key"
     printf '%s' "$cached"
     return 0
   fi
 
   fresh=$(op read "$op_path" 2>/dev/null)
   if [ -n "$fresh" ]; then
+    store_return_code=1
     if [ "$platform" = "Darwin" ]; then
       security add-generic-password \
         -a "$USER" \
@@ -83,12 +157,18 @@ read)
         -w "$fresh" \
         -U \
         >/dev/null 2>&1
+      store_return_code=$?
     elif command -v secret-tool >/dev/null 2>&1; then
       printf '%s' "$fresh" | secret-tool store \
         --label="codex/1password/$cache_key" \
         app codex \
         key "$cache_key" \
         >/dev/null 2>&1
+      store_return_code=$?
+    fi
+
+    if [ "$store_return_code" -eq 0 ]; then
+      _op_cache_track_key "$cache_key"
     fi
     printf '%s' "$fresh"
     return 0
@@ -106,29 +186,23 @@ clear)
       return 0
     fi
 
+    cleared_keys_file=$registry_dir/op_cache_keys.cleared.$$
+    : >"$cleared_keys_file" 2>/dev/null
+
     while IFS= read -r cache_key; do
       if [ -z "$cache_key" ]; then
         continue
       fi
-      if [ "$platform" = "Darwin" ]; then
-        security delete-generic-password \
-          -a "$USER" \
-          -s "codex/1password/$cache_key" \
-          >/dev/null 2>&1 || return_code=1
-      elif command -v secret-tool >/dev/null 2>&1; then
-        secret-tool clear \
-          app codex \
-          key "$cache_key" \
-          >/dev/null 2>&1 || return_code=1
+      if _op_cache_delete_key "$cache_key"; then
+        printf '%s\n' "$cache_key" >>"$cleared_keys_file" 2>/dev/null
       else
-        printf '[ERROR] no keyring tool available\n' >&2
-        return 1
+        printf '[ERROR] failed to delete cache key %s\n' "$cache_key" >&2
+        return_code=1
       fi
     done <"$registry_file"
 
-    if [ "$return_code" -eq 0 ]; then
-      rm -f "$registry_file" >/dev/null 2>&1
-    fi
+    _op_cache_prune_registry_keys "$registry_file" "$cleared_keys_file"
+    rm -f "$cleared_keys_file" >/dev/null 2>&1
     return "$return_code"
   fi
 
@@ -139,37 +213,16 @@ clear)
   fi
 
   for cache_key in "$@"; do
-    if [ "$platform" = "Darwin" ]; then
-      security delete-generic-password \
-        -a "$USER" \
-        -s "codex/1password/$cache_key" \
-        >/dev/null 2>&1
-    elif command -v secret-tool >/dev/null 2>&1; then
-      secret-tool clear \
-        app codex \
-        key "$cache_key" \
-        >/dev/null 2>&1
-    else
-      printf '[ERROR] no keyring tool available\n' >&2
-      return 1
-    fi
-    cmd_return_code=$?
-    if [ "$cmd_return_code" -ne 0 ]; then
+    if ! _op_cache_delete_key "$cache_key"; then
       printf '[ERROR] failed to delete cache key %s\n' "$cache_key" >&2
       return_code=1
-    fi
-    if [ -n "$cleared_keys_file" ]; then
+    elif [ -n "$cleared_keys_file" ]; then
       printf '%s\n' "$cache_key" >>"$cleared_keys_file" 2>/dev/null
     fi
   done
 
   if [ -n "$cleared_keys_file" ] && [ -s "$cleared_keys_file" ]; then
-    registry_tmp=$registry_dir/op_cache_keys.$$
-    awk 'NR==FNR{a[$0]=1;next} !a[$0]' \
-      "$cleared_keys_file" \
-      "$registry_file" \
-      >"$registry_tmp" 2>/dev/null && mv "$registry_tmp" "$registry_file"
-    rm -f "$registry_tmp" >/dev/null 2>&1
+    _op_cache_prune_registry_keys "$registry_file" "$cleared_keys_file"
   fi
   if [ -n "$cleared_keys_file" ]; then
     rm -f "$cleared_keys_file" >/dev/null 2>&1

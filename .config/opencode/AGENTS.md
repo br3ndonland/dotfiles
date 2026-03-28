@@ -1,5 +1,3 @@
-# AGENTS.md instructions for OpenCode
-
 ## Working agreements
 
 - Use ASCII characters only in all written output, code comments, commit messages, and documentation. Forbidden characters include em/en dashes (— –), curly quotes (“ ” ‘ ’), ellipses (…), or other non-ASCII Unicode. Prefer plain ASCII equivalents at all times.

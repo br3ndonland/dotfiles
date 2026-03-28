@@ -166,9 +166,13 @@
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
   "json.schemaDownload.trustedDomains": {
+    "https://app.kilo.ai/config.json": true,
     "https://developer.microsoft.com/json-schemas/": true,
     "https://json-schema.org/": true,
     "https://json.schemastore.org/": true,
+    "https://models.dev/model-schema.json": true,
+    "https://opencode.ai/config.json": true,
+    "https://opencode.ai/tui.json": true,
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,

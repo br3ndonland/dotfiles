@@ -57,6 +57,7 @@ if [ -n "${HOMEBREW_PREFIX:-}" ]; then
 fi
 
 dotfiles_editor="$(dotfiles_select_editor)"
+dotfiles_path_prepend "$HOME/.lmstudio/bin"
 dotfiles_path_prepend "$HOME/.local/bin"
 dotfiles_path_prepend "$HOME/.cargo/bin"
 export ASTRO_TELEMETRY_DISABLED=1

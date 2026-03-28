@@ -108,6 +108,20 @@ fi
   fi
 }
 
+# function-dependent exports
+() {
+  local \
+    context7_api_key=$(
+      op_cache read "context7_api_key" "op://AI/Context7/token"
+    ) \
+    github_fgt=$(
+      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+    )
+  export \
+    CONTEXT7_API_KEY="$context7_api_key" \
+    GITHUB_TOKEN="$github_fgt"
+}
+
 # completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)

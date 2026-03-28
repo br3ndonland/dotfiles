@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash",
+      "mcp__*atlassianUserInfo",
+      "mcp__*getAccessibleAtlassianResources",
+      "mcp__*getVisibleJiraProjects",
+      "mcp__*pull_request_read",
+      "mcp__*searchJiraIssuesUsingJql",
+      "Read"
+    ],
+    "deny": [],
+    "ask": [
+      "Bash(curl:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git tag:*)",
+      "Bash(rm:*)"
+    ],
+    "defaultMode": "auto",
+    "additionalDirectories": ["/Users/brendon/code", "/Users/bsmith/code"]
+  },
+  "worktree": {
+    "symlinkDirectories": [".cache", ".venv", "node_modules"]
+  }
+}

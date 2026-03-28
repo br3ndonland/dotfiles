@@ -137,6 +137,7 @@ fi
   local GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin
   local GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
   local GNU_TAR_BIN_DIR=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+  local LM_STUDIO_BIN_DIR=$HOME/.lmstudio/bin
   local LOCAL_BIN_DIR=$HOME/.local/bin
   local RUST_CARGO_BIN_DIR=$HOME/.cargo/bin
   local TTY=$(tty)
@@ -149,6 +150,7 @@ fi
     $GNU_GREP_BIN_DIR
     $GNU_SED_BIN_DIR
     $GNU_TAR_BIN_DIR
+    $LM_STUDIO_BIN_DIR
     $LOCAL_BIN_DIR
     $RUST_CARGO_BIN_DIR
     $PATH
@@ -199,6 +201,20 @@ source <(mise activate zsh)
 typeset -U fpath
 fpath+=($HOME/.zfunc) # ensure .zfunc is symlinked to $HOME/.zfunc
 autoload -Uz $HOME/.zfunc/*(:tX)
+
+# function-dependent exports
+() {
+  local \
+    context7_api_key=$(
+      op_cache read "context7_api_key" "op://AI/Context7/token"
+    ) \
+    github_fgt=$(
+      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+    )
+  export \
+    CONTEXT7_API_KEY="$context7_api_key" \
+    GITHUB_TOKEN="$github_fgt"
+}
 
 # completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then

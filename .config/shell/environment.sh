@@ -57,6 +57,7 @@ if [ -n "${HOMEBREW_PREFIX:-}" ]; then
 fi
 
 dotfiles_editor="$(dotfiles_select_editor)"
+dotfiles_path_prepend "$HOME/.lmstudio/bin"
 dotfiles_path_prepend "$HOME/.local/bin"
 dotfiles_path_prepend "$HOME/.cargo/bin"
 export ASTRO_TELEMETRY_DISABLED=1
@@ -69,6 +70,7 @@ export GITHUB_TOOLSETS="default,actions,dependabot,discussions,gists,git,github_
 export HATCH_ENV_TYPE_VIRTUAL_PATH=.venv
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_PREFIX
+export OPENROUTER_BASE_URL="https://api.kilo.ai/api/gateway"
 export PATH
 export PIPX_BIN_DIR="$HOME/.local/bin"
 export VERCEL_TELEMETRY_DISABLED=1

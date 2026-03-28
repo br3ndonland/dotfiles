@@ -16,7 +16,7 @@ mkhl.shfmt
 ms-python.python
 # ms-toolsai.jupyter
 nuxt.mdc
-# openai.chatgpt
+openai.chatgpt
 opentofu.vscode-opentofu
 # redhat.vscode-yaml
 rust-lang.rust-analyzer

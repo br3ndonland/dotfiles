@@ -144,6 +144,7 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // AI
   "chat.commandCenter.enabled": false,
+  "chatgpt.followUpQueueMode": "steer",
   "claudeCode.disableLoginPrompt": true,
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",

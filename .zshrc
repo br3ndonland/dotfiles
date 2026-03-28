@@ -154,10 +154,23 @@ fi
     $PATH
   )
 
+  local github_mcp_server_toolsets=(
+    default
+    actions
+    dependabot
+    discussions
+    gists
+    git
+    github_support_docs_search
+    labels
+    security_advisories
+  )
+
   export \
     CPPFLAGS=$CURL_CPPFLAGS \
     EDITOR=$editor \
     GIT_EDITOR=$editor \
+    GITHUB_TOOLSETS=${(j.,.)github_mcp_server_toolsets} \
     GPG_TTY=$TTY \
     HATCH_ENV_TYPE_VIRTUAL_PATH=.venv \
     HOMEBREW_NO_ANALYTICS=1 \

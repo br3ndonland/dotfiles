@@ -16,6 +16,7 @@
       "oauth": false,
       "headers": {
         "Authorization": "Bearer {env:GITHUB_TOKEN}",
+        "X-MCP-Toolsets": "{env:GITHUB_TOOLSETS}",
       },
     },
     "openai_developer_docs": {

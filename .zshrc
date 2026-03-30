@@ -178,6 +178,7 @@ fi
     PATH=${(j.:.)path_array} \
     PIPX_BIN_DIR=$LOCAL_BIN_DIR \
     PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH \
+    VERCEL_TELEMETRY_DISABLED=1 \
     XDG_CONFIG_HOME=$HOME/.config
 }
 

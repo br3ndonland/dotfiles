@@ -30,6 +30,7 @@
       "/Users/bsmith/code"
     ]
   },
+  "model": "opus[1m]",
   "worktree": {
     "symlinkDirectories": [
       ".cache",

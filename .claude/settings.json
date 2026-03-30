@@ -19,7 +19,10 @@
       "Bash(git commit *)",
       "Bash(git push *)",
       "Bash(git tag *)",
-      "Bash(rm*)"
+      "Bash(rm*)",
+      "Bash(vercel * delete *)",
+      "Bash(vercel remove *)",
+      "Bash(vercel rm *)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [

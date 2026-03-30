@@ -13,6 +13,8 @@
     "deny": [],
     "ask": [
       "Bash(curl*)",
+      "Bash(gh * delete *)",
+      "Bash(gh pr close *)",
       "Bash(gh pr create *)",
       "Bash(git commit *)",
       "Bash(git push *)",

@@ -20,9 +20,16 @@
       "Bash(rm:*)"
     ],
     "defaultMode": "auto",
-    "additionalDirectories": ["/Users/brendon/code", "/Users/bsmith/code"]
+    "additionalDirectories": [
+      "/Users/brendon/code",
+      "/Users/bsmith/code"
+    ]
   },
   "worktree": {
-    "symlinkDirectories": [".cache", ".venv", "node_modules"]
+    "symlinkDirectories": [
+      ".cache",
+      ".venv",
+      "node_modules"
+    ]
   }
 }

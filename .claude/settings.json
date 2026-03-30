@@ -12,12 +12,12 @@
     ],
     "deny": [],
     "ask": [
-      "Bash(curl:*)",
-      "Bash(gh pr create:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git tag:*)",
-      "Bash(rm:*)"
+      "Bash(curl*)",
+      "Bash(gh pr create *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git tag *)",
+      "Bash(rm*)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [

@@ -24,7 +24,7 @@
       "Bash(vercel remove *)",
       "Bash(vercel rm *)"
     ],
-    "defaultMode": "auto",
+    "defaultMode": "acceptEdits",
     "additionalDirectories": [
       "/Users/brendon/code",
       "/Users/bsmith/code"

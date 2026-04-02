@@ -168,6 +168,7 @@
   "json.schemaDownload.trustedDomains": {
     "https://app.kilo.ai/config.json": true,
     "https://developer.microsoft.com/json-schemas/": true,
+    "https://docs.renovatebot.com/renovate-schema.json": true,
     "https://json-schema.org/": true,
     "https://json.schemastore.org/": true,
     "https://models.dev/model-schema.json": true,

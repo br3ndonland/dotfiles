@@ -11,10 +11,26 @@ vscode/languagepacks.json
 vscode/logs
 vscode/machineid
 
+*.bak*
+*.jsonl
+*.log
+*.sqlite*
+*.tmp
+log
+
 .claude/backups
 .claude/cache
-.claude/history*
 .claude/plugins
 .claude/projects
 .claude/sessions
 .claude/skills
+
+.codex/.personality_migration
+.codex/*sessions
+.codex/memories
+.codex/plugins
+.codex/rules
+.codex/shell_snapshots
+.codex/skills
+.codex/tmp
+.codex/version*

@@ -83,6 +83,7 @@ run = "scripts/tombi.sh format"
 cosign = "prefix:3"
 slsa-verifier = "prefix:2"
 # registry tools from core backend
+bun = "1"
 go = "1"
 node = [
   "22",

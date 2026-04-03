@@ -1,4 +1,4 @@
-@~/.config/opencode/AGENTS.md
+@~/.codex/AGENTS.md
 
 <!-- maintainer notes
 

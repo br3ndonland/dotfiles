@@ -28,7 +28,7 @@
       "Bash(vercel remove *)",
       "Bash(vercel rm *)"
     ],
-    "defaultMode": "acceptEdits",
+    "defaultMode": "auto",
     "additionalDirectories": [
       "/Users/brendon/code",
       "/Users/bsmith/code"
@@ -44,5 +44,6 @@
   },
   "enabledPlugins": {},
   "extraKnownMarketplaces": {},
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "skipAutoPermissionPrompt": true
 }

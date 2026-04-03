@@ -37,5 +37,6 @@
       ".venv",
       "node_modules"
     ]
-  }
+  },
+  "effortLevel": "high"
 }

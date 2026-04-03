@@ -10,6 +10,7 @@ pub*
 vscode/languagepacks.json
 vscode/logs
 vscode/machineid
+worktrees
 
 *.bak*
 *.jsonl

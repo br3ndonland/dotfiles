@@ -50,6 +50,7 @@
     "list": "allow",
     "lsp": "allow",
     "read": "allow",
+    "skill": "allow",
     "task": "allow",
     "todoread": "allow",
     "todowrite": "allow",

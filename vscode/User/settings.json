@@ -66,6 +66,10 @@
   "task.allowAutomaticTasks": "off",
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "Terminal.app",
+  "terminal.integrated.commandsToSkipShell": [
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal",
+  ],
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.enablePersistentSessions": false,
@@ -146,6 +150,9 @@
   "chat.commandCenter.enabled": false,
   "chatgpt.followUpQueueMode": "steer",
   "claudeCode.disableLoginPrompt": true,
+  "kilo-code.new.autocomplete.enableAutoTrigger": false,
+  "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
+  "kilo-code.new.autocomplete.enableChatAutocomplete": false,
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",

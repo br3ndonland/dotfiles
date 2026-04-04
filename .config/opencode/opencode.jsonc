@@ -27,11 +27,17 @@
     // https://opencode.ai/docs/permissions/
     "bash": {
       "*": "allow",
+      "gh * delete *": "ask",
+      "gh pr close *": "ask",
+      "gh pr create *": "ask",
       "gh pr create": "ask",
       "git commit *": "ask",
       "git push *": "ask",
       "git tag *": "ask",
-      "rm *": "ask",
+      "rm*": "ask",
+      "vercel * delete *": "ask",
+      "vercel remove *": "ask",
+      "vercel rm *": "ask",
     },
     "doom_loop": "deny",
     "edit": "allow",

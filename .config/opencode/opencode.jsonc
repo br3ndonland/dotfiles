@@ -43,7 +43,7 @@
     "edit": "allow",
     "external_directory": {
       "*": "ask",
-      "~/code": "allow",
+      "~/code/**": "allow",
     },
     "glob": "allow",
     "grep": "allow",

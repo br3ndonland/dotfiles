@@ -7,7 +7,7 @@
 - Keep edits minimal and well-scoped; explain changes.
 - Prefer local context; use the web only when needed.
 - Make safe assumptions; ask only when necessary.
-- Avoid destructive actions without explicit approval.
+- When deleting files or directories, prefer `trash` as a safer default instead of `rm -rf`; use permanent deletion only with explicit user approval.
 - Do not create Git commits on `main`; always work on a feature branch.
 - Do not Git push to `main`; always push to a feature branch.
 - Always use the GitHub MCP server for accessing github.com URLs, GitHub repos, GitHub file content, etc. without me having to explicitly ask. Always use the `github_support_docs_search` toolset in the GitHub MCP server to search GitHub documentation. Always use the `git` toolset in the GitHub MCP server for low-level Git operations. Fall back to the GitHub CLI (`gh`) when available. Only use raw fetches if neither MCP nor `gh` can provide the needed content. Always ask before running raw fetches.

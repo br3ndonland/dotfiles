@@ -6,7 +6,7 @@ detachhead.basedpyright
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig
-esbenp.prettier-vscode
+esbenp.prettier-vscode@12.3.0
 github.vscode-github-actions
 golang.go
 # kilocode.kilo-code

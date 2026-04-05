@@ -28,16 +28,18 @@ check_open_vsx() {
 }
 
 install_extensions() {
-  printf "\nInstalling extensions for %s...\n\n" "$1"
-  local extension_info extension_name extensions installed prefix
-  prefix="$HOME/.dotfiles/vscode/extensions/marketplace"
+  printf "\nInstalling extensions for '%s'...\n\n" "$1"
+  local extension_info extension_name extensions installed
   case $1 in
   code*)
-    cat "$prefix-open-vsx.txt" "$prefix-microsoft.txt" >"$prefix-all.txt"
-    extensions="$prefix-all.txt"
+    cat \
+      "$HOME/.dotfiles/vscode/extensions/marketplace-open-vsx.txt" \
+      "$HOME/.dotfiles/vscode/extensions/marketplace-microsoft.txt" \
+      >"/tmp/marketplace-all.txt"
+    extensions="/tmp/marketplace-all.txt"
     ;;
   *)
-    extensions="$prefix-open-vsx.txt"
+    extensions="$HOME/.dotfiles/vscode/extensions/marketplace-open-vsx.txt"
     ;;
   esac
   installed=("$($1 --list-extensions --show-versions)")

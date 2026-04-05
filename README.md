@@ -54,7 +54,8 @@ _bootstrap.sh_ is a shell script to automate setup of a new macOS or Linux devel
 
 ```sh
 STRAP_GIT_EMAIL="you@example.com" STRAP_GIT_NAME="Your Name" STRAP_GITHUB_USER="username" \
-  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)"
+  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/br3ndonland/dotfiles/HEAD/bootstrap.sh)" |
+  tee "$HOME/Desktop/bootstrap-$(date -u "+%Y-%m-%d").txt"
 ```
 
 The following environment variables can be used to configure _bootstrap.sh_, and should be either set before with [`export`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export), or inline within the command to run the script:

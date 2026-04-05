@@ -34,6 +34,15 @@ approval_mode = "approve"
 [mcp_servers.openai_developer_docs.tools.search_openai_docs]
 approval_mode = "approve"
 
+[plugins."cloudflare@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."vercel@openai-curated"]
+enabled = true
+
 # project paths are parsed as plain strings, so absolute paths must be used.
 # https://github.com/openai/codex/blob/8159f05/codex-rs/core/src/config_loader/mod.rs#L594-L605
 # https://github.com/openai/codex/issues/11061

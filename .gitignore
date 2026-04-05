@@ -17,6 +17,7 @@ worktrees
 *.log
 *.sqlite*
 *.tmp
+*cache*
 log
 
 .claude/backups
@@ -26,12 +27,15 @@ log
 .claude/sessions
 .claude/skills
 
+.codex/.codex-global-state.json
 .codex/.personality_migration
 .codex/*sessions
+.codex/auth.json
 .codex/memories
 .codex/plugins
 .codex/rules
 .codex/shell_snapshots
 .codex/skills
 .codex/tmp
+.codex/vendor*
 .codex/version*

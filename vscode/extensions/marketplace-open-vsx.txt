@@ -14,6 +14,7 @@ mikestead.dotenv
 mkhl.shfmt
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
+# ms-toolsai.jupyter
 nuxt.mdc
 # openai.chatgpt
 opentofu.vscode-opentofu

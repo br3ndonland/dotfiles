@@ -33,7 +33,6 @@ log
 .codex/auth.json
 .codex/memories
 .codex/plugins
-.codex/rules
 .codex/shell_snapshots
 .codex/skills
 .codex/tmp

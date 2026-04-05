@@ -1,0 +1,38 @@
+# Codex default rules
+#
+# https://developers.openai.com/codex/rules
+# https://developers.openai.com/codex/agent-approvals-security
+# https://github.com/bazelbuild/starlark/blob/master/spec.md
+
+# Without the following rule, Codex will prompt before creating new branches.
+# This is because `.git` is a protected path in writable roots.
+# This rule allows Codex to create branches while still maintaining a secure sandbox.
+prefix_rule(
+  pattern=[
+    "git",
+    [
+      "checkout",
+      "switch",
+      "worktree",
+    ]
+  ],
+  decision="allow",
+  justification="Allow agents to create and checkout branches and worktrees",
+  match=[
+      "git checkout -b codex/new-feature",
+      "git switch -c codex/new-feature",
+  ]
+)
+
+# This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
+prefix_rule(
+  pattern=[
+    "trash",
+  ],
+  decision="allow",
+  justification="Allow agents to move files to the trash as a safer alternative to rm",
+  match=[
+    "trash /tmp/dir",
+    "trash ~/code/file.txt",
+  ]
+)

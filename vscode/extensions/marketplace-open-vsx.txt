@@ -1,10 +1,10 @@
 astro-build.astro-vscode
+br3ndonland.gitless-vscode@prerelease
 catppuccin.catppuccin-vsc
 catppuccin.catppuccin-vsc-icons
 charliermarsh.ruff
 detachhead.basedpyright
 dracula-theme.theme-dracula
-eamodio.gitlens
 editorconfig.editorconfig
 esbenp.prettier-vscode@12.3.0
 github.vscode-github-actions

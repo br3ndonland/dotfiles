@@ -33,6 +33,41 @@ prefix_rule(
   ]
 )
 
+prefix_rule(
+  pattern=[
+    "git",
+    "branch",
+    [
+      "--delete",
+      "-d",
+    ],
+    "main",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from deleting the default branch",
+  match=[
+      "git branch --delete main",
+      "git branch -d main",
+  ]
+)
+
+prefix_rule(
+  pattern=[
+    "git",
+    "push",
+    [
+      "--delete",
+      "-d",
+    ],
+  ],
+  decision="forbidden",
+  justification="Forbid agents from deleting remote tracking branches",
+  match=[
+      "git push --delete upstream feature",
+      "git push -d origin main",
+  ]
+)
+
 # This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
 prefix_rule(
   pattern=[

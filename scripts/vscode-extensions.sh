@@ -19,7 +19,7 @@ install_extensions() {
   esac
   while read -r extension; do
     case $extension in
-    '#'*) printf "Skipping commented extension '%s'\n" "$extension" && continue ;;
+    '#'*) printf "Skipping commented extension '%s'\n\n" "$extension" && continue ;;
     *) printf "Installing extension '%s'\n" "$extension" ;;
     esac
     extension_name=$(printf %s "$extension" | cut -d @ -f 1)

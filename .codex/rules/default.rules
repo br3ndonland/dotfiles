@@ -11,7 +11,16 @@ prefix_rule(
   pattern=[
     "git",
     [
+      "add",
+      "branch",
       "checkout",
+      "cherry-pick",
+      "commit",
+      "fetch",
+      "merge",
+      "pull",
+      "rebase",
+      "stash",
       "switch",
       "worktree",
     ]

@@ -9,6 +9,9 @@ on:
 jobs:
   check:
     runs-on: ${{ matrix.os }}
+    env:
+      # Work around intermittent GPG keybox failures during parallel mise installs.
+      MISE_JOBS: ${{ startsWith(matrix.os, 'macos-') && '1' || '4' }}
     strategy:
       fail-fast: false
       matrix:
@@ -32,6 +35,7 @@ jobs:
         os: [macos-26, ubuntu-latest]
     timeout-minutes: 100
     env:
+      MISE_JOBS: ${{ startsWith(matrix.os, 'macos-') && '1' || '4' }}
       STRAP_CI: 1
       STRAP_DEBUG: 1
       STRAP_DOTFILES_BRANCH: ${{ github.ref }}

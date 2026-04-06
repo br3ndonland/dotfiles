@@ -21,7 +21,9 @@ Linux)
   else
     DEFAULT_HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
   fi
-  [[ $(id -un) == "codespace" ]] && export CODESPACE=1
+  if [[ ${CODESPACES:-false} == "true" ]] || [[ $(id -un) == "codespace" ]]; then
+    export CODESPACES="true"
+  fi
   ;;
 *) echo "Unsupported operating system $OS" && exit 1 ;;
 esac
@@ -112,6 +114,22 @@ logk() {
 logn_no_sudo() {
   STRAP_STEP="$*"
   printf -- "--> %s " "$*"
+}
+
+log_auto() {
+  if [ "$STRAP_SUDO" -gt 0 ]; then
+    log "$@"
+  else
+    log_no_sudo "$@"
+  fi
+}
+
+logn_auto() {
+  if [ "$STRAP_SUDO" -gt 0 ]; then
+    logn "$@"
+  else
+    logn_no_sudo "$@"
+  fi
 }
 
 logskip() {
@@ -391,7 +409,7 @@ logk
 
 # shellcheck disable=SC2086
 install_homebrew() {
-  logn "Installing Homebrew:"
+  logn_auto "Installing Homebrew:"
   HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
   [ -n "$HOMEBREW_PREFIX" ] || HOMEBREW_PREFIX="$DEFAULT_HOMEBREW_PREFIX"
   [ -d "$HOMEBREW_PREFIX" ] || sudo_askpass mkdir -p "$HOMEBREW_PREFIX"
@@ -419,7 +437,7 @@ install_homebrew() {
   unset GIT_DIR GIT_WORK_TREE
   logk
   export PATH="$HOMEBREW_PREFIX/bin:$PATH"
-  logn "Updating Homebrew:"
+  logn_auto "Updating Homebrew:"
   brew update
   logk
 }
@@ -464,7 +482,7 @@ set_up_brew_skips() {
 run_brew_installs() {
   local brewfile_domain brewfile_path brewfile_url git_branch github_user
   if ! type brew &>/dev/null; then
-    log "brew command not in shell environment. Attempting to load."
+    log_auto "brew command not in shell environment. Attempting to load."
     eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
     type brew &>/dev/null && logk || return 1
   fi
@@ -472,13 +490,13 @@ run_brew_installs() {
   brew analytics off
   [ "$STRAP_CI" -gt 0 ] || [ "$LINUX" -gt 0 ] && set_up_brew_skips
   [ "$LINUX" -gt 0 ] && brew install gcc # "We recommend that you install GCC"
-  log "Running Homebrew installs."
+  log_auto "Running Homebrew installs."
   if [ -f "$HOME/.Brewfile" ]; then
-    log "Installing from $HOME/.Brewfile with Brew Bundle."
+    log_auto "Installing from $HOME/.Brewfile with Brew Bundle."
     brew bundle check --global || brew bundle --global
     logk
   elif [ -f "Brewfile" ]; then
-    log "Installing from local Brewfile with Brew Bundle."
+    log_auto "Installing from local Brewfile with Brew Bundle."
     brew bundle check || brew bundle
     logk
   else
@@ -488,20 +506,20 @@ run_brew_installs() {
     brewfile_domain="https://raw.githubusercontent.com"
     brewfile_path="$github_user/dotfiles/$git_branch/Brewfile"
     brewfile_url="$brewfile_domain/$brewfile_path"
-    log "Installing from $brewfile_url with Brew Bundle."
+    log_auto "Installing from $brewfile_url with Brew Bundle."
     curl -fsSL "$brewfile_url" | brew bundle --file=-
     logk
   fi
   # Tap a custom Homebrew tap
   if [ -n "$CUSTOM_HOMEBREW_TAP" ]; then
     read -ra CUSTOM_HOMEBREW_TAP <<<"$CUSTOM_HOMEBREW_TAP"
-    log "Running 'brew tap ${CUSTOM_HOMEBREW_TAP[*]}':"
+    log_auto "Running 'brew tap ${CUSTOM_HOMEBREW_TAP[*]}':"
     brew tap "${CUSTOM_HOMEBREW_TAP[@]}"
     logk
   fi
   # Run a custom Brew command
   if [ -n "$CUSTOM_BREW_COMMAND" ]; then
-    log "Executing 'brew $CUSTOM_BREW_COMMAND':"
+    log_auto "Executing 'brew $CUSTOM_BREW_COMMAND':"
     # shellcheck disable=SC2086
     brew $CUSTOM_BREW_COMMAND
     logk
@@ -511,25 +529,35 @@ run_brew_installs() {
 # Install Homebrew
 # https://docs.brew.sh/Installation
 # https://docs.brew.sh/Homebrew-on-Linux
-# Homebrew installs require `sudo`, but not necessarily admin
+# Homebrew installs require `sudo` on macOS.
+# On Linux, the upstream installer can run without `sudo` when the prefix
+# is writable, which is how Codespaces can bootstrap Homebrew.
 # https://docs.brew.sh/FAQ#why-does-homebrew-say-sudo-is-bad
 # https://github.com/Homebrew/install/issues/312
 # https://github.com/Homebrew/install/pull/315/files
-if [ "$STRAP_SUDO" -eq 0 ]; then
-  sudo_init || logskip "Skipping Homebrew installation (requires sudo)."
+if [ "$MACOS" -gt 0 ] && [ "$STRAP_SUDO" -eq 0 ]; then
+  sudo_init || logskip "Skipping Homebrew installation (macOS requires sudo)."
 fi
-if [ "$STRAP_SUDO" -gt 0 ]; then
+if [ "$LINUX" -gt 0 ] || [ "$STRAP_SUDO" -gt 0 ]; then
   # Prevent "Permission denied" errors on Homebrew directories
-  log "Updating permissions on Homebrew directories"
-  sudo_askpass mkdir -p "$HOMEBREW_PREFIX/"{Caskroom,Cellar,Frameworks}
-  sudo_askpass chmod -R 775 "$HOMEBREW_PREFIX/"{Caskroom,Cellar,Frameworks}
-  sudo_askpass chown -R "$USER" "$HOMEBREW_PREFIX" 2>/dev/null || true
-  logk
+  if [ "$STRAP_SUDO" -gt 0 ]; then
+    log "Updating permissions on Homebrew directories"
+    sudo_askpass mkdir -p "$HOMEBREW_PREFIX/"{Caskroom,Cellar,Frameworks}
+    sudo_askpass chmod -R 775 "$HOMEBREW_PREFIX/"{Caskroom,Cellar,Frameworks}
+    sudo_askpass chown -R "$USER" "$HOMEBREW_PREFIX" 2>/dev/null || true
+    logk
+  fi
   if [ "$LINUX" -gt 0 ] || [ "$MACOS" -gt 0 ]; then
-    log "Installing Homebrew"
+    log_auto "Installing Homebrew"
     script_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
-    NONINTERACTIVE=$STRAP_CI \
-      /usr/bin/env bash -c "$(curl -fsSL $script_url)" || install_homebrew
+    if ! NONINTERACTIVE=$STRAP_CI \
+      /usr/bin/env bash -c "$(curl -fsSL $script_url)"; then
+      if [ "$STRAP_SUDO" -gt 0 ]; then
+        install_homebrew
+      else
+        abort "Homebrew installation failed."
+      fi
+    fi
     logk
   else
     abort "Unsupported operating system $OS"

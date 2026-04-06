@@ -4,7 +4,7 @@
 
 install_extensions() {
   printf "\nInstalling extensions for '%s'...\n\n" "$1"
-  local extension_name extensions latest
+  local extension_name extensions latest pre
   case $1 in
   code*)
     cat \
@@ -20,11 +20,16 @@ install_extensions() {
   while read -r extension; do
     case $extension in
     '#'*) printf "Skipping commented extension '%s'\n\n" "$extension" && continue ;;
+    *'@prerelease')
+      extension="${extension%@prerelease}"
+      pre=1
+      printf "Installing pre-release extension '%s'\n" "$extension"
+      ;;
     *) printf "Installing extension '%s'\n" "$extension" ;;
     esac
     extension_name=$(printf %s "$extension" | cut -d @ -f 1)
     [ "$extension" = "$extension_name" ] && latest=1 || true
-    $1 --install-extension "$extension" ${latest:+ --force}
+    $1 --install-extension "$extension" ${latest:+ --force} ${pre:+ --pre-release}
     printf '\n'
   done <"$extensions"
 }

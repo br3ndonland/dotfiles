@@ -1,5 +1,5 @@
 astro-build.astro-vscode
-br3ndonland.gitless-vscode@prerelease
+br3ndonland.gitless-vscode
 catppuccin.catppuccin-vsc
 catppuccin.catppuccin-vsc-icons
 charliermarsh.ruff

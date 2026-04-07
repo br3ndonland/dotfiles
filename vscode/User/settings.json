@@ -46,9 +46,6 @@
     "**/.zfunc/*": "shellscript",
     "**/*.hujson": "jsonc",
     "**/*.rego*": "rego",
-    "**/*.renovate.json": "jsonc",
-    "**/*.renovaterc.json": "jsonc",
-    "**/*.renovaterc": "jsonc",
   },
   "files.autoSave": "onWindowChange",
   "files.exclude": {

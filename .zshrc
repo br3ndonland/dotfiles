@@ -168,6 +168,7 @@ fi
 
   export \
     CPPFLAGS=$CURL_CPPFLAGS \
+    DISABLE_TELEMETRY=1 \
     EDITOR=$editor \
     GIT_EDITOR=$editor \
     GITHUB_TOOLSETS=${(j.,.)github_mcp_server_toolsets} \

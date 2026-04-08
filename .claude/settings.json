@@ -45,8 +45,9 @@
       "node_modules"
     ]
   },
-  "enabledPlugins": {},
-  "extraKnownMarketplaces": {},
+  "enabledPlugins": {
+    "atlassian@claude-plugins-official": true
+  },
   "effortLevel": "high",
   "skipAutoPermissionPrompt": true
 }

@@ -12,6 +12,9 @@
       "mcp__*getVisibleJiraProjects",
       "mcp__*pull_request_read",
       "mcp__*searchJiraIssuesUsingJql",
+      "mcp__github__get_*",
+      "mcp__github__list_*",
+      "mcp__github__search_*",
       "Read"
     ],
     "deny": [],

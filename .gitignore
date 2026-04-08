@@ -37,3 +37,5 @@ log
 .codex/tmp
 .codex/vendor*
 .codex/version*
+
+.config/opencode/skills

@@ -46,7 +46,16 @@
     ]
   },
   "enabledPlugins": {
-    "atlassian@claude-plugins-official": true
+    "atlassian@claude-plugins-official": true,
+    "compound-engineering@compound-engineering-plugin": true
+  },
+  "extraKnownMarketplaces": {
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
+    }
   },
   "effortLevel": "high",
   "skipAutoPermissionPrompt": true

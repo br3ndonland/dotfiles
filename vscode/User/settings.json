@@ -79,6 +79,7 @@
   "update.mode": "manual",
   "update.showReleaseNotes": false,
   "window.commandCenter": true,
+  "window.confirmSaveUntitledWorkspace": false,
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "all",
   "window.zoomLevel": 1,

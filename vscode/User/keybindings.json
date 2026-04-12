@@ -123,10 +123,10 @@
     "command": "-editor.action.goToReferences",
     "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor",
   },
-  // Search commits with GitLens
+  // Search commits with GitLess -- https://github.com/br3ndonland/gitless-vscode
   {
     "key": "ctrl+alt+cmd+f",
-    "command": "gitlens.showCommitSearch",
+    "command": "gitless.searchCommits",
   },
   // open and focus codex panel
   // hide panel with cmd+j

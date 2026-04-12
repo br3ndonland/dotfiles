@@ -114,7 +114,11 @@
   "git.enableSmartCommit": true,
   "git.inputValidation": true,
   "git.mergeEditor": false,
+  "git.repositoryScanMaxDepth": 5,
   "github.gitProtocol": "ssh",
+  "gitless.defaultDateFormat": "YYYY-MM-DD HH:mm",
+  "gitless.defaultDateStyle": "absolute",
+  "gitless.repositoryScanMaxDepth": 5,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // AI
   "chat.commandCenter.enabled": false,

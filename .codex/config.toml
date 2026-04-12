@@ -40,6 +40,9 @@ enabled = true
 [plugins."github@openai-curated"]
 enabled = true
 
+[plugins."life-science-research@openai-curated"]
+enabled = true
+
 [plugins."vercel@openai-curated"]
 enabled = true
 

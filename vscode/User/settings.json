@@ -150,6 +150,7 @@
   "kilo-code.new.autocomplete.enableAutoTrigger": false,
   "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
   "kilo-code.new.autocomplete.enableChatAutocomplete": false,
+  "kilo-code.new.showTaskTimeline": false,
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",

@@ -499,9 +499,9 @@ symbol = '\$?'
 
 [sudo]
 disabled = false
-format = "[as $symbol]($style)"
+format = "[($symbol )]($style)"
 style = "bold white"
-symbol = "sudo"
+symbol = "as sudo"
 
 [swift]
 format = "[($symbol )($version )]($style)"

@@ -18,11 +18,33 @@
 
 - Do not create Git commits on `main`; always work on a feature branch.
 - Do not Git push to `main`; always push to a feature branch.
+- Format Git commit messages in the following style:
+
+  ```text
+  Imperative commit title limited to 50 characters
+
+  Begin by describing how the code works now and why a change is needed.
+  The commit message body can be detailed. Full paragraphs are acceptable.
+  Lines in commit message paragraphs should be limited to 72 characters.
+
+  Summarize changes by saying "This commit will" and using the imperative.
+
+  - The end of the commit message should have a list of references.
+  - Add an unordered list item for each URL.
+  - Do not hard wrap URLs. URLs can exceed 72 characters if needed.
+  ```
 
 ### GitHub pull requests
 
 - Always open GitHub pull requests in draft mode.
 - Each time a new commit is pushed to a pull request branch, check the pull request title and description and update them if needed to match the current state of the pull request.
+- Format GitHub pull request titles and descriptions in the following style:
+  - Limit the PR title to around 50 characters so it fits into a squash commit title.
+  - Include a concise PR description with these sections:
+    - `## Description`: background and context on why the PR is needed.
+    - `## Changes`: summarize changes by saying "This PR will" and using the imperative in each sentence. Explain what will change and why. Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
+    - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
+  - In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
 
 ### MCP servers
 

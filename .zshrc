@@ -167,6 +167,7 @@ fi
   )
 
   export \
+    ASTRO_TELEMETRY_DISABLED=1 \
     CPPFLAGS=$CURL_CPPFLAGS \
     DISABLE_TELEMETRY=1 \
     EDITOR=$editor \

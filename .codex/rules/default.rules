@@ -123,3 +123,50 @@ prefix_rule(
     "trash ~/code/file.txt",
   ],
 )
+
+# These rules allow most JavaScript package manager commands except package publishing.
+prefix_rule(
+  pattern=[
+    [
+      "bun",
+      "bunx",
+      "pnpm",
+    ],
+  ],
+  decision="allow",
+  justification="Allow agents to run most package manager commands",
+  match=[
+    "bun add",
+    "bun install",
+    "bun remove",
+    "bunx cowsay 'Hello world!'",
+    "pnpm dedupe",
+    "pnpm install",
+    "pnpm remove",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    [
+      "bun",
+      "pnpm",
+    ],
+    "publish",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from publishing packages",
+  match=[
+    "bun publish",
+    "pnpm publish",
+  ],
+  not_match=[
+    "bun add",
+    "bun install",
+    "bun remove",
+    "bunx cowsay 'Hello world!'",
+    "pnpm dedupe",
+    "pnpm install",
+    "pnpm remove",
+  ],
+)

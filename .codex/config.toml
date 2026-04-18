@@ -208,15 +208,19 @@ approval_mode = "approve"
 [mcp_servers.openai_developer_docs.tools.search_openai_docs]
 approval_mode = "approve"
 
+# https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]
 enabled = true
 
+# https://github.com/openai/plugins/tree/main/plugins/github
 [plugins."github@openai-curated"]
 enabled = true
 
+# https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
 enabled = true
 
+# https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]
 enabled = true
 

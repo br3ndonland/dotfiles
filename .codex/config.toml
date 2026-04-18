@@ -7,7 +7,6 @@ sandbox_mode = "workspace-write"
 enabled = false
 
 [features]
-apps = false
 prevent_idle_sleep = true
 
 [notice.model_migrations]

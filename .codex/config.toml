@@ -6,6 +6,34 @@ sandbox_mode = "workspace-write"
 [analytics]
 enabled = false
 
+# GitHub plugin
+# https://github.com/openai/plugins/tree/main/plugins/github
+[apps.connector_76869538009648d5b282a4bb21c3d157]
+default_tools_approval_mode = "approve"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_create_repository]
+approval_mode = "prompt"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_label_write]
+approval_mode = "prompt"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_mark_all_notifications_read]
+approval_mode = "prompt"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_merge_pull_request]
+approval_mode = "prompt"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
+approval_mode = "prompt"
+
+# Vercel plugin
+# https://github.com/openai/plugins/tree/main/plugins/vercel
+[apps.connector_690a90ec05c881918afb6a55dc9bbaa1]
+default_tools_approval_mode = "approve"
+
+[apps.connector_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_deploy_to_vercel]
+approval_mode = "prompt"
+
 [features]
 prevent_idle_sleep = true
 

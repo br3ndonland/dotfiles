@@ -30,7 +30,7 @@ prefix_rule(
   match=[
       "git checkout -b codex/new-feature",
       "git switch -c codex/new-feature",
-  ]
+  ],
 )
 
 prefix_rule(
@@ -48,7 +48,7 @@ prefix_rule(
   match=[
       "git branch --delete main",
       "git branch -d main",
-  ]
+  ],
 )
 
 prefix_rule(
@@ -65,7 +65,7 @@ prefix_rule(
   match=[
       "git push --delete upstream feature",
       "git push -d origin main",
-  ]
+  ],
 )
 
 # This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
@@ -78,5 +78,5 @@ prefix_rule(
   match=[
     "trash /tmp/dir",
     "trash ~/code/file.txt",
-  ]
+  ],
 )

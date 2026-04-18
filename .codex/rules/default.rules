@@ -19,6 +19,7 @@ prefix_rule(
       "fetch",
       "merge",
       "pull",
+      "push",
       "rebase",
       "stash",
       "switch",
@@ -29,6 +30,8 @@ prefix_rule(
   justification="Allow agents to create and checkout branches and worktrees",
   match=[
       "git checkout -b codex/new-feature",
+      "git push codex/new-feature",
+      "git push origin codex/new-feature",
       "git switch -c codex/new-feature",
   ],
 )
@@ -65,6 +68,46 @@ prefix_rule(
   match=[
       "git push --delete upstream feature",
       "git push -d origin main",
+  ],
+)
+
+# These rules complement the "Do not Git push to `main`" rule in `AGENTS.md`.
+prefix_rule(
+  pattern=[
+    "git",
+    "push",
+    "main",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from pushing to the default branch",
+  match=[
+      "git push main",
+  ],
+  not_match=[
+      "git push codex/new-feature",
+      "git push origin codex/new-feature",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "git",
+    "push",
+    [
+      "origin",
+      "upstream",
+    ],
+    "main",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from pushing to the default branch",
+  match=[
+      "git push origin main",
+      "git push upstream main",
+  ],
+  not_match=[
+      "git push codex/new-feature",
+      "git push origin codex/new-feature",
   ],
 )
 

@@ -3,6 +3,9 @@ model_reasoning_effort = "xhigh"
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
 
+[analytics]
+enabled = false
+
 [features]
 apps = false
 prevent_idle_sleep = true

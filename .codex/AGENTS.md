@@ -41,8 +41,8 @@
 - Format GitHub pull request titles and descriptions in the following style:
   - Limit the PR title to around 50 characters so it fits into a squash commit title.
   - Include a concise PR description with these sections:
-    - `## Description`: background and context on why the PR is needed.
-    - `## Changes`: summarize changes by saying "This PR will" and using the imperative in each sentence. Explain what will change and why. Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
+    - `## Description`: background and context on why the PR is needed. Do not summarize code changes in this section; that will be done in the next section.
+    - `## Changes`: summarize changes using the imperative mood. Explain what will change and why. Unordered lists can be helpful here; preface the list in the imperative mood (e.g. "This PR will:"), then state each list item in the imperative mood (e.g. "Fix incorrect styling"). Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
     - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
   - In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
 

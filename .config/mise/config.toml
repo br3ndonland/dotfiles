@@ -59,9 +59,6 @@ run = "prettier --write ."
 description = "Check shell scripts with ShellCheck"
 run = "scripts/shellcheck.sh"
 
-[tasks.shellcheck.env]
-SHELLCHECK_OPTS = "-e SC1071 -e SC1090 -e SC1091"
-
 [tasks."shfmt:check"]
 description = "Check shell script formatting with shfmt"
 run = "scripts/shfmt.sh check"

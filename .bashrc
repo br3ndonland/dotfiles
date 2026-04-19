@@ -7,19 +7,24 @@
 # https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html
 [[ $- != *i* ]] && return
 
+shell_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
+# shellcheck source=.config/shell/env.sh
+[[ -f "$shell_config_dir/env.sh" ]] && . "$shell_config_dir/env.sh"
+
 # options
 HISTCONTROL=ignoreboth
-shopt -s dotglob globstar histappend nullglob
+shopt -s dotglob histappend nullglob
+shopt -s globstar 2>/dev/null || true
 set -o emacs # keybindings - also see .inputrc
 
 # exports
-export PATH=$HOME/.zfunc:$PATH
+shell_functions_dir="$shell_config_dir/functions"
+if [[ -d "$shell_functions_dir" ]]; then
+  case ":$PATH:" in
+  *":$shell_functions_dir:"*) ;;
+  *) export PATH="$shell_functions_dir${PATH:+:$PATH}" ;;
+  esac
+fi
 
-# aliases
-alias python='python3'
-
-# prompt: https://starship.rs
-source <(starship init bash)
-
-# mise: https://mise.jdx.dev/
-source <(mise activate bash)
+# shellcheck source=.config/shell/interactive.sh
+[[ -f "$shell_config_dir/interactive.sh" ]] && . "$shell_config_dir/interactive.sh"

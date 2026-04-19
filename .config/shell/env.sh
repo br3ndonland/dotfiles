@@ -17,7 +17,7 @@ dotfiles_path_prepend() {
 }
 
 dotfiles_select_editor() {
-  for dotfiles_editor in codium cursor code code-insiders code-exploration; do
+  for dotfiles_editor in codium code code-insiders code-exploration; do
     if command -v "$dotfiles_editor" >/dev/null 2>&1; then
       printf '%s --wait' "$dotfiles_editor"
       return 0

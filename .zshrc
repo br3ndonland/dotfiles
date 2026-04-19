@@ -86,16 +86,20 @@ bindkey '^[[3;9~' 'kill-line' # Command-Delete (⌘ ⌦)
 [[ -f "$shell_config_dir/interactive.sh" ]] && . "$shell_config_dir/interactive.sh"
 
 # functions
-shell_functions_dir="$shell_config_dir/functions"
-if [[ -d "$shell_functions_dir" ]]; then
-  typeset -U fpath
-  fpath+=("$shell_functions_dir")
-  shell_function_files=("$shell_functions_dir"/*(:tX))
-  if ((${#shell_function_files})); then
-    autoload -Uz ${shell_function_files:t}
+# use an anonymous function so locals do not persist in the shell environment.
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Anonymous-Functions
+() {
+  local shell_function_files shell_functions_dir
+  shell_functions_dir="$shell_config_dir/functions"
+  if [[ -d "$shell_functions_dir" ]]; then
+    typeset -U fpath
+    fpath+=("$shell_functions_dir")
+    shell_function_files=("$shell_functions_dir"/*(:tX))
+    if ((${#shell_function_files})); then
+      autoload -Uz ${shell_function_files:t}
+    fi
   fi
-fi
-unset shell_function_files shell_functions_dir
+}
 
 # completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then

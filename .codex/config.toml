@@ -37,8 +37,6 @@ approval_mode = "prompt"
 [features]
 prevent_idle_sleep = true
 
-[notice.model_migrations]
-
 [marketplaces.openai-bundled]
 
 [mcp_servers.context7]

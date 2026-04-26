@@ -39,6 +39,8 @@ prevent_idle_sleep = true
 
 [marketplaces.openai-bundled]
 
+[marketplaces.openai-primary-runtime]
+
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
 
@@ -90,6 +92,15 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
 enabled = true
 
 # project paths are parsed as plain strings, so absolute paths must be used.

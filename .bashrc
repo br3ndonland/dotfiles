@@ -14,6 +14,8 @@ shell_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
 # options
 HISTCONTROL=ignoreboth
 shopt -s dotglob histappend nullglob
+# `globstar` was added in Bash 4, so ignore errors on older Bash versions.
+# https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 shopt -s globstar 2>/dev/null || true
 set -o emacs # keybindings - also see .inputrc
 

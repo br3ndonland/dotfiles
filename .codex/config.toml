@@ -48,194 +48,31 @@ url = "https://mcp.context7.com/mcp"
 CONTEXT7_API_KEY = "CONTEXT7_API_KEY"
 
 [mcp_servers.github]
-url = "https://api.githubcopilot.com/mcp"
 bearer_token_env_var = "GITHUB_TOKEN"
+default_tools_approval_mode = "approve"
+url = "https://api.githubcopilot.com/mcp"
 
 [mcp_servers.github.env_http_headers]
 X-MCP-Toolsets = "GITHUB_TOOLSETS"
 
-[mcp_servers.github.tools.actions_get]
-approval_mode = "approve"
+[mcp_servers.github.tools.create_repository]
+approval_mode = "prompt"
 
-[mcp_servers.github.tools.actions_list]
-approval_mode = "approve"
+[mcp_servers.github.tools.label_write]
+approval_mode = "prompt"
 
-[mcp_servers.github.tools.actions_run_trigger]
-approval_mode = "approve"
+[mcp_servers.github.tools.mark_all_notifications_read]
+approval_mode = "prompt"
 
-[mcp_servers.github.tools.add_comment_to_pending_review]
-approval_mode = "approve"
+[mcp_servers.github.tools.merge_pull_request]
+approval_mode = "prompt"
 
-[mcp_servers.github.tools.add_issue_comment]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.add_reply_to_pull_request_comment]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.create_branch]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.create_gist]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.create_or_update_file]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.create_pull_request]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_code_scanning_alert]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_commit]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_dependabot_alert]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_discussion_comments]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_discussion]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_file_contents]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_gist]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_global_security_advisory]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_job_logs]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_label]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_latest_release]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_me]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_release_by_tag]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_repository_tree]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.get_tag]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.github_support_docs_search]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.issue_read]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.issue_write]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_branches]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_code_scanning_alerts]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_commits]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_dependabot_alerts]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_discussion_categories]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_discussions]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_gists]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_global_security_advisories]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_org_repository_security_advisories]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_issue_types]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_issues]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_label]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_pull_requests]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_releases]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_repository_security_advisories]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.list_tags]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.projects_get]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.projects_list]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.pull_request_read]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.pull_request_review_write]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.search_code]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.search_issues]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.search_pull_requests]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.search_repositories]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.search_users]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.sub_issue_write]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.update_gist]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.update_pull_request_branch]
-approval_mode = "approve"
-
-[mcp_servers.github.tools.update_pull_request]
-approval_mode = "approve"
+[mcp_servers.github.tools.unstar_repository]
+approval_mode = "prompt"
 
 [mcp_servers.openai_developer_docs]
+default_tools_approval_mode = "approve"
 url = "https://developers.openai.com/mcp"
-
-[mcp_servers.openai_developer_docs.tools.fetch_openai_doc]
-approval_mode = "approve"
-
-[mcp_servers.openai_developer_docs.tools.list_openai_docs]
-approval_mode = "approve"
-
-[mcp_servers.openai_developer_docs.tools.search_openai_docs]
-approval_mode = "approve"
 
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]

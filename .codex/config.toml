@@ -72,6 +72,10 @@ approval_mode = "prompt"
 default_tools_approval_mode = "approve"
 url = "https://developers.openai.com/mcp"
 
+# https://developers.openai.com/codex/app/browser
+[plugins."browser-use@openai-bundled"]
+enabled = false
+
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]
 enabled = true

@@ -21,9 +21,6 @@ Linux)
   else
     DEFAULT_HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
   fi
-  if [[ ${CODESPACES:-false} == "true" ]] || [[ $(id -un) == "codespace" ]]; then
-    export CODESPACES="true"
-  fi
   ;;
 *) echo "Unsupported operating system $OS" && exit 1 ;;
 esac
@@ -442,6 +439,30 @@ install_homebrew() {
   logk
 }
 
+homebrew_linux_prefix_is_writable() {
+  [ -w "/home/linuxbrew/.linuxbrew" ] ||
+    [ -w "/home/linuxbrew" ] ||
+    [ -w "/home" ]
+}
+
+homebrew_install_requires_sudo() {
+  [ "$MACOS" -gt 0 ] ||
+    { [ "$LINUX" -gt 0 ] && ! homebrew_linux_prefix_is_writable; }
+}
+
+homebrew_should_install() {
+  [ "$STRAP_SUDO" -gt 0 ] ||
+    { [ "$LINUX" -gt 0 ] && homebrew_linux_prefix_is_writable; }
+}
+
+homebrew_skip_reason() {
+  if [ "$MACOS" -gt 0 ]; then
+    echo "macOS requires sudo"
+  else
+    echo "Linux requires sudo or a writable Homebrew prefix"
+  fi
+}
+
 set_up_brew_skips() {
   local brewfile_path casks ci_skips mas_ids mas_prefix
   log_no_sudo "Setting up Homebrew Bundle formula installs to skip."
@@ -529,16 +550,15 @@ run_brew_installs() {
 # Install Homebrew
 # https://docs.brew.sh/Installation
 # https://docs.brew.sh/Homebrew-on-Linux
-# Homebrew installs require `sudo` on macOS.
-# On Linux, the upstream installer can run without `sudo` when the prefix
-# is writable, which is how Codespaces can bootstrap Homebrew.
+# Homebrew installs require `sudo` on macOS. On Linux, the upstream installer
+# can run without `sudo` when the prefix is writable, such as in Codespaces.
 # https://docs.brew.sh/FAQ#why-does-homebrew-say-sudo-is-bad
 # https://github.com/Homebrew/install/issues/312
 # https://github.com/Homebrew/install/pull/315/files
-if [ "$MACOS" -gt 0 ] && [ "$STRAP_SUDO" -eq 0 ]; then
-  sudo_init || logskip "Skipping Homebrew installation (macOS requires sudo)."
+if [ "$STRAP_SUDO" -eq 0 ] && homebrew_install_requires_sudo; then
+  sudo_init || logskip "Skipping Homebrew installation ($(homebrew_skip_reason))."
 fi
-if [ "$LINUX" -gt 0 ] || [ "$STRAP_SUDO" -gt 0 ]; then
+if homebrew_should_install; then
   # Prevent "Permission denied" errors on Homebrew directories
   if [ "$STRAP_SUDO" -gt 0 ]; then
     log "Updating permissions on Homebrew directories"
@@ -547,21 +567,17 @@ if [ "$LINUX" -gt 0 ] || [ "$STRAP_SUDO" -gt 0 ]; then
     sudo_askpass chown -R "$USER" "$HOMEBREW_PREFIX" 2>/dev/null || true
     logk
   fi
-  if [ "$LINUX" -gt 0 ] || [ "$MACOS" -gt 0 ]; then
-    log_auto "Installing Homebrew"
-    script_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
-    if ! NONINTERACTIVE=$STRAP_CI \
-      /usr/bin/env bash -c "$(curl -fsSL $script_url)"; then
-      if [ "$STRAP_SUDO" -gt 0 ]; then
-        install_homebrew
-      else
-        abort "Homebrew installation failed."
-      fi
+  log_auto "Installing Homebrew"
+  script_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+  if ! NONINTERACTIVE="$STRAP_CI" \
+    /usr/bin/env bash -c "$(curl -fsSL "$script_url")"; then
+    if [ "$STRAP_SUDO" -gt 0 ]; then
+      install_homebrew
+    else
+      abort "Homebrew installation failed."
     fi
-    logk
-  else
-    abort "Unsupported operating system $OS"
   fi
+  logk
   run_brew_installs || abort "Homebrew installs were not successful."
   brew cleanup
 fi

@@ -7,6 +7,13 @@
 # https://zsh.sourceforge.io/Doc/Release/Parameters.html
 [[ $- != *i* ]] && return
 
+shell_config_dir=${XDG_CONFIG_HOME:-$HOME/.config}/shell
+
+if [[ -f $shell_config_dir/environment.sh ]]; then
+  # shellcheck source=.config/shell/environment.sh
+  source $shell_config_dir/environment.sh
+fi
+
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
 # options
@@ -80,125 +87,26 @@ bindkey '^[[3;9~' 'kill-line' # Command-Delete (⌘ ⌦)
 # https://sw.kovidgoyal.net/kitty/keyboard-protocol/
 # https://github.com/kovidgoyal/kitty/issues/264
 
-# homebrew
-if [[ -z $HOMEBREW_PREFIX ]]; then
-  case $(uname) in
-  Darwin)
-    if [[ $(uname -m) == 'arm64' ]]; then
-      HOMEBREW_PREFIX='/opt/homebrew'
-    elif [[ $(uname -m) == 'x86_64' ]]; then
-      HOMEBREW_PREFIX='/usr/local'
-    fi
-    ;;
-  Linux)
-    if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
-      HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
-    elif [[ -d $HOME/.linuxbrew ]]; then
-      HOMEBREW_PREFIX=$HOME/.linuxbrew
-    fi
-    if [[ -d $HOMEBREW_PREFIX ]]; then
-      PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
-    fi
-    ;;
-  esac
+if [[ -f $shell_config_dir/interactive.sh ]]; then
+  # shellcheck source=.config/shell/interactive.sh
+  source $shell_config_dir/interactive.sh
 fi
-if [[ -d $HOMEBREW_PREFIX ]]; then
-  eval $($HOMEBREW_PREFIX/bin/brew shellenv)
-fi
-
-# exports
-#
-# exports are set up with locals inside an anonymous function so that only the
-# exported variables persist in the shell session and not the local variables.
-# https://zsh.sourceforge.io/Doc/Release/Functions.html#Anonymous-Functions
-() {
-  local editor
-  if type codium &>/dev/null; then
-    editor='codium --wait'
-  elif type cursor &>/dev/null; then
-    editor='cursor --wait'
-  elif type code &>/dev/null; then
-    editor='code --wait'
-  elif type code-insiders &>/dev/null; then
-    editor='code-insiders --wait'
-  elif type code-exploration &>/dev/null; then
-    editor='code-exploration --wait'
-  else
-    editor='vim'
-  fi
-
-  local CURL_BIN_DIR=$HOMEBREW_PREFIX/opt/curl/bin
-  local CURL_CPPFLAGS=-I$HOMEBREW_PREFIX/opt/curl/include
-  local CURL_LDFLAGS=-L$HOMEBREW_PREFIX/opt/curl/lib
-  local CURL_PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig
-  local GNU_AWK_BIN_DIR=$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin
-  local GNU_COREUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-  local GNU_FINDUTILS_BIN_DIR=$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
-  local GNU_GREP_BIN_DIR=$HOMEBREW_PREFIX/opt/grep/libexec/gnubin
-  local GNU_SED_BIN_DIR=$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin
-  local GNU_TAR_BIN_DIR=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-  local LOCAL_BIN_DIR=$HOME/.local/bin
-  local RUST_CARGO_BIN_DIR=$HOME/.cargo/bin
-  local TTY=$(tty)
-
-  local path_array=(
-    $CURL_BIN_DIR
-    $GNU_AWK_BIN_DIR
-    $GNU_COREUTILS_BIN_DIR
-    $GNU_FINDUTILS_BIN_DIR
-    $GNU_GREP_BIN_DIR
-    $GNU_SED_BIN_DIR
-    $GNU_TAR_BIN_DIR
-    $LOCAL_BIN_DIR
-    $RUST_CARGO_BIN_DIR
-    $PATH
-  )
-
-  local github_mcp_server_toolsets=(
-    default
-    actions
-    dependabot
-    discussions
-    gists
-    git
-    github_support_docs_search
-    labels
-    security_advisories
-  )
-
-  export \
-    ASTRO_TELEMETRY_DISABLED=1 \
-    CPPFLAGS=$CURL_CPPFLAGS \
-    DISABLE_TELEMETRY=1 \
-    EDITOR=$editor \
-    GIT_EDITOR=$editor \
-    GITHUB_TOOLSETS=${(j.,.)github_mcp_server_toolsets} \
-    GPG_TTY=$TTY \
-    HATCH_ENV_TYPE_VIRTUAL_PATH=.venv \
-    HOMEBREW_NO_ANALYTICS=1 \
-    LDFLAGS=$CURL_LDFLAGS \
-    PATH=${(j.:.)path_array} \
-    PIPX_BIN_DIR=$LOCAL_BIN_DIR \
-    PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH \
-    VERCEL_TELEMETRY_DISABLED=1 \
-    XDG_CONFIG_HOME=$HOME/.config
-}
-
-# aliases
-alias kc='kubectl'
-alias python='python3'
-alias tg='terragrunt'
-
-# prompt: https://starship.rs
-source <(starship init zsh)
-
-# mise: https://mise.jdx.dev/
-source <(mise activate zsh)
 
 # functions
-typeset -U fpath
-fpath+=($HOME/.zfunc) # ensure .zfunc is symlinked to $HOME/.zfunc
-autoload -Uz $HOME/.zfunc/*(:tX)
+# use an anonymous function so locals do not persist in the shell environment.
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Anonymous-Functions
+() {
+  local shell_function_files shell_functions_dir
+  shell_functions_dir=$shell_config_dir/functions
+  if [[ -d $shell_functions_dir ]]; then
+    typeset -gU fpath
+    fpath+=($shell_functions_dir)
+    shell_function_files=($shell_functions_dir/*(:X))
+    if ((${#shell_function_files})); then
+      autoload -Uz ${shell_function_files:t}
+    fi
+  fi
+}
 
 # completions
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then

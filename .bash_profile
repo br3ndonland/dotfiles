@@ -1,37 +1,19 @@
 #!/usr/bin/env bash
-# Bash configuration for non-interactive shells
+# Bash configuration for login shells
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
-#
-# to avoid activating tools twice, a conditional can be used that checks the
-# `$-` special parameter. `$-` will contain `i` if the shell is interactive.
-# https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html
-[[ $- == *i* ]] && return
 
-### homebrew
-if [[ -z $HOMEBREW_PREFIX ]]; then
-  case $(uname) in
-  Darwin)
-    if [[ $(uname -m) == 'arm64' ]]; then
-      HOMEBREW_PREFIX='/opt/homebrew'
-    elif [[ $(uname -m) == 'x86_64' ]]; then
-      HOMEBREW_PREFIX='/usr/local'
-    fi
-    ;;
-  Linux)
-    if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
-      HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
-    elif [[ -d $HOME/.linuxbrew ]]; then
-      HOMEBREW_PREFIX=$HOME/.linuxbrew
-    fi
-    if [[ -d $HOMEBREW_PREFIX ]]; then
-      PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
-    fi
-    ;;
-  esac
-fi
-if [[ -d $HOMEBREW_PREFIX ]]; then
-  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+shell_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
+
+if [[ -f "$shell_config_dir/environment.sh" ]]; then
+  # shellcheck source=.config/shell/environment.sh
+  source "$shell_config_dir/environment.sh"
 fi
 
-### mise: https://mise.jdx.dev/dev-tools/shims.html
-source <(mise activate bash --shims)
+if [[ $- == *i* ]]; then
+  if [[ -f "$HOME/.bashrc" ]]; then source "$HOME/.bashrc"; fi
+  return
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash --shims)"
+fi

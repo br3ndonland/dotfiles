@@ -17,6 +17,7 @@ worktrees
 *.sqlite*
 *.tmp
 *cache*
+!.config/shell/functions/op_cache
 log
 
 .claude/backups

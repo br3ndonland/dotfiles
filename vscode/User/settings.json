@@ -43,7 +43,7 @@
   },
   "files.associations": {
     "{**/*.env,**/env}": "dotenv",
-    "**/.zfunc/*": "shellscript",
+    "**/.config/shell/functions/*": "shellscript",
     "**/*.hujson": "jsonc",
     "**/*.rego*": "rego",
   },

@@ -13,8 +13,8 @@ idiomatic_version_file_enable_tools = [
   "terragrunt",
 ]
 # set minimum release age
-# https://mise.jdx.dev/configuration/settings.html#install_before
-install_before = "7d"
+# https://mise.jdx.dev/configuration/settings.html
+minimum_release_age = "7d"
 # disable telemetry
 # https://mise.jdx.dev/configuration/settings.html#use_versions_host_track
 # https://github.com/jdx/mise/pull/7289

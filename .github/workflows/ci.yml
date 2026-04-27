@@ -6,12 +6,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  # Work around intermittent GPG keybox failures during parallel mise installs
+  MISE_JOBS: 1
+  # Work around "no versions found for TOOL matching date filter" errors
+  # https://github.com/jdx/mise/discussions/9381
+  MISE_MINIMUM_RELEASE_AGE: 0d
+
 jobs:
   check:
     runs-on: ${{ matrix.os }}
-    env:
-      # Work around intermittent GPG keybox failures during parallel mise installs
-      MISE_JOBS: 1
     strategy:
       fail-fast: false
       matrix:

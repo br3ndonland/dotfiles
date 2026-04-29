@@ -61,7 +61,9 @@ dotfiles_path_prepend "$HOME/.local/bin"
 dotfiles_path_prepend "$HOME/.cargo/bin"
 export ASTRO_TELEMETRY_DISABLED=1
 export DISABLE_TELEMETRY=1
+export DO_NOT_TRACK=1
 export EDITOR="$dotfiles_editor"
+export GH_TELEMETRY=0
 export GIT_EDITOR="$dotfiles_editor"
 export GITHUB_TOOLSETS="default,actions,dependabot,discussions,gists,git,github_support_docs_search,labels,security_advisories"
 export HATCH_ENV_TYPE_VIRTUAL_PATH=.venv

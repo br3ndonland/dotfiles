@@ -47,6 +47,7 @@
     - `## Changes`: summarize changes using the imperative mood. Explain what will change and why. Unordered lists can be helpful here; preface the list in the imperative mood (e.g. "This PR will:"), then state each list item in the imperative mood (e.g. "Fix incorrect styling"). Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
     - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
   - In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
+  - When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back.
 
 ### MCP servers
 

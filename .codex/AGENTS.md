@@ -23,6 +23,8 @@
   ```text
   Imperative commit title limited to 50 characters
 
+  Format commit messages as if they were Markdown.
+
   Begin by describing how the code works now and why a change is needed.
   The commit message body can be detailed. Full paragraphs are acceptable.
   Lines in commit message paragraphs should be limited to 72 characters.

@@ -8,9 +8,11 @@
     "allow": [
       "Bash",
       "mcp__*atlassianUserInfo",
+      "mcp__*discover_*",
       "mcp__*getAccessibleAtlassianResources",
       "mcp__*getVisibleJiraProjects",
       "mcp__*pull_request_read",
+      "mcp__*read_*",
       "mcp__*searchJiraIssuesUsingJql",
       "mcp__github__actions_*",
       "mcp__github__add_comment_to_pending_review",

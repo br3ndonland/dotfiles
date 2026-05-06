@@ -94,6 +94,10 @@ enabled = true
 [plugins."vercel@openai-curated"]
 enabled = true
 
+# https://github.com/openai/plugins/tree/main/plugins/zotero
+[plugins."zotero@openai-curated"]
+enabled = true
+
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 

@@ -638,9 +638,6 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
 
 ## Media
 
-- [Audacity](https://www.audacityteam.org/)
-- [HandBrake](https://handbrake.fr/)
-- [Jellyfin](https://jellyfin.org/) media server
 - [VLC](https://www.videolan.org/vlc/) media player
 
 ## Science

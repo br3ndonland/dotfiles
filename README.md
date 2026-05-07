@@ -640,5 +640,6 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
 ## Science
 
 - [Zotero](https://www.zotero.org/)
+- See [br3ndonland/cite](https://github.com/br3ndonland/cite) for more details on configuring Zotero.
 
 [(Back to top)](#top)

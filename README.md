@@ -103,7 +103,7 @@ Users with more complex needs for multi-environment dotfiles management might co
 
   </details>
 
-- To improve my posture and endurance, I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), Gold Toe compression socks, [Altra](https://www.altrarunning.com/) zero-drop shoes, and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ).
+- To improve my posture and endurance, I also use a [SlingShot Hip Circle](https://markbellslingshot.com/collections/hip-circles), compression socks, [Altra](https://www.altrarunning.com/) zero-drop shoes, and a [balance board](https://www.amazon.com/dp/B01MQJO2PQ).
 
 ## macOS
 

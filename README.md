@@ -42,15 +42,15 @@ This repo contains dotfiles, which are application configuration and settings fi
 
 ### Why
 
-- **Make developer environments automated and disposable**. [Disposability](https://12factor.net/disposability) is an important concept in [infrastructure-as-code DevOps](https://opentofu.org/docs/intro/use-cases/), [serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/), [CI/CD](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), and more recently, [in-browser development environments](https://docs.github.com/en/codespaces/overview). Why aren't developers applying automation and disposability to their own computers? With an automated disposable developer environment, setup of a new machine is fast and easy. This approach is also liberating - I can purchase a new computer (or wipe an existing one), run _bootstrap.sh_, and be up and running again in no time.
+- **Make developer environments automated and disposable**. [Disposability](https://12factor.net/disposability) is an important concept in [infrastructure-as-code DevOps](https://opentofu.org/docs/intro/use-cases/), [serverless computing](https://www.cloudflare.com/learning/serverless/what-is-serverless/), [CI/CD](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), and more recently, [in-browser development environments](https://docs.github.com/en/codespaces/overview). Why aren't developers applying automation and disposability to their own computers? With an automated disposable developer environment, setup of a new machine is fast and easy. This approach is also liberating - I can purchase a new computer (or wipe an existing one), run `bootstrap.sh`, and be up and running again in no time.
 - **Know when and why settings change**. I not only know what tools and settings I'm using, but when and why I chose the tools and settings. This has been particularly important for VSCode, because settings change (and [break](https://github.com/microsoft/vscode/labels/bug)) frequently, and it helps to record troubleshooting info in the Git log.
 - **Learn new skills**. I learn skills, like shell scripting, that are useful and don't go out of date quickly. I wouldn't know shell as well if I didn't work on my developer environment. I learn these skills by tinkering a little bit at a time, in an unstructured way. It's time I might not otherwise be writing code.
 
 ### How
 
-This dotfiles repository is meant to be installed by _[bootstrap.sh](bootstrap.sh)_.
+This dotfiles repository is meant to be installed by [`bootstrap.sh`](bootstrap.sh).
 
-_bootstrap.sh_ is a shell script to automate setup of a new macOS or Linux development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a new machine, simply open a terminal and run the following command:
+`bootstrap.sh` is a shell script to automate setup of a new macOS or Linux development machine. It is _idempotent_, meaning it can be run repeatedly on the same system. To set up a new machine, simply open a terminal and run the following command:
 
 ```sh
 STRAP_GIT_EMAIL="you@example.com" STRAP_GIT_NAME="Your Name" STRAP_GITHUB_USER="username" \
@@ -58,7 +58,7 @@ STRAP_GIT_EMAIL="you@example.com" STRAP_GIT_NAME="Your Name" STRAP_GITHUB_USER="
   tee "$HOME/Desktop/bootstrap-$(date -u "+%Y-%m-%d").txt"
 ```
 
-The following environment variables can be used to configure _bootstrap.sh_, and should be either set before with [`export`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export), or inline within the command to run the script:
+The following environment variables can be used to configure `bootstrap.sh`, and should be either set before with [`export`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export), or inline within the command to run the script:
 
 - `STRAP_GIT_EMAIL`: email address to use for Git configuration. Will error and exit if not set.
 - `STRAP_GIT_NAME`: name to use for Git configuration. Will error and exit if not set.
@@ -66,16 +66,16 @@ The following environment variables can be used to configure _bootstrap.sh_, and
 - `STRAP_DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$STRAP_GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
 - `STRAP_DOTFILES_BRANCH`: Git branch to check out after cloning dotfiles repo. Defaults to `main`.
 
-There are some additional variables for advanced usage. Consult the _[bootstrap.sh](bootstrap.sh)_ script to see all supported variables.
+There are some additional variables for advanced usage. Consult the [`bootstrap.sh`](bootstrap.sh) script to see all supported variables.
 
-_bootstrap.sh_ will set up macOS and Homebrew, run scripts in the _scripts/_ directory, and install Homebrew packages and casks from the _[Brewfile](Brewfile)_. A Brewfile is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The Brewfile can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+`bootstrap.sh` will set up macOS and Homebrew, run scripts in the `scripts/` directory, and install Homebrew packages and casks from the [`Brewfile`](Brewfile).
 
-The following list is a brief summary of permissions related to _bootstrap.sh_.
+The following list is a brief summary of permissions related to `bootstrap.sh`.
 
 - Initial setup of Homebrew itself does not require an admin user account, but does require `sudo`. See the [Homebrew installation docs](https://docs.brew.sh/Installation), [Homebrew/install#312](https://github.com/Homebrew/install/issues/312), and [Homebrew/install#315](https://github.com/Homebrew/install/pull/315/files).
 - [After Homebrew setup, use of `sudo` with `brew` commands is discouraged](https://docs.brew.sh/FAQ#why-does-homebrew-say-sudo-is-bad).
 - After Homebrew setup, commands such as `brew bundle install --global` should be run from the same user account used for setup. Attempts to run `brew` commands from another user account will result in errors, because directories that need to be updated are owned by the setup account. If access to the setup account is not routinely available, an alternative approach could be to change ownership of Homebrew directories to a group that includes the user account used for Homebrew setup as well as other users that need to run Homebrew commands.
-- _bootstrap.sh_ can run with limited functionality on non-admin and non-`sudo` user accounts. A plausible use case could exist in which an admin runs `bootstrap.sh` to configure the system initially, then a non-admin runs `bootstrap.sh` to configure their own account. In this use case, the non-admin user should not need admin or `sudo` privileges, because all the pertinent setup (FileVault disk encryption, XCode developer tools, Homebrew, etc) is already complete.
+- `bootstrap.sh` can run with limited functionality on non-admin and non-`sudo` user accounts. A plausible use case could exist in which an admin runs `bootstrap.sh` to configure the system initially, then a non-admin runs `bootstrap.sh` to configure their own account. In this use case, the non-admin user should not need admin or `sudo` privileges, because all the pertinent setup (FileVault disk encryption, XCode developer tools, Homebrew, etc) is already complete.
 
 Users with more complex needs for multi-environment dotfiles management might consider a tool like [`chezmoi`](https://www.chezmoi.io/).
 
@@ -107,7 +107,7 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 ## macOS
 
-- macOS setup is automated with _[macos.sh](scripts/macos.sh)_.
+- macOS setup is automated with [`macos.sh`](scripts/macos.sh).
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/) is used for keymapping.
   - Settings are stored in [`.config/karabiner/karabiner.json`](.config/karabiner/karabiner.json). Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, add `karabiner.json` to `.prettierignore`.
   - Simple modifications:
@@ -133,8 +133,8 @@ The fifth layout is simply Colemak, so the built-in Colemak layouts on macOS or 
 ## Homebrew package management
 
 - [Homebrew](https://brew.sh/) is a package manager that includes [Homebrew-Cask](https://github.com/homebrew/homebrew-cask) to manage other macOS applications. See the Homebrew [docs](https://docs.brew.sh) for further info.
-- The list of "formulae" (packages), "casks" (apps), and `mas` apps (Mac App Store apps) is stored in _[Brewfile](Brewfile)_. The Brewfile works with [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) to manage all Homebrew packages and casks together.
-- Key Brew Bundle commands:
+- The list of "formulae" (packages), "casks" (apps), and `mas` apps (Mac App Store apps) is stored in [`Brewfile`](Brewfile). A `Brewfile` is a list of [Homebrew](https://brew.sh/) packages and casks (applications) that can be installed in a batch by [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle). The `Brewfile` can even be used to install Mac App Store apps with the `mas` CLI. Note that you must sign in to the App Store ahead of time for `mas` to work.
+- Key Homebrew Bundle commands:
 
   ```sh
   # Install or update everything in the Brewfile
@@ -151,7 +151,7 @@ The fifth layout is simply Colemak, so the built-in Colemak layouts on macOS or 
 
 [mise-en-place](https://mise.jdx.dev/) is a tool manager. It can replace many other tool managers like `pyenv`, `rbenv`, `tenv`, and others, and also some aspects of Homebrew. See the [mise walkthrough](https://mise.jdx.dev/walkthrough.html) for some help getting started.
 
-mise itself is installed via the _[Brewfile](Brewfile)_. mise settings and tools are configured with [`config.toml`](.config/mise/config.toml). Additional tools can be found in the [mise registry](https://mise.jdx.dev/registry.html).
+mise itself is installed via the [`Brewfile`](Brewfile). mise settings and tools are configured with [`config.toml`](.config/mise/config.toml). Additional tools can be found in the [mise registry](https://mise.jdx.dev/registry.html).
 
 The [`.bashrc`](.bashrc) and [`.zshrc`](.zshrc) files contain the appropriate `mise activate` command (`source <(mise activate bash)`/`source <(mise activate zsh)`, using [process substitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html) instead of `eval`) to load mise tools onto `$PATH`, but `.bashrc` and `.zshrc` are only for interactive shell login sessions. Non-interactive shell login sessions such as those called from scripts do not automatically load these files. See the [Bash docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) and [Zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html) for more details on startup files.
 
@@ -169,7 +169,7 @@ For this reason, the [`.bash_profile`](.bash_profile) and [`.zprofile`](.zprofil
 - [Git](https://www.git-scm.com/) is the version control system used on GitHub. _[Why use Git?](https://www.git-scm.com/about)_ Git enables creation of multiple versions of a code repository called branches, with the ability to track and undo changes in detail. If you're new to Git, the [Git Book](https://www.git-scm.com/book/en/v2) is helpful.
 - I install Git with Homebrew.
 - I [configure Git to connect to GitHub with SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
-- I store Git configuration in _[.gitconfig](.gitconfig)_.
+- I store Git configuration in [`.gitconfig`](.gitconfig).
 - I sign Git commits and tags with [1Password and SSH](#1password-ssh-features). In the past, I have also signed with [GPG](#gpg).
 - _Why sign Git commits and tags?_
   - **Signing verifies user identity**. In case you haven't heard, [anyone can use Git to impersonate you](https://blog.1password.com/git-commit-signing/). Signing helps avoid impersonation attacks. The simplest form of signing can be seen when performing Git operations through the GitHub UI with valid credentials (making a commit, merging a PR, etc). As the [GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) explain, these operations are signed with GitHub's key (signature `4AEE18F83AFDEB23`). Operations signed with this key indicate valid GitHub credentials, so signing with GitHub's key is somewhat like one-factor authentication. To make this more secure, users can use their own keys, which involves generating and maintaining custody of a key, setting up Git to sign commits and tags with the key, and adding the public key to the GitHub account. This can be even more secure, somewhat like two-factor authentication, because it indicates that the user has both valid GitHub credentials and the valid private key used for signing. Signing with a user-generated key also allows attestation. If you navigate to [my GitHub profile](https://github.com/br3ndonland), you can see several SSH and PGP key signatures that I have associated with my identity on GitHub. This means, "I attest that I possess the corresponding private keys and use them for signing." Commits and tags signed with those keys show up as "verified" on GitHub.
@@ -314,7 +314,7 @@ Phil's reply:
 
 - [node](https://nodejs.org/en/) is a JavaScript runtime used to run JavaScript outside of a web browser.
 - [npm](https://www.npmjs.com/) is a package manager written in node.js, included when node is installed.
-  - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual _package.json_. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012, "Yeah, we're never going to do this."
+  - It's difficult to keep track of global npm packages. There's no easy way to do it with the usual `package.json`. As Isaac Schlueter [commented](https://github.com/npm/npm/issues/2949#issuecomment-11408461) in 2012, "Yeah, we're never going to do this."
   - Instead, packages can be installed with Homebrew or [mise](https://mise.jdx.dev/). See [`config.toml`](./.config/mise/config.toml).
 - I use the [Prettier](https://prettier.io/) autoformatter and the [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to format my web code, including JavaScript and Vue.js. Prettier is an extremely helpful productivity tool, and I highly recommend it. Autoformatters save time and prevent [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#idp50244984).
 - Compared with Prettier, ESLint formats less code languages, requires complicated setup, and doesn't work well when installed globally.
@@ -507,7 +507,7 @@ Note that SSH can also be used to sign Git commits. See the [SSH section](#ssh) 
 
 - See [Pro Git: Signing your work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work).
 - Install and configure `pinentry` as described above.
-- Configure Git to use GPG and your key for commits, using _.gitconfig_:
+- Configure Git to use GPG and your key for commits, using `.gitconfig`:
   - Set `signingkey`: `git config --global user.signingkey 16digit_PGPkeyid` the 16 digit PGP key id is the partial 16 digit number listed on the `sec` line).
     ```ini
     [user]

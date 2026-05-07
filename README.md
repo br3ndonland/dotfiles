@@ -153,16 +153,7 @@ The fifth layout is simply Colemak, so the built-in Colemak layouts on macOS or 
 
 mise itself is installed via the [`Brewfile`](Brewfile). mise settings and tools are configured with [`config.toml`](.config/mise/config.toml). Additional tools can be found in the [mise registry](https://mise.jdx.dev/registry.html).
 
-The [`.bashrc`](.bashrc) and [`.zshrc`](.zshrc) files contain the appropriate `mise activate` command (`source <(mise activate bash)`/`source <(mise activate zsh)`, using [process substitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html) instead of `eval`) to load mise tools onto `$PATH`, but `.bashrc` and `.zshrc` are only for interactive shell login sessions. Non-interactive shell login sessions such as those called from scripts do not automatically load these files. See the [Bash docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) and [Zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html) for more details on startup files.
-
-This means mise tools will not be on `$PATH` in non-interactive shells. To accommodate non-interactive shells, mise provides a "shims" directory (`~/.local/share/mise/shims`) in which it places symlinks to binaries, and a `mise activate --shims` command that will load shims onto `$PATH`. The recommendation is to add `mise activate --shims` to non-interactive shell configuration files like `.bash_profile` and `.zprofile`. The [docs](https://mise.jdx.dev/dev-tools/shims.html) explain:
-
-> we use `mise activate --shims` in the non-interactive shell
-> configuration file (like `.bash_profile` or `.zprofile`) and
-> `mise activate` in the interactive shell configuration file (like
-> `.bashrc` or `.zshrc`).
-
-For this reason, the [`.bash_profile`](.bash_profile) and [`.zprofile`](.zprofile) files contain the `mise activate --shims` command to load mise tools onto `$PATH` for non-interactive shell logins. mise is installed with Homebrew, so the appropriate `$HOMEBREW_PREFIX` will be set and Homebrew will be loaded into the shell environment as well.
+Shell configuration files contain the appropriate `mise activate` command to load mise tools onto `$PATH`. The `.bashrc` and `.zshrc` are only for interactive shell login sessions and they run the standard `mise activate` command via [`interactive.sh`](.config/shell/interactive.sh). To accommodate non-interactive shells, mise provides a "shims" directory (`~/.local/share/mise/shims`) in which it places symlinks to binaries, and a `mise activate --shims` command that will load shims onto `$PATH`. The [recommendation](https://mise.jdx.dev/dev-tools/shims.html) is to add `mise activate --shims` to non-interactive shell configuration files like [`.bash_profile`](.bash_profile) and [`.zprofile`](.zprofile).
 
 ## Git
 
@@ -178,11 +169,12 @@ For this reason, the [`.bash_profile`](.bash_profile) and [`.zprofile`](.zprofil
 
 ## Shell
 
-- I use Zsh as my shell, which functions like Bash but offers more customization.
-- I install with Homebrew to maintain consistent versions across multiple machines. However, note that [Zsh is now the default shell for new macOS users starting with macOS Catalina](https://support.apple.com/en-us/HT208050).
-- See the [Wes Bos Command Line Power User course](https://commandlinepoweruser.com/) for an introduction to Zsh.
-- I use [Starship](https://starship.rs/) for my shell prompt.
-- For my terminal application, I use [kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator.
+- Zsh is the default shell. Zsh is installed with Homebrew to maintain consistent versions across multiple machines, but [Zsh is also now the default shell for new macOS users starting with macOS Catalina](https://support.apple.com/en-us/HT208050), so it is available on any macOS system.
+- [Starship](https://starship.rs/) is the shell prompt.
+- [kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator, is used as the terminal application.
+- Shell configurations are interoperable between Bash and Zsh.
+  - Shell environment setup is configured by [`environment.sh`](.config/shell/environment.sh). Interactive shell setup (loading Starship prompt and mise-en-place) is configured by [`interactive.sh`](.config/shell/interactive.sh). These files are then sourced into the appropriate startup files ([`.bash_profile`](.bash_profile), [`.bashrc`](.bashrc), [`.zprofile`](.zprofile), [`.zshrc`](.zshrc)). See the [Bash docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) and [Zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html) for more details on startup files.
+  - [Autoloaded functions](https://zsh.sourceforge.io/Doc/Release/Functions.html) are stored in [`.config/shell/functions`](.config/shell/functions/).
 
 ## Text editors
 
@@ -216,7 +208,7 @@ I have tried GitHub's cloud-hosted VSCode, called [Codespaces](https://docs.gith
 - Files. It's unclear if or how persistent file storage is available. Local filesystem access is limited.
 - GPG commit signing has some limitations. GitHub offers [commit signing with GPG](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-gpg-verification-for-codespaces), but private keys must be in GitHub's custody.
 - Customization is complicated.
-  - Codespaces doesn't automatically clone or run these dotfiles. They claim that [codespaces will automatically clone your dotfiles and run `bootstrap.sh`](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles), but the repo is not cloned to `~/.dotfiles`, and `bootstrap.sh` is not running, even after enabling the "Automatically install dotfiles" setting in user preferences.
+  - [Codespaces can install these dotfiles](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account), but note that Bash is the default shell, so it is important for shell configs to be [interoperable with Bash](#shell).
   - Codespaces can't read VSCode settings from dotfiles. The [docs](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account) explain, "Currently, Codespaces does not support personalizing the _User_ settings for the Visual Studio Code editor with your `dotfiles` repository." The separate Settings Sync service is required to sync settings.
   - Extensions have to be managed separately from VSCode desktop. There is a `"github.codespaces.defaultExtensions"` setting that requires its own list of extensions, and it's unclear if Codespaces can install extensions from VSIX (like [Dracula Pro](https://draculatheme.com/pro)).
   - Codespaces may not be able to install and use custom fonts (like [Dank Mono](https://gumroad.com/l/dank-mono)). Font capabilities may be limited by the browser.

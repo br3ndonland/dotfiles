@@ -629,9 +629,6 @@ To [sign Git commits with SSH and 1Password](https://developer.1password.com/doc
   - [Dark Reader](https://darkreader.org)
   - [Stylus](https://github.com/openstyles/stylus)
     - [Wide GitHub](https://github.com/xthexder/wide-github)
-    - [GitHub Custom Fonts](https://github.com/StylishThemes/GitHub-Dark)
-    - ~~[GitHub Dark](https://github.com/StylishThemes/GitHub-Dark)~~ _(GitHub [finally](https://github.blog/2020-12-08-new-from-universe-2020-dark-mode-github-sponsors-for-companies-and-more/) has a native dark mode!)_
-    - [GitLab Dark](https://gitlab.com/maxigaz/gitlab-dark)
     - [Wikipedia Dark](https://github.com/n0x-styles/wikipedia-dark)
 - macOS Keynote, Numbers, and Pages
 - [Proton VPN](https://protonvpn.com/) (Homebrew Cask or direct download)

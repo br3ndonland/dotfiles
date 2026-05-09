@@ -105,7 +105,6 @@ enabled = true
 [plugins."spreadsheets@openai-primary-runtime"]
 enabled = true
 
-# https://developers.openai.com/codex/app/browser
 [plugins."browser-use@openai-bundled"]
 enabled = false
 

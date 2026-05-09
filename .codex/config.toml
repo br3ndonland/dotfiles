@@ -127,6 +127,8 @@ trust_level = "trusted"
 # https://github.com/openai/codex/blob/main/codex-rs/utils/absolute-path/src/lib.rs
 # https://github.com/openai/codex/blob/f628824/codex-rs/core/src/config/types.rs#L797
 [sandbox_workspace_write]
+exclude_slash_tmp = false
+exclude_tmpdir_env_var = false
 network_access = true
 writable_roots = ["~/code"]
 

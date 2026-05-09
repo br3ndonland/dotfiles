@@ -2,6 +2,7 @@ model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
+service_tier = "fast"
 
 [analytics]
 enabled = false
@@ -36,6 +37,7 @@ approval_mode = "prompt"
 
 [features]
 prevent_idle_sleep = true
+fast_mode = true
 
 [marketplaces.openai-bundled]
 

@@ -139,6 +139,8 @@ prefix_rule(
       "bun",
       "bunx",
       "pnpm",
+      "pnpx",
+      "pnx",
     ],
   ],
   decision="allow",
@@ -148,9 +150,12 @@ prefix_rule(
     "bun install",
     "bun remove",
     "bunx cowsay 'Hello world!'",
+    "pnpm -s dlx cowsay 'Hello world!'",
     "pnpm dedupe",
     "pnpm install",
     "pnpm remove",
+    "pnpx codemod run pnpm-v10-to-v11",
+    "pnx cowsay 'Hello world!'",
   ],
 )
 

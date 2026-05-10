@@ -127,7 +127,7 @@ yt-dlp = "latest"
 # non-registry tools from specific backends
 # "github:runkids/skillshare" = "prefix:0.18"
 # "npm:@kilocode/cli" = "latest"
-"npm:pnpm" = "prefix:10"
+"npm:pnpm" = "prefix:11"
 "npm:prettier" = "prefix:3"
 "npm:typescript" = "prefix:5"
 # "npm:vercel" = "prefix:53"

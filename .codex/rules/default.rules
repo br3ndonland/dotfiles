@@ -119,6 +119,260 @@ prefix_rule(
   ],
 )
 
+# These rules allow designated GitHub CLI (`gh`) commands.
+prefix_rule(
+  pattern=[
+    "gh",
+    [
+      "attestation",
+      "cache",
+      "extension",
+      "gist",
+      "help",
+      "issue",
+      "pr",
+      "project",
+      "search",
+      "status",
+      "variable",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh attestation download",
+    "gh extension browse",
+    "gh pr create",
+    "gh variable list",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "auth",
+    [
+      "refresh",
+      "status",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh auth status",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    [
+      "gpg-key",
+      "label",
+      "org",
+      "secret",
+    ],
+    "list",
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh org list",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    [
+      "gpg-key",
+      "ssh-key",
+    ],
+    [
+      "add",
+      "delete",
+    ],
+  ],
+  decision="forbidden",
+  justification="Forbid agents from adding or deleting keys with the GitHub CLI (`gh`)",
+  match=[
+    "gh gpg-key add",
+    "gh gpg-key delete",
+    "gh ssh-key add",
+    "gh ssh-key delete",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "codespace",
+    [
+      "list",
+      "logs",
+      "view",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh codespace list",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "config",
+    [
+      "get",
+      "list",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh config get git_protocol",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "extension",
+    "install",
+  ],
+  decision="prompt",
+  justification="Prompt before installing GitHub CLI (`gh`) extensions",
+  match=[
+    "gh extension install",
+  ],
+  not_match=[
+    "gh extension browse",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    [
+      "gist",
+      "issue",
+      "pr",
+    ],
+    "delete",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from deleting resources with the GitHub CLI (`gh`)",
+  match=[
+    "gh gist delete",
+    "gh issue delete",
+    "gh pr delete",
+  ],
+  not_match=[
+    "gh gist create",
+    "gh issue create",
+    "gh pr create",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "release",
+    [
+      "download",
+      "list",
+      "verify-asset",
+      "verify",
+      "view",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh release list",
+  ],
+  not_match=[
+    "gh release delete",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "repo",
+    [
+      "clone",
+      "fork",
+      "list",
+      "view",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh repo clone foo/bar",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "ruleset",
+    [
+      "check",
+      "list",
+      "view",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh ruleset check",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "run",
+    [
+      "cancel",
+      "download",
+      "list",
+      "rerun",
+      "view",
+      "watch",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh run view",
+  ],
+  not_match=[
+    "gh run delete",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "gh",
+    "workflow",
+    [
+      "list",
+      "run",
+      "view",
+    ],
+  ],
+  decision="allow",
+  justification="Allow designated GitHub CLI (`gh`) commands",
+  match=[
+    "gh workflow list",
+  ],
+)
+
 # This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
 prefix_rule(
   pattern=[

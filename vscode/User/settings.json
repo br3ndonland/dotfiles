@@ -98,6 +98,7 @@
   "workbench.startupEditor": "none",
   // Git
   "[git-commit][git-rebase]": {
+    "editor.colorDecorators": false,
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",
@@ -172,6 +173,9 @@
   "[astro][css][dockercompose][github-actions-workflow][html][javascript][javascriptreact][json][jsonc][markdown][mdx][snippets][typescript][typescriptreact][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "[markdown]": {
+    "editor.colorDecorators": false,
+  },
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",
   "markdown.extension.print.absoluteImgPath": false,
@@ -191,6 +195,7 @@
     "editor.insertSpaces": false,
   },
   "[plaintext]": {
+    "editor.colorDecorators": false,
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",

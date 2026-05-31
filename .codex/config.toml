@@ -137,3 +137,5 @@ inherit = "core"
 
 [tui]
 theme = "dracula"
+
+[tui.model_availability_nux]

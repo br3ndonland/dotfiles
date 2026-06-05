@@ -14,8 +14,6 @@ if [[ -f $shell_config_dir/environment.sh ]]; then
   source $shell_config_dir/environment.sh
 fi
 
-# usage: ln -fns $(pwd)/.zshrc ~/.zshrc
-
 # options
 #
 # initial setup configured by zsh-newuser-install

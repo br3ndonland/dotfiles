@@ -173,8 +173,13 @@
   "[astro][css][dockercompose][github-actions-workflow][html][javascript][javascriptreact][json][jsonc][markdown][mdx][snippets][typescript][typescriptreact][vue][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
-  "[markdown]": {
+  "[markdown][mdx]": {
     "editor.colorDecorators": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off",
+    },
   },
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.list.indentationSize": "inherit",

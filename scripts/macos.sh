@@ -112,7 +112,17 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Sort files by name in list view
-# TODO
+finder_plist="$HOME/Library/Preferences/com.apple.finder.plist"
+/usr/libexec/PlistBuddy \
+  -c "Set :StandardViewSettings:ListViewSettings:sortColumn name" \
+  "$finder_plist"
+if /usr/libexec/PlistBuddy \
+  -c "Print :StandardViewSettings:ExtendedListViewSettingsV2" \
+  "$finder_plist" >/dev/null 2>&1; then
+  /usr/libexec/PlistBuddy \
+    -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:sortColumn name" \
+    "$finder_plist"
+fi
 
 # Enable spring loading for directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true

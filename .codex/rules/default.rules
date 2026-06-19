@@ -437,3 +437,163 @@ prefix_rule(
     "pnpm remove",
   ],
 )
+
+# These rules allow most Python package manager commands except package publishing.
+prefix_rule(
+  pattern=[
+    [
+      "hatch",
+      "pip",
+      "pip3",
+      "pipx",
+      "uvx",
+    ],
+  ],
+  decision="allow",
+  justification="Allow agents to run most Python package manager commands",
+  match=[
+    "hatch env lock",
+    "hatch run test",
+    "pip freeze",
+    "pipx run cowsay --text 'Hello world!'",
+    "pipx install tox",
+    "uvx ruff check .",
+    "uvx twine check dist/*",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "hatch",
+    "publish",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from publishing Python packages",
+  match=[
+    "hatch publish",
+  ],
+  not_match=[
+    "hatch env lock",
+    "hatch run test",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "pipx",
+    "run",
+    [
+      "flit",
+      "hatch",
+      "pdm",
+      "poetry",
+      "twine",
+    ],
+    [
+      "publish",
+      "upload",
+    ],
+  ],
+  decision="forbidden",
+  justification="Forbid agents from publishing Python packages",
+  match=[
+    "pipx run hatch publish",
+    "pipx run poetry publish",
+    "pipx run twine upload dist/*",
+  ],
+  not_match=[
+    "pipx run ruff check .",
+    "pipx run twine check dist/*",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "uvx",
+    [
+      "flit",
+      "hatch",
+      "pdm",
+      "poetry",
+      "twine",
+    ],
+    [
+      "publish",
+      "upload",
+    ],
+  ],
+  decision="forbidden",
+  justification="Forbid agents from publishing Python packages",
+  match=[
+    "uvx hatch publish",
+    "uvx poetry publish",
+    "uvx twine upload dist/*",
+  ],
+  not_match=[
+    "uvx ruff check .",
+    "uvx twine check dist/*",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    "twine",
+    "upload",
+  ],
+  decision="forbidden",
+  justification="Forbid agents from publishing Python packages",
+  match=[
+    "twine upload dist/*",
+  ],
+  not_match=[
+    "twine check dist/*",
+  ],
+)
+
+# These rules forbid direct pip installs outside virtual environments. See AGENTS.md.
+prefix_rule(
+  pattern=[
+    [
+      "pip",
+      "pip3",
+    ],
+    "install",
+  ],
+  decision="forbidden",
+  justification="Forbid direct pip installs outside virtual environments",
+  match=[
+    "pip install requests",
+    "pip install --user requests",
+    "pip3 install requests",
+  ],
+  not_match=[
+    "pip freeze",
+    "pip list",
+  ],
+)
+
+prefix_rule(
+  pattern=[
+    [
+      "python",
+      "python3",
+    ],
+    "-m",
+    [
+      "pip",
+      "pip3",
+    ],
+    "install",
+  ],
+  decision="forbidden",
+  justification="Forbid direct pip installs outside virtual environments",
+  match=[
+    "python -m pip install requests",
+    "python -m pip install --user requests",
+    "python3 -m pip install requests",
+  ],
+  not_match=[
+    "python -m pip freeze",
+    "python3 -m pip list",
+  ],
+)

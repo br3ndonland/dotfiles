@@ -133,7 +133,10 @@ trust_level = "trusted"
 exclude_slash_tmp = false
 exclude_tmpdir_env_var = false
 network_access = true
-writable_roots = ["~/code"]
+writable_roots = [
+  "~/.cache",
+  "~/code",
+]
 
 [shell_environment_policy]
 inherit = "core"

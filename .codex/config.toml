@@ -105,6 +105,9 @@ enabled = true
 [plugins."spreadsheets@openai-primary-runtime"]
 enabled = true
 
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
 [plugins."browser@openai-bundled"]
 enabled = false
 

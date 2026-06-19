@@ -78,7 +78,7 @@ url = "https://developers.openai.com/mcp"
 
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]
-enabled = true
+enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/github
 [plugins."github@openai-curated"]
@@ -86,7 +86,7 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
-enabled = true
+enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]
@@ -94,7 +94,7 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/zotero
 [plugins."zotero@openai-curated"]
-enabled = true
+enabled = false
 
 [plugins."documents@openai-primary-runtime"]
 enabled = true

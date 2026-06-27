@@ -70,7 +70,7 @@
       "Bash(curl*)",
       "Bash(gh * delete *)",
       "Bash(gh pr close *)",
-      "Bash(git tag *)",
+      "Bash(git push --tags)",
       "Bash(rm*)",
       "Bash(vercel * delete *)",
       "Bash(vercel remove *)",

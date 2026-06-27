@@ -12,13 +12,13 @@ golang.go
 # kilocode.kilo-code
 mikestead.dotenv
 mkhl.shfmt
-ms-kubernetes-tools.vscode-kubernetes-tools
+# ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 # ms-toolsai.jupyter
 nuxt.mdc
 # openai.chatgpt
 opentofu.vscode-opentofu
-redhat.vscode-yaml
+# redhat.vscode-yaml
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck

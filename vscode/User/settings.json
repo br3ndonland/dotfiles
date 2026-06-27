@@ -261,5 +261,13 @@
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
   "vetur.ignoreProjectWarning": true,
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml",
+  ],
   "yaml.format.enable": false,
 }

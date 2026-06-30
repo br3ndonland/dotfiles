@@ -138,7 +138,10 @@ exclude_tmpdir_env_var = false
 network_access = true
 writable_roots = [
   "~/.cache",
+  "~/.local",
+  "~/.npm",
   "~/code",
+  "~/Library/Caches",
 ]
 
 [shell_environment_policy]

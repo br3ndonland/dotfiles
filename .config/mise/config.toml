@@ -40,11 +40,22 @@ precompiled_flavor = "install_only"
 compile = false
 
 [tasks.check]
-depends = ["prettier:check", "shellcheck", "shfmt:check", "tombi:check"]
+depends = [
+  "prettier:check",
+  "ruff-rules:check",
+  "shellcheck",
+  "shfmt:check",
+  "tombi:check",
+]
 description = "Run code quality checks"
 
 [tasks.format]
-depends = ["prettier:format", "shfmt:format", "tombi:format"]
+depends = [
+  "prettier:format",
+  "ruff-rules:format",
+  "shfmt:format",
+  "tombi:format",
+]
 description = "Run code formatters"
 
 [tasks."prettier:check"]
@@ -54,6 +65,14 @@ run = "prettier --check ."
 [tasks."prettier:format"]
 description = "Format web code with Prettier"
 run = "prettier --write ."
+
+[tasks."ruff-rules:check"]
+description = "Check Codex rules formatting with Ruff"
+run = "scripts/ruff-rules.sh check"
+
+[tasks."ruff-rules:format"]
+description = "Format Codex rules with Ruff"
+run = "scripts/ruff-rules.sh format"
 
 [tasks.shellcheck]
 description = "Check shell scripts with ShellCheck"

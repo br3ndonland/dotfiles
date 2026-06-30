@@ -10,7 +10,7 @@ insert_final_newline = true
 # shfmt options - https://github.com/mvdan/sh/blob/HEAD/cmd/shfmt/shfmt.1.scd
 apply_ignore = true
 
-[*.py]
+[*.{py,rules}]
 indent_size = 4
 
 [*{zprofile,zsh}*]

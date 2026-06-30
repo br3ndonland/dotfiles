@@ -4,597 +4,598 @@
 # https://developers.openai.com/codex/agent-approvals-security
 # https://github.com/bazelbuild/starlark/blob/master/spec.md
 # The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
+# Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
 
 # Without the following rule, Codex will prompt before creating new branches.
 # This is because `.git` is a protected path in writable roots.
 # This rule allows Codex to create branches while still maintaining a secure sandbox.
 prefix_rule(
-  pattern=[
-    "git",
-    [
-      "add",
-      "branch",
-      "checkout",
-      "cherry-pick",
-      "commit",
-      "diff",
-      "fetch",
-      "merge",
-      "mv",
-      "pull",
-      "push",
-      "rebase",
-      "restore",
-      "stash",
-      "status",
-      "switch",
-      "worktree",
+    pattern=[
+        "git",
+        [
+            "add",
+            "branch",
+            "checkout",
+            "cherry-pick",
+            "commit",
+            "diff",
+            "fetch",
+            "merge",
+            "mv",
+            "pull",
+            "push",
+            "rebase",
+            "restore",
+            "stash",
+            "status",
+            "switch",
+            "worktree",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow agents to create and checkout branches and worktrees",
-  match=[
-      "git add foo/bar/baz.txt",
-      "git checkout -b codex/new-feature",
-      "git commit -m \"Commit title\" -m \"Commit message body\"",
-      "git diff --cached -- src/styles/global.css",
-      "git push codex/new-feature",
-      "git push origin codex/new-feature",
-      "git status --short --branch",
-      "git switch -c codex/new-feature",
-  ],
+    decision="allow",
+    justification="Allow agents to create and checkout branches and worktrees",
+    match=[
+        "git add foo/bar/baz.txt",
+        "git checkout -b codex/new-feature",
+        "git commit -m \"Commit title\" -m \"Commit message body\"",
+        "git diff --cached -- src/styles/global.css",
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+        "git status --short --branch",
+        "git switch -c codex/new-feature",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "git",
-    "branch",
-    [
-      "--delete",
-      "-d",
+    pattern=[
+        "git",
+        "branch",
+        [
+            "--delete",
+            "-d",
+        ],
+        "main",
     ],
-    "main",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from deleting the default branch",
-  match=[
-      "git branch --delete main",
-      "git branch -d main",
-  ],
+    decision="forbidden",
+    justification="Forbid agents from deleting the default branch",
+    match=[
+        "git branch --delete main",
+        "git branch -d main",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "git",
-    "push",
-    [
-      "--delete",
-      "-d",
+    pattern=[
+        "git",
+        "push",
+        [
+            "--delete",
+            "-d",
+        ],
     ],
-  ],
-  decision="forbidden",
-  justification="Forbid agents from deleting remote tracking branches",
-  match=[
-      "git push --delete upstream feature",
-      "git push -d origin main",
-  ],
+    decision="forbidden",
+    justification="Forbid agents from deleting remote tracking branches",
+    match=[
+        "git push --delete upstream feature",
+        "git push -d origin main",
+    ],
 )
 
 # These rules complement the "Do not Git push to `main`" rule in `AGENTS.md`.
 prefix_rule(
-  pattern=[
-    "git",
-    "push",
-    "main",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from pushing to the default branch",
-  match=[
-      "git push main",
-  ],
-  not_match=[
-      "git push codex/new-feature",
-      "git push origin codex/new-feature",
-  ],
+    pattern=[
+        "git",
+        "push",
+        "main",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from pushing to the default branch",
+    match=[
+        "git push main",
+    ],
+    not_match=[
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "git",
-    "push",
-    [
-      "origin",
-      "upstream",
+    pattern=[
+        "git",
+        "push",
+        [
+            "origin",
+            "upstream",
+        ],
+        "main",
     ],
-    "main",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from pushing to the default branch",
-  match=[
-      "git push origin main",
-      "git push upstream main",
-  ],
-  not_match=[
-      "git push codex/new-feature",
-      "git push origin codex/new-feature",
-  ],
+    decision="forbidden",
+    justification="Forbid agents from pushing to the default branch",
+    match=[
+        "git push origin main",
+        "git push upstream main",
+    ],
+    not_match=[
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+    ],
 )
 
 # These rules allow designated GitHub CLI (`gh`) commands.
 prefix_rule(
-  pattern=[
-    "gh",
-    [
-      "attestation",
-      "cache",
-      "extension",
-      "gist",
-      "help",
-      "issue",
-      "pr",
-      "project",
-      "search",
-      "status",
-      "variable",
+    pattern=[
+        "gh",
+        [
+            "attestation",
+            "cache",
+            "extension",
+            "gist",
+            "help",
+            "issue",
+            "pr",
+            "project",
+            "search",
+            "status",
+            "variable",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh attestation download",
-    "gh extension browse",
-    "gh pr create",
-    "gh variable list",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh attestation download",
+        "gh extension browse",
+        "gh pr create",
+        "gh variable list",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "auth",
-    [
-      "refresh",
-      "status",
+    pattern=[
+        "gh",
+        "auth",
+        [
+            "refresh",
+            "status",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh auth status",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh auth status",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    [
-      "gpg-key",
-      "label",
-      "org",
-      "secret",
+    pattern=[
+        "gh",
+        [
+            "gpg-key",
+            "label",
+            "org",
+            "secret",
+        ],
+        "list",
     ],
-    "list",
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh org list",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh org list",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    [
-      "gpg-key",
-      "ssh-key",
+    pattern=[
+        "gh",
+        [
+            "gpg-key",
+            "ssh-key",
+        ],
+        [
+            "add",
+            "delete",
+        ],
     ],
-    [
-      "add",
-      "delete",
+    decision="forbidden",
+    justification="Forbid agents from adding or deleting keys with the GitHub CLI (`gh`)",
+    match=[
+        "gh gpg-key add",
+        "gh gpg-key delete",
+        "gh ssh-key add",
+        "gh ssh-key delete",
     ],
-  ],
-  decision="forbidden",
-  justification="Forbid agents from adding or deleting keys with the GitHub CLI (`gh`)",
-  match=[
-    "gh gpg-key add",
-    "gh gpg-key delete",
-    "gh ssh-key add",
-    "gh ssh-key delete",
-  ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "codespace",
-    [
-      "list",
-      "logs",
-      "view",
+    pattern=[
+        "gh",
+        "codespace",
+        [
+            "list",
+            "logs",
+            "view",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh codespace list",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh codespace list",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "config",
-    [
-      "get",
-      "list",
+    pattern=[
+        "gh",
+        "config",
+        [
+            "get",
+            "list",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh config get git_protocol",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh config get git_protocol",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "extension",
-    "install",
-  ],
-  decision="prompt",
-  justification="Prompt before installing GitHub CLI (`gh`) extensions",
-  match=[
-    "gh extension install",
-  ],
-  not_match=[
-    "gh extension browse",
-  ],
+    pattern=[
+        "gh",
+        "extension",
+        "install",
+    ],
+    decision="prompt",
+    justification="Prompt before installing GitHub CLI (`gh`) extensions",
+    match=[
+        "gh extension install",
+    ],
+    not_match=[
+        "gh extension browse",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    [
-      "gist",
-      "issue",
-      "pr",
+    pattern=[
+        "gh",
+        [
+            "gist",
+            "issue",
+            "pr",
+        ],
+        "delete",
     ],
-    "delete",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from deleting resources with the GitHub CLI (`gh`)",
-  match=[
-    "gh gist delete",
-    "gh issue delete",
-    "gh pr delete",
-  ],
-  not_match=[
-    "gh gist create",
-    "gh issue create",
-    "gh pr create",
-  ],
+    decision="forbidden",
+    justification="Forbid agents from deleting resources with the GitHub CLI (`gh`)",
+    match=[
+        "gh gist delete",
+        "gh issue delete",
+        "gh pr delete",
+    ],
+    not_match=[
+        "gh gist create",
+        "gh issue create",
+        "gh pr create",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "release",
-    [
-      "download",
-      "list",
-      "verify-asset",
-      "verify",
-      "view",
+    pattern=[
+        "gh",
+        "release",
+        [
+            "download",
+            "list",
+            "verify-asset",
+            "verify",
+            "view",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh release list",
-  ],
-  not_match=[
-    "gh release delete",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh release list",
+    ],
+    not_match=[
+        "gh release delete",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "repo",
-    [
-      "clone",
-      "fork",
-      "list",
-      "view",
+    pattern=[
+        "gh",
+        "repo",
+        [
+            "clone",
+            "fork",
+            "list",
+            "view",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh repo clone foo/bar",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh repo clone foo/bar",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "ruleset",
-    [
-      "check",
-      "list",
-      "view",
+    pattern=[
+        "gh",
+        "ruleset",
+        [
+            "check",
+            "list",
+            "view",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh ruleset check",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh ruleset check",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "run",
-    [
-      "cancel",
-      "download",
-      "list",
-      "rerun",
-      "view",
-      "watch",
+    pattern=[
+        "gh",
+        "run",
+        [
+            "cancel",
+            "download",
+            "list",
+            "rerun",
+            "view",
+            "watch",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh run view",
-  ],
-  not_match=[
-    "gh run delete",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh run view",
+    ],
+    not_match=[
+        "gh run delete",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "gh",
-    "workflow",
-    [
-      "list",
-      "run",
-      "view",
+    pattern=[
+        "gh",
+        "workflow",
+        [
+            "list",
+            "run",
+            "view",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow designated GitHub CLI (`gh`) commands",
-  match=[
-    "gh workflow list",
-  ],
+    decision="allow",
+    justification="Allow designated GitHub CLI (`gh`) commands",
+    match=[
+        "gh workflow list",
+    ],
 )
 
 # This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
 prefix_rule(
-  pattern=[
-    "trash",
-  ],
-  decision="allow",
-  justification="Allow agents to move files to the trash as a safer alternative to rm",
-  match=[
-    "trash /tmp/dir",
-    "trash ~/code/file.txt",
-  ],
+    pattern=[
+        "trash",
+    ],
+    decision="allow",
+    justification="Allow agents to move files to the trash as a safer alternative to rm",
+    match=[
+        "trash /tmp/dir",
+        "trash ~/code/file.txt",
+    ],
 )
 
 # These rules allow most JavaScript package manager commands except package publishing.
 prefix_rule(
-  pattern=[
-    [
-      "bun",
-      "bunx",
-      "pnpm",
-      "pnpx",
-      "pnx",
+    pattern=[
+        [
+            "bun",
+            "bunx",
+            "pnpm",
+            "pnpx",
+            "pnx",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow agents to run most package manager commands",
-  match=[
-    "bun add",
-    "bun install",
-    "bun remove",
-    "bunx cowsay 'Hello world!'",
-    "pnpm -s dlx cowsay 'Hello world!'",
-    "pnpm dedupe",
-    "pnpm install",
-    "pnpm remove",
-    "pnpx codemod run pnpm-v10-to-v11",
-    "pnx cowsay 'Hello world!'",
-  ],
+    decision="allow",
+    justification="Allow agents to run most package manager commands",
+    match=[
+        "bun add",
+        "bun install",
+        "bun remove",
+        "bunx cowsay 'Hello world!'",
+        "pnpm -s dlx cowsay 'Hello world!'",
+        "pnpm dedupe",
+        "pnpm install",
+        "pnpm remove",
+        "pnpx codemod run pnpm-v10-to-v11",
+        "pnx cowsay 'Hello world!'",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    [
-      "bun",
-      "pnpm",
+    pattern=[
+        [
+            "bun",
+            "pnpm",
+        ],
+        "publish",
     ],
-    "publish",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from publishing packages",
-  match=[
-    "bun publish",
-    "pnpm publish",
-  ],
-  not_match=[
-    "bun add",
-    "bun install",
-    "bun remove",
-    "bunx cowsay 'Hello world!'",
-    "pnpm dedupe",
-    "pnpm install",
-    "pnpm remove",
-  ],
+    decision="forbidden",
+    justification="Forbid agents from publishing packages",
+    match=[
+        "bun publish",
+        "pnpm publish",
+    ],
+    not_match=[
+        "bun add",
+        "bun install",
+        "bun remove",
+        "bunx cowsay 'Hello world!'",
+        "pnpm dedupe",
+        "pnpm install",
+        "pnpm remove",
+    ],
 )
 
 # These rules allow most Python package manager commands except package publishing.
 prefix_rule(
-  pattern=[
-    [
-      "hatch",
-      "pip",
-      "pip3",
-      "pipx",
-      "uvx",
+    pattern=[
+        [
+            "hatch",
+            "pip",
+            "pip3",
+            "pipx",
+            "uvx",
+        ],
     ],
-  ],
-  decision="allow",
-  justification="Allow agents to run most Python package manager commands",
-  match=[
-    "hatch env lock",
-    "hatch run test",
-    "pip freeze",
-    "pipx run cowsay --text 'Hello world!'",
-    "pipx install tox",
-    "uvx ruff check .",
-    "uvx twine check dist/*",
-  ],
+    decision="allow",
+    justification="Allow agents to run most Python package manager commands",
+    match=[
+        "hatch env lock",
+        "hatch run test",
+        "pip freeze",
+        "pipx run cowsay --text 'Hello world!'",
+        "pipx install tox",
+        "uvx ruff check .",
+        "uvx twine check dist/*",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "hatch",
-    "publish",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from publishing Python packages",
-  match=[
-    "hatch publish",
-  ],
-  not_match=[
-    "hatch env lock",
-    "hatch run test",
-  ],
+    pattern=[
+        "hatch",
+        "publish",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from publishing Python packages",
+    match=[
+        "hatch publish",
+    ],
+    not_match=[
+        "hatch env lock",
+        "hatch run test",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "pipx",
-    "run",
-    [
-      "flit",
-      "hatch",
-      "pdm",
-      "poetry",
-      "twine",
+    pattern=[
+        "pipx",
+        "run",
+        [
+            "flit",
+            "hatch",
+            "pdm",
+            "poetry",
+            "twine",
+        ],
+        [
+            "publish",
+            "upload",
+        ],
     ],
-    [
-      "publish",
-      "upload",
+    decision="forbidden",
+    justification="Forbid agents from publishing Python packages",
+    match=[
+        "pipx run hatch publish",
+        "pipx run poetry publish",
+        "pipx run twine upload dist/*",
     ],
-  ],
-  decision="forbidden",
-  justification="Forbid agents from publishing Python packages",
-  match=[
-    "pipx run hatch publish",
-    "pipx run poetry publish",
-    "pipx run twine upload dist/*",
-  ],
-  not_match=[
-    "pipx run ruff check .",
-    "pipx run twine check dist/*",
-  ],
+    not_match=[
+        "pipx run ruff check .",
+        "pipx run twine check dist/*",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "uvx",
-    [
-      "flit",
-      "hatch",
-      "pdm",
-      "poetry",
-      "twine",
+    pattern=[
+        "uvx",
+        [
+            "flit",
+            "hatch",
+            "pdm",
+            "poetry",
+            "twine",
+        ],
+        [
+            "publish",
+            "upload",
+        ],
     ],
-    [
-      "publish",
-      "upload",
+    decision="forbidden",
+    justification="Forbid agents from publishing Python packages",
+    match=[
+        "uvx hatch publish",
+        "uvx poetry publish",
+        "uvx twine upload dist/*",
     ],
-  ],
-  decision="forbidden",
-  justification="Forbid agents from publishing Python packages",
-  match=[
-    "uvx hatch publish",
-    "uvx poetry publish",
-    "uvx twine upload dist/*",
-  ],
-  not_match=[
-    "uvx ruff check .",
-    "uvx twine check dist/*",
-  ],
+    not_match=[
+        "uvx ruff check .",
+        "uvx twine check dist/*",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    "twine",
-    "upload",
-  ],
-  decision="forbidden",
-  justification="Forbid agents from publishing Python packages",
-  match=[
-    "twine upload dist/*",
-  ],
-  not_match=[
-    "twine check dist/*",
-  ],
+    pattern=[
+        "twine",
+        "upload",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from publishing Python packages",
+    match=[
+        "twine upload dist/*",
+    ],
+    not_match=[
+        "twine check dist/*",
+    ],
 )
 
 # These rules forbid direct pip installs outside virtual environments. See AGENTS.md.
 prefix_rule(
-  pattern=[
-    [
-      "pip",
-      "pip3",
+    pattern=[
+        [
+            "pip",
+            "pip3",
+        ],
+        "install",
     ],
-    "install",
-  ],
-  decision="forbidden",
-  justification="Forbid direct pip installs outside virtual environments",
-  match=[
-    "pip install requests",
-    "pip install --user requests",
-    "pip3 install requests",
-  ],
-  not_match=[
-    "pip freeze",
-    "pip list",
-  ],
+    decision="forbidden",
+    justification="Forbid direct pip installs outside virtual environments",
+    match=[
+        "pip install requests",
+        "pip install --user requests",
+        "pip3 install requests",
+    ],
+    not_match=[
+        "pip freeze",
+        "pip list",
+    ],
 )
 
 prefix_rule(
-  pattern=[
-    [
-      "python",
-      "python3",
+    pattern=[
+        [
+            "python",
+            "python3",
+        ],
+        "-m",
+        [
+            "pip",
+            "pip3",
+        ],
+        "install",
     ],
-    "-m",
-    [
-      "pip",
-      "pip3",
+    decision="forbidden",
+    justification="Forbid direct pip installs outside virtual environments",
+    match=[
+        "python -m pip install requests",
+        "python -m pip install --user requests",
+        "python3 -m pip install requests",
     ],
-    "install",
-  ],
-  decision="forbidden",
-  justification="Forbid direct pip installs outside virtual environments",
-  match=[
-    "python -m pip install requests",
-    "python -m pip install --user requests",
-    "python3 -m pip install requests",
-  ],
-  not_match=[
-    "python -m pip freeze",
-    "python3 -m pip list",
-  ],
+    not_match=[
+        "python -m pip freeze",
+        "python3 -m pip list",
+    ],
 )

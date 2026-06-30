@@ -301,7 +301,7 @@ style = "bold #007800"  # GitHub Linguist color
 symbol = "meson"
 
 [mise]
-disabled = false
+disabled = true
 format = "[($symbol )($health )]($style)"
 style = "bold dimmed orange"
 symbol = "mise"

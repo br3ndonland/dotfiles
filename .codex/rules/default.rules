@@ -599,3 +599,21 @@ prefix_rule(
         "python3 -m pip list",
     ],
 )
+
+# These rules allow mise-en-place commands.
+# https://mise.jdx.dev/
+prefix_rule(
+    pattern=[
+        "mise",
+        "run",
+    ],
+    decision="allow",
+    justification="Allow agents to run mise tasks",
+    match=[
+        "mise run check",
+        "mise run format",
+    ],
+    not_match=[
+        "mise self-update",
+    ],
+)

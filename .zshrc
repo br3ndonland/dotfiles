@@ -21,6 +21,7 @@ fi
 # See man zshoptions or https://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
+LISTMAX=500
 setopt autocd extendedglob globdots histignorespace noautomenu nullglob
 
 # keybindings

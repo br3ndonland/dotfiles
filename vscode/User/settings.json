@@ -219,8 +219,10 @@
   "python.experiments.enabled": false,
   "python.experiments.optOutFrom": ["All"],
   "python.languageServer": "None", // set to "None" for BasedPyright
+  "python.locator": "js",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.testing.promptToConfigure": false,
+  "python.useEnvironmentsExtension": false,
   "ruff.lint.extendSelect": ["I", "UP"],
   "redhat.telemetry.enabled": false,
   "shellcheck.enable": true,

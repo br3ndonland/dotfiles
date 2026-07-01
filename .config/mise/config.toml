@@ -39,6 +39,12 @@ precompiled_flavor = "install_only"
 # https://mise.jdx.dev/lang/ruby.html
 compile = false
 
+[vars]
+dotfiles_root = """
+{% set mise_config = [config_root, '.config', 'mise', 'config.toml'] | join_path | canonicalize -%}
+{{ mise_config | dirname | dirname | dirname -}}
+"""
+
 [tasks.check]
 depends = [
   "prettier:check",
@@ -60,39 +66,39 @@ description = "Run code formatters"
 
 [tasks."prettier:check"]
 description = "Check web code formatting with Prettier"
-run = "prettier --check ."
+run = 'cd "{{vars.dotfiles_root}}" && prettier --check .'
 
 [tasks."prettier:format"]
 description = "Format web code with Prettier"
-run = "prettier --write ."
+run = 'cd "{{vars.dotfiles_root}}" && prettier --write .'
 
 [tasks."ruff-rules:check"]
 description = "Check Codex rules formatting with Ruff"
-run = "scripts/ruff-rules.sh check"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/ruff-rules.sh check'
 
 [tasks."ruff-rules:format"]
 description = "Format Codex rules with Ruff"
-run = "scripts/ruff-rules.sh format"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/ruff-rules.sh format'
 
 [tasks.shellcheck]
 description = "Check shell scripts with ShellCheck"
-run = "scripts/shellcheck.sh"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/shellcheck.sh'
 
 [tasks."shfmt:check"]
 description = "Check shell script formatting with shfmt"
-run = "scripts/shfmt.sh check"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/shfmt.sh check'
 
 [tasks."shfmt:format"]
 description = "Format shell scripts with shfmt"
-run = "scripts/shfmt.sh format"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/shfmt.sh format'
 
 [tasks."tombi:check"]
 description = "Check TOML formatting with Tombi"
-run = "scripts/tombi.sh check"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/tombi.sh check'
 
 [tasks."tombi:format"]
 description = "Format TOML files with Tombi"
-run = "scripts/tombi.sh format"
+run = 'cd "{{vars.dotfiles_root}}" && scripts/tombi.sh format'
 
 [tools]
 # https://mise.jdx.dev/configuration.html#scopes

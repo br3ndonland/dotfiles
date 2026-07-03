@@ -18,7 +18,7 @@ brew "mise"
 # brew "opencode"
 brew "openssh"
 brew "pinentry"
-brew "postgresql@18"
+brew "postgresql@18" # [Keg-only](https://docs.brew.sh/FAQ). Added to $PATH by .config/shell/environment.sh.
 brew "r"
 brew "ripgrep"
 brew "starship"

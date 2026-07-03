@@ -87,6 +87,10 @@ if [ -n "${HOMEBREW_PREFIX:-}" ]; then
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin"
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin"
+  # PostgreSQL
+  export CPPFLAGS="${CPPFLAGS:+$CPPFLAGS }-I$HOMEBREW_PREFIX/opt/postgresql@18/include"
+  export LDFLAGS="${LDFLAGS:+$LDFLAGS }-L$HOMEBREW_PREFIX/opt/postgresql@18/lib"
+  dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/postgresql@18/bin"
 fi
 
 if tty >/dev/null 2>&1; then

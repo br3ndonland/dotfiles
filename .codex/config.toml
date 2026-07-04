@@ -138,8 +138,10 @@ exclude_tmpdir_env_var = false
 network_access = true
 writable_roots = [
   "~/.cache",
+  "~/.docker",
   "~/.local",
   "~/.npm",
+  "~/.ruff_cache",
   "~/code",
   "~/Library/Caches",
 ]

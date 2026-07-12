@@ -163,6 +163,7 @@ theme = "dracula"
 [desktop]
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
+defaultTerminalLocation = "right"
 sansFontSize = 16
 codeFontSize = 14
 followUpQueueMode = "steer"

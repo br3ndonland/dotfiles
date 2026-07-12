@@ -31,7 +31,7 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.decorations.badges": false,
   "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "extensions.ignoreRecommendations": true,
   "extensions.supportUntrustedWorkspaces": {
     "streetsidesoftware.code-spell-checker": {

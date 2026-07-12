@@ -164,6 +164,7 @@ theme = "dracula"
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
 defaultTerminalLocation = "right"
+dock-icon-preference = "app-default"
 sansFontSize = 16
 codeFontSize = 14
 followUpQueueMode = "steer"

@@ -99,19 +99,25 @@ enabled = false
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
 [plugins."spreadsheets@openai-primary-runtime"]
 enabled = true
 
-[plugins."pdf@openai-primary-runtime"]
+[plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
 [plugins."browser@openai-bundled"]
 enabled = false
 
-[plugins."template-creator@openai-primary-runtime"]
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
 enabled = true
 
 # project paths are parsed as plain strings, so absolute paths must be used.

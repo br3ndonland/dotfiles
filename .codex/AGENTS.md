@@ -13,6 +13,7 @@
 ### Filesystem
 
 - When deleting files or directories, prefer `trash` as a safer default instead of `rm -rf`; use permanent deletion only with explicit user approval.
+- When working with temporary files, do not use `/private`. Use `/tmp` or the directory given by `$TMPDIR` instead.
 
 ### Git commits
 

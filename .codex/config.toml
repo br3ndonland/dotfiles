@@ -111,13 +111,13 @@ enabled = true
 [plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
-[plugins."browser@openai-bundled"]
-enabled = false
-
 [plugins."sites@openai-bundled"]
 enabled = true
 
 [plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
 enabled = true
 
 # project paths are parsed as plain strings, so absolute paths must be used.

@@ -27,6 +27,11 @@ approval_mode = "prompt"
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
 approval_mode = "prompt"
 
+# OpenAI Developers plugin
+# https://github.com/openai/plugins/tree/main/plugins/openai-developers
+[apps.connector_2de447f3f15448ebab48783d7e4f5d81]
+default_tools_approval_mode = "approve"
+
 # Vercel plugin
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [apps.connector_690a90ec05c881918afb6a55dc9bbaa1]

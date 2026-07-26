@@ -215,7 +215,7 @@ opaqueWindows = false
 surface = "#ffffff"
 
 [desktop.appearanceLightChromeTheme.fonts]
-code = '"Rec Mono Duotone"'
+code = "Rec Mono Duotone"
 
 [desktop.appearanceLightChromeTheme.semanticColors]
 diffAdded = "#00a240"
@@ -230,7 +230,7 @@ opaqueWindows = false
 surface = "#282a36"
 
 [desktop.appearanceDarkChromeTheme.fonts]
-code = '"Rec Mono Duotone"'
+code = "Rec Mono Duotone"
 
 [desktop.appearanceDarkChromeTheme.semanticColors]
 diffAdded = "#50fa7b"

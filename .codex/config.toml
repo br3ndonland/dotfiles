@@ -27,6 +27,10 @@ approval_mode = "prompt"
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
 approval_mode = "prompt"
 
+# OpenAI ChatGPT/Codex sites plugin
+[apps.connector_20205bf7d4e99a89d7154bb849718324]
+enabled = false
+
 # OpenAI Developers plugin
 # https://github.com/openai/plugins/tree/main/plugins/openai-developers
 [apps.connector_2de447f3f15448ebab48783d7e4f5d81]
@@ -117,7 +121,7 @@ enabled = true
 enabled = true
 
 [plugins."sites@openai-bundled"]
-enabled = true
+enabled = false
 
 [plugins."visualize@openai-bundled"]
 enabled = true

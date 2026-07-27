@@ -52,6 +52,12 @@ fast_mode = true
 
 [marketplaces.openai-primary-runtime]
 
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp"
 

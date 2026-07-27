@@ -15,7 +15,6 @@ brew "grep"
 brew "libfido2"
 brew "mas" if OS.mac?
 brew "mise"
-# brew "opencode"
 brew "openssh"
 brew "pinentry"
 brew "postgresql@18" # [Keg-only](https://docs.brew.sh/FAQ). Added to $PATH by .config/shell/environment.sh.

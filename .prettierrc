@@ -1,4 +1,5 @@
 {
+  "proseWrap": "never",
   "semi": false,
   "overrides": [
     {
@@ -14,6 +15,12 @@
       "files": ["keybindings.json", "settings.json"],
       "options": {
         "parser": "jsonc"
+      }
+    },
+    {
+      "files": ["*.y*ml"],
+      "options": {
+        "proseWrap": "preserve"
       }
     }
   ]

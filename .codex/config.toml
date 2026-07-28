@@ -120,15 +120,15 @@ url = "https://developers.openai.com/mcp"
 default_tools_approval_mode = "approve"
 url = "https://mcp.opentofu.org/mcp"
 
-[mcp_servers.spacelift]
-default_tools_approval_mode = "approve"
-url = "https://br3ndonland.app.spacelift.io/mcp"
+# [mcp_servers.spacelift]
+# default_tools_approval_mode = "approve"
+# url = "https://br3ndonland.app.spacelift.io/mcp"
 
-[mcp_servers.spacelift.tools.intent]
-approval_mode = "prompt"
+# [mcp_servers.spacelift.tools.intent]
+# approval_mode = "prompt"
 
-[mcp_servers.spacelift.tools.mutate]
-approval_mode = "prompt"
+# [mcp_servers.spacelift.tools.mutate]
+# approval_mode = "prompt"
 
 # https://github.com/openai/plugins/tree/main/plugins/atlassian-rovo
 [plugins."atlassian-rovo@openai-curated"]
@@ -148,15 +148,15 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/gmail
 [plugins."gmail@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-calendar
 [plugins."google-calendar@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-drive
 [plugins."google-drive@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
@@ -164,7 +164,7 @@ enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/slack
 [plugins."slack@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]

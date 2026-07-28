@@ -72,6 +72,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_PREFIX
 export PATH
 export PIPX_BIN_DIR="$HOME/.local/bin"
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export VERCEL_TELEMETRY_DISABLED=1
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 

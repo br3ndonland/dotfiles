@@ -76,7 +76,7 @@ approval_mode = "prompt"
 enabled = false
 
 [features]
-chronicle = false
+chronicle = true
 fast_mode = true
 js_repl = false
 memories = true
@@ -121,7 +121,7 @@ args = [
   "assistant",
 ]
 default_tools_approval_mode = "approve"
-enabled = false
+enabled = true
 env_vars = [
   "GRAFANA_SERVICE_ACCOUNT_TOKEN",
   "GRAFANA_URL",
@@ -137,11 +137,12 @@ url = "https://mcp.opentofu.org/mcp"
 
 [mcp_servers.sentry]
 default_tools_approval_mode = "approve"
-enabled = false
+enabled = true
 url = "https://mcp.sentry.dev/mcp"
 
 [mcp_servers.spacelift]
 default_tools_approval_mode = "approve"
+enabled = false
 url = "https://br3ndonland.app.spacelift.io/mcp"
 
 [mcp_servers.spacelift.tools.intent]
@@ -178,15 +179,15 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/gmail
 [plugins."gmail@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-calendar
 [plugins."google-calendar@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-drive
 [plugins."google-drive@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
@@ -194,7 +195,7 @@ enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/slack
 [plugins."slack@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]
@@ -226,19 +227,19 @@ enabled = true
 enabled = false
 
 [plugins."chrome@openai-bundled"]
-enabled = false
+enabled = true
 
 [plugins."codex-app-tools@openai-bundled"]
 enabled = true
 
 [plugins."computer-history@openai-bundled"]
-enabled = false
+enabled = true
 
 [plugins."computer-use@openai-bundled"]
-enabled = false
+enabled = true
 
 [plugins."unified-computer-use@openai-bundled"]
-enabled = false
+enabled = true
 
 # project paths are parsed as plain strings, so absolute paths must be used.
 # https://github.com/openai/codex/blob/8159f05/codex-rs/core/src/config_loader/mod.rs#L594-L605

@@ -99,8 +99,8 @@
   },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": false,
-    "compound-engineering@compound-engineering-plugin": true,
-    "spacelift@spacelift": true
+    "compound-engineering@compound-engineering-plugin": false,
+    "spacelift@spacelift": false
   },
   "extraKnownMarketplaces": {
     "compound-engineering-plugin": {

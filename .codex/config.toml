@@ -111,15 +111,17 @@ approval_mode = "prompt"
 approval_mode = "prompt"
 
 [mcp_servers.grafana]
+command = "uvx"
+args = [
+  "mcp-grafana",
+  "--disable-write",
+]
+env_vars = [
+  "GRAFANA_SERVICE_ACCOUNT_TOKEN",
+  "GRAFANA_URL",
+]
 default_tools_approval_mode = "approve"
-enabled = false
-url = "https://mcp.grafana.com/mcp"
-
-[mcp_servers.grafana.env_http_headers]
-X-Grafana-URL = "GRAFANA_URL"
-
-[mcp_servers.grafana.http_headers]
-Accept = "application/json, text/event-stream"
+enabled = true
 
 [mcp_servers.openai_developer_docs]
 default_tools_approval_mode = "approve"
@@ -131,11 +133,12 @@ url = "https://mcp.opentofu.org/mcp"
 
 [mcp_servers.sentry]
 default_tools_approval_mode = "approve"
-enabled = false
+enabled = true
 url = "https://mcp.sentry.dev/mcp"
 
 [mcp_servers.spacelift]
 default_tools_approval_mode = "approve"
+enabled = false
 url = "https://br3ndonland.app.spacelift.io/mcp"
 
 [mcp_servers.spacelift.tools.intent]
@@ -162,15 +165,15 @@ enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/gmail
 [plugins."gmail@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-calendar
 [plugins."google-calendar@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/google-drive
 [plugins."google-drive@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
@@ -178,7 +181,7 @@ enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/slack
 [plugins."slack@openai-curated"]
-enabled = false
+enabled = true
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel
 [plugins."vercel@openai-curated"]

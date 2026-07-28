@@ -111,7 +111,7 @@ fi
 () {
   local \
     github_fgt=$(
-      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+      bw_cache read github_fgt password "GitHub FGT"
     )
   export \
     GITHUB_TOKEN="$github_fgt"

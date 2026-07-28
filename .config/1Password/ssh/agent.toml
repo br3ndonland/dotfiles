@@ -2,4 +2,7 @@
 # Test with: SSH_AUTH_SOCK=~/.1password/agent.sock ssh-add -l
 # https://developer.1password.com/docs/ssh/agent/config/
 [[ssh-keys]]
+vault = "AI"
+
+[[ssh-keys]]
 vault = "Private"

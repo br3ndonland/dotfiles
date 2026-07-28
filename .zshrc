@@ -107,6 +107,16 @@ fi
   fi
 }
 
+# function-dependent exports
+() {
+  local \
+    github_fgt=$(
+      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+    )
+  export \
+    GITHUB_TOKEN="$github_fgt"
+}
+
 # completions
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then

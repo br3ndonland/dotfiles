@@ -111,10 +111,14 @@ fi
 () {
   local \
     github_fgt=$(
-      op_cache read "github_fgt" "op://AI/GitHub FGT/token"
+      bw_cache read github_fgt password "GitHub FGT"
+    ) \
+    grafana_service_account_token=$(
+      bw_cache read grafana_service_account_token password "Grafana service account token"
     )
   export \
-    GITHUB_TOKEN="$github_fgt"
+    GITHUB_TOKEN="$github_fgt" \
+    GRAFANA_SERVICE_ACCOUNT_TOKEN="$grafana_service_account_token"
 }
 
 # completions

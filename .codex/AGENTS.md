@@ -50,6 +50,13 @@
 
 ### GitHub pull requests
 
+- Before creating a pull request, conduct an adversarial review (Codex <- -> Claude). If Codex is the primary coder, Claude reviews; if Claude is the primary coder, Codex reviews. For any other primary coder (Cursor, Gemini, Copilot, etc.), run at least one different-model reviewer (Claude or Codex). The requirement is a cross-model adversarial pass, not a specific pair. Run the cross-model reviewer against your diff **before opening the PR** and address, or explicitly waive with a reason, every finding. The review commands default to the `main` base branch; pass a different base branch as the second argument when needed:
+  ```sh
+  # If Codex is the primary coder, Claude reviews
+  adversarial_review claude
+  # If Claude is the primary coder, Codex reviews
+  adversarial_review codex
+  ```
 - Always open GitHub pull requests in draft mode.
 - Each time a new commit is pushed to a pull request branch, check the pull request title and description and update them if needed to match the current state of the pull request.
 - Format GitHub pull request titles and descriptions in the following style:

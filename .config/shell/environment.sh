@@ -61,6 +61,9 @@ dotfiles_path_prepend "$HOME/.lmstudio/bin"
 dotfiles_path_prepend "$HOME/.local/bin"
 dotfiles_path_prepend "$HOME/.cargo/bin"
 export ASTRO_TELEMETRY_DISABLED=1
+export CLOUDSDK_CORE_DEFAULT_FORMAT=json
+export CLOUDSDK_CORE_DISABLE_FILE_LOGGING=true
+export CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true
 export DISABLE_TELEMETRY=1
 export DO_NOT_TRACK=1
 export EDITOR="$dotfiles_editor"
@@ -72,6 +75,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_PREFIX
 export PATH
 export PIPX_BIN_DIR="$HOME/.local/bin"
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export VERCEL_TELEMETRY_DISABLED=1
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"

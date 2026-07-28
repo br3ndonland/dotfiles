@@ -22,6 +22,10 @@
       "type": "remote",
       "url": "https://developers.openai.com/mcp",
     },
+    "opentofu": {
+      "type": "remote",
+      "url": "https://mcp.opentofu.org/mcp",
+    },
   },
   "permission": {
     // https://opencode.ai/docs/permissions/
@@ -83,6 +87,7 @@
     "list": "allow",
     "lsp": "allow",
     "openai_developer_docs_*": "allow",
+    "opentofu_*": "allow",
     "read": {
       "*": "allow",
       "*.env": "deny",

@@ -49,6 +49,7 @@
       "mcp__github__sub_issue_write",
       "mcp__github__update_pull_request_branch",
       "mcp__github__update_pull_request",
+      "mcp__opentofu__*",
       "mcp__plugin_atlassian_atlassian__addCommentToJiraIssue",
       "mcp__plugin_atlassian_atlassian__addWorklogToJiraIssue",
       "mcp__plugin_atlassian_atlassian__atlassianUserInfo",

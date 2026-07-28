@@ -36,8 +36,8 @@ done
 ### Mitigate "Codex Computer Use is damaged" errors
 # https://github.com/openai/codex/issues/25719
 # https://github.com/openai/codex/issues/28184
-rm -rf ~/.codex/computer-use
-mkdir -p ~/.codex/computer-use && chflags uchg ~/.codex/computer-use
+# rm -rf ~/.codex/computer-use
+# mkdir -p ~/.codex/computer-use && chflags uchg ~/.codex/computer-use
 
 ### Set shell
 if [ "$STRAP_SUDO" -gt 0 ]; then

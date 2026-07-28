@@ -178,6 +178,7 @@ theme = "dracula"
 [desktop]
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
+composerEnterBehavior = "cmdAlways"
 conversationDetailMode = "STEPS_COMMANDS"
 defaultTerminalLocation = "right"
 dock-icon-preference = "app-default"

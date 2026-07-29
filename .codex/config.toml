@@ -95,6 +95,16 @@ url = "https://developers.openai.com/mcp"
 default_tools_approval_mode = "approve"
 url = "https://mcp.opentofu.org/mcp"
 
+[mcp_servers.spacelift]
+default_tools_approval_mode = "approve"
+url = "https://br3ndonland.app.spacelift.io/mcp"
+
+[mcp_servers.spacelift.tools.intent]
+approval_mode = "prompt"
+
+[mcp_servers.spacelift.tools.mutate]
+approval_mode = "prompt"
+
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]
 enabled = false

@@ -26,6 +26,10 @@
       "type": "remote",
       "url": "https://mcp.opentofu.org/mcp",
     },
+    "spacelift": {
+      "type": "remote",
+      "url": "https://br3ndonland.app.spacelift.io/mcp",
+    },
   },
   "permission": {
     // https://opencode.ai/docs/permissions/
@@ -96,6 +100,11 @@
       "example.env": "allow",
     },
     "skill": "allow",
+    "spacelift_discover": "allow",
+    "spacelift_intent": "ask",
+    "spacelift_mutate": "ask",
+    "spacelift_provider": "allow",
+    "spacelift_query": "allow",
     "task": "allow",
     "todoread": "allow",
     "todowrite": "allow",

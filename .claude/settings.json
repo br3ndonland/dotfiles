@@ -64,6 +64,9 @@
       "mcp__plugin_atlassian_atlassian__searchJiraIssuesUsingJql",
       "mcp__plugin_atlassian_atlassian__transitionJiraIssue",
       "mcp__plugin_atlassian_atlassian__updateConfluencePage",
+      "mcp__spacelift__discover",
+      "mcp__spacelift__query",
+      "mcp__spacelift__provider",
       "Read"
     ],
     "deny": [],
@@ -75,7 +78,9 @@
       "Bash(rm*)",
       "Bash(vercel * delete *)",
       "Bash(vercel remove *)",
-      "Bash(vercel rm *)"
+      "Bash(vercel rm *)",
+      "mcp__spacelift__intent",
+      "mcp__spacelift__mutate"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
@@ -93,13 +98,20 @@
   },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": true,
-    "compound-engineering@compound-engineering-plugin": true
+    "compound-engineering@compound-engineering-plugin": true,
+    "spacelift@spacelift": true
   },
   "extraKnownMarketplaces": {
     "compound-engineering-plugin": {
       "source": {
         "source": "github",
         "repo": "EveryInc/compound-engineering-plugin"
+      }
+    },
+    "spacelift": {
+      "source": {
+        "source": "github",
+        "repo": "spacelift-io/claude-plugins"
       }
     }
   },

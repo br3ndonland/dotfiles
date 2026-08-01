@@ -146,6 +146,9 @@ enabled = false
 [plugins."visualize@openai-bundled"]
 enabled = true
 
+[plugins."browser@openai-bundled"]
+enabled = true
+
 # project paths are parsed as plain strings, so absolute paths must be used.
 # https://github.com/openai/codex/blob/8159f05/codex-rs/core/src/config_loader/mod.rs#L594-L605
 # https://github.com/openai/codex/issues/11061

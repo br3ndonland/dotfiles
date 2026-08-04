@@ -42,7 +42,6 @@ cask "brave-browser"
 # cask "datagrip"
 # cask "docker"
 cask "font-recursive-code"
-# cask "google-chrome"
 # cask "inkscape"
 cask "karabiner-elements"
 # cask "keymapp", args: { appdir: "~/Applications", require_sha: false }

@@ -1,6 +1,7 @@
 cask_args appdir: "/Applications", require_sha: true
 
 brew "bash"
+# brew "bitwarden-cli"
 brew "coreutils"
 brew "curl"
 brew "findutils"
@@ -33,6 +34,7 @@ brew "zsh"
 
 cask "1password"
 cask "1password-cli"
+# cask "bitwarden"
 # cask "block-goose"
 cask "brave-browser"
 # cask "chatgpt"

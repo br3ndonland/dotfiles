@@ -7,6 +7,11 @@ service_tier = "fast"
 [analytics]
 enabled = false
 
+# Atlassian plugin
+# https://github.com/openai/plugins/tree/main/plugins/atlassian-rovo
+[apps.connector_692de805e3ec8191834719067174a384]
+default_tools_approval_mode = "approve"
+
 # GitHub plugin
 # https://github.com/openai/plugins/tree/main/plugins/github
 [apps.connector_76869538009648d5b282a4bb21c3d157]
@@ -27,6 +32,21 @@ approval_mode = "prompt"
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
 approval_mode = "prompt"
 
+# Datadog plugin
+# https://github.com/openai/plugins/tree/main/plugins/datadog
+[apps.asdk_app_69e8c7f174a08191a28b6da96c8062c4]
+default_tools_approval_mode = "approve"
+
+# Google Drive plugin
+# https://github.com/openai/plugins/tree/main/plugins/google-drive
+[apps.connector_5f3c8c41a1e54ad7a76272c89e2554fa]
+default_tools_approval_mode = "approve"
+
+# Notion plugin
+# https://github.com/openai/plugins/tree/main/plugins/notion
+[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]
+default_tools_approval_mode = "approve"
+
 # OpenAI ChatGPT/Codex sites plugin
 [apps.connector_20205bf7d4e99a89d7154bb849718324]
 default_tools_approval_mode = "prompt"
@@ -34,6 +54,11 @@ default_tools_approval_mode = "prompt"
 # OpenAI Developers plugin
 # https://github.com/openai/plugins/tree/main/plugins/openai-developers
 [apps.connector_2de447f3f15448ebab48783d7e4f5d81]
+default_tools_approval_mode = "approve"
+
+# Slack plugin
+# https://github.com/openai/plugins/tree/main/plugins/slack
+[apps.asdk_app_69a1d78e929881919bba0dbda1f6436d]
 default_tools_approval_mode = "approve"
 
 # Vercel plugin
@@ -105,16 +130,40 @@ approval_mode = "prompt"
 [mcp_servers.spacelift.tools.mutate]
 approval_mode = "prompt"
 
+# https://github.com/openai/plugins/tree/main/plugins/atlassian-rovo
+[plugins."atlassian-rovo@openai-curated"]
+enabled = false
+
 # https://github.com/openai/plugins/tree/main/plugins/cloudflare
 [plugins."cloudflare@openai-curated"]
+enabled = false
+
+# https://github.com/openai/plugins/tree/main/plugins/datadog
+[plugins."datadog@openai-curated"]
 enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/github
 [plugins."github@openai-curated"]
 enabled = true
 
+# https://github.com/openai/plugins/tree/main/plugins/gmail
+[plugins."gmail@openai-curated"]
+enabled = false
+
+# https://github.com/openai/plugins/tree/main/plugins/google-calendar
+[plugins."google-calendar@openai-curated"]
+enabled = false
+
+# https://github.com/openai/plugins/tree/main/plugins/google-drive
+[plugins."google-drive@openai-curated"]
+enabled = false
+
 # https://github.com/openai/plugins/tree/main/plugins/life-science-research
 [plugins."life-science-research@openai-curated"]
+enabled = false
+
+# https://github.com/openai/plugins/tree/main/plugins/slack
+[plugins."slack@openai-curated"]
 enabled = false
 
 # https://github.com/openai/plugins/tree/main/plugins/vercel

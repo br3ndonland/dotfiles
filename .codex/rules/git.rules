@@ -1,0 +1,121 @@
+# Codex Git rules
+#
+# https://developers.openai.com/codex/rules
+# https://github.com/bazelbuild/starlark/blob/master/spec.md
+# The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
+# Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
+
+# Without the following rule, Codex will prompt before creating new branches.
+# This is because `.git` is a protected path in writable roots.
+# This rule allows Codex to create branches while still maintaining a secure sandbox.
+prefix_rule(
+    pattern=[
+        "git",
+        [
+            "add",
+            "branch",
+            "checkout",
+            "cherry-pick",
+            "commit",
+            "diff",
+            "fetch",
+            "merge",
+            "mv",
+            "pull",
+            "push",
+            "rebase",
+            "restore",
+            "stash",
+            "status",
+            "switch",
+            "worktree",
+        ],
+    ],
+    decision="allow",
+    justification="Allow agents to create and checkout branches and worktrees",
+    match=[
+        "git add foo/bar/baz.txt",
+        "git checkout -b codex/new-feature",
+        "git commit -m \"Commit title\" -m \"Commit message body\"",
+        "git diff --cached -- src/styles/global.css",
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+        "git status --short --branch",
+        "git switch -c codex/new-feature",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        "git",
+        "branch",
+        [
+            "--delete",
+            "-d",
+        ],
+        "main",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from deleting the default branch",
+    match=[
+        "git branch --delete main",
+        "git branch -d main",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        "git",
+        "push",
+        [
+            "--delete",
+            "-d",
+        ],
+    ],
+    decision="forbidden",
+    justification="Forbid agents from deleting remote tracking branches",
+    match=[
+        "git push --delete upstream feature",
+        "git push -d origin main",
+    ],
+)
+
+# These rules complement the "Do not Git push to `main`" rule in `AGENTS.md`.
+prefix_rule(
+    pattern=[
+        "git",
+        "push",
+        "main",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from pushing to the default branch",
+    match=[
+        "git push main",
+    ],
+    not_match=[
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        "git",
+        "push",
+        [
+            "origin",
+            "upstream",
+        ],
+        "main",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from pushing to the default branch",
+    match=[
+        "git push origin main",
+        "git push upstream main",
+    ],
+    not_match=[
+        "git push codex/new-feature",
+        "git push origin codex/new-feature",
+    ],
+)

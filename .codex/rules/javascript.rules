@@ -1,0 +1,58 @@
+# Codex JavaScript package manager rules
+#
+# https://developers.openai.com/codex/rules
+# https://github.com/bazelbuild/starlark/blob/master/spec.md
+# The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
+# Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
+
+# These rules allow most JavaScript package manager commands except package publishing.
+prefix_rule(
+    pattern=[
+        [
+            "bun",
+            "bunx",
+            "pnpm",
+            "pnpx",
+            "pnx",
+        ],
+    ],
+    decision="allow",
+    justification="Allow agents to run most package manager commands",
+    match=[
+        "bun add",
+        "bun install",
+        "bun remove",
+        "bunx cowsay 'Hello world!'",
+        "pnpm -s dlx cowsay 'Hello world!'",
+        "pnpm dedupe",
+        "pnpm install",
+        "pnpm remove",
+        "pnpx codemod run pnpm-v10-to-v11",
+        "pnx cowsay 'Hello world!'",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "bun",
+            "pnpm",
+        ],
+        "publish",
+    ],
+    decision="forbidden",
+    justification="Forbid agents from publishing packages",
+    match=[
+        "bun publish",
+        "pnpm publish",
+    ],
+    not_match=[
+        "bun add",
+        "bun install",
+        "bun remove",
+        "bunx cowsay 'Hello world!'",
+        "pnpm dedupe",
+        "pnpm install",
+        "pnpm remove",
+    ],
+)

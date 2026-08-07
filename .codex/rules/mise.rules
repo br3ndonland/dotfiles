@@ -1,20 +1,24 @@
-# Codex default rules
+# Codex mise rules
 #
 # https://developers.openai.com/codex/rules
-# https://developers.openai.com/codex/agent-approvals-security
 # https://github.com/bazelbuild/starlark/blob/master/spec.md
 # The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
 # Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
 
-# This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
+# These rules allow mise-en-place commands.
+# https://mise.jdx.dev/
 prefix_rule(
     pattern=[
-        "trash",
+        "mise",
+        "run",
     ],
     decision="allow",
-    justification="Allow agents to move files to the trash as a safer alternative to rm",
+    justification="Allow agents to run mise tasks",
     match=[
-        "trash /tmp/dir",
-        "trash ~/code/file.txt",
+        "mise run check",
+        "mise run format",
+    ],
+    not_match=[
+        "mise self-update",
     ],
 )

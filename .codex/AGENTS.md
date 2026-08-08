@@ -15,6 +15,12 @@
 - When deleting files or directories, prefer `trash` as a safer default instead of `rm -rf`; use permanent deletion only with explicit user approval.
 - When working with temporary files, do not use `/private`. Use `/tmp` or the directory given by `$TMPDIR` instead.
 
+### Shell commands
+
+- Run commands directly when possible so approval rules can match the executable and its arguments.
+- Do not add explicit shell wrappers such as `/bin/zsh -lc`, `zsh -lc`, or equivalents unless the command specifically requires login-shell initialization.
+- When shell syntax is necessary, use the execution tool's existing shell instead of starting a nested shell.
+
 ### Git commits
 
 - Do not create Git commits on `main`; always work on a feature branch.

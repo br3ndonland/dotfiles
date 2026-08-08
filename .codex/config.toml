@@ -1,3 +1,4 @@
+allow_login_shell = false
 model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
 personality = "pragmatic"

@@ -13,6 +13,7 @@ prefix_rule(
             "pip",
             "pip3",
             "pipx",
+            "uv",
             "uvx",
         ],
     ],
@@ -24,6 +25,8 @@ prefix_rule(
         "pip freeze",
         "pipx run cowsay --text 'Hello world!'",
         "pipx install tox",
+        "uv add fastenv",
+        "uv sync",
         "uvx ruff check .",
         "uvx twine check dist/*",
     ],
@@ -31,17 +34,22 @@ prefix_rule(
 
 prefix_rule(
     pattern=[
-        "hatch",
+        [
+            "hatch",
+            "uv",
+        ],
         "publish",
     ],
     decision="forbidden",
     justification="Forbid agents from publishing Python packages",
     match=[
         "hatch publish",
+        "uv publish",
     ],
     not_match=[
         "hatch env lock",
         "hatch run test",
+        "uv sync",
     ],
 )
 

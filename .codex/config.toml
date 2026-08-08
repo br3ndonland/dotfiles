@@ -283,6 +283,7 @@ git-pr-instructions = """
 - When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back."""
 hotkey-window-projectless-default-enabled = true
 open-link-in-target-preference = "external-browser"
+selected-avatar-id = "hoots"
 
 [desktop.appearanceLightChromeTheme]
 accent = "#339cff"

@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2016 # Preserve GraphQL variable references.
+
+_gh_pr_threads_usage() {
+  printf '%s\n' \
+    'Manage the GitHub API operations used during pull request reviews.' \
+    '' \
+    'Usage:' \
+    '  gh_pr_threads list OWNER/REPO PR_NUMBER' \
+    '  gh_pr_threads reply THREAD_ID BODY' \
+    '  gh_pr_threads resolve THREAD_ID' \
+    '  gh_pr_threads request-copilot OWNER/REPO PR_NUMBER'
+}
+
+_gh_pr_threads_fail() {
+  printf 'gh_pr_threads: %s\n' "$1" >&2
+  return 2
+}
+
+_gh_pr_threads_require_gh() {
+  command -v gh >/dev/null 2>&1 || _gh_pr_threads_fail 'gh is not installed'
+}
+
+_gh_pr_threads_parse_pull_request() {
+  local repo=$1
+  local pull_number=$2
+
+  case "$repo" in
+  '' | /* | */ | */*/*)
+    _gh_pr_threads_fail 'repository must use OWNER/REPO format'
+    return 2
+    ;;
+  esac
+  case "$pull_number" in
+  '' | *[!0-9]*)
+    _gh_pr_threads_fail 'pull request number must be a positive integer'
+    return 2
+    ;;
+  esac
+  if ! [ "$pull_number" -ge 1 ] 2>/dev/null; then
+    _gh_pr_threads_fail 'pull request number must be a positive integer'
+    return 2
+  fi
+
+  _gh_pr_threads_owner=${repo%%/*}
+  _gh_pr_threads_name=${repo#*/}
+  _gh_pr_threads_pull_number=$pull_number
+}
+
+_gh_pr_threads_list() {
+  local query
+
+  if [ "$#" -ne 2 ]; then
+    _gh_pr_threads_fail 'list requires OWNER/REPO and PR_NUMBER'
+    return 2
+  fi
+  _gh_pr_threads_parse_pull_request "$1" "$2" || return $?
+
+  query='
+    query($owner: String!, $name: String!, $number: Int!, $endCursor: String) {
+      repository(owner: $owner, name: $name) {
+        pullRequest(number: $number) {
+          reviewThreads(first: 100, after: $endCursor) {
+            nodes {
+              id
+              isResolved
+              isOutdated
+              path
+              line
+              originalLine
+              diffSide
+              resolvedBy { login }
+              comments(first: 100) {
+                nodes {
+                  id
+                  databaseId
+                  author { login }
+                  body
+                  createdAt
+                  url
+                }
+              }
+            }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      }
+    }
+  '
+
+  gh api graphql \
+    --paginate \
+    -f query="$query" \
+    -f owner="$_gh_pr_threads_owner" \
+    -f name="$_gh_pr_threads_name" \
+    -F number="$_gh_pr_threads_pull_number" \
+    --jq '.data.repository.pullRequest.reviewThreads.nodes[]'
+}
+
+_gh_pr_threads_reply() {
+  local thread_id body query
+
+  if [ "$#" -ne 2 ]; then
+    _gh_pr_threads_fail 'reply requires THREAD_ID and BODY'
+    return 2
+  fi
+  thread_id=$1
+  body=$2
+  if [ -z "$thread_id" ]; then
+    _gh_pr_threads_fail 'thread ID must not be empty'
+    return 2
+  fi
+  if [ -z "$body" ]; then
+    _gh_pr_threads_fail 'reply body must not be empty'
+    return 2
+  fi
+
+  query='
+    mutation($threadId: ID!, $body: String!) {
+      addPullRequestReviewThreadReply(
+        input: {pullRequestReviewThreadId: $threadId, body: $body}
+      ) {
+        comment { id url }
+      }
+    }
+  '
+
+  gh api graphql \
+    -f query="$query" \
+    -f threadId="$thread_id" \
+    -f body="$body" \
+    --jq '.data.addPullRequestReviewThreadReply.comment'
+}
+
+_gh_pr_threads_resolve() {
+  local thread_id query
+
+  if [ "$#" -ne 1 ]; then
+    _gh_pr_threads_fail 'resolve requires THREAD_ID'
+    return 2
+  fi
+  thread_id=$1
+  if [ -z "$thread_id" ]; then
+    _gh_pr_threads_fail 'thread ID must not be empty'
+    return 2
+  fi
+
+  query='
+    mutation($threadId: ID!) {
+      resolveReviewThread(input: {threadId: $threadId}) {
+        thread { id isResolved }
+      }
+    }
+  '
+
+  gh api graphql \
+    -f query="$query" \
+    -f threadId="$thread_id" \
+    --jq '.data.resolveReviewThread.thread'
+}
+
+_gh_pr_threads_request_copilot() {
+  if [ "$#" -ne 2 ]; then
+    _gh_pr_threads_fail 'request-copilot requires OWNER/REPO and PR_NUMBER'
+    return 2
+  fi
+  _gh_pr_threads_parse_pull_request "$1" "$2" || return $?
+
+  gh api \
+    --method POST \
+    "repos/$_gh_pr_threads_owner/$_gh_pr_threads_name/pulls/$_gh_pr_threads_pull_number/requested_reviewers" \
+    -f 'reviewers[]=copilot-pull-request-reviewer[bot]' \
+    --jq '{html_url, requested_reviewers}'
+}
+
+_gh_pr_threads_main() {
+  local command
+
+  if [ "$#" -eq 0 ]; then
+    _gh_pr_threads_usage
+    return 2
+  fi
+
+  command=$1
+  shift
+  case "$command" in
+  list)
+    _gh_pr_threads_require_gh || return $?
+    _gh_pr_threads_list "$@"
+    ;;
+  reply)
+    _gh_pr_threads_require_gh || return $?
+    _gh_pr_threads_reply "$@"
+    ;;
+  resolve)
+    _gh_pr_threads_require_gh || return $?
+    _gh_pr_threads_resolve "$@"
+    ;;
+  request-copilot)
+    _gh_pr_threads_require_gh || return $?
+    _gh_pr_threads_request_copilot "$@"
+    ;;
+  help | -h | --help)
+    if [ "$#" -ne 0 ]; then
+      _gh_pr_threads_fail 'help does not accept arguments'
+      return 2
+    fi
+    _gh_pr_threads_usage
+    ;;
+  *)
+    _gh_pr_threads_fail "unknown command: $command"
+    return 2
+    ;;
+  esac
+}
+
+_gh_pr_threads_main "$@"
+_gh_pr_threads_status=$?
+# shellcheck disable=SC2317 # The exit fallback is for executable mode.
+return "$_gh_pr_threads_status" 2>/dev/null || exit "$_gh_pr_threads_status"

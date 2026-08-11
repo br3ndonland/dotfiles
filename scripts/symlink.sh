@@ -37,6 +37,12 @@ symlink_repo_dotfiles() {
       [ -f "$DOTFILE" ] && symlink_file "$DOTFILE" "$DOT_DIR" "$HOME"
     fi
   done
+  mkdir -p "$HOME/.local/bin"
+  # symlink gh_pr_threads script for non-interactive agent shells
+  symlink_file \
+    "$DOT_DIR/.config/shell/functions/gh_pr_threads" \
+    "$DOT_DIR/.config/shell/functions" \
+    "$HOME/.local/bin"
   ln -nsfF "$DOT_DIR/Brewfile" "$HOME/.Brewfile"
 }
 

@@ -258,3 +258,30 @@ prefix_rule(
         "gh workflow list",
     ],
 )
+
+# This rule allows use of the `gh_pr_threads` script for PR review operations.
+# The script offers more comprehensive support for PR reviews than `gh pr review`
+# but grants less privileges than allowing all `gh api` commands in general.
+prefix_rule(
+    pattern=[
+        "gh_pr_threads",
+        [
+            "list",
+            "reply",
+            "request-copilot",
+            "resolve",
+        ],
+    ],
+    decision="allow",
+    justification="Allow limited pull request review thread operations",
+    match=[
+        "gh_pr_threads list owner/repo 123",
+        "gh_pr_threads reply PRRT_id addressed",
+        "gh_pr_threads resolve PRRT_id",
+        "gh_pr_threads request-copilot owner/repo 123",
+    ],
+    not_match=[
+        "gh api graphql -f query=query",
+        "gh_pr_threads delete owner/repo 123",
+    ],
+)

@@ -226,6 +226,7 @@ writable_roots = [
   "~/.docker",
   "~/.local",
   "~/.npm",
+  "~/.prefect",
   "~/.ruff_cache",
   "~/code",
   "~/Library/Caches",

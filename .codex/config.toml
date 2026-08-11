@@ -233,7 +233,7 @@ writable_roots = [
 ]
 
 [shell_environment_policy]
-inherit = "core"
+inherit = "all"
 
 [tui]
 theme = "dracula"

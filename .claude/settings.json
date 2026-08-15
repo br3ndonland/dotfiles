@@ -116,5 +116,6 @@
     }
   },
   "effortLevel": "high",
+  "theme": "custom:dracula",
   "skipAutoPermissionPrompt": true
 }

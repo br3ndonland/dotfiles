@@ -73,6 +73,7 @@
     "ask": [
       "Bash(curl*)",
       "Bash(gh * delete *)",
+      "Bash(gh api *)",
       "Bash(gh pr close *)",
       "Bash(git push --tags)",
       "Bash(rm*)",

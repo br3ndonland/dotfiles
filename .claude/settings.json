@@ -97,7 +97,7 @@
     ]
   },
   "enabledPlugins": {
-    "atlassian@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": false,
     "compound-engineering@compound-engineering-plugin": true,
     "spacelift@spacelift": true
   },

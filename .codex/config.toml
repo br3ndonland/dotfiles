@@ -85,10 +85,7 @@ cwd = "."
 enabled = false
 
 [mcp_servers.context7]
-url = "https://mcp.context7.com/mcp"
-
-[mcp_servers.context7.env_http_headers]
-CONTEXT7_API_KEY = "CONTEXT7_API_KEY"
+url = "https://mcp.context7.com/mcp/oauth"
 
 [mcp_servers.github]
 bearer_token_env_var = "GITHUB_TOKEN"

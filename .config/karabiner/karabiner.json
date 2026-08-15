@@ -129,6 +129,23 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Application hotkeys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a kitty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Tarmak 1",
             "simple_modifications": [
                 {
@@ -151,6 +168,23 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Application hotkeys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a kitty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Tarmak 2",
             "simple_modifications": [
                 {
@@ -185,6 +219,23 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Application hotkeys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a kitty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Tarmak 3",
             "simple_modifications": [
                 {
@@ -231,6 +282,23 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Application hotkeys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a kitty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Tarmak 4",
             "simple_modifications": [
                 {
@@ -293,6 +361,23 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Application hotkeys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a kitty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Tarmak 5 (Colemak)",
             "simple_modifications": [
                 {

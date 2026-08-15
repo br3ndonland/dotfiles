@@ -113,6 +113,17 @@ approval_mode = "prompt"
 [mcp_servers.github.tools.unstar_repository]
 approval_mode = "prompt"
 
+[mcp_servers.grafana]
+default_tools_approval_mode = "approve"
+enabled = false
+url = "https://mcp.grafana.com/mcp"
+
+[mcp_servers.grafana.env_http_headers]
+X-Grafana-URL = "GRAFANA_URL"
+
+[mcp_servers.grafana.http_headers]
+Accept = "application/json, text/event-stream"
+
 [mcp_servers.openai_developer_docs]
 default_tools_approval_mode = "approve"
 url = "https://developers.openai.com/mcp"

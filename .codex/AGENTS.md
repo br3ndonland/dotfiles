@@ -21,6 +21,11 @@
 - Do not add explicit shell wrappers such as `/bin/zsh -lc`, `zsh -lc`, or equivalents unless the command specifically requires login-shell initialization.
 - When shell syntax is necessary, use the execution tool's existing shell instead of starting a nested shell.
 
+### Git worktrees
+
+- Codex-managed worktrees must use the default location `~/.codex/worktrees` and must not be created in `.worktrees`.
+- ChatGPT and Codex must use the ChatGPT desktop app Worktree or Handoff controls for task isolation.
+
 ### Git commits
 
 - Do not create Git commits on `main`; always work on a feature branch.

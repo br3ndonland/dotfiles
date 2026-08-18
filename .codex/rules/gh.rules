@@ -19,6 +19,7 @@ prefix_rule(
             "pr",
             "project",
             "search",
+            "stack",
             "status",
             "variable",
         ],

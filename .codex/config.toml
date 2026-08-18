@@ -236,6 +236,7 @@ exclude_tmpdir_env_var = false
 network_access = true
 writable_roots = [
   "~/.cache",
+  "~/.claude",
   "~/.docker",
   "~/.local",
   "~/.npm",

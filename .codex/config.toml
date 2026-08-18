@@ -237,12 +237,14 @@ network_access = true
 writable_roots = [
   "~/.bun",
   "~/.cache",
+  "~/.cargo",
   "~/.claude",
   "~/.docker",
   "~/.local",
   "~/.npm",
   "~/.prefect",
   "~/.ruff_cache",
+  "~/.rustup",
   "~/code",
   "~/Library/Caches",
 ]

@@ -235,6 +235,7 @@ exclude_slash_tmp = false
 exclude_tmpdir_env_var = false
 network_access = true
 writable_roots = [
+  "~/.bun",
   "~/.cache",
   "~/.claude",
   "~/.docker",

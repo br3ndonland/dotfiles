@@ -135,6 +135,16 @@ _bw_cache_prune_registry_keys() {
   rm -f "$_bw_cache_registry_tmp" >/dev/null 2>&1
 }
 
+_bw_cache_fetch() {
+  if [ "$subcommand" = "read" ]; then
+    bw get "$bw_object" "$bw_item"
+  else
+    bw get item "$bw_item" |
+      jq -er --arg field "$bw_field" \
+        'first(.fields[]? | select(.name == $field) | .value) // empty'
+  fi
+}
+
 case "$subcommand" in
 read | read-field)
   if [ "$#" -ne 3 ]; then
@@ -180,14 +190,12 @@ read | read-field)
     return 0
   fi
 
-  if [ "$subcommand" = "read" ]; then
-    fresh=$(bw get "$bw_object" "$bw_item")
-  else
-    fresh=$(
-      bw get item "$bw_item" |
-        jq -er --arg field "$bw_field" \
-          'first(.fields[]? | select(.name == $field) | .value) // empty'
-    )
+  fresh=$(_bw_cache_fetch 2>/dev/null)
+  if [ -z "$fresh" ]; then
+    # The local vault snapshot may predate the item. Refresh and retry once,
+    # letting bw report on the second attempt so real errors still surface.
+    bw sync >/dev/null 2>&1
+    fresh=$(_bw_cache_fetch)
   fi
   if [ -n "$fresh" ]; then
     store_return_code=1
@@ -216,6 +224,7 @@ read | read-field)
     return 0
   fi
 
+  printf '[ERROR] %s not found in Bitwarden (after sync)\n' "$bw_item" >&2
   return 1
   ;;
 clear)

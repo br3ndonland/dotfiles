@@ -333,3 +333,11 @@ code = "Rec Mono Duotone"
 diffAdded = "#50fa7b"
 diffRemoved = "#ff5555"
 skill = "#ff79c6"
+
+[[skills.config]]
+name = "github:gh-address-comments"
+enabled = false
+
+[[skills.config]]
+name = "github:gh-fix-ci"
+enabled = false

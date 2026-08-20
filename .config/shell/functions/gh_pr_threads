@@ -9,6 +9,7 @@ _gh_pr_threads_usage() {
     '  gh_pr_threads list OWNER/REPO PR_NUMBER' \
     '  gh_pr_threads reply THREAD_ID BODY' \
     '  gh_pr_threads resolve THREAD_ID' \
+    '  gh_pr_threads unresolve THREAD_ID' \
     '  gh_pr_threads request-copilot OWNER/REPO PR_NUMBER'
 }
 
@@ -159,6 +160,33 @@ _gh_pr_threads_resolve() {
     --jq '.data.resolveReviewThread.thread'
 }
 
+_gh_pr_threads_unresolve() {
+  local thread_id query
+
+  if [ "$#" -ne 1 ]; then
+    _gh_pr_threads_fail 'unresolve requires THREAD_ID'
+    return 2
+  fi
+  thread_id=$1
+  if [ -z "$thread_id" ]; then
+    _gh_pr_threads_fail 'thread ID must not be empty'
+    return 2
+  fi
+
+  query='
+    mutation($threadId: ID!) {
+      unresolveReviewThread(input: {threadId: $threadId}) {
+        thread { id isResolved }
+      }
+    }
+  '
+
+  gh api graphql \
+    -f query="$query" \
+    -f threadId="$thread_id" \
+    --jq '.data.unresolveReviewThread.thread'
+}
+
 _gh_pr_threads_request_copilot() {
   if [ "$#" -ne 2 ]; then
     _gh_pr_threads_fail 'request-copilot requires OWNER/REPO and PR_NUMBER'
@@ -195,6 +223,10 @@ _gh_pr_threads_main() {
   resolve)
     _gh_pr_threads_require_gh || return $?
     _gh_pr_threads_resolve "$@"
+    ;;
+  unresolve)
+    _gh_pr_threads_require_gh || return $?
+    _gh_pr_threads_unresolve "$@"
     ;;
   request-copilot)
     _gh_pr_threads_require_gh || return $?

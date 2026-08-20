@@ -5,12 +5,12 @@ symlink_dir_contents() {
   TARGET_DIR=$3/${1##"$2"/}
   ! [ -d "$TARGET_DIR" ] && mkdir -p "$TARGET_DIR"
   for FILE in "$1/"*; do
-    symlink_file "$FILE" "$2" "$3"
+    symlink_file "$FILE" "$TARGET_DIR"
   done
 }
 
 symlink_file() {
-  TARGET="$3/${1##"$2"/}"
+  TARGET="$2/${1##*/}"
   if [ -d "$TARGET" ] && ! [ -L "$TARGET" ]; then
     if command -v trash >/dev/null 2>&1; then
       trash "$TARGET"
@@ -34,7 +34,7 @@ symlink_repo_dotfiles() {
   for DOTFILE in "$DOT_DIR/."*; do
     if ! [[ ${IGNORES[*]} =~ $DOTFILE ]]; then
       [ -d "$DOTFILE" ] && symlink_dir_contents "$DOTFILE" "$DOT_DIR" "$HOME"
-      [ -f "$DOTFILE" ] && symlink_file "$DOTFILE" "$DOT_DIR" "$HOME"
+      [ -f "$DOTFILE" ] && symlink_file "$DOTFILE" "$HOME"
     fi
   done
   mkdir -p "$HOME/.local/bin"
@@ -42,7 +42,6 @@ symlink_repo_dotfiles() {
   for AGENT_SCRIPT in adversarial_review gh_pr_threads; do
     symlink_file \
       "$DOT_DIR/.config/shell/functions/$AGENT_SCRIPT" \
-      "$DOT_DIR/.config/shell/functions" \
       "$HOME/.local/bin"
   done
   ln -nsfF "$DOT_DIR/Brewfile" "$HOME/.Brewfile"

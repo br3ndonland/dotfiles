@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+
+_adversarial_review_usage() {
+  printf '%s\n' \
+    'Run a cross-model adversarial review of the current branch.' \
+    '' \
+    'Usage:' \
+    '  adversarial_review claude [BASE_BRANCH]' \
+    '  adversarial_review codex [BASE_BRANCH]'
+}
+
+_adversarial_review_fail() {
+  printf 'adversarial_review: %s\n' "$1" >&2
+  return 2
+}
+
+_adversarial_review_require_command() {
+  command -v "$1" >/dev/null 2>&1 ||
+    _adversarial_review_fail "$1 is not installed"
+}
+
+_adversarial_review_cleanup() {
+  local debug_file patch_file review_dir
+
+  patch_file=$1
+  debug_file=$2
+  review_dir=$3
+  [ -f "$patch_file" ] && unlink "$patch_file"
+  [ -f "$debug_file" ] && unlink "$debug_file"
+  [ -d "$review_dir" ] && rmdir "$review_dir"
+}
+
+_adversarial_review_validate_base_branch() {
+  git check-ref-format --branch "$1" >/dev/null 2>&1 || {
+    _adversarial_review_fail "invalid base branch: $1"
+    return 2
+  }
+}
+
+_adversarial_review_claude() {
+  local api_key base_branch command_status debug_file patch_file review_dir review_prompt
+
+  base_branch=$1
+  _adversarial_review_require_command claude || return $?
+  _adversarial_review_require_command git || return $?
+  _adversarial_review_require_command security || return $?
+  _adversarial_review_require_command timeout || return $?
+  _adversarial_review_validate_base_branch "$base_branch" || return $?
+
+  review_dir=$(mktemp -d /tmp/adversarial-review.XXXXXX) ||
+    return 1
+  patch_file=$review_dir/agent-review.patch
+  debug_file=$review_dir/claude-debug.log
+
+  git diff "origin/$base_branch...HEAD" >"$patch_file" || {
+    command_status=$?
+    _adversarial_review_cleanup "$patch_file" "$debug_file" "$review_dir"
+    return "$command_status"
+  }
+  printf -v review_prompt '%s\n' \
+    "Adversarially review $patch_file" \
+    'for correctness, security, and SOC 2 issues.' \
+    'Report findings as a concise list: file:line, severity, and the defect' \
+    'in one sentence. No preamble, no summary of the diff.'
+
+  # Pre-cache with: bw_cache read anthropic_api_key password "Anthropic API key"
+  api_key=$(security find-generic-password \
+    -a "$USER" \
+    -s codex/bitwarden/anthropic_api_key \
+    -w) || {
+    command_status=$?
+    _adversarial_review_cleanup "$patch_file" "$debug_file" "$review_dir"
+    return "$command_status"
+  }
+  [ -n "$api_key" ] || {
+    _adversarial_review_fail 'Anthropic API key is empty'
+    _adversarial_review_cleanup "$patch_file" "$debug_file" "$review_dir"
+    return 2
+  }
+
+  ANTHROPIC_API_KEY=$api_key timeout 900 claude -p "$review_prompt" \
+    --debug-file "$debug_file" \
+    --effort medium \
+    --model sonnet \
+    --output-format stream-json --verbose \
+    --permission-mode dontAsk \
+    --strict-mcp-config \
+    --tools "Read,Grep,Glob,Bash" \
+    --allowedTools "Read Grep Glob Bash(git *)" \
+    </dev/null
+  command_status=$?
+  if [ "$command_status" -eq 0 ]; then
+    _adversarial_review_cleanup "$patch_file" "$debug_file" "$review_dir"
+  else
+    printf 'adversarial_review: review artifacts retained in %s\n' \
+      "$review_dir" >&2
+  fi
+  return "$command_status"
+}
+
+_adversarial_review_codex() {
+  local base_branch
+
+  base_branch=$1
+  _adversarial_review_require_command codex || return $?
+  _adversarial_review_require_command git || return $?
+  _adversarial_review_validate_base_branch "$base_branch" || return $?
+  codex exec review --base "$base_branch"
+}
+
+_adversarial_review_main() {
+  local base_branch reviewer
+
+  if [ "$#" -eq 0 ]; then
+    _adversarial_review_usage
+    return 2
+  fi
+  if [ "$#" -gt 2 ]; then
+    _adversarial_review_fail 'expected REVIEWER and optional BASE_BRANCH'
+    return 2
+  fi
+
+  reviewer=$1
+  base_branch=${2:-main}
+  case "$reviewer" in
+  claude)
+    _adversarial_review_claude "$base_branch"
+    ;;
+  codex)
+    _adversarial_review_codex "$base_branch"
+    ;;
+  help | -h | --help)
+    if [ "$#" -ne 1 ]; then
+      _adversarial_review_fail 'help does not accept arguments'
+      return 2
+    fi
+    _adversarial_review_usage
+    ;;
+  *)
+    _adversarial_review_fail "unknown reviewer: $reviewer"
+    return 2
+    ;;
+  esac
+}
+
+_adversarial_review_main "$@"
+_adversarial_review_status=$?
+# shellcheck disable=SC2317 # The exit fallback is for executable mode.
+return "$_adversarial_review_status" 2>/dev/null ||
+  exit "$_adversarial_review_status"

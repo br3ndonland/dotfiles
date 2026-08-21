@@ -152,6 +152,7 @@ uv = "prefix:0.11"
 # vault = "prefix:2"
 yt-dlp = "latest"
 # non-registry tools from specific backends
+# "npm:agent-browser" = "latest"
 # "npm:@kilocode/cli" = "latest"
 "npm:pnpm" = "prefix:11"
 "npm:prettier" = "prefix:3"

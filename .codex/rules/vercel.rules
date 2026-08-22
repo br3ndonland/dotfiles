@@ -1,0 +1,2462 @@
+# Codex Vercel CLI rules
+#
+# https://learn.chatgpt.com/docs/agent-configuration/rules
+# https://vercel.com/docs/cli
+# https://github.com/bazelbuild/starlark/blob/master/spec.md
+# The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
+# Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
+#
+# Inventoried against Vercel CLI 58.9.4. Use explicit subcommands for command
+# groups whose default action is read-only so that future write subcommands do
+# not inherit an allow rule. Put global flags after the command path so prefix
+# rules can match them. Unmatched forms, including a bare `vercel` deployment,
+# retain Codex's default approval behavior.
+
+# These rules allow Vercel CLI help, version, and top-level read-only commands.
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "--help",
+            "--version",
+            "-h",
+            "-v",
+            "help",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel CLI help and version commands",
+    match=[
+        "vercel --version",
+        "vercel help deploy",
+        "vc -v",
+    ],
+    not_match=[
+        "vercel deploy",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "activity",
+            "alerts",
+            "contract",
+            "inspect",
+            "list",
+            "logs",
+            "ls",
+            "metrics",
+            "skills",
+            "usage",
+            "whoami",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel CLI read-only commands",
+    match=[
+        "vercel activity --limit 20",
+        "vercel inspect example.vercel.app",
+        "vercel list --status READY",
+        "vercel logs --level error --since 1h",
+        "vercel metrics schema",
+        "vc whoami",
+    ],
+    not_match=[
+        "vercel deploy",
+        "vercel remove example.vercel.app",
+    ],
+)
+
+# These rules allow read-only commands within Vercel CLI command groups.
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "agent-runs",
+        [
+            "inspect",
+            "list",
+            "projects",
+            "trace",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Agent Runs inspection commands",
+    match=[
+        "vercel agent-runs list",
+        "vercel agent-runs trace run_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "api-keys",
+        [
+            "inspect",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel AI Gateway API key inspection commands",
+    match=[
+        "vercel ai-gateway api-keys inspect key_123",
+        "vercel ai-gateway api-keys list",
+    ],
+    not_match=[
+        "vercel ai-gateway api-keys create",
+        "vercel ai-gateway api-keys remove key_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "budgets",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel AI Gateway budget listing",
+    match=[
+        "vercel ai-gateway budgets list",
+    ],
+    not_match=[
+        "vercel ai-gateway budgets set team",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "rules",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel AI Gateway routing rule listing",
+    match=[
+        "vercel ai-gateway rules list",
+    ],
+    not_match=[
+        "vercel ai-gateway rules add",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "models",
+        [
+            "endpoints",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel AI Gateway model inspection commands",
+    match=[
+        "vercel ai-gateway models endpoints openai/gpt-5",
+        "vercel ai-gateway models list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "leaderboard",
+        [
+            "apps",
+            "labs",
+            "models",
+            "providers",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel AI Gateway leaderboard commands",
+    match=[
+        "vercel ai-gateway leaderboard models",
+        "vercel ai-gateway leaderboard providers",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "alias",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel alias listing",
+    match=[
+        "vercel alias list",
+    ],
+    not_match=[
+        "vercel alias remove example.com",
+        "vercel alias set deployment.vercel.app example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "blob",
+        [
+            "get",
+            "get-store",
+            "list",
+            "list-stores",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Blob read and download commands",
+    match=[
+        "vercel blob get media/photo.jpg --access public",
+        "vercel blob list",
+        "vercel blob list-stores",
+    ],
+    not_match=[
+        "vercel blob del media/photo.jpg",
+        "vercel blob empty-store",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "certs",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel certificate listing",
+    match=[
+        "vercel certs list",
+    ],
+    not_match=[
+        "vercel certs remove cert_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "connect",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel connector listing",
+    match=[
+        "vercel connect list",
+    ],
+    not_match=[
+        "vercel connect remove slack/my-bot",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "cron",
+            "crons",
+        ],
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel cron job listing",
+    match=[
+        "vercel cron list",
+        "vc crons list",
+    ],
+    not_match=[
+        "vercel cron run /api/cron",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "deploy-hooks",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel deploy hook listing",
+    match=[
+        "vercel deploy-hooks list",
+    ],
+    not_match=[
+        "vercel deploy-hooks remove hook_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "dns",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel DNS record listing",
+    match=[
+        "vercel dns list example.com",
+    ],
+    not_match=[
+        "vercel dns remove rec_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "domains",
+        [
+            "check",
+            "inspect",
+            "list",
+            "price",
+            "search",
+            "verify",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel domain inspection commands",
+    match=[
+        "vercel domains inspect example.com",
+        "vercel domains list",
+        "vercel domains price example.com",
+    ],
+    not_match=[
+        "vercel domains buy example.com",
+        "vercel domains remove example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "env",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel environment variable listing",
+    match=[
+        "vercel env list production",
+    ],
+    not_match=[
+        "vercel env remove API_KEY production",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        [
+            "diff",
+            "overview",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Firewall inspection commands",
+    match=[
+        "vercel firewall diff",
+        "vercel firewall overview",
+    ],
+    not_match=[
+        "vercel firewall publish",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "ip-blocks",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel Firewall IP block listing",
+    match=[
+        "vercel firewall ip-blocks list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "rules",
+        [
+            "inspect",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Firewall rule inspection commands",
+    match=[
+        "vercel firewall rules inspect rule_123",
+        "vercel firewall rules list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "system-bypass",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel Firewall system bypass listing",
+    match=[
+        "vercel firewall system-bypass list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        [
+            "evaluations",
+            "inspect",
+            "list",
+            "versions",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel feature flag inspection commands",
+    match=[
+        "vercel flags evaluations checkout-flow",
+        "vercel flags inspect checkout-flow",
+        "vercel flags list",
+    ],
+    not_match=[
+        "vercel flags remove checkout-flow",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "rules",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel feature flag rule listing",
+    match=[
+        "vercel flags rules list checkout-flow",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "segments",
+        [
+            "inspect",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel feature flag segment inspection commands",
+    match=[
+        "vercel flags segments inspect beta-users",
+        "vercel flags segments list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "sdk-keys",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel feature flag SDK key listing",
+    match=[
+        "vercel flags sdk-keys list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "global-config",
+        [
+            "get",
+            "items",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Global Config inspection commands",
+    match=[
+        "vercel global-config get store_123",
+        "vercel global-config items store_123",
+        "vercel global-config list",
+    ],
+    not_match=[
+        "vercel global-config remove store_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "integration",
+        [
+            "balance",
+            "categories",
+            "discover",
+            "guide",
+            "installations",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Marketplace integration inspection commands",
+    match=[
+        "vercel integration categories",
+        "vercel integration discover postgres",
+        "vercel integration installations",
+    ],
+    not_match=[
+        "vercel integration add acme/postgres",
+        "vercel integration remove acme/postgres",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "integration-resource",
+            "ir",
+        ],
+        "inspect",
+    ],
+    decision="allow",
+    justification="Allow Vercel Marketplace resource inspection",
+    match=[
+        "vercel integration-resource inspect resource_123",
+        "vc ir inspect resource_123",
+    ],
+    not_match=[
+        "vercel integration-resource remove resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "integration",
+        "resource",
+        "inspect",
+    ],
+    decision="allow",
+    justification="Allow Vercel Marketplace resource inspection",
+    match=[
+        "vercel integration resource inspect resource_123",
+    ],
+    not_match=[
+        "vercel integration resource remove resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "microfrontends",
+        "inspect-group",
+    ],
+    decision="allow",
+    justification="Allow Vercel microfrontends group inspection",
+    match=[
+        "vercel microfrontends inspect-group",
+    ],
+    not_match=[
+        "vercel microfrontends delete-group",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "projects",
+        [
+            "access-groups",
+            "access-summary",
+            "inspect",
+            "list",
+            "members",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel project inspection commands",
+    match=[
+        "vercel projects inspect my-project",
+        "vercel projects list",
+        "vercel projects members my-project",
+    ],
+    not_match=[
+        "vercel projects remove my-project",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "redirects",
+        [
+            "list",
+            "list-versions",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel redirect inspection commands",
+    match=[
+        "vercel redirects list",
+        "vercel redirects list-versions",
+    ],
+    not_match=[
+        "vercel redirects remove /old-path",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "routes",
+        [
+            "inspect",
+            "list",
+            "list-versions",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel routing rule inspection commands",
+    match=[
+        "vercel routes inspect route_123",
+        "vercel routes list",
+        "vercel routes list-versions",
+    ],
+    not_match=[
+        "vercel routes delete route_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "rolling-release",
+            "rr",
+        ],
+        "fetch",
+    ],
+    decision="allow",
+    justification="Allow Vercel rolling release inspection",
+    match=[
+        "vercel rolling-release fetch",
+        "vc rr fetch",
+    ],
+    not_match=[
+        "vercel rolling-release abort",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        [
+            "list",
+            "ls",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Sandbox listing",
+    match=[
+        "vercel sandbox list",
+        "vc sandbox ls",
+    ],
+    not_match=[
+        "vercel sandbox remove sbx_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        "config",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel Sandbox configuration inspection",
+    match=[
+        "vercel sandbox config list sbx_123",
+    ],
+    not_match=[
+        "vercel sandbox config timeout sbx_123 10m",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        "sessions",
+        [
+            "list",
+            "ls",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Sandbox session listing",
+    match=[
+        "vercel sandbox sessions list sbx_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        "snapshots",
+        [
+            "get",
+            "list",
+            "ls",
+            "tree",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Sandbox snapshot inspection commands",
+    match=[
+        "vercel sandbox snapshots get snap_123",
+        "vercel sandbox snapshots list",
+    ],
+    not_match=[
+        "vercel sandbox snapshots delete snap_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "target",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel custom environment listing",
+    match=[
+        "vercel target list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "teams",
+        [
+            "list",
+            "members",
+            "request",
+            "sso",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel team inspection commands",
+    match=[
+        "vercel teams list",
+        "vercel teams members",
+        "vercel teams sso",
+    ],
+    not_match=[
+        "vercel teams invite user@example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "telemetry",
+        "status",
+    ],
+    decision="allow",
+    justification="Allow Vercel telemetry status inspection",
+    match=[
+        "vercel telemetry status",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "tokens",
+        "list",
+    ],
+    decision="allow",
+    justification="Allow Vercel authentication token listing",
+    match=[
+        "vercel tokens list",
+    ],
+    not_match=[
+        "vercel tokens remove token_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "traces",
+        "get",
+    ],
+    decision="allow",
+    justification="Allow Vercel trace retrieval",
+    match=[
+        "vercel traces get req_123",
+    ],
+    not_match=[
+        "vercel traces create /api/health",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        [
+            "inspect",
+            "ls",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Container Registry inspection commands",
+    match=[
+        "vercel vcr inspect my-repository",
+        "vercel vcr ls",
+    ],
+    not_match=[
+        "vercel vcr rm my-repository",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        [
+            "image",
+            "tag",
+        ],
+        [
+            "inspect",
+            "ls",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel Container Registry image and tag inspection commands",
+    match=[
+        "vercel vcr image inspect my-repository image_123",
+        "vercel vcr image ls my-repository",
+        "vercel vcr tag ls my-repository",
+    ],
+    not_match=[
+        "vercel vcr image rm my-repository image_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        "permissions",
+        "ls",
+    ],
+    decision="allow",
+    justification="Allow Vercel Container Registry permission listing",
+    match=[
+        "vercel vcr permissions ls my-repository",
+    ],
+    not_match=[
+        "vercel vcr permissions clear my-repository",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "webhooks",
+        [
+            "get",
+            "list",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel webhook inspection commands",
+    match=[
+        "vercel webhooks get webhook_123",
+        "vercel webhooks list",
+    ],
+    not_match=[
+        "vercel webhooks remove webhook_123",
+    ],
+)
+
+# These selected write commands support local development and configuration
+# downloads without creating a deployment or mutating production resources.
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "build",
+            "dev",
+            "pull",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel local development and project configuration pulls",
+    match=[
+        "vercel build",
+        "vercel dev --listen 127.0.0.1:3000",
+        "vercel pull --environment preview",
+    ],
+    not_match=[
+        "vercel deploy",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "env",
+        "pull",
+    ],
+    decision="allow",
+    justification="Allow Vercel environment variable downloads",
+    match=[
+        "vercel env pull .env.local",
+    ],
+    not_match=[
+        "vercel env remove API_KEY production",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "microfrontends",
+        "pull",
+    ],
+    decision="allow",
+    justification="Allow Vercel microfrontends configuration downloads",
+    match=[
+        "vercel microfrontends pull",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "routes",
+        "export",
+    ],
+    decision="allow",
+    justification="Allow Vercel routing rule exports",
+    match=[
+        "vercel routes export route_123",
+    ],
+    not_match=[
+        "vercel routes delete route_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "telemetry",
+        [
+            "disable",
+            "enable",
+        ],
+    ],
+    decision="allow",
+    justification="Allow Vercel CLI telemetry preference changes",
+    match=[
+        "vercel telemetry disable",
+        "vercel telemetry enable",
+    ],
+)
+
+# These rules forbid permanent, high-impact resource deletion. A human must run
+# these commands manually after confirming the target and recovery plan.
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "project",
+            "projects",
+        ],
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Delete Vercel projects manually after confirming the target, backups, and recovery plan",
+    match=[
+        "vercel project remove my-project",
+        "vercel projects rm my-project",
+        "vc projects delete my-project",
+    ],
+    not_match=[
+        "vercel projects inspect my-project",
+        "vercel projects update my-project",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "domains",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Remove Vercel domain ownership manually after confirming DNS and transfer state",
+    match=[
+        "vercel domains remove example.com",
+        "vc domains rm example.com",
+    ],
+    not_match=[
+        "vercel domains inspect example.com",
+        "vercel domains verify example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "blob",
+        [
+            "delete-store",
+            "empty-store",
+        ],
+    ],
+    decision="forbidden",
+    justification="Empty or delete Vercel Blob stores manually after confirming the store and backups",
+    match=[
+        "vercel blob delete-store store_123",
+        "vercel blob empty-store --store-id store_123",
+    ],
+    not_match=[
+        "vercel blob del media/photo.jpg",
+        "vercel blob list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "global-config",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Delete Vercel Global Config stores manually after confirming backups and consumers",
+    match=[
+        "vercel global-config remove feature-config",
+        "vc global-config rm feature-config",
+    ],
+    not_match=[
+        "vercel global-config get feature-config",
+        "vercel global-config update feature-config",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "integration-resource",
+            "ir",
+        ],
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Delete Marketplace integration resources manually after confirming provider data retention",
+    match=[
+        "vercel integration-resource remove resource_123",
+        "vc ir rm resource_123",
+    ],
+    not_match=[
+        "vercel integration-resource disconnect resource_123",
+        "vercel integration-resource inspect resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "integration",
+        "resource",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Delete Marketplace integration resources manually after confirming provider data retention",
+    match=[
+        "vercel integration resource remove resource_123",
+        "vc integration resource rm resource_123",
+    ],
+    not_match=[
+        "vercel integration resource disconnect resource_123",
+        "vercel integration resource inspect resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "microfrontends",
+        "delete-group",
+    ],
+    decision="forbidden",
+    justification="Delete microfrontends groups manually after confirming every member project and route",
+    match=[
+        "vercel microfrontends delete-group",
+    ],
+    not_match=[
+        "vercel microfrontends inspect-group",
+        "vercel microfrontends remove-from-group",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="forbidden",
+    justification="Delete Container Registry repositories manually after confirming retained images and consumers",
+    match=[
+        "vercel vcr delete my-repository",
+        "vercel vcr remove my-repository",
+        "vc vcr rm my-repository",
+    ],
+    not_match=[
+        "vercel vcr image rm my-repository image_123",
+        "vercel vcr inspect my-repository",
+    ],
+)
+
+# These rules prompt before deployments, arbitrary authenticated requests,
+# purchases, credential issuance, resource mutations, and destructive actions.
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "agent",
+            "api",
+            "bisect",
+            "buy",
+            "cache",
+            "curl",
+            "deploy",
+            "httpstat",
+            "init",
+            "link",
+            "login",
+            "logout",
+            "mcp",
+            "oauth-apps",
+            "open",
+            "promote",
+            "redeploy",
+            "rollback",
+            "switch",
+            "upgrade",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before Vercel deployments, setup, purchases, arbitrary requests, or account changes",
+    match=[
+        "vercel api /v10/projects -X POST -F name=my-project",
+        "vercel buy domain example.com",
+        "vercel curl /api/users -- --request POST",
+        "vercel deploy --prod",
+        "vercel rollback deployment_123",
+    ],
+    not_match=[
+        "vercel inspect deployment_123",
+        "vercel list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "i",
+            "install",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before installing Vercel Marketplace integrations",
+    match=[
+        "vercel install acme/postgres",
+        "vc i acme/postgres",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before removing Vercel deployments",
+    match=[
+        "vercel remove deployment_123",
+        "vc rm deployment_123",
+    ],
+    not_match=[
+        "vercel list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "api-keys",
+        [
+            "create",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before creating or removing Vercel AI Gateway API keys",
+    match=[
+        "vercel ai-gateway api-keys create",
+        "vercel ai-gateway api-keys remove key_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "budgets",
+        [
+            "defaults",
+            "delete",
+            "remove",
+            "rm",
+            "set",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel AI Gateway budgets",
+    match=[
+        "vercel ai-gateway budgets remove team",
+        "vercel ai-gateway budgets set team 100",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "rules",
+        [
+            "add",
+            "delete",
+            "edit",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel AI Gateway routing rules",
+    match=[
+        "vercel ai-gateway rules add",
+        "vercel ai-gateway rules remove rule_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "ai-gateway",
+        "coding-agents",
+        "setup",
+    ],
+    decision="prompt",
+    justification="Prompt before changing coding agent AI Gateway configuration",
+    match=[
+        "vercel ai-gateway coding-agents setup",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "alias",
+        [
+            "delete",
+            "remove",
+            "rm",
+            "set",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel aliases",
+    match=[
+        "vercel alias remove example.com",
+        "vercel alias set deployment.vercel.app example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "blob",
+        [
+            "copy",
+            "create-store",
+            "del",
+            "presign",
+            "put",
+            "signed-token",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Blob data or issuing Blob capabilities",
+    match=[
+        "vercel blob del media/photo.jpg",
+        "vercel blob put photo.jpg",
+        "vercel blob signed-token --operation delete",
+    ],
+    not_match=[
+        "vercel blob list",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "certs",
+        [
+            "add",
+            "delete",
+            "issue",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel certificates",
+    match=[
+        "vercel certs issue example.com",
+        "vercel certs remove cert_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "connect",
+        [
+            "attach",
+            "create",
+            "delete",
+            "detach",
+            "open",
+            "remove",
+            "revoke-tokens",
+            "rm",
+            "token",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel connectors or issuing connector tokens",
+    match=[
+        "vercel connect create slack",
+        "vercel connect remove slack/my-bot",
+        "vercel connect token slack/my-bot",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "cron",
+            "crons",
+        ],
+        [
+            "add",
+            "run",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing or triggering Vercel cron jobs",
+    match=[
+        "vercel cron add",
+        "vercel cron run /api/cron",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "deploy-hooks",
+        [
+            "create",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel deploy hooks",
+    match=[
+        "vercel deploy-hooks create preview",
+        "vercel deploy-hooks remove hook_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "dns",
+        [
+            "add",
+            "delete",
+            "import",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel DNS records",
+    match=[
+        "vercel dns add example.com www A 192.0.2.1",
+        "vercel dns remove rec_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "domains",
+        [
+            "add",
+            "buy",
+            "move",
+            "transfer-in",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before purchasing, transferring, or changing Vercel domains",
+    match=[
+        "vercel domains add example.com",
+        "vercel domains buy example.com",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "env",
+        [
+            "add",
+            "delete",
+            "remove",
+            "rm",
+            "run",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel environment variables or running arbitrary commands",
+    match=[
+        "vercel env add API_KEY production",
+        "vercel env remove API_KEY production",
+        "vercel env run -- npm test",
+    ],
+    not_match=[
+        "vercel env list production",
+        "vercel env pull .env.local",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        [
+            "discard",
+            "publish",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before publishing or discarding Vercel Firewall changes",
+    match=[
+        "vercel firewall discard",
+        "vercel firewall publish",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "ip-blocks",
+        [
+            "block",
+            "delete",
+            "remove",
+            "rm",
+            "unblock",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Firewall IP blocks",
+    match=[
+        "vercel firewall ip-blocks block 192.0.2.1",
+        "vercel firewall ip-blocks unblock 192.0.2.1",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "rules",
+        [
+            "add",
+            "delete",
+            "disable",
+            "edit",
+            "enable",
+            "remove",
+            "reorder",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Firewall rules",
+    match=[
+        "vercel firewall rules add rate-limit",
+        "vercel firewall rules remove rule_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        "system-bypass",
+        [
+            "add",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Firewall system bypasses",
+    match=[
+        "vercel firewall system-bypass add 192.0.2.1",
+        "vercel firewall system-bypass remove 192.0.2.1",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "firewall",
+        [
+            "attack-mode",
+            "system-mitigations",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Firewall protection modes",
+    match=[
+        "vercel firewall attack-mode disable",
+        "vercel firewall system-mitigations pause",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        [
+            "archive",
+            "create",
+            "delete",
+            "disable",
+            "enable",
+            "open",
+            "override",
+            "prepare",
+            "remove",
+            "rm",
+            "rollout",
+            "set",
+            "split",
+            "unarchive",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel feature flags or issuing override tokens",
+    match=[
+        "vercel flags create checkout-flow",
+        "vercel flags remove checkout-flow",
+        "vercel flags rollout checkout-flow",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "rules",
+        [
+            "add",
+            "delete",
+            "move",
+            "remove",
+            "rm",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel feature flag rules",
+    match=[
+        "vercel flags rules add checkout-flow",
+        "vercel flags rules remove checkout-flow rule_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "segments",
+        [
+            "create",
+            "delete",
+            "remove",
+            "rm",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel feature flag segments",
+    match=[
+        "vercel flags segments create beta-users",
+        "vercel flags segments remove beta-users",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "flags",
+        "sdk-keys",
+        [
+            "add",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel feature flag SDK keys",
+    match=[
+        "vercel flags sdk-keys add",
+        "vercel flags sdk-keys remove key_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "git",
+        [
+            "connect",
+            "disconnect",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing a Vercel project's Git connection",
+    match=[
+        "vercel git connect https://github.com/example/repo",
+        "vercel git disconnect",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "global-config",
+        [
+            "add",
+            "backups",
+            "tokens",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Global Config or issuing its tokens",
+    match=[
+        "vercel global-config add feature-config",
+        "vercel global-config tokens feature-config --add",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "integration",
+        [
+            "accept-terms",
+            "add",
+            "delete",
+            "open",
+            "remove",
+            "rm",
+            "update",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before installing, changing, or removing Vercel Marketplace integrations",
+    match=[
+        "vercel integration add acme/postgres",
+        "vercel integration remove acme/postgres",
+        "vercel integration update acme/postgres",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "integration-resource",
+            "ir",
+        ],
+        [
+            "claim",
+            "connect",
+            "create-threshold",
+            "disconnect",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Marketplace integration resources",
+    match=[
+        "vercel integration-resource connect resource_123",
+        "vc ir disconnect resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "integration",
+        "resource",
+        [
+            "claim",
+            "connect",
+            "create-threshold",
+            "disconnect",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Marketplace integration resources",
+    match=[
+        "vercel integration resource connect resource_123",
+        "vc integration resource disconnect resource_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "microfrontends",
+        [
+            "add-to-group",
+            "create-group",
+            "remove-from-group",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel microfrontends groups",
+    match=[
+        "vercel microfrontends create-group",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "projects",
+        [
+            "add",
+            "checks",
+            "protection",
+            "rename",
+            "speed-insights",
+            "token",
+            "update",
+            "web-analytics",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel projects or issuing project tokens",
+    match=[
+        "vercel projects add my-project",
+        "vercel projects token my-project",
+        "vercel projects update my-project",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "redirects",
+        [
+            "add",
+            "delete",
+            "promote",
+            "remove",
+            "restore",
+            "rm",
+            "upload",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel redirects",
+    match=[
+        "vercel redirects add /old /new",
+        "vercel redirects remove /old",
+        "vercel redirects restore version_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "routes",
+        [
+            "add",
+            "delete",
+            "disable",
+            "discard-staging",
+            "edit",
+            "enable",
+            "publish",
+            "remove",
+            "reorder",
+            "restore",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel routing rules",
+    match=[
+        "vercel routes add maintenance",
+        "vercel routes delete route_123",
+        "vercel routes publish",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        [
+            "rolling-release",
+            "rr",
+        ],
+        [
+            "abort",
+            "approve",
+            "complete",
+            "configure",
+            "start",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel rolling releases",
+    match=[
+        "vercel rolling-release abort",
+        "vercel rolling-release start",
+        "vc rr approve",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        [
+            "connect",
+            "copy",
+            "cp",
+            "create",
+            "exec",
+            "fork",
+            "login",
+            "logout",
+            "remove",
+            "rm",
+            "run",
+            "shell",
+            "snapshot",
+            "ssh",
+            "stop",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before creating, changing, executing in, or removing Vercel Sandboxes",
+    match=[
+        "vercel sandbox create",
+        "vercel sandbox exec sbx_123 -- npm test",
+        "vercel sandbox remove sbx_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        "config",
+        [
+            "current-snapshot",
+            "delete-evicted-snapshots",
+            "keep-last-snapshots",
+            "keep-last-snapshots-for",
+            "network-policy",
+            "persistent",
+            "ports",
+            "snapshot-expiration",
+            "tags",
+            "timeout",
+            "vcpus",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Sandbox configuration",
+    match=[
+        "vercel sandbox config network-policy sbx_123",
+        "vercel sandbox config timeout sbx_123 10m",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "sandbox",
+        "snapshots",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before deleting Vercel Sandbox snapshots",
+    match=[
+        "vercel sandbox snapshots delete snap_123",
+        "vercel sandbox snapshots rm snap_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "teams",
+        [
+            "add",
+            "invite",
+            "switch",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before creating, inviting to, or switching Vercel teams",
+    match=[
+        "vercel teams add my-team",
+        "vercel teams invite user@example.com",
+        "vercel teams switch my-team",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "tokens",
+        [
+            "add",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before creating or removing Vercel authentication tokens",
+    match=[
+        "vercel tokens add automation",
+        "vercel tokens remove token_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "traces",
+        "create",
+    ],
+    decision="prompt",
+    justification="Prompt before capturing Vercel traces",
+    match=[
+        "vercel traces create /api/health",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        [
+            "add",
+            "build",
+            "config",
+            "login",
+            "push",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Container Registry resources",
+    match=[
+        "vercel vcr add my-repository",
+        "vercel vcr push docker my-image",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        "image",
+        [
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before deleting Vercel Container Registry images",
+    match=[
+        "vercel vcr image rm my-repository image_123",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "vcr",
+        "permissions",
+        [
+            "add",
+            "clear",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel Container Registry permissions",
+    match=[
+        "vercel vcr permissions add my-repository my-team",
+        "vercel vcr permissions clear my-repository",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        [
+            "vercel",
+            "vc",
+        ],
+        "webhooks",
+        [
+            "create",
+            "delete",
+            "remove",
+            "rm",
+        ],
+    ],
+    decision="prompt",
+    justification="Prompt before changing Vercel webhooks",
+    match=[
+        "vercel webhooks create https://example.com/hook",
+        "vercel webhooks remove webhook_123",
+    ],
+)

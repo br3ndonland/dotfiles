@@ -160,7 +160,6 @@
                 }
             ],
             "name": "Tarmak 1",
-            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "e" },
@@ -214,6 +213,7 @@
                 }
             ],
             "name": "Tarmak 2",
+            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "e" },

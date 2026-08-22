@@ -18,3 +18,19 @@ prefix_rule(
         "trash ~/code/file.txt",
     ],
 )
+
+# This rule allows the adversarial review script used by `AGENTS.md`.
+prefix_rule(
+    pattern=[
+        "adversarial_review",
+    ],
+    decision="allow",
+    justification="Allow cross-model adversarial reviews before pull requests",
+    match=[
+        "adversarial_review claude develop",
+        "adversarial_review claude",
+        "adversarial_review codex develop",
+        "adversarial_review codex",
+        "adversarial_review",
+    ],
+)

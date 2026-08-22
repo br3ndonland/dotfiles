@@ -3,9 +3,10 @@
 USAGE="
 Cache Bitwarden secrets in the system keyring.
 
-Requires Bitwarden CLI (bw) for reads and jq for named custom fields. The vault
-must already be unlocked, for example by setting BW_SESSION. Uses macOS Keychain
-or libsecret (secret-tool) for caching. A registry of cached keys is stored in
+Requires Bitwarden CLI (bw) for reads and jq for named custom fields. On an
+interactive cache miss, a locked vault prompts for the master password. Other
+Bitwarden calls are non-interactive. Uses macOS Keychain or libsecret
+(secret-tool) for caching. A registry of cached keys is stored in
 \${XDG_CACHE_HOME:-\$HOME/.cache}/codex/bw_cache_keys.
 
 Usage: bw_cache COMMAND [ARGS]
@@ -137,12 +138,41 @@ _bw_cache_prune_registry_keys() {
 
 _bw_cache_fetch() {
   if [ "$subcommand" = "read" ]; then
-    bw get "$bw_object" "$bw_item"
+    bw --nointeraction get "$bw_object" "$bw_item"
   else
-    bw get item "$bw_item" |
+    bw --nointeraction get item "$bw_item" |
       jq -er --arg field "$bw_field" \
         'first(.fields[]? | select(.name == $field) | .value) // empty'
   fi
+}
+
+_bw_cache_vault_status() {
+  bw --nointeraction status 2>/dev/null |
+    sed -n 's/.*"status":[[:space:]]*"\([^"]*\)".*/\1/p'
+}
+
+_bw_cache_unlock_and_fetch() {
+  if [ ! -t 0 ]; then
+    printf '%s\n' \
+      '[ERROR] Bitwarden vault is locked; run:' \
+      "  export BW_SESSION=\"\$(bw unlock --raw)\"" >&2
+    return 1
+  fi
+
+  printf '[INFO] Bitwarden vault is locked; enter your master password to unlock it.\n' >&2
+  BW_SESSION=$(bw unlock --raw) || return $?
+  if [ -z "$BW_SESSION" ]; then
+    printf '[ERROR] Bitwarden did not return an unlock session\n' >&2
+    return 1
+  fi
+  export BW_SESSION
+
+  if _bw_cache_fetch 2>/dev/null; then
+    return 0
+  fi
+
+  bw --nointeraction sync >/dev/null 2>&1
+  _bw_cache_fetch
 }
 
 case "$subcommand" in
@@ -191,11 +221,26 @@ read | read-field)
   fi
 
   fresh=$(_bw_cache_fetch 2>/dev/null)
-  if [ -z "$fresh" ]; then
+  fetch_return_code=$?
+  if [ "$fetch_return_code" -ne 0 ] &&
+    [ "$(_bw_cache_vault_status)" = "locked" ]; then
+    fresh=$(_bw_cache_unlock_and_fetch)
+    fetch_return_code=$?
+    if [ "$fetch_return_code" -ne 0 ]; then
+      return "$fetch_return_code"
+    fi
+  elif [ -z "$fresh" ]; then
     # The local vault snapshot may predate the item. Refresh and retry once,
     # letting bw report on the second attempt so real errors still surface.
-    bw sync >/dev/null 2>&1
+    if ! bw --nointeraction sync >/dev/null 2>&1; then
+      _bw_cache_fetch >/dev/null
+      return 1
+    fi
     fresh=$(_bw_cache_fetch)
+    fetch_return_code=$?
+    if [ "$fetch_return_code" -ne 0 ]; then
+      return "$fetch_return_code"
+    fi
   fi
   if [ -n "$fresh" ]; then
     store_return_code=1

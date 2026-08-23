@@ -85,8 +85,20 @@
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
+      "/Users/brendon/.bun",
+      "/Users/brendon/.cache",
+      "/Users/brendon/.cargo",
+      "/Users/brendon/.claude",
+      "/Users/brendon/.docker",
+      "/Users/brendon/.local",
+      "/Users/brendon/.npm",
+      "/Users/brendon/.prefect",
+      "/Users/brendon/.ruff_cache",
+      "/Users/brendon/.rustup",
       "/Users/brendon/code",
-      "/Users/bsmith/code"
+      "/Users/brendon/Library/Caches",
+      "/Users/brendon/Library/pnpm",
+      "/Users/brendon/Library/Preferences/pnpm"
     ]
   },
   "model": "opus[1m]",

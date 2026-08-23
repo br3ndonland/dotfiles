@@ -250,6 +250,8 @@ writable_roots = [
   "~/.rustup",
   "~/code",
   "~/Library/Caches",
+  "~/Library/pnpm",
+  "~/Library/Preferences/pnpm",
 ]
 
 [shell_environment_policy]

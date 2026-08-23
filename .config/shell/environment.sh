@@ -72,7 +72,10 @@ export HOMEBREW_PREFIX
 export PATH
 export PIPX_BIN_DIR="$HOME/.local/bin"
 export VERCEL_TELEMETRY_DISABLED=1
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
 if [ -n "${HOMEBREW_PREFIX:-}" ]; then
   # curl
@@ -87,6 +90,8 @@ if [ -n "${HOMEBREW_PREFIX:-}" ]; then
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin"
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
   dotfiles_path_prepend "$HOMEBREW_PREFIX/opt/gsed/libexec/gnubin"
+  # pnpm
+  dotfiles_path_prepend "$PNPM_HOME/bin"
   # PostgreSQL
   export CPPFLAGS="${CPPFLAGS:+$CPPFLAGS }-I$HOMEBREW_PREFIX/opt/postgresql@18/include"
   export LDFLAGS="${LDFLAGS:+$LDFLAGS }-L$HOMEBREW_PREFIX/opt/postgresql@18/lib"

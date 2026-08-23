@@ -154,7 +154,7 @@ yt-dlp = "latest"
 # non-registry tools from specific backends
 # "npm:agent-browser" = "latest"
 # "npm:@kilocode/cli" = "latest"
-"npm:pnpm" = "prefix:11"
+"npm:pnpm" = { version = "prefix:11", minimum_release_age = "6h" }
 "npm:prettier" = "prefix:3"
 "npm:typescript" = "prefix:5"
 # "npm:vercel" = "latest"

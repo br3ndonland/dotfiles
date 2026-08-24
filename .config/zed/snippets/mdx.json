@@ -1,0 +1,22 @@
+{
+  "Markdown HTML anchor link": {
+    "prefix": "malink",
+    "body": "<a href=\"${1:https://example.com}\" rel=\"external\" target=\"_blank\">${2:text}</a>$0",
+    "description": "HTML anchor element for MDX files"
+  },
+  "Markdown HTML img": {
+    "prefix": "mimg",
+    "body": "<img src=\"$1\" alt=\"$2\" width=\"${3:75%}\" />$0",
+    "description": "HTML image tag for MDX files"
+  },
+  "Markdown HTML details": {
+    "prefix": "md",
+    "body": "<details><summary>${1:Summary}</summary>\n\n${2:Details}\n</details>\n$0",
+    "description": "HTML details element for MDX files"
+  },
+  "Prettier ignore": {
+    "prefix": "pi",
+    "body": "{/* prettier-ignore */}\n$0",
+    "description": "Ignore the next node when formatting with Prettier"
+  }
+}

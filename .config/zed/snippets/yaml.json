@@ -1,0 +1,7 @@
+{
+  "Prettier ignore": {
+    "prefix": "pi",
+    "body": "# prettier-ignore\n$0",
+    "description": "Ignore the next node when formatting with Prettier"
+  }
+}

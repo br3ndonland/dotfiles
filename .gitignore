@@ -41,3 +41,4 @@ log
 .codex/version*
 
 .config/opencode/skills
+.config/zed/prompts

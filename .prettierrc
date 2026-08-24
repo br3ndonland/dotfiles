@@ -12,7 +12,14 @@
     },
     {
       "excludeFiles": [".claude/settings.json"],
-      "files": ["keybindings.json", "settings.json"],
+      "files": [
+        ".config/zed/*.json",
+        ".config/zed/themes/*.json",
+        "*.code-snippets",
+        "keybindings.json",
+        "keymap.json",
+        "settings.json"
+      ],
       "options": {
         "parser": "jsonc"
       }

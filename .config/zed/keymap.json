@@ -1,0 +1,106 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-cmd-p": "command_palette::Toggle",
+      "cmd-k cmd-p": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-alt-cmd-enter": "editor::OpenUrl",
+      "ctrl-cmd-g": "editor::GoToDefinition",
+      "f12": null,
+      "ctrl-alt-cmd-g": "editor::FindAllReferences",
+      "shift-f12": null,
+      "cmd-l": "editor::SelectLine",
+    },
+  },
+  {
+    "context": "Editor && mode == full && extension == md",
+    "bindings": {
+      "ctrl-alt-a": [
+        "editor::InsertSnippet",
+        { "language": "markdown", "name": "Markdown HTML anchor link" },
+      ],
+      "ctrl-alt-d": [
+        "editor::InsertSnippet",
+        { "language": "markdown", "name": "Markdown HTML details" },
+      ],
+      "ctrl-alt-i": [
+        "editor::InsertSnippet",
+        { "language": "markdown", "name": "Markdown HTML img" },
+      ],
+      "shift-tab": "editor::Outdent",
+      "alt-cmd-b": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Editor && mode == full && extension == mdx",
+    "bindings": {
+      "ctrl-alt-a": [
+        "editor::InsertSnippet",
+        { "language": "mdx", "name": "Markdown HTML anchor link" },
+      ],
+      "ctrl-alt-d": [
+        "editor::InsertSnippet",
+        { "language": "mdx", "name": "Markdown HTML details" },
+      ],
+      "ctrl-alt-i": [
+        "editor::InsertSnippet",
+        { "language": "mdx", "name": "Markdown HTML img" },
+      ],
+      "ctrl-alt-p": [
+        "editor::InsertSnippet",
+        { "snippet": "{/* prettier-ignore */}\n$0" },
+      ],
+      "shift-tab": "editor::Outdent",
+      "alt-cmd-b": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Editor && mode == full && (extension == html || extension == md || extension == vue)",
+    "bindings": {
+      "ctrl-alt-p": [
+        "editor::InsertSnippet",
+        { "snippet": "<!-- prettier-ignore -->\n$0" },
+      ],
+    },
+  },
+  {
+    "context": "Editor && mode == full && extension == css",
+    "bindings": {
+      "ctrl-alt-p": [
+        "editor::InsertSnippet",
+        { "snippet": "/* prettier-ignore */\n$0" },
+      ],
+    },
+  },
+  {
+    "context": "Editor && mode == full && (extension == js || extension == jsx || extension == ts || extension == tsx || extension == json || extension == jsonc || extension == hujson)",
+    "bindings": {
+      "ctrl-alt-p": [
+        "editor::InsertSnippet",
+        { "snippet": "// prettier-ignore\n$0" },
+      ],
+    },
+  },
+  {
+    "context": "Editor && mode == full && (extension == yaml || extension == yml)",
+    "bindings": {
+      "ctrl-alt-p": [
+        "editor::InsertSnippet",
+        { "snippet": "# prettier-ignore\n$0" },
+      ],
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-cmd-left": "pane::ActivatePreviousItem",
+      "alt-cmd-right": "pane::ActivateNextItem",
+      "alt-delete": ["terminal::SendText", "\u001bd"],
+    },
+  },
+]

@@ -44,6 +44,8 @@
   "files.associations": {
     "{**/*.env,**/env}": "dotenv",
     "**/.config/shell/functions/*": "shellscript",
+    "**/.config/zed/*.json": "jsonc",
+    "**/.config/zed/themes/*.json": "jsonc",
     "**/*.hujson": "jsonc",
     "**/*.rego*": "rego",
   },

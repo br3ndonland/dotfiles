@@ -64,6 +64,7 @@ cask "protonvpn"
 # cask "visual-studio-code"
 cask "vlc"
 cask "vscodium"
+# cask "zed"
 # cask "zoom"
 cask "zotero"
 

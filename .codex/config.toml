@@ -258,7 +258,7 @@ writable_roots = [
 inherit = "all"
 
 [tui]
-theme = "dracula"
+theme = "dracula-custom"
 
 [tui.model_availability_nux]
 

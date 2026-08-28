@@ -10,11 +10,15 @@
 prefix_rule(
     pattern=[
         "mise",
-        "run",
+        [
+            "lock",
+            "run",
+        ],
     ],
     decision="allow",
-    justification="Allow agents to run mise tasks",
+    justification="Allow agents to run mise tasks and manage lockfiles",
     match=[
+        "mise lock python",
         "mise run check",
         "mise run format",
     ],

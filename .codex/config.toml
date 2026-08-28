@@ -311,7 +311,7 @@ selected-avatar-id = "hoots"
 
 [desktop.appearanceLightChromeTheme]
 accent = "#339cff"
-contrast = 50
+contrast = 85
 ink = "#0d0d0d"
 opaqueWindows = false
 surface = "#ffffff"
@@ -326,9 +326,9 @@ skill = "#924ff7"
 
 [desktop.appearanceDarkChromeTheme]
 accent = "#ff79c6"
-contrast = 50
+contrast = 85
 ink = "#f8f8f2"
-opaqueWindows = false
+opaqueWindows = true
 surface = "#282a36"
 
 [desktop.appearanceDarkChromeTheme.fonts]

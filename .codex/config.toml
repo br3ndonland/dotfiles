@@ -3,7 +3,7 @@ model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
-service_tier = "fast"
+service_tier = "priority"
 
 [analytics]
 enabled = false

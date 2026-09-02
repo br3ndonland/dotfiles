@@ -272,6 +272,7 @@ ambient-suggestions-enabled = true
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
 composerEnterBehavior = "cmdAlways"
+composerPlainTextMode = false
 conversationDetailMode = "STEPS_COMMANDS"
 defaultTerminalLocation = "right"
 dock-icon-preference = "app-default"
@@ -314,6 +315,7 @@ hotkey-window-projectless-default-enabled = true
 open-link-in-target-preference = "external-browser"
 preventSleepWhileRunning = true
 selected-avatar-id = "hoots"
+toys-confetti-enabled = true
 
 [desktop.appearanceLightChromeTheme]
 accent = "#339cff"
@@ -344,6 +346,9 @@ code = "Rec Mono Duotone"
 diffAdded = "#50fa7b"
 diffRemoved = "#ff5555"
 skill = "#ff79c6"
+
+[desktop.open-in-target-preferences]
+global = "systemDefault"
 
 [[skills.config]]
 name = "github:gh-address-comments"

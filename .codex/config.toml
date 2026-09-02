@@ -73,6 +73,7 @@ approval_mode = "prompt"
 [features]
 prevent_idle_sleep = true
 fast_mode = true
+memories = true
 
 [marketplaces.openai-bundled]
 
@@ -143,6 +144,10 @@ approval_mode = "prompt"
 
 [mcp_servers.spacelift.tools.mutate]
 approval_mode = "prompt"
+
+[memories]
+generate_memories = true
+use_memories = true
 
 # https://github.com/openai/plugins/tree/main/plugins/atlassian-rovo
 [plugins."atlassian-rovo@openai-curated"]

@@ -355,7 +355,6 @@
                 }
             ],
             "name": "Tarmak 4",
-            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "d" },
@@ -449,6 +448,7 @@
                 }
             ],
             "name": "Tarmak 5 (Colemak)",
+            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "d" },

@@ -78,6 +78,7 @@ enabled = false
 [features]
 prevent_idle_sleep = true
 fast_mode = true
+js_repl = false
 memories = true
 
 [marketplaces.openai-bundled]

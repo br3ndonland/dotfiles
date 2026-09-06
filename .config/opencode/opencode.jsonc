@@ -32,6 +32,8 @@
     // https://opencode.ai/docs/permissions/
     "bash": {
       "*": "ask",
+      // Allow all agent-browser CLI commands (https://agent-browser.dev/)
+      "agent-browser *": "allow",
       // Allow pre-specified read commands without prompting
       "git branch --show-current": "allow",
       "git diff": "allow",

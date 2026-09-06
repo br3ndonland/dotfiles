@@ -6,6 +6,29 @@
 # The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
 # Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
 
+# These rules allow common system commands.
+prefix_rule(
+    pattern=[
+        "find",
+    ],
+    decision="allow",
+    justification="Allow agents to find files",
+    match=[
+        "find . -type f -iname '*.md'",
+    ],
+)
+
+prefix_rule(
+    pattern=[
+        "kill",
+    ],
+    decision="allow",
+    justification="Allow agents to kill processes",
+    match=[
+        "kill 142",
+    ],
+)
+
 # This rule complements the suggestion in `AGENTS.md` of preferring `trash` over `rm`.
 prefix_rule(
     pattern=[

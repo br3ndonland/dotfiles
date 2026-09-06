@@ -330,6 +330,7 @@ open-link-in-target-preference = "external-browser"
 preventSleepWhileRunning = true
 selected-avatar-id = "hoots"
 toys-confetti-enabled = true
+worktree-upstream-refresh-mode = "best-effort"
 
 [desktop.appearanceLightChromeTheme]
 accent = "#339cff"

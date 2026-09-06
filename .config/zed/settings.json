@@ -53,6 +53,10 @@
       "type": "registry",
     },
   },
+  "edit_predictions": {
+    "allow_data_collection": "no",
+    "provider": "zed",
+  },
   // extensions
   "auto_install_extensions": {
     "astro": true,

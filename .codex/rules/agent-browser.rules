@@ -1,0 +1,22 @@
+# Codex agent-browser CLI rules
+#
+# https://developers.openai.com/codex/rules
+# https://github.com/bazelbuild/starlark/blob/master/spec.md
+# The Codex VSCode extension can provide syntax highlighting (language ID codex-rules).
+# Ruff can perform simple formatting. See scripts/ruff-rules.sh for commands.
+
+# This rule allows all agent-browser CLI commands.
+# https://agent-browser.dev/
+# https://github.com/vercel-labs/agent-browser
+prefix_rule(
+    pattern=[
+        "agent-browser",
+    ],
+    decision="allow",
+    justification="Allow all agent-browser CLI commands",
+    match=[
+        "agent-browser",
+        "agent-browser open https://example.com",
+        "agent-browser screenshot --full-page",
+    ],
+)

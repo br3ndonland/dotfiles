@@ -72,6 +72,9 @@ default_tools_approval_mode = "approve"
 [apps.connector_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_deploy_to_vercel]
 approval_mode = "prompt"
 
+[apps.connector_openai_codex_document_control]
+enabled = false
+
 [features]
 prevent_idle_sleep = true
 fast_mode = true
@@ -81,14 +84,12 @@ memories = true
 
 [marketplaces.openai-primary-runtime]
 
-[mcp_servers.computer-use]
-command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
-args = ["mcp"]
-cwd = "."
-enabled = false
-
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp/oauth"
+
+[mcp_servers.cua_repl]
+command = "/Applications/ChatGPT.app/Contents/MacOS/ChatGPT"
+enabled = false
 
 [mcp_servers.github]
 bearer_token_env_var = "GITHUB_TOKEN"
@@ -221,6 +222,12 @@ enabled = false
 
 [plugins."codex-app-tools@openai-bundled"]
 enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = false
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = false
 
 # project paths are parsed as plain strings, so absolute paths must be used.
 # https://github.com/openai/codex/blob/8159f05/codex-rs/core/src/config_loader/mod.rs#L594-L605

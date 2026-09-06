@@ -8,6 +8,7 @@ echo "-> Running strap-after-setup. Some steps may require password entry."
 if [ "${MACOS:-0}" -gt 0 ] || [ "$(uname)" = "Darwin" ]; then
   if [ "$STRAP_ADMIN" -gt 0 ]; then
     "$HOME"/.dotfiles/scripts/macos.sh
+    "$HOME"/.dotfiles/scripts/macos-shortcuts.sh
   else
     echo "Not admin. Skipping macos.sh. Set \$STRAP_ADMIN to run macos.sh."
   fi

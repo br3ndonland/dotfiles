@@ -148,7 +148,7 @@ shfmt = "prefix:3.14"
 # spacectl = "latest"
 terraform-docs = "latest"
 terragrunt = "latest"
-uv = "prefix:0.11"
+uv = "prefix:0.12"
 # vault = "prefix:2"
 yt-dlp = "latest"
 # non-registry tools from specific backends

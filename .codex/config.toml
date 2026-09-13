@@ -76,10 +76,10 @@ approval_mode = "prompt"
 enabled = false
 
 [features]
-prevent_idle_sleep = true
 fast_mode = true
 js_repl = false
 memories = true
+prevent_idle_sleep = true
 
 [marketplaces.openai-bundled]
 

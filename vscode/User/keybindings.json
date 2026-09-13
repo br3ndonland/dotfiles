@@ -140,4 +140,35 @@
     "command": "expandLineSelection",
     "when": "textInputFocus",
   },
+  // Prevent VSCode from co-opting cmd+escape (used as global hotkey for terminal)
+  {
+    "key": "ctrl+shift+escape",
+    "command": "quickInput.hide",
+    "when": "inQuickInput",
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-quickInput.hide",
+    "when": "inQuickInput",
+  },
+  {
+    "key": "ctrl+shift+escape",
+    "command": "workbench.action.chat.cancel",
+    "when": "chatSessionHasActiveRequest && !chatRemoteJobCreating",
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-workbench.action.chat.cancel",
+    "when": "chatSessionHasActiveRequest && !chatRemoteJobCreating",
+  },
+  {
+    "key": "ctrl+shift+escape",
+    "command": "workbench.action.hideComment",
+    "when": "commentWidgetVisible && editorFocus",
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-workbench.action.hideComment",
+    "when": "commentWidgetVisible && editorFocus",
+  },
 ]

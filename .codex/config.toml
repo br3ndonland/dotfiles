@@ -299,6 +299,7 @@ ambient-suggestions-enabled = true
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
 appshotSoundEnabled = false
+avatar-overlay-mascot-width-px = 80
 composerEnterBehavior = "cmdAlways"
 composerPlainTextMode = false
 conversationDetailMode = "STEPS_COMMANDS"

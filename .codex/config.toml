@@ -298,6 +298,7 @@ theme = "dracula-custom"
 ambient-suggestions-enabled = true
 appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
+appshotSoundEnabled = false
 composerEnterBehavior = "cmdAlways"
 composerPlainTextMode = false
 conversationDetailMode = "STEPS_COMMANDS"

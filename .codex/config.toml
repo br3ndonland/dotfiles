@@ -296,20 +296,18 @@ theme = "dracula-custom"
 
 [desktop]
 ambient-suggestions-enabled = true
-appearanceTheme = "dark"
 appearanceDarkCodeThemeId = "dracula"
+appearanceTheme = "dark"
 appshotSoundEnabled = false
 avatar-overlay-mascot-width-px = 80
+codeFontSize = 14
 composerEnterBehavior = "cmdAlways"
 composerPlainTextMode = false
 conversationDetailMode = "STEPS_COMMANDS"
 defaultTerminalLocation = "right"
 dock-icon-preference = "app-default"
-sansFontSize = 16
-codeFontSize = 14
 followUpQueueMode = "steer"
 git-branch-prefix = "br3ndonland/"
-git-create-pull-request-as-draft = true
 git-commit-instructions = """
 - Do not create Git commits on `main`; always work on a feature branch.
 - Do not Git push to `main`; always push to a feature branch.
@@ -331,6 +329,7 @@ git-commit-instructions = """
   - Do not hard wrap URLs. URLs can exceed 72 characters if needed.
   ```
 """
+git-create-pull-request-as-draft = true
 git-pr-instructions = """
 - Limit the PR title to around 50 characters so it fits into a squash commit title.
 - Include a concise PR description with these sections:
@@ -344,6 +343,7 @@ git-show-sidebar-pr-icons = true
 hotkey-window-projectless-default-enabled = true
 open-link-in-target-preference = "external-browser"
 preventSleepWhileRunning = true
+sansFontSize = 16
 selected-avatar-id = "hoots"
 toys-confetti-enabled = true
 worktree-upstream-refresh-mode = "best-effort"

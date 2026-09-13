@@ -76,6 +76,7 @@ approval_mode = "prompt"
 enabled = false
 
 [features]
+chronicle = false
 fast_mode = true
 js_repl = false
 memories = true
@@ -236,6 +237,9 @@ enabled = false
 
 [plugins."codex-app-tools@openai-bundled"]
 enabled = true
+
+[plugins."computer-history@openai-bundled"]
+enabled = false
 
 [plugins."computer-use@openai-bundled"]
 enabled = false

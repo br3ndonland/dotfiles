@@ -308,6 +308,7 @@ dock-icon-preference = "app-default"
 sansFontSize = 16
 codeFontSize = 14
 followUpQueueMode = "steer"
+git-branch-prefix = "br3ndonland/"
 git-create-pull-request-as-draft = true
 git-pull-request-merge-method = "squash"
 git-show-sidebar-pr-icons = true

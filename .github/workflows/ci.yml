@@ -129,6 +129,8 @@ jobs:
           # `brew doctor` does not work on Linux: https://github.com/Homebrew/brew/issues/20148
           brew doctor || echo "Potential problems detected. See output for details."
       - name: Check mise tools (installed via scripts/strap-after-setup)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           source <(mise activate bash --shims)
           mise_list=$(mise list)

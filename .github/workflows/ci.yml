@@ -39,7 +39,6 @@ jobs:
         os: [macos-26, ubuntu-latest]
     timeout-minutes: 100
     env:
-      MISE_JOBS: 1
       STRAP_CI: 1
       STRAP_DEBUG: 1
       STRAP_DOTFILES_BRANCH: ${{ github.ref }}

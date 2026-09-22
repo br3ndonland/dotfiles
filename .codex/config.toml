@@ -325,12 +325,34 @@ git-commit-instructions = """
 git-create-pull-request-as-draft = true
 git-pr-instructions = """
 - Limit the PR title to around 50 characters so it fits into a squash commit title.
+- Write for a reviewer who has not read the conversation. Describe the final proposal and keep detail proportional to the change. Omit the implementation diary and abandoned approaches unless they explain a relevant tradeoff.
+- Use plain, direct sentences. Minimize semicolons. Split sentences that join separate ideas or stack qualifications.
 - Include a concise PR description with these sections:
-  - `## Description`: background and context on why the PR is needed. Do not summarize code changes in this section; that will be done in the next section.
-  - `## Changes`: summarize changes using the imperative mood. Explain what will change and why. Unordered lists can be helpful here; preface the list in the imperative mood (e.g. "This PR will:"), then state each list item in the imperative mood (e.g. "Fix incorrect styling"). Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
+  - `## Description`: explain the current behavior, problem, and reason for the change. Default to one short paragraph. Keep the proposed solution, implementation details, and resulting behavior in `## Changes`.
+  - `## Changes`: explain the proposed approach in a short opening paragraph when useful, then summarize changes using imperative bullets prefaced with "This PR will:" (e.g. "Fix incorrect styling"). Group related changes by purpose and explain each change once. Add `Validation:` and `Notes:` within this section only when useful.
   - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
+- Summarize validation with the relevant checks, outcomes, and material gaps. Retain meaningful failures, skipped checks, and remaining verification. Summarize adversarial review outcomes without recounting each resolved finding. Include unresolved risks and waiver rationale when they affect the review decision. Place terminal output/log snippets in fenced code blocks inside HTML `<details><summary>...</summary> ... </details>` sections.
+- State qualifications as concrete facts, limitations, or required actions that affect review or rollout. Preserve material uncertainty and migration requirements. Omit vague disclaimers and lists of things the PR does not do. For example, write "Configure the production domain in Vercel before sharing the demo" when that action is required, rather than "These are supported address formats, not a claim that we have added these domains to our projects."
 - In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
-- When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back."""
+- When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back.
+- Use the user's edits to an existing description as a style reference for subsequent updates. Before publishing, check that `## Description` contains only motivation, each change appears once, and every qualification gives the reviewer useful information.
+
+Example of separating motivation from changes (section excerpt):
+
+```markdown
+## Description
+
+Each customer currently requires a separate Node.js project and app in the repo. Maintaining these copies duplicates work.
+
+## Changes
+
+This PR proposes one shared project with configurations for each customer.
+
+This PR will:
+
+- Move the Node.js project to the repository root.
+- Set customer configuration through `CUSTOMER_ID`.
+```"""
 git-pr-watch-auto-merge = false
 git-pr-watch-instructions = """
 For the pull request being watched, autonomously address existing and new review comments from humans and bots.

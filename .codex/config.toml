@@ -219,9 +219,6 @@ enabled = true
 [plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
-[plugins."sites@openai-bundled"]
-enabled = false
-
 [plugins."visualize@openai-bundled"]
 enabled = true
 

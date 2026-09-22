@@ -86,18 +86,8 @@ prevent_idle_sleep = true
 
 [marketplaces.openai-primary-runtime]
 
-[mcp_servers.computer-use]
-command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
-args = ["mcp"]
-cwd = "."
-enabled = false
-
 [mcp_servers.context7]
 url = "https://mcp.context7.com/mcp/oauth"
-
-[mcp_servers.cua_repl]
-command = "/Applications/ChatGPT.app/Contents/MacOS/ChatGPT"
-enabled = false
 
 [mcp_servers.github]
 bearer_token_env_var = "GITHUB_TOKEN"
@@ -159,6 +149,12 @@ approval_mode = "prompt"
 
 [mcp_servers.spacelift.tools.mutate]
 approval_mode = "prompt"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
 
 [memories]
 generate_memories = true

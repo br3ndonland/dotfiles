@@ -288,6 +288,7 @@ theme = "dracula-custom"
 [tui.model_availability_nux]
 
 [desktop]
+agent-usage-reset-enabled = true
 ambient-suggestions-enabled = true
 appearanceDarkCodeThemeId = "dracula"
 appearanceTheme = "dark"

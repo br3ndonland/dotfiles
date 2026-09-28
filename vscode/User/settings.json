@@ -163,6 +163,7 @@
   "grunt.autoDetect": "off",
   "gulp.autoDetect": "off",
   "json.schemaDownload.trustedDomains": {
+    "https://ampcode.com": true,
     "https://app.kilo.ai/config.json": true,
     "https://developer.microsoft.com/json-schemas/": true,
     "https://docs.renovatebot.com/renovate-schema.json": true,

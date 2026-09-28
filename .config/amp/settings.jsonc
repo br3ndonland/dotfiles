@@ -1,0 +1,7 @@
+{
+  "$schema": "https://ampcode.com/cli-settings.schema.json",
+  "amp.git.commit.ampThread.enabled": false,
+  "amp.git.commit.coauthor.enabled": false,
+  "amp.notifications.enabled": false,
+  "amp.skills.disableClaudeCodeSkills": true,
+}

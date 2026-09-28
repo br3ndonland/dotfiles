@@ -1,0 +1,5 @@
+[compat.claude]
+mcps = false
+
+[compat.cursor]
+mcps = false

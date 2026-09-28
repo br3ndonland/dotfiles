@@ -94,3 +94,7 @@ This PR will:
 ### Python packages
 
 - To install Python packages when there is no project virtual environment, never install them directly with `pip` (e.g. `pip install`, `pip install --user`, `python -m pip install`). Installing packages with `pip` outside of a virtual environment pollutes the system `site-packages` directory. Instead, `uv run --with` is the most ergonomic for throwaway Python scripts. `uvx` is the right choice when the package provides a CLI tool (e.g. `uvx basedpyright`). `pipx run` is a fallback if `uv` is unavailable; it also leaves no persistent state.
+
+### Presentation slides
+
+- When making slides, omit defensive caveats and generic status captions. Every sentence on a slide must explain its subject or support a specific decision. Do not add phrases such as "proposed architecture", "scope remains open", or "needs separate evidence" merely to qualify a diagram. Include an unresolved issue only when you can name the specific choice and explain how it affects the work. Put it in the relevant discussion or decisions slide. Before adding a qualification, identify the specific misunderstanding it prevents. If the slide makes no claim requiring that qualification, omit it.

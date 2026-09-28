@@ -1,5 +1,8 @@
 cask_args appdir: "/Applications", require_sha: true
 
+# tap "ampcode/tap"
+
+# brew "ampcode"
 brew "bash"
 # brew "bitwarden-cli"
 brew "coreutils"
@@ -34,6 +37,7 @@ brew "zsh"
 
 cask "1password"
 cask "1password-cli"
+# cask "amp-app"
 # cask "bitwarden"
 cask "brave-browser"
 # cask "chatgpt"

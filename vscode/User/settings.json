@@ -52,11 +52,8 @@
   "files.autoSave": "onWindowChange",
   "files.exclude": {
     "**/._*": true,
-    "**/.astro": true,
     "**/.coverage*": true,
     "**/.venv": true,
-    "**/*cache*": true,
-    "**/dist": true,
     "**/node_modules": true,
   },
   "files.insertFinalNewline": true,

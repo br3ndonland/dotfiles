@@ -59,6 +59,11 @@ default_tools_approval_mode = "prompt"
 [apps.connector_2de447f3f15448ebab48783d7e4f5d81]
 default_tools_approval_mode = "approve"
 
+# Prefect plugin
+# https://github.com/PrefectHQ/prefect-mcp-server
+[apps.asdk_app_6a5fe5e3471881919daf83971db15505]
+default_tools_approval_mode = "approve"
+
 # Slack plugin
 # https://github.com/openai/plugins/tree/main/plugins/slack
 [apps.asdk_app_69a1d78e929881919bba0dbda1f6436d]

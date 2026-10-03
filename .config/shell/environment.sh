@@ -65,6 +65,7 @@ export DO_NOT_TRACK=1
 export EDITOR="$dotfiles_editor"
 export GH_TELEMETRY=0
 export GIT_EDITOR="$dotfiles_editor"
+export GITHUB_FEATURES="mcp_apps_disable_form_deferral"
 export GITHUB_TOOLSETS="default,actions,dependabot,discussions,gists,git,github_support_docs_search,labels,security_advisories"
 export HATCH_ENV_TYPE_VIRTUAL_PATH=.venv
 export HOMEBREW_NO_ANALYTICS=1

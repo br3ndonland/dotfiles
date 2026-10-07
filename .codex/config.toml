@@ -234,6 +234,9 @@ enabled = false
 [plugins."chrome@openai-bundled"]
 enabled = false
 
+[plugins."code-review@openai-bundled"]
+enabled = true
+
 [plugins."codex-app-tools@openai-bundled"]
 enabled = true
 

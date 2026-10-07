@@ -86,7 +86,8 @@ This PR will:
 
 ### MCP servers
 
-- Always use the GitHub MCP server for accessing github.com URLs, GitHub repos, GitHub file content, etc. without me having to explicitly ask. Always use the `github_support_docs_search` toolset in the GitHub MCP server to search GitHub documentation. Always use the `git` toolset in the GitHub MCP server for low-level Git operations. Fall back to the GitHub CLI (`gh`) when available. Only use raw fetches if neither MCP nor `gh` can provide the needed content. Always ask before running raw fetches.
+- Use the GitHub plugin and MCP server for all GitHub operations, including reading code, inspecting checks, and creating or updating issues, pull requests, reviews, and comments. Do not use browser automation for GitHub, switch browser profiles, or initiate browser-based GitHub sign-in. If a required operation is unavailable through the plugin or MCP server, report the specific limitation and ask before using a browser. Do not silently fall back to browser automation. Local Git operations remain permitted within the task's authorized scope.
+- Fall back to the GitHub CLI (`gh`) when available. Only use raw fetches if neither MCP nor `gh` can provide the needed content. Always ask before running raw fetches.
 - When falling back to `gh` for pull request review threads, use `gh_pr_threads` for `list`, `reply`, `resolve`, and `request-copilot` operations instead of calling `gh api` directly.
 - Always use the OpenAI developer docs MCP server if you need to work with the OpenAI API, ChatGPT Apps SDK, Codex, etc. without me having to explicitly ask.
 - Always use the Context7 MCP server when you need to work with non-OpenAI or non-GitHub library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.

@@ -1,0 +1,25 @@
+name: dracula
+accent: "#9580FF"
+background: "#22212C"
+cursor: "#7970A9"
+details: darker
+foreground: "#F8F8F2"
+terminal_colors:
+  normal:
+    black: "#22212C"
+    red: "#FF9580"
+    green: "#8AFF80"
+    yellow: "#FFFF80"
+    blue: "#9580FF"
+    magenta: "#FF80BF"
+    cyan: "#80FFEA"
+    white: "#F8F8F2"
+  bright:
+    black: "#504C67"
+    red: "#FFAA99"
+    green: "#A2FF99"
+    yellow: "#FFFF99"
+    blue: "#AA99FF"
+    magenta: "#FF99CC"
+    cyan: "#99FFEE"
+    white: "#FFFFFF"

@@ -1,0 +1,166 @@
+[appearance]
+spacing = "normal"
+
+[appearance.text]
+enforce_minimum_contrast = "never"
+font_name = "Rec Mono Duotone"
+font_size = 14.0
+ligature_rendering_enabled = true
+line_height_ratio = 1.5
+notebook_font_size = 14.0
+
+[appearance.cursor]
+cursor_blink = "disabled"
+cursor_display_type = "bar"
+
+[appearance.themes]
+system_theme = false
+theme = { custom = { name = "dracula", path = "dracula.yaml" } }
+
+[appearance.vertical_tabs]
+enabled = true
+hide_title_bar_search_bar = true
+display_granularity = "panes"
+view_mode = "expanded"
+primary_info = "working_directory"
+compact_subtitle = "command"
+show_panel_in_restored_windows = true
+
+[appearance.icon]
+app_icon = "default"
+
+[appearance.input]
+input_mode = "pinned_to_bottom"
+
+[appearance.tabs]
+preserve_active_tab_color = false
+directory_tab_colors = {
+  "/Users/brendon" = "unassigned",
+  "/Users/brendon/.dotfiles" = { color = "blue" },
+  "/Users/brendon/code" = { color = "green" },
+}
+
+[privacy]
+crash_reporting_enabled = false
+telemetry_enabled = false
+custom_secret_regex_list = [
+  {
+    name = "AWS Access ID",
+    pattern = '\b(AKIA|A3T|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{12,}\b',
+  },
+  { name = "Slack App Token", pattern = '\bxapp-[0-9]+-[A-Za-z0-9_]+-[0-9]+-[a-f0-9]+\b' },
+  { name = "GitHub Classic Personal Access Token", pattern = '\bghp_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Fine-Grained Personal Access Token", pattern = '\bgithub_pat_[A-Za-z0-9_]{82}\b' },
+  { name = "GitHub OAuth Access Token", pattern = '\bgho_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub User-to-Server Token", pattern = '\bghu_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Server-to-Server Token", pattern = '\bghs_[A-Za-z0-9_]{36}\b' },
+  { name = "Stripe Key", pattern = '\b(?:r|s)k_(test|live)_[0-9a-zA-Z]{24}\b' },
+  { name = "JWT", pattern = '\b(ey[a-zA-z0-9_\-=]{10,}\.){2}[a-zA-z0-9_\-=]{10,}\b' },
+  { name = "OpenAI API Key", pattern = '\bsk-[a-zA-Z0-9]{48}\b' },
+  { name = "Anthropic API Key", pattern = '\bsk-ant-api\d{0,2}-[a-zA-Z0-9\-]{80,120}\b' },
+  { name = "Generic SK API Key", pattern = '\bsk-[a-zA-Z0-9\-]{10,100}\b' },
+  { name = "Warp API Key", pattern = '\bwk-[0-9]+\.[A-Fa-f0-9.\-]+\b' },
+  { name = "Google API Key", pattern = '\bAIza[0-9A-Za-z-_]{35}\b' },
+]
+
+[privacy.secret_redaction]
+enabled = true
+
+[agents]
+cloud_conversation_storage_enabled = false
+
+[agents.warp_agent]
+is_any_ai_enabled = false
+
+[agents.warp_agent.input]
+nld_in_terminal_enabled = false
+
+[agents.warp_agent.other]
+show_agent_notifications = true
+show_conversation_history = true
+usage_display_unit = "dollars"
+
+[agents.execution_profiles]
+[agents.execution_profiles.default]
+apply_code_diffs = "agent_decides"
+ask_user_question = "always_ask"
+autosync_plans_to_warp_drive = true
+command_allowlist = ["(?s)^.*$"]
+command_denylist = [
+  "(?s)^curl.*$",
+  "(?s)^gh .* delete .*$",
+  "(?s)^gh api .*$",
+  "(?s)^gh pr close .*$",
+  "^git push --tags$",
+  "(?s)^rm.*$",
+  "(?s)^vercel .* delete .*$",
+  "(?s)^vercel remove .*$",
+  "(?s)^vercel rm .*$",
+]
+computer_use = "never"
+directory_allowlist = []
+execute_commands = "agent_decides"
+mcp_allowlist = []
+mcp_denylist = []
+mcp_permissions = "agent_decides"
+name = "Default"
+read_files = "always_allow"
+run_agents = "always_ask"
+web_search_enabled = true
+write_to_pty = "always_ask"
+
+[agents.third_party]
+should_render_cli_agent_toolbar = true
+
+[agents.voice]
+voice_input_toggle_key = "fn"
+
+[session]
+new_session_shell_override = "system_default"
+
+[terminal]
+use_audible_bell = false
+[terminal.input]
+input_box_type_setting = "universal"
+honor_ps1 = false
+
+[account]
+is_settings_sync_enabled = true
+
+[general]
+default_session_mode = "terminal"
+login_item = true
+show_changelog_after_update = true
+show_warning_before_quitting = false
+
+[code]
+[code.editor]
+show_code_review_button = true
+show_global_search = true
+show_project_explorer = true
+
+[warp_drive]
+enabled = true
+
+[notifications]
+toast_duration_secs = 8
+
+[notifications.preferences]
+is_agent_task_completed_enabled = true
+is_long_running_enabled = true
+is_needs_attention_enabled = true
+is_password_prompt_enabled = true
+long_running_threshold = 30
+mode = "dismissed"
+play_notification_sound = true
+
+[global_hotkey]
+[global_hotkey.dedicated_window]
+enabled = false
+
+[global_hotkey.toggle_all_windows]
+enabled = true
+keybinding = "cmd-escape"
+
+[accessibility]
+accessibility_verbosity = "concise"

@@ -4,6 +4,9 @@
     "bindings": {
       "alt-cmd-p": "command_palette::Toggle",
       "cmd-k cmd-p": "agent::ToggleFocus",
+      // Open external terminal
+      "ctrl-`": null,
+      "ctrl-~": ["task::Spawn", { "task_name": "Open Warp" }],
     },
   },
   {

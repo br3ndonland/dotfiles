@@ -101,6 +101,19 @@
     "args": { "text": "\u001bd" },
     "when": "terminalFocus",
   },
+  // Open external terminal
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.terminal.openNativeConsole",
+  },
   // Go to definition
   {
     "key": "ctrl+cmd+g",

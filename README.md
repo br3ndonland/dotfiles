@@ -171,10 +171,28 @@ Shell configuration files contain the appropriate `mise activate` command to loa
 
 - Zsh is the default shell. Zsh is installed with Homebrew to maintain consistent versions across multiple machines, but [Zsh is also now the default shell for new macOS users starting with macOS Catalina](https://support.apple.com/en-us/HT208050), so it is available on any macOS system.
 - [Starship](https://starship.rs/) is the shell prompt.
-- [kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator, is used as the terminal application.
 - Shell configurations are interoperable between Bash and Zsh.
   - Shell environment setup is configured by [`environment.sh`](.config/shell/environment.sh). Interactive shell setup (loading Starship prompt and mise-en-place) is configured by [`interactive.sh`](.config/shell/interactive.sh). These files are then sourced into the appropriate startup files ([`.bash_profile`](.bash_profile), [`.bashrc`](.bashrc), [`.zprofile`](.zprofile), [`.zshrc`](.zshrc)). See the [Bash docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) and [Zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html) for more details on startup files.
   - [Autoloaded functions](https://zsh.sourceforge.io/Doc/Release/Functions.html) are stored in [`.config/shell/functions`](.config/shell/functions/).
+- [kitty](https://github.com/kovidgoyal/kitty), a GPU-based terminal emulator, is one configured terminal application.
+- [Warp](https://www.warp.dev/) is another configured terminal application. [Warp settings](https://docs.warp.dev/terminal/settings/) are confusing.
+  - Why are different directories used for [general settings](https://docs.warp.dev/terminal/settings/file-locations/) and [agent settings](https://docs.warp.dev/agents/cli/configuration/)?
+    - general
+      - Linux - "Portable user data" ("Files you'd want to copy to a new machine") (`${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal/`), "Non-portable config" ("Local-only configuration that doesn't make sense to roam," settings, keybindings) (`${XDG_CONFIG_HOME:-$HOME/.config}/warp-terminal/`)
+      - macOS - `~/.warp` (i.e., `~/.warp/themes/`)
+    - agents
+      - Linux - `~/.config/warp-terminal/cli/settings.toml` (respects `$XDG_CONFIG_HOME`)
+      - macOS - `~/.warp_cli/settings.toml`
+  - Why would agent configuration directories be ambiguously named `cli` (`~/.warp_cli`/`~/.config/warp-terminal/cli`)?
+  - Why would a non-Warp-specific directory be used for `AGENTS.md` (`~/.agents/AGENTS.md`) when this directory is not a standard location for `AGENTS.md` user instructions ([agentsmd/agents.md#91](https://github.com/agentsmd/agents.md/issues/91))?
+  - Why different directories on macOS and Linux? macOS can obviously also support `~/.config/warp-terminal`. Or how about just `~/.config/warp`? And then still, "In addition, a small set of cross-cutting files always live in your home directory on every platform - currently MCP server config and bundled skills." Just choose one config directory.
+  - Why would "non-portable" settings go in `$XDG_CONFIG_HOME` but "portable" settings go in `$XDG_DATA_HOME`? Seems like it would be the other way around.
+  - Why would settings and keybindings be considered "non-portable"? Those seem like the things that need to be _the most_ portable.
+  - Why is TOML used for settings but YAML used for keybindings?
+  - Warp sometimes doesn't recognize changes made to `settings.toml` directly, even if the app is quit and restarted (possibly because it is overridden by settings sync) and may overwrite direct TOML changes.
+  - Warp saves keybindings in an arbitrary non-alphabetical order.
+  - [Settings sync](https://docs.warp.dev/terminal/more-features/settings-sync/) omits important settings like keybindings and [custom themes](https://docs.warp.dev/terminal/appearance/custom-themes/).
+  - The [docs](https://docs.warp.dev/terminal/settings/file-locations/) say, "Other release channels do use a channel-suffixed directory - for example, `~/.warp-oss/` for OSS. These files sit in the home directory so they're easy to reference from shell config, version control, or other tools." There is no further mention of how to use the `~/.warp-oss/` directory. What is "warp-oss," how is it different from "Warp," and how can "warp-oss" be installed and used?
 
 ## Text editors
 

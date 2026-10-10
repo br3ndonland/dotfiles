@@ -35,3 +35,8 @@ if [[ -f "$shell_config_dir/interactive.sh" ]]; then
   # shellcheck source=.config/shell/interactive.sh
   source "$shell_config_dir/interactive.sh"
 fi
+
+# Auto-Warpify
+# shellcheck disable=SC2016
+[[ $TERM_PROGRAM == "WarpTerminal" ]] &&
+  printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash"}}\x9c'

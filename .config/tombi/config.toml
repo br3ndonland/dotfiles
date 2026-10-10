@@ -1,4 +1,7 @@
 # https://tombi-toml.github.io/tombi/docs/configuration
+[files]
+exclude = [".warp/settings.toml"]
+
 [lint.rules]
 dotted-keys-out-of-order = "error"
 key-empty = "error"

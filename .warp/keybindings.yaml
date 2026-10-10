@@ -1,0 +1,17 @@
+---
+"pane_group:navigate_prev": alt-cmd-up
+"pane_group:add_right": cmd-p
+"workspace:toggle_navigation_palette": alt-cmd-n
+"workspace:toggle_command_palette": shift-cmd-P
+"terminal:scroll_down_one_page": cmd-pagedown
+"workspace:activate_prev_tab": alt-cmd-left
+"pane_group:navigate_down": none
+"workspace:toggle_left_panel": alt-cmd-l
+"pane_group:navigate_left": none
+"pane_group:navigate_next": alt-cmd-down
+"workspace:activate_next_tab": alt-cmd-right
+"terminal:copy_outputs": ctrl-cmd-c
+"pane_group:navigate_right": none
+"terminal:scroll_up_one_page": cmd-pageup
+"pane_group:navigate_up": none
+"terminal:copy_commands": ctrl-alt-cmd-c

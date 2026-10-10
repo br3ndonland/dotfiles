@@ -1,0 +1,9 @@
+[
+  {
+    "label": "Open Warp",
+    "command": "open",
+    "args": ["-a", "Warp", "."],
+    "reveal": "never",
+    "hide": "on_success",
+  },
+]

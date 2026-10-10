@@ -73,7 +73,8 @@
   },
   "task.allowAutomaticTasks": "off",
   "telemetry.telemetryLevel": "off",
-  "terminal.external.osxExec": "Terminal.app",
+  "terminal.explorerKind": "external",
+  "terminal.external.osxExec": "Warp.app",
   "terminal.integrated.commandsToSkipShell": [
     "kilo-code.new.agentManagerOpen",
     "kilo-code.new.agentManager.showTerminal",

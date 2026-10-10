@@ -31,7 +31,6 @@ brew "tree"
 brew "vim"
 brew "wget"
 brew "ykman"
-brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "zsh"
 

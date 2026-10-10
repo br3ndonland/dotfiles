@@ -31,7 +31,7 @@
 
 - Do not create Git commits on `main`; always work on a feature branch.
 - Do not Git push to `main`; always push to a feature branch.
-- Format Git commit messages in the following style:
+- Apply the following message format only to commits created directly with `git commit`. For GitHub PR squash merges, use the squash merge instructions below.
 
   ```text
   Imperative commit title limited to 50 characters
@@ -41,48 +41,57 @@
   Begin by describing how the code works now and why a change is needed.
   The commit message body can be detailed. Full paragraphs are acceptable.
   Lines in commit message paragraphs should be limited to 72 characters.
+  Do not hard wrap URLs. URLs can exceed 72 characters if needed. URLs
+  longer than 72 characters in paragraphs should each be on a new line.
 
   Summarize changes by saying "This commit will" and using the imperative.
 
   - The end of the commit message should have a list of references.
   - Add an unordered list item for each URL.
-  - Do not hard wrap URLs. URLs can exceed 72 characters if needed.
   ```
 
 ### GitHub pull requests
 
 - Always open GitHub pull requests in draft mode.
+- Limit the PR title to around 50 characters so it fits into a squash commit title.
+- Write for a reviewer who has not read the conversation. Describe the final proposal and keep detail proportional to the change. Omit the implementation diary and abandoned approaches unless they explain a relevant tradeoff.
+- Use plain, direct sentences. Minimize semicolons. Split sentences that join separate ideas or stack qualifications.
+- Include a concise PR description with these sections:
+  - `## Description`: explain the current behavior, problem, and reason for the change. Default to one short paragraph. Keep the proposed solution, implementation details, and resulting behavior in `## Changes`.
+  - `## Changes`: explain the proposed approach in a short opening paragraph when useful, then summarize changes using imperative bullets prefaced with "This PR will:" (e.g. "Fix incorrect styling"). Group related changes by purpose and explain each change once. Add `Validation:` and `Notes:` within this section only when useful.
+  - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
+- Do not summarize validation or adversarial review outcomes unless directly requested.
+- State qualifications as concrete facts, limitations, or required actions that affect review or rollout. Omit vague disclaimers and lists of things the PR does not do. For example, write "Configure the production domain in Vercel before sharing the demo" when that action is required, rather than "These are supported address formats, not a claim that we have added these domains to our projects."
+- In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
 - Each time a new commit is pushed to a pull request branch, check the pull request title and description and update them if needed to match the current state of the pull request.
-- Format GitHub pull request titles and descriptions in the following style:
-  - Limit the PR title to around 50 characters so it fits into a squash commit title.
-  - Write for a reviewer who has not read the conversation. Describe the final proposal and keep detail proportional to the change. Omit the implementation diary and abandoned approaches unless they explain a relevant tradeoff.
-  - Use plain, direct sentences. Minimize semicolons. Split sentences that join separate ideas or stack qualifications.
-  - Include a concise PR description with these sections:
-    - `## Description`: explain the current behavior, problem, and reason for the change. Default to one short paragraph. Keep the proposed solution, implementation details, and resulting behavior in `## Changes`.
-    - `## Changes`: explain the proposed approach in a short opening paragraph when useful, then summarize changes using imperative bullets prefaced with "This PR will:" (e.g. "Fix incorrect styling"). Group related changes by purpose and explain each change once. Add `Validation:` and `Notes:` within this section only when useful.
-    - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
-  - Do not summarize validation or adversarial review outcomes unless directly requested.
-  - State qualifications as concrete facts, limitations, or required actions that affect review or rollout. Omit vague disclaimers and lists of things the PR does not do. For example, write "Configure the production domain in Vercel before sharing the demo" when that action is required, rather than "These are supported address formats, not a claim that we have added these domains to our projects."
-  - In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
-  - When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back.
-  - Use the user's edits to an existing description as a style reference for subsequent updates. Before publishing, check that `## Description` contains only motivation, each change appears once, and every qualification gives the reviewer useful information.
+- When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back.
+- Use the user's edits to an existing description as a style reference for subsequent updates.
+- Before publishing edits, check that `## Description` contains only motivation, each change appears once, and every qualification gives the reviewer useful information. Example of separating motivation from changes (section excerpt):
 
-Example of separating motivation from changes (section excerpt):
+  ```markdown
+  ## Description
 
-```markdown
-## Description
+  Each customer currently requires a separate Node.js project and app in the repo. Maintaining these copies duplicates work.
 
-Each customer currently requires a separate Node.js project and app in the repo. Maintaining these copies duplicates work.
+  ## Changes
 
-## Changes
+  This PR proposes one shared project with configurations for each customer.
 
-This PR proposes one shared project with configurations for each customer.
+  This PR will:
 
-This PR will:
+  - Move the Node.js project to the repository root.
+  - Set customer configuration through `CUSTOMER_ID`.
+  ```
 
-- Move the Node.js project to the repository root.
-- Set customer configuration through `CUSTOMER_ID`.
-```
+- When squash merging a pull request, these message rules take precedence over the direct Git commit message format:
+  - Fetch the current PR title, description, number, and commit messages immediately before merging.
+  - Use `<PR title> (#<PR number>)` as the squash commit title. Append the PR number exactly once. The 50-character limit applies to the PR title before this suffix.
+  - Use the complete current PR description as the squash commit body, preserving its wording and Markdown structure while adjusting prose paragraph line breaks as described below.
+  - Wrap lines in prose paragraphs at 72 characters. Preserve formatting in code blocks, tables, HTML blocks, and other Markdown structures.
+  - Do not hard wrap URLs. URLs can exceed 72 characters if needed. URLs longer than 72 characters in paragraphs should each be on a new line.
+  - Preserve existing Git trailers, such as `Co-authored-by`, from the PR description and commits being squashed. Collect them into one trailer block at the end of the squash commit body, separated from the body by a blank line.
+  - Preserve trailer names and values exactly. Deduplicate identical trailers, keep each trailer on one line, and exempt trailer lines from the 72-character wrapping limit.
+  - When using the GitHub merge tool, explicitly set `merge_method` to `squash`, `commit_title` to the title above, and `commit_message` to the squash commit body formatted according to these rules.
 
 ### MCP servers
 

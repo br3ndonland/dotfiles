@@ -108,12 +108,14 @@ fi
 }
 
 # completions
-if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
-  fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
+    fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
+  fi
+  zstyle :compinstall filename $HOME/.zshrc
+  autoload -Uz compinit
+  compinit
 fi
-zstyle :compinstall filename $HOME/.zshrc
-autoload -Uz compinit
-compinit
 
 # syntax highlighting
 if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then

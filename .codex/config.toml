@@ -381,6 +381,7 @@ git-show-sidebar-pr-icons = true
 hotkey-window-projectless-default-enabled = true
 open-link-in-target-preference = "external-browser"
 open-local-url-in-target-preference = "external-browser"
+pagesSmartPunctuationEnabled = false
 preventSleepWhileRunning = true
 sansFontSize = 16
 selected-avatar-id = "hoots"

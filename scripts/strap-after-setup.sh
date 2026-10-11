@@ -28,6 +28,13 @@ else
   echo "mise not on \$PATH. Skipping mise install."
 fi
 
+### Compile bat themes
+if type bat &>/dev/null; then
+  bat cache --build
+else
+  echo "bat not on \$PATH. Skipping bat theme install."
+fi
+
 ### Install VSCode extensions
 for i in {code,code-exploration,code-insiders,code-server,codium}; do
   "$HOME"/.dotfiles/scripts/vscode-extensions.sh "$i"

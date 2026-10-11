@@ -1,0 +1,8 @@
+# `bat` configuration file (https://github.com/sharkdp/bat)
+# Each line either contains a comment or a command-line option that you want to
+# pass to `bat` by default. Run `bat --help` for all available options.
+
+# Syntax highlighting theme.
+# Run `bat --list-themes` for a list of all available themes.
+# Run `bat cache --build` after changing custom themes.
+--theme="dracula"

@@ -101,7 +101,7 @@ Users with more complex needs for multi-environment dotfiles management might co
 ## macOS
 
 - macOS setup is automated with [`macos.sh`](scripts/macos.sh).
-- [Karabiner Elements](https://pqrs.org/osx/karabiner/) is used for keymapping.
+- [Karabiner Elements](https://pqrs.org/osx/karabiner/) was previously used for keymapping.
   - Settings are stored in [`.config/karabiner/karabiner.json`](.config/karabiner/karabiner.json). Note that Karabiner will auto-format the JSON with four spaces. To avoid changing the formatting with the [Prettier](https://prettier.io/) autoformatter, add `karabiner.json` to `.prettierignore`.
   - Simple modifications:
 

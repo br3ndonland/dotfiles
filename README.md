@@ -83,17 +83,10 @@ Users with more complex needs for multi-environment dotfiles management might co
 
 - Apple Silicon [Mac mini](https://www.apple.com/mac-mini/)
 - 5K@60 Hz monitor
-- Keyboards:
-  - [Microsoft Sculpt](https://www.amazon.com/dp/B00CYX26BC)
-  - [Kinesis mWave for Mac](https://kinesis-ergo.com/shop/mwave-mac/) with quiet linear switches (KB150M-LIN) and [blank keycaps](https://kinesis-ergo.com/shop/kc150b/)
-- [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
-- [Blue Yeti Blackout](https://www.amazon.com/dp/B00N1YPXW2) microphone
-- <details><summary><a href="https://www.fully.com/standing-desks/jarvis.html">Fully Jarvis standing desk</a></summary>
-
-  ![Fully Jarvis standing desk](https://user-images.githubusercontent.com/26674818/102920846-6b6cc280-4459-11eb-90c5-12e38abd16c1.jpeg)
-
-  </details>
-
+- Peripherals:
+  - [Kinesis mWave for Mac keyboard](https://kinesis-ergo.com/shop/mwave-mac/) with quiet linear switches (KB150M-LIN) and [blank keycaps](https://kinesis-ergo.com/shop/kc150b/)
+  - [MOJO silent bluetooth vertical mouse](https://www.amazon.com/dp/B00K05LPIQ)
+- [Fully](https://store.hermanmiller.com/brands-fully) Jarvis standing desk
 - <details><summary>When I first began standing work, I created a DIY standing desk in my kitchen cabinet.</summary>
 
   ![DIY standing desk](https://user-images.githubusercontent.com/26674818/102920844-6b6cc280-4459-11eb-9248-b16a7da7b5d0.jpg)

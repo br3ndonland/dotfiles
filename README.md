@@ -183,9 +183,10 @@ Shell configuration files contain the appropriate `mise activate` command to loa
   - Why would settings and keybindings be considered "non-portable"? Those seem like the things that need to be _the most_ portable.
   - Why is TOML used for settings but YAML used for keybindings?
   - Warp sometimes doesn't recognize changes made to `settings.toml` directly, even if the app is quit and restarted (possibly because it is overridden by settings sync) and may overwrite direct TOML changes.
-  - Warp saves keybindings in an arbitrary non-alphabetical order.
+  - Warp saves keybindings and settings in an arbitrary non-alphabetical order.
   - [Settings sync](https://docs.warp.dev/terminal/more-features/settings-sync/) omits important settings like keybindings and [custom themes](https://docs.warp.dev/terminal/appearance/custom-themes/).
   - The [docs](https://docs.warp.dev/terminal/settings/file-locations/) say, "Other release channels do use a channel-suffixed directory - for example, `~/.warp-oss/` for OSS. These files sit in the home directory so they're easy to reference from shell config, version control, or other tools." There is no further mention of how to use the `~/.warp-oss/` directory. What is "warp-oss," how is it different from "Warp," and how can "warp-oss" be installed and used?
+  - Warp has repeatedly broken Homebrew Cask installs ([warpdotdev/warp#16203](https://github.com/warpdotdev/warp/issues/16203))
 
 ## Text editors
 

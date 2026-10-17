@@ -55,7 +55,7 @@ cask "homebrew-app"
 # cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
 # cask "linear"
-# cask "lm-studio"
+# cask "lm-studio-bionic"
 cask "orbstack"
 # cask "postico"
 cask "proton-drive"

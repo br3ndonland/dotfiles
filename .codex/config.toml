@@ -15,6 +15,11 @@ enabled = false
 [apps.connector_692de805e3ec8191834719067174a384]
 default_tools_approval_mode = "approve"
 
+# Datadog plugin
+# https://github.com/openai/plugins/tree/main/plugins/datadog
+[apps.asdk_app_69e8c7f174a08191a28b6da96c8062c4]
+default_tools_approval_mode = "approve"
+
 # GitHub plugin
 # https://github.com/openai/plugins/tree/main/plugins/github
 [apps.connector_76869538009648d5b282a4bb21c3d157]
@@ -34,11 +39,6 @@ approval_mode = "prompt"
 
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
 approval_mode = "prompt"
-
-# Datadog plugin
-# https://github.com/openai/plugins/tree/main/plugins/datadog
-[apps.asdk_app_69e8c7f174a08191a28b6da96c8062c4]
-default_tools_approval_mode = "approve"
 
 # Google Drive plugin
 # https://github.com/openai/plugins/tree/main/plugins/google-drive

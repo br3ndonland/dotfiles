@@ -45,6 +45,11 @@ approval_mode = "prompt"
 [apps.connector_5f3c8c41a1e54ad7a76272c89e2554fa]
 default_tools_approval_mode = "approve"
 
+# Linear plugin
+# https://github.com/openai/plugins/tree/main/plugins/linear
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c]
+default_tools_approval_mode = "approve"
+
 # Notion plugin
 # https://github.com/openai/plugins/tree/main/plugins/notion
 [apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]

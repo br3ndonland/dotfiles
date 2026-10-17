@@ -118,6 +118,13 @@ voice_input_toggle_key = "fn"
 [session]
 new_session_shell_override = "system_default"
 
+[session.working_directory_config]
+advanced_mode = true
+global = { custom_dir = "~/code/github", mode = "custom_dir" }
+new_tab = { custom_dir = "~/code/github", mode = "custom_dir" }
+new_window = { custom_dir = "", mode = "home_dir" }
+split_pane = { custom_dir = "", mode = "previous_dir" }
+
 [terminal]
 use_audible_bell = false
 [terminal.input]

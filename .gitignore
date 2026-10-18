@@ -40,5 +40,6 @@ log
 .codex/vendor*
 .codex/version*
 
+.config/amp/settings.jsonc.amp-write-meta
 .config/opencode/skills
 .config/zed/prompts

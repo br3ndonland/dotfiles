@@ -29,8 +29,8 @@
 
 ### Git commits
 
-- Do not create Git commits on `main`; always work on a feature branch.
-- Do not Git push to `main`; always push to a feature branch.
+- Pushing commits to a feature branch is pre-authorized, including force-pushing after a rebase: push as soon as the commits are committed and validated, without asking for confirmation, and do not ask again for later pushes on the same branch. Use `--force-with-lease` rather than `--force`.
+- Unless project-specific authorization has been given, do not create Git commits on `main` or Git push to `main`; always work on a feature branch.
 - Apply the following message format only to commits created directly with `git commit`. For GitHub PR squash merges, use the squash merge instructions below.
 
   ```text

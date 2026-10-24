@@ -10,6 +10,7 @@ DOTFILES_SHELL_INTERACTIVE_LOADED=1
 if command -v bat >/dev/null 2>&1; then
   alias cat='bat --paging=never'
 fi
+alias bbi='brew bundle install --global'
 alias kc='kubectl'
 alias python='python3'
 alias tg='terragrunt'

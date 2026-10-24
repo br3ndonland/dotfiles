@@ -1,0 +1,18 @@
+# GitHub CLI config file (https://cli.github.com/manual/gh_config)
+# Supported environment variables: https://cli.github.com/manual/gh_help_environment
+version: 1
+accessible_colors: disabled
+accessible_prompter: disabled
+aliases:
+  co: pr checkout
+browser:
+clipboard: enabled
+color_labels: disabled
+editor:
+git_protocol: ssh
+http_unix_socket:
+pager:
+prefer_editor_prompt: disabled
+prompt: enabled
+spinner: enabled
+telemetry: disabled

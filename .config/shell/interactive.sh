@@ -12,6 +12,7 @@ if command -v bat >/dev/null 2>&1; then
 fi
 alias bbi='brew bundle install --global'
 alias kc='kubectl'
+alias mup='mise up'
 alias python='python3'
 alias tg='terragrunt'
 

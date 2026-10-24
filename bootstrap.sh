@@ -399,9 +399,19 @@ log_no_sudo "Checking out $strap_dotfiles_branch_name in $HOME/.dotfiles."
   git pull $Q --rebase --autostash
 )
 run_dotfile_scripts scripts/symlink.sh
-# The second call to `configure_git` is needed for CI use cases in which some
-# aspects of the `.gitconfig` cannot be used after cloning the dotfiles repo.
-configure_git
+if [ "$STRAP_CI" -gt 0 ]; then
+  # The second call to `configure_git` is needed for CI use cases in which some
+  # aspects of the `.gitconfig` cannot be used after cloning the dotfiles repo.
+  configure_git
+elif [ "$STRAP_CI" -eq 0 ]; then
+  # Change Git remote from $STRAP_DOTFILES_URL to SSH for future operations.
+  # HTTP credentials and ports will be skipped because they may not support SSH.
+  strap_dotfiles_http_url='^https?://([^/]*@)?(\[[^]]+\]|[^/:]+)(:[0-9]+)?/(.+)$'
+  if [[ $STRAP_DOTFILES_URL =~ $strap_dotfiles_http_url ]]; then
+    git -C "$HOME/.dotfiles" config --local remote.origin.url \
+      "git@${BASH_REMATCH[2]}:${BASH_REMATCH[4]}"
+  fi
+fi
 logk
 
 # shellcheck disable=SC2086

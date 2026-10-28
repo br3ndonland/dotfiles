@@ -114,7 +114,7 @@ node = [
   "24",
 ]
 python = [
-  "3.14",
+  { minimum_release_age = "6h", version = "3.14" },
 ]
 ruby = "3"
 rust = "latest"
@@ -144,7 +144,7 @@ shfmt = "prefix:3.14"
 # spacectl = "latest"
 terraform-docs = "latest"
 terragrunt = "latest"
-uv = "prefix:0.12"
+uv = { minimum_release_age = "6h", version = "prefix:0.13" }
 # vault = "prefix:2"
 yt-dlp = "latest"
 # non-registry tools from specific backends

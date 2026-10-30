@@ -36,13 +36,20 @@
   ```text
   Imperative commit title limited to 50 characters
 
-  Format commit messages as if they were Markdown.
+  Format commit messages as Markdown.
 
   Begin by describing how the code works now and why a change is needed.
   The commit message body can be detailed. Full paragraphs are acceptable.
-  Lines in commit message paragraphs should be limited to 72 characters.
-  Do not hard wrap URLs. URLs can exceed 72 characters if needed. URLs
-  longer than 72 characters in paragraphs should each be on a new line.
+
+  Reflow prose paragraphs and prose within list items to a maximum of 72
+  characters per line. For continuation lines in a list item, indent to align
+  with the text after the list marker. Preserve Markdown structure and do not
+  reflow code blocks, tables, HTML blocks, headings, or Git trailers.
+
+  Do not hard wrap URLs or Markdown links. A URL or Markdown link may exceed
+  72 characters. If a bare URL longer than 72 characters appears in prose,
+  place it on its own line. Reference-list items that contain only a URL or
+  Markdown link remain one line.
 
   Summarize changes by saying "This commit will" and using the imperative.
 

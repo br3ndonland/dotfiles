@@ -59,46 +59,8 @@
 
 ### GitHub pull requests
 
-- Always open GitHub pull requests in draft mode.
-- Limit the PR title to around 50 characters so it fits into a squash commit title.
-- Write for a reviewer who has not read the conversation. Describe the final proposal and keep detail proportional to the change. Omit the implementation diary and abandoned approaches unless they explain a relevant tradeoff.
-- Use plain, direct sentences. Minimize semicolons. Split sentences that join separate ideas or stack qualifications.
-- Include a concise PR description with these sections:
-  - `## Description`: explain the current behavior, problem, and reason for the change. Default to one short paragraph. Keep the proposed solution, implementation details, and resulting behavior in `## Changes`.
-  - `## Changes`: explain the proposed approach in a short opening paragraph when useful, then summarize changes using imperative bullets prefaced with "This PR will:" (e.g. "Fix incorrect styling"). Group related changes by purpose and explain each change once. Add `Validation:` and `Notes:` within this section only when useful.
-  - `## Related`: unordered list of links to related resources. Do not link the PR to itself.
-- Do not summarize validation or adversarial review outcomes unless directly requested.
-- State qualifications as concrete facts, limitations, or required actions that affect review or rollout. Omit vague disclaimers and lists of things the PR does not do. For example, write "Configure the production domain in Vercel before sharing the demo" when that action is required, rather than "These are supported address formats, not a claim that we have added these domains to our projects."
-- In the PR description, GitHub autolinked references should be used to refer to issues, PRs, commits, GitHub security advisories, and other supported links. GitHub permanent links to code snippets (permalinks) should be used when referencing code in the same repository as the PR. Permalinks should be on separate lines so they render properly. Non-GitHub URLs should be formatted as Markdown links with descriptive titles (no bare URLs).
-- Each time a new commit is pushed to a pull request branch, check the pull request title and description and update them if needed to match the current state of the pull request.
-- When updating a PR description (or issue body), fetch the current body first and merge changes into it rather than replacing the whole thing. Reviewers and integrations edit PR bodies out of band, and a full-replace `gh pr edit --body` silently overwrites those edits. Treat `gh pr edit --body` like an in-place rewrite: read the existing body, apply targeted changes (preserving reference-style links, footer metadata, and any prose you didn't author), then write back.
-- Use the user's edits to an existing description as a style reference for subsequent updates.
-- Before publishing edits, check that `## Description` contains only motivation, each change appears once, and every qualification gives the reviewer useful information. Example of separating motivation from changes (section excerpt):
-
-  ```markdown
-  ## Description
-
-  Each customer currently requires a separate Node.js project and app in the repo. Maintaining these copies duplicates work.
-
-  ## Changes
-
-  This PR proposes one shared project with configurations for each customer.
-
-  This PR will:
-
-  - Move the Node.js project to the repository root.
-  - Set customer configuration through `CUSTOMER_ID`.
-  ```
-
-- When squash merging a pull request, these message rules take precedence over the direct Git commit message format:
-  - Fetch the current PR title, description, number, and commit messages immediately before merging.
-  - Use `<PR title> (#<PR number>)` as the squash commit title. Append the PR number exactly once. The 50-character limit applies to the PR title before this suffix.
-  - Use the complete current PR description as the squash commit body, preserving its wording and Markdown structure while adjusting prose paragraph line breaks as described below.
-  - Wrap lines in prose paragraphs at 72 characters. Preserve formatting in code blocks, tables, HTML blocks, and other Markdown structures.
-  - Do not hard wrap URLs. URLs can exceed 72 characters if needed. URLs longer than 72 characters in paragraphs should each be on a new line.
-  - Preserve existing Git trailers, such as `Co-authored-by`, from the PR description and commits being squashed. Collect them into one trailer block at the end of the squash commit body, separated from the body by a blank line.
-  - Preserve trailer names and values exactly. Deduplicate identical trailers, keep each trailer on one line, and exempt trailer lines from the 72-character wrapping limit.
-  - When using the GitHub merge tool, explicitly set `merge_method` to `squash`, `commit_title` to the title above, and `commit_message` to the squash commit body formatted according to these rules.
+- Load the `managing-pull-requests` skill before opening a pull request, pushing to a pull request branch, editing a pull request description, squash merging a pull request, or reporting whether a pull request is reviewed or approved. It defines the title, description, and squash merge format and how to read Codex and Vercel review results.
+- Before opening a pull request, load `managing-pull-requests` and follow its cross-model adversarial review procedure, including its finding-resolution and unavailability-waiver rules.
 
 ### MCP servers
 

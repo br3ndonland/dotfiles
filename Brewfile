@@ -52,7 +52,7 @@ cask "font-recursive-code"
 # cask "handy"
 cask "homebrew-app"
 # cask "karabiner-elements"
-# cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
+cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
 # cask "linear"
 # cask "lm-studio-bionic"

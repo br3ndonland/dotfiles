@@ -49,7 +49,7 @@ cask "brave-browser"
 # cask "codex"
 cask "font-recursive-code"
 # cask "grok-bot"
-cask "handy"
+# cask "handy"
 cask "homebrew-app"
 # cask "karabiner-elements"
 # cask "keymapp", args: { appdir: "~/Applications", require_sha: false }

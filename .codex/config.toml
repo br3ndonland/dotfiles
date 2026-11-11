@@ -34,9 +34,6 @@ approval_mode = "prompt"
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_mark_all_notifications_read]
 approval_mode = "prompt"
 
-[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_merge_pull_request]
-approval_mode = "prompt"
-
 [apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_unstar_repository]
 approval_mode = "prompt"
 

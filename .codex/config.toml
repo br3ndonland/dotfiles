@@ -72,11 +72,273 @@ default_tools_approval_mode = "approve"
 default_tools_approval_mode = "approve"
 
 # Vercel plugin
-# https://github.com/openai/plugins/tree/main/plugins/vercel
-[apps.connector_690a90ec05c881918afb6a55dc9bbaa1]
+# https://github.com/vercel/vercel-plugin
+# Catalog: https://github.com/openai/plugins/tree/main/plugins/vercel
+# Inventoried against the installed Vercel 0.54.1 app tools on 2026-11-10.
+# Prompt for writes, deployments, purchases, credentials, sharing, and execution.
+# New tools inherit approve, so review these overrides when the app changes.
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1]
 default_tools_approval_mode = "approve"
 
-[apps.connector_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_deploy_to_vercel]
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_accept_project_transfer_request]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_activate_kms_signing_key]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_add_project_domain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_add_route]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_add_toolbar_reaction]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_approve_rolling_release_stage]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_assign_alias]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_buy_domain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_cancel_deployment]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_change_toolbar_thread_resolve_status]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_complete_rolling_release]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_deployment]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_drain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_edge_config]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_edge_config_token]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_flag]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_flags_project_connection]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_git_project]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_kms_issuer]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_kms_issuer_policy]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_kms_signing_key]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_or_transfer_domain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_project]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_project_env]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_record]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_sdk_key]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_session_directory]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_storage_stores_blob]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_create_trace_session]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_delete_drive]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_delete_sandbox]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_delete_session_snapshot]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_edit_project_env]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_edit_route]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_edit_toolbar_message]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_extend_session_timeout]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_get_access_to_vercel_url]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_get_named_sandbox]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_get_or_create_drive]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_invalidate_by_src_images]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_invalidate_by_tags]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_issue_cert]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_kill_session_command]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_patch_edge_config_items]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_patch_url_protection_bypass]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_pause_project]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_put_firewall_config]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_record_events]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_replace_domain_dns_records]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_reply_to_toolbar_thread]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_request_promote]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_request_rollback]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_rerequest_check]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_restore_edge_config_backup]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_restore_redirects]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_revoke_kms_signing_key]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_run_session_command]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_stage_redirects]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_stage_routes]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_start_rolling_release]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_stop_session]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_submit_feedback]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_test_drain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_unpause_project]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_attack_challenge_mode]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_bulk_redirect_version]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_connector]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_drain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_edge_config]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_firewall_config]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_flag]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_flag_segment]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_flag_settings]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_kms_issuer]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_kms_issuer_policy]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_project]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_project_protection_bypass]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_record]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_rolling_release_config]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_route_versions]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_sandbox]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_update_session_network_policy]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_upload_artifact]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_upload_file]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_upsert_connector_project_connection]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_verify_project_domain]
+approval_mode = "prompt"
+
+[apps.asdk_app_690a90ec05c881918afb6a55dc9bbaa1.tools.vercel_web_fetch_vercel_url]
 approval_mode = "prompt"
 
 [apps.connector_openai_codex_document_control]
@@ -204,7 +466,7 @@ enabled = false
 [plugins."slack@openai-curated"]
 enabled = false
 
-# https://github.com/openai/plugins/tree/main/plugins/vercel
+# https://github.com/vercel/vercel-plugin
 [plugins."vercel@openai-curated"]
 enabled = true
 

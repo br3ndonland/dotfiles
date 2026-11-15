@@ -55,6 +55,7 @@ cask "keymapp", args: { appdir: "~/Applications", require_sha: false }
 cask "kitty"
 # cask "linear"
 # cask "lm-studio-bionic"
+cask "navigator", args: { appdir: "~/Applications", require_sha: false }
 cask "orbstack"
 # cask "postico"
 cask "proton-drive"
